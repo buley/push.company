@@ -21,25 +21,25 @@
     <footer style="clear:both;">
       <a href="#content" id="footer">#</a>
     </footer>
-  </div>   
+  </div>
 	<script>
 		(function() {
 			var getQueryStringValue = function(qs, variable) {
 					var pair,
 							vars = qs.split('&'),
 							i;
-					alert(vars.join(','));
 					for (i = 0; i < vars.length; i++) {
-							pair = vars[i].split('=');
+							pair = vars[i].split('%3D');
 							if (decodeURIComponent(pair[0]) === variable) {
 									return decodeURIComponent(pair[1]);
 							}
 					}
 				}, appendQuery = function() {
-					var x = getQueryStringValue( decodeURIComponent( window.location.hash ), 'x' );
-					if ( !!x ) { 
+					var x = getQueryStringValue( window.location.hash, 'x' );
+					if ( !!x ) {
+            alert('x: ' + x)
 						$( '#content' ).append( [
-							'<article style="padding: 10px; margin-bottom: 10px; border-bottom: 1px solid #000;">',
+							'<article style="padding: 10px; margin-bottom: 10px; border-bottom: 1px solid #1a1a1a; background: #ccc;">',
 							JSON.stringify( JSON.parse( x ) ),
 							'</article>'
 						].join('') );
