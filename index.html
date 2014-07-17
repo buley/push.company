@@ -23,16 +23,29 @@
     </footer>
   </div>   
 	<script>
-		$('#wrapper').on('click', 'a', function(e) {
-			$( '#content' ).html('');
-		});
-    window.addEventListener( 'popstate', function() {
-			$( '#content' ).append( [
-				'<article style="padding: 10px; margin-bottom: 10px; border-bottom: 1px solid #000;">',
-				window.location.hash,
-				'</article>'
-			].join('') );
-		} );
+		(function() {
+			var getQueryStringValue = (qs, variable) {
+					var pair,
+							vars = qs.split('&'),
+							i;
+					for (i = 0; i < vars.length; i++) {
+							pair = vars[i].split('=');
+							if (decodeURIComponent(pair[0]) === variable) {
+									return decodeURIComponent(pair[1]);
+							}
+					}
+			}
+			$('#wrapper').on('click', 'a', function(e) {
+				$( '#content' ).html('');
+			});
+			window.addEventListener( 'popstate', function() {
+				$( '#content' ).append( [
+					'<article style="padding: 10px; margin-bottom: 10px; border-bottom: 1px solid #000;">',
+					JSON.stringify( JSON.parse( getQueryStringValue( decodeURIComponent( window.location.hash ), 'json' ) ) )
+					'</article>'
+				].join('') );
+			} );
+		}());
 	</script>
 </body>
 </html>
