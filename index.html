@@ -34,17 +34,21 @@
 									return decodeURIComponent(pair[1]);
 							}
 					}
-			}
+				}, appendQuery = function() {
+					var x = getQueryStringValue( decodeURIComponent( window.location.hash ), 'x' );
+					if ( !!x ) { 
+						$( '#content' ).append( [
+							'<article style="padding: 10px; margin-bottom: 10px; border-bottom: 1px solid #000;">',
+							JSON.stringify( JSON.parse( x ) ),
+							'</article>'
+						].join('') );
+					}
+				};
 			$('#wrapper').on('click', 'a', function(e) {
 				$( '#content' ).html('');
 			});
-			window.addEventListener( 'popstate', function() {
-				$( '#content' ).append( [
-					'<article style="padding: 10px; margin-bottom: 10px; border-bottom: 1px solid #000;">',
-					JSON.stringify( JSON.parse( getQueryStringValue( decodeURIComponent( window.location.hash ), 'json' ) ) ),
-					'</article>'
-				].join('') );
-			} );
+			window.addEventListener( 'popstate', appendQuery );
+			window.addEventListener( 'load', appendQuery );
 		}());
 	</script>
 </body>
