@@ -14,16 +14,16 @@
 <body>
   <div id="wrapper">
     <nav style="clear:both;">
-      <a href="#wrapper" id="reset">#</a>
+      <a href="#content" id="header">#</a>
     </nav>
     <section id="content">
     </section>
     <footer style="clear:both;">
-      <a href="#wrapper" id="reset">#</a>
+      <a href="#content" id="footer">#</a>
     </footer>
   </div>   
 	<script>
-		$('#reset').on('click', function(e) {
+		$('#wrapper').on('click', 'a', function(e) {
 			$( '#content' ).html('');
 		});
     window.addEventListener( 'popstate', function() {
