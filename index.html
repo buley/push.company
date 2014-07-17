@@ -30,6 +30,7 @@
 							i;
 					for (i = 0; i < vars.length; i++) {
 							pair = vars[i].split('%3D');
+              alert('var: ' + decodeURIComponent(pair[0]));
 							if (decodeURIComponent(pair[0]) === variable) {
 									return decodeURIComponent(pair[1]);
 							}
@@ -37,7 +38,6 @@
 				}, appendQuery = function() {
 					var x = getQueryStringValue( window.location.hash, 'x' );
 					if ( !!x ) {
-            alert('x: ' + x)
 						$( '#content' ).append( [
 							'<article style="padding: 10px; margin-bottom: 10px; border-bottom: 1px solid #1a1a1a; background: #ccc;">',
 							JSON.stringify( JSON.parse( x ) ),
