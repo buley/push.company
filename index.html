@@ -30,7 +30,6 @@
 							i;
 					for (i = 0; i < vars.length; i++) {
 							pair = vars[i].split('%3D');
-              alert('var: ' + decodeURIComponent(pair[0]));
 							if (decodeURIComponent(pair[0]) === variable) {
 									return decodeURIComponent(pair[1]);
 							}
