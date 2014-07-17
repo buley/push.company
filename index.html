@@ -36,6 +36,7 @@
 					}
 				}, appendQuery = function() {
 					var x = getQueryStringValue( decodeURIComponent( window.location.hash ), 'x' );
+					alert(x);
 					if ( !!x ) { 
 						$( '#content' ).append( [
 							'<article style="padding: 10px; margin-bottom: 10px; border-bottom: 1px solid #000;">',
