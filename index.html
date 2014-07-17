@@ -28,6 +28,7 @@
 					var pair,
 							vars = qs.split('&'),
 							i;
+					alert(vars.join(','));
 					for (i = 0; i < vars.length; i++) {
 							pair = vars[i].split('=');
 							if (decodeURIComponent(pair[0]) === variable) {
@@ -36,7 +37,6 @@
 					}
 				}, appendQuery = function() {
 					var x = getQueryStringValue( decodeURIComponent( window.location.hash ), 'x' );
-					alert(x);
 					if ( !!x ) { 
 						$( '#content' ).append( [
 							'<article style="padding: 10px; margin-bottom: 10px; border-bottom: 1px solid #000;">',
