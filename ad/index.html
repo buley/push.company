@@ -9,18 +9,13 @@
   <![endif]-->
   <style type="text/css">
     header, section, footer, aside, nav, article, figure, audio, video, canvas  { display:block; }
+	  body {
+			background: #b1b1b1;
+    }
   </style>
 </head>
 <body>
   <div id="wrapper">
-    <nav style="clear:both;">
-      <a href="#content" id="header">&#9114;</a>
-    </nav>
-    <section id="content">
-    </section>
-    <footer style="clear:both;">
-      <a href="#content" id="header">&#8613;</a>
-    </footer>
   </div>
 	<script>
 		(function() {
@@ -37,11 +32,8 @@
 				}, appendQuery = function() {
 					var x = getQueryStringValue( window.location.hash.replace(/^#/, ''), 'x' );
 					if ( !!x ) {
-						$( '#content' ).append( [
-							'<article style="padding: 10px; margin-bottom: 10px; border-bottom: 1px solid #1a1a1a; background: #ccc;">',
-							JSON.stringify( JSON.parse( x ) ),
-							'</article>'
-						].join('') );
+						var msg = JSON.parse( x );
+            alert( JSON.stringify( msg ) );
 						window.location.hash = "#";
 					}
 				};
