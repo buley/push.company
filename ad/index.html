@@ -41,6 +41,9 @@
 				$( '#content' ).html('');
 			});
 			window.addEventListener( 'popstate', appendQuery );
+			window.addEventListener("orientationchange", function() {
+				alert(window.orientation);
+			}, false);
 		}());
 	</script>
 </body>
