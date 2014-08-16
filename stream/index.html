@@ -40,22 +40,34 @@
 							}
 					}
 				}, appendQuery = function() {
-					var x = getQueryStringValue( window.location.hash.replace(/^#/, ''), 'x' );
-					if ( !!x ) {
-						$( '#content' ).append( [
-							'<article style="padding: 10px; margin-bottom: 10px; border-bottom: 1px solid #1a1a1a; background: #ccc;">',
-							JSON.stringify( JSON.parse( x ) ),
-							'</article>'
-						].join('') );
-            window.location.hash = "#ready=true";
-					}
-				};
-			$('#wrapper').on('click', 'a', function(e) {
-				$( '#content' ).html('');
-			});
-			window.addEventListener( 'popstate', appendQuery );
-      window.location.hash = "#ready=true";
-		}());
-	</script>
+var x = getQueryStringValue( window.location.hash.replace(/^#/, ''), 'x' ),
+    msg;
+if ( !!x ) {
+  try {
+    msg = JSON.parse( x );
+    if (!!msg) {
+      $( '#content' ).append( [
+        '<article style="padding: 10px; margin-bottom: 10px; border-bottom: 1px solid #1a1a1a; background: #ccc;">',
+        JSON.stringify( msg ),
+        '</article>'
+      ].join('') );
+    }
+  } catch( e ) {
+    //nothing yet
+  }
+  window.location.hash = "#ready=true";
+}
+e.preventDefault();
+e.stopPropigation();
+};
+$('#wrapper').on('click', 'a', function(e) {
+$( '#content' ).html('');
+e.preventDefault();
+e.stopPropigation();
+});
+window.addEventListener( 'popstate', appendQuery );
+window.location.hash = "#ready=true";
+}());
+</script>
 </body>
 </html>
