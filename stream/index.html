@@ -39,7 +39,18 @@
 									return decodeURIComponent(pair[1]);
 							}
 					}
-				}, appendQuery = function() {
+				}, orientationQuery = function(e) {
+          var msg = {
+            "type": "orientation",
+            "orientation": window.orientation
+          }l
+            $( '#content' ).append( [
+              '<article style="padding: 10px; margin-bottom: 10px; border-bottom: 1px solid #1a1a1a; background: #ccc;">',
+              JSON.stringify( msg ),
+              '</article>'
+            ].join('') );
+        },
+        appendQuery = function() {
 var x = getQueryStringValue( window.location.hash.replace(/^#/, ''), 'x' ),
     msg;
 if ( !!x ) {
@@ -66,6 +77,8 @@ e.preventDefault();
 e.stopPropigation();
 });
 window.addEventListener( 'popstate', appendQuery );
+window.addEventListener( 'orientationchange', orientationQuery );
+
 }());
 </script>
 </body>
