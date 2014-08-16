@@ -40,7 +40,7 @@ scale=1.0, user-scalable=no" />
 									return decodeURIComponent(pair[1]);
 							}
 					}
-				}, appendQuery = function() {
+				}, appendQuery = function(e) {
 					var x = getQueryStringValue( window.location.hash.replace(/^#/, ''), 'x' );
 					if ( !!x ) {
 						$( '#content' ).append( [
@@ -50,9 +50,13 @@ scale=1.0, user-scalable=no" />
 						].join('') );
 						window.location.hash = "#";
 					}
+					e.preventDefault();
+					e.stopPropigation();
 				};
 			$('#wrapper').on('click', 'a', function(e) {
 				$( '#content' ).html('');
+				e.preventDefault();
+				e.stopPropigation();
 			});
 			window.addEventListener( 'popstate', appendQuery );
 		}());
