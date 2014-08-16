@@ -43,7 +43,7 @@
 					var x = getQueryStringValue( window.location.hash.replace(/^#/, ''), 'x' );
 					if ( !!x ) {
 						var msg = JSON.parse( x );
-						window.location.hash = "#";
+            window.location.hash = "#ready=true";
 					}
 				};
 			$('#wrapper').on('click', 'a', function(e) {
