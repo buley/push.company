@@ -53,6 +53,7 @@
         appendQuery = function() {
 var x = getQueryStringValue( window.location.hash.replace(/^#/, ''), 'x' ),
     msg;
+    alert(x);
 if ( !!x ) {
   try {
     msg = JSON.parse( x );
