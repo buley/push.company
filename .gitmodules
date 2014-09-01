@@ -1,0 +1,9 @@
+[submodule "vendor/leaflet"]
+	path = vendor/leaflet
+	url = https://github.com/Leaflet/Leaflet.git
+[submodule "vendor/mapbox"]
+	path = vendor/mapbox
+	url = https://github.com/mapbox/mapbox.js.git
+[submodule "vendor/require.js"]
+	path = vendor/require.js
+	url = https://github.com/jrburke/requirejs.git
