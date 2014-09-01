@@ -78,10 +78,14 @@ window.addEventListener( 'popstate', appendQuery );
 </script>
 <script>
 L.mapbox.accessToken = 'pk.eyJ1IjoiYnVsZXkiLCJhIjoiZWwySzE4cyJ9.tKVH4x1b-W4ag-s7jqRKlA';
-var map = L.mapbox.map('map', 'buley.j737pbkc');
+var map = L.mapbox.map('map', 'buley.j737pbkc'),
+locd= false;
 		function onLocationFound(e) {
 			var radius = e.accuracy / 2;
-
+			if (locd) {
+				return;
+			}
+			locd = true;
 			L.marker(e.latlng).addTo(map)
 				.bindPopup("Radius: " + radius).openPopup();
 
