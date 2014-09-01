@@ -83,18 +83,16 @@ window.addEventListener( 'popstate', appendQuery );
 				locd= false,
 				getParams = function() {
 					return [ 38.538901, -121.700335, 15 ];
-				};
+				},
+				params = getParams(),
+				lat = params[0],
+				lon = params[1],
+				radius = params[2];
 		map.on('ready', function() {
-				var params = getParams(),
-						lat = params[0],
-						lon = params[1],
-						radius = params[2];
-				if (locd) {
-					return;
-				}
-				locd = true;
 				L.circleMarker( L.latLng(lat, lon), { radius: radius });
 		});
+		map.setView( L.latLng(lat, lon), 16 );
+		
 
 }());
 </script>
