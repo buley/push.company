@@ -88,11 +88,8 @@ window.addEventListener( 'popstate', appendQuery );
 				lat = params[0],
 				lon = params[1],
 				radius = params[2];
-		map.on('ready', function() {
-				L.circleMarker( L.latLng(lat, lon), { radius: radius });
-		});
 		map.setView( L.latLng(lat, lon), 16 );
-		
+		L.circleMarker( L.latLng(lat, lon), { radius: radius });
 
 }());
 </script>
