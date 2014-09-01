@@ -29,6 +29,7 @@
       <a href="#content" id="header">&#9114;</a>
     </nav>
     <section id="content">
+			<div id='map'></div>
     </section>
     <footer style="clear:both;">
       <a href="#content" id="header">&#8613;</a>
@@ -74,6 +75,11 @@ e.stopPropigation();
 });
 window.addEventListener( 'popstate', appendQuery );
 }());
+</script>
+<script>
+L.mapbox.accessToken = 'pk.eyJ1IjoiYnVsZXkiLCJhIjoiZWwySzE4cyJ9.tKVH4x1b-W4ag-s7jqRKlA';
+L.mapbox.map('map', 'buley.j737pbkc')
+    .setView([40, -74.50], 9);
 </script>
 </body>
 </html>
