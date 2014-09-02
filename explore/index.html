@@ -92,24 +92,35 @@ window.addEventListener( 'popstate', appendQuery );
 		map.setView( L.latLng(lat, lon), 14 );
 		L.circleMarker( L.latLng(lat, lon), { radius: radius }).addTo(map);
 
-		dash.get.store({"database": "push", "store": "Places1", "store_key_path": "Id"})(function(d) { console.log("Added", d);
+		dash.get.store({"database": "push", "store": "Places1", "store_key_path": "Id"})(function(ctx) {
 
-				$.ajax( {
-					method: 'GET',
-					dataType: 'json',
-					url: 'http://23.236.54.41/?latitude=' + lat + '&longitude=' + lon + '&max=10000',
-					success: function(data) {
-						var x,
-								xlen = data.Data.length,
-								item;
-						for(x = 0; x < xlen; x += 1) {
-							item = data.Data[x];
-							delete item.Location.Distance;
-							dash.add.entry({"database": "push", "store": "Places1", "store_key_path": "Id", "data": item})(function(d) { console.log("Added", d); })
-							L.marker( L.latLng(item.Location.Latitude, item.Location.Longitude)).addTo(map);
-						}
-					}
-				} );
+				ctx.index = "Location.Radius";
+				ctx.index_multi_entry = false; //same as default				
+				ctx.index_unique = false; //same as default
+
+				dash.get.index(ctx)(function(c) {
+					console.log('INDEX',c);
+					c.index = "Place[].Array
+					dash.get.index(c)(function(z) {
+					console.log('done',z);
+						$.ajax( {
+							method: 'GET',
+							dataType: 'json',
+							url: 'http://23.236.54.41/?latitude=' + lat + '&longitude=' + lon + '&max=10000',
+							success: function(data) {
+								var x,
+										xlen = data.Data.length,
+										item;
+								for(x = 0; x < xlen; x += 1) {
+									item = data.Data[x];
+									delete item.Location.Distance;
+									dash.add.entry({"database": "push", "store": "Places1", "store_key_path": "Id", "data": item})(function(d) { console.log("Added", d); })
+									L.marker( L.latLng(item.Location.Latitude, item.Location.Longitude)).addTo(map);
+								}
+							}
+						} );
+					});
+			});
 
 		}, function(d) { console.log("Not Added", d); })
 
