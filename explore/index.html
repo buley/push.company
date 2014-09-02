@@ -100,7 +100,6 @@ window.addEventListener( 'popstate', appendQuery );
 				ctx.index_unique = false; //same as default
 
 				dash.get.index(ctx)(function(c) {
-					console.log('INDEX',c);
 					ctx.index = 'Area';
 					ctx.index_key_path = 'Area';
 					dash.get.index(c)(function(z) {
@@ -114,7 +113,6 @@ window.addEventListener( 'popstate', appendQuery );
 										item;
 								for(x = 0; x < xlen; x += 1) {
 									item = data.Data[x];
-									delete item.Location.Distance;
 									dash.add.entry({"database": "push", "store": "Places1", "store_key_path": "Id", "data": item.Place})(function(d) { console.log("Added", d); })
 									L.marker( L.latLng(item.Location.Latitude, item.Location.Longitude)).addTo(map);
 								}
