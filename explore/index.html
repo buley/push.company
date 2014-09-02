@@ -96,7 +96,13 @@ window.addEventListener( 'popstate', appendQuery );
 			dataType: 'json',
 			url: 'http://23.236.54.41/?latitude=' + lat + '&longitude=' + lon + '&max=1000',
 			success: function(data) {
-				console.log('data',data);	
+				var x,
+						xlen = data.Data.length,
+						item;
+				for(x = 0; x < xlen; x += 1) {
+					item = data.Data[x];
+					L.circleMarker( L.latLng(item.Location.Latitude, item.Location.Longitude, { radius: item.Location.Radius }).addTo(map);
+				}
 			}
 		} );
 
