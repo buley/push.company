@@ -88,7 +88,7 @@ window.addEventListener( 'popstate', appendQuery );
 				lat = params[0],
 				lon = params[1],
 				radius = params[2];
-		map.setView( L.latLng(lat, lon), 10 );
+		map.setView( L.latLng(lat, lon), 14 );
 		L.circleMarker( L.latLng(lat, lon), { radius: radius }).addTo(map);
 
 		$.ajax( {
