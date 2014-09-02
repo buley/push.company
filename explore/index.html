@@ -101,7 +101,7 @@ window.addEventListener( 'popstate', appendQuery );
 						item;
 				for(x = 0; x < xlen; x += 1) {
 					item = data.Data[x];
-					L.circleMarker( L.latLng(item.Location.Latitude, item.Location.Longitude, { radius: item.Location.Radius }).addTo(map);
+					L.circleMarker( L.latLng(item.Location.Latitude, item.Location.Longitude), { radius: item.Location.Radius }).addTo(map);
 				}
 			}
 		} );
