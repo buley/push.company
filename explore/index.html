@@ -85,6 +85,17 @@ window.addEventListener( 'popstate', appendQuery );
 				getParams = function() {
 					return [ 38.538901, -121.700335, 15 ];
 				},
+				install = function(cb) {
+					addDatabases(function() {
+						addStores( function() {
+							addIndexes(function() {
+								if ('function' === typeof cb) {
+									cb();
+								}
+							} );
+						} );
+					} );
+				},
 				params = getParams(),
 				lat = params[0],
 				lon = params[1],
@@ -101,12 +112,13 @@ window.addEventListener( 'popstate', appendQuery );
 
 				dash.get.index(ctx)(function(c) {
 					ctx.index = 'Area';
-					ctx.index_key_path = 'Area';
+					ctx.index_key_path = 'area';
 					dash.get.index(c)(function(z) {
+
 						$.ajax( {
 							method: 'GET',
 							dataType: 'json',
-							url: 'http://23.236.54.41/?latitude=' + lat + '&longitude=' + lon + '&max=10000',
+							url: 'http://23.236.54.41/?latitude=' + lat + '&longitude=' + lon + '&max=5000',
 							success: function(data) {
 								var x,
 										xlen = data.Data.length,
