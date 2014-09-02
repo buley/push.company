@@ -95,12 +95,14 @@ window.addEventListener( 'popstate', appendQuery );
 		dash.get.store({"database": "push", "store": "Places1", "store_key_path": "Id"})(function(ctx) {
 
 				ctx.index = "Location.Radius";
+				ctx.index_key_path = "Location.Radius";
 				ctx.index_multi_entry = false; //same as default				
 				ctx.index_unique = false; //same as default
 
 				dash.get.index(ctx)(function(c) {
 					console.log('INDEX',c);
 					c.index = "Place[].Area";
+					c.index_key_path = "Place[].Area";
 					dash.get.index(c)(function(z) {
 					console.log('done',z);
 						$.ajax( {
