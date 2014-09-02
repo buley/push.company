@@ -113,8 +113,10 @@ window.addEventListener( 'popstate', appendQuery );
 										item;
 								for(x = 0; x < xlen; x += 1) {
 									item = data.Data[x];
-									console.log('ITEM', item);
-									dash.add.entry({"database": "push", "store": "Places1", "data": item.Place})(function(d) { console.log("Added", d); })
+									var z, zlen = item.Places.length;
+									for (z = 0; z < zlen; z += 1) {
+										dash.add.entry({"database": "push", "store": "Places1", "data": item.Places[z]})(function(d) { console.log("Added", d); })
+									}
 									L.marker( L.latLng(item.Location.Latitude, item.Location.Longitude)).addTo(map);
 								}
 							}
