@@ -94,17 +94,16 @@ window.addEventListener( 'popstate', appendQuery );
 
 		dash.get.store({"database": "push", "store": "Places1", "store_key_path": "Id"})(function(ctx) {
 
-				ctx.index = "Location.Radius";
-				ctx.index_key_path = "Location.Radius";
+				ctx.index = "Radius";
+				ctx.index_key_path = "Radius";
 				ctx.index_multi_entry = false; //same as default				
 				ctx.index_unique = false; //same as default
 
 				dash.get.index(ctx)(function(c) {
 					console.log('INDEX',c);
-					c.index = "Place[].Area";
-					c.index_key_path = "Place[].Area";
+					ctx.index = 'Area';
+					ctx.index_key_path = 'Area';
 					dash.get.index(c)(function(z) {
-					console.log('done',z);
 						$.ajax( {
 							method: 'GET',
 							dataType: 'json',
@@ -116,7 +115,7 @@ window.addEventListener( 'popstate', appendQuery );
 								for(x = 0; x < xlen; x += 1) {
 									item = data.Data[x];
 									delete item.Location.Distance;
-									dash.add.entry({"database": "push", "store": "Places1", "store_key_path": "Id", "data": item})(function(d) { console.log("Added", d); })
+									dash.add.entry({"database": "push", "store": "Places1", "store_key_path": "Id", "data": item.Place})(function(d) { console.log("Added", d); })
 									L.marker( L.latLng(item.Location.Latitude, item.Location.Longitude)).addTo(map);
 								}
 							}
