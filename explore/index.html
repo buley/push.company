@@ -102,6 +102,7 @@ window.addEventListener( 'popstate', appendQuery );
 						item;
 				for(x = 0; x < xlen; x += 1) {
 					item = data.Data[x];
+					dash.add.entry({"database": "push", "store": "Places", "data": item})(function(d) { console.log("Added", d); })
 					L.marker( L.latLng(item.Location.Latitude, item.Location.Longitude)).addTo(map);
 				}
 			}
