@@ -94,7 +94,7 @@ window.addEventListener( 'popstate', appendQuery );
 		$.ajax( {
 			method: 'GET',
 			dataType: 'json',
-			url: 'http://23.236.54.41/?latitude=' + lat + '&longitude=' + lon + '&max=1000',
+			url: 'http://23.236.54.41/?latitude=' + lat + '&longitude=' + lon + '&max=10000',
 			success: function(data) {
 				var x,
 						xlen = data.Data.length,
