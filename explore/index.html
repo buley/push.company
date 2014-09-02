@@ -92,6 +92,8 @@ window.addEventListener( 'popstate', appendQuery );
 		map.setView( L.latLng(lat, lon), 14 );
 		L.circleMarker( L.latLng(lat, lon), { radius: radius }).addTo(map);
 
+		dash.add.store({"database": "push", "store": "Places1", "store_key_path": "Id"})(function(d) { console.log("Added", d); }, function(d) { console.log("Not Added", d); })
+
 		$.ajax( {
 			method: 'GET',
 			dataType: 'json',
@@ -102,6 +104,7 @@ window.addEventListener( 'popstate', appendQuery );
 						item;
 				for(x = 0; x < xlen; x += 1) {
 					item = data.Data[x];
+					delete item.Location.Distance;
 					dash.add.entry({"database": "push", "store": "Places1", "store_key_path": "Id", "data": item})(function(d) { console.log("Added", d); })
 					L.marker( L.latLng(item.Location.Latitude, item.Location.Longitude)).addTo(map);
 				}
