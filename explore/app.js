@@ -108,9 +108,9 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
             outgoing = function(cb) {
               promise.then(null, cb, cb);
             },
-            incoming = bind(this, function() {
+            incoming = (function() {
               console.log("app.js: incoming", arguments);
-            });
+            }).bind(this);
 
         Array.prototype.forEach.apply(arguments, function(interface) {
           interface.then(function(options) {
