@@ -33,14 +33,18 @@ requirejs.config({
 requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, $, _, React, dash, L) {
 	console.log("AMD",arguments);
 	var module = Q.defer(),
+    getParams = function() {
+      return [ 38.538901, -121.700335, 15 ];
+    },
+    params = getParams(),
+    lat = params[0],
+    lon = params[1],
+    radius = params[2],
 		module_promise = module.promise,
     doMap = function() {
       L.mapbox.accessToken = 'pk.eyJ1IjoiYnVsZXkiLCJhIjoiZWwySzE4cyJ9.tKVH4x1b-W4ag-s7jqRKlA';
       var map = L.mapbox.map('map', 'buley.j737pbkc'),
-          locd= false,
-          getParams = function() {
-            return [ 38.538901, -121.700335, 15 ];
-          },
+          locd= false;
           install = function(cb) {
             addDatabases(function() {
               addStores( function() {
@@ -52,10 +56,6 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
               } );
             } );
           },
-          params = getParams(),
-          lat = params[0],
-          lon = params[1],
-          radius = params[2];
       map.setView( L.latLng(lat, lon), 14 );
       L.circleMarker( L.latLng(lat, lon), { radius: radius }).addTo(map);
     },
