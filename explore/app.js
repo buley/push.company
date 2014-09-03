@@ -1,10 +1,24 @@
 requirejs.config({
     baseUrl: '../',
     paths: {
-        'q': '/bower_components/q/q'
-    }
+        'q': '/bower_components/q/q',
+		'dash': '/bower_components/dash/lib/dash',
+		'mapbox': '/bower_components/mapbox.js/mapbox',
+		'underscore': '/bower_components/underscore/underscore'
+    },
+	shim: {
+		'dash': {
+			exports: 'dash'
+		},
+		'mapbox': {
+			exports: 'L'
+		},
+		'underscore': {
+			exports: '_'
+		}
+	}
 });
 
-requirejs(['q'], function(Q) {
-	console.log("Q",Q);
+requirejs(['q', 'dash', 'mapbox'], function(Q, dash, mapbox) {
+	console.log("AMD",arguments);
 });
