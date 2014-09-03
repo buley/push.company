@@ -30,10 +30,14 @@ requirejs.config({
 	}
 });
 
-requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, $, _, dash, mapbox) {
+requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, $, _, React, dash, mapbox) {
 	console.log("AMD",arguments);
 	var module = Q.defer(),
 		module_promise = module.promise;
 	module.resolve();
+	React.renderComponent(
+	  React.DOM.div(null, 'Hello, world'),
+	  document.getElementById('explore')
+	);
 	return module_promise;
 });
