@@ -1,0 +1,1 @@
+With a string index name, it's possible to get a reference to an existing index from an object store.

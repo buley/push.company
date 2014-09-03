@@ -1,0 +1,45 @@
+{
+  "name": "dash",
+  "authors": [
+    "Taylor Buley <taylor.buley@gmail.com>"
+  ],
+  "homepage": "http://dashdb.com",
+  "description": "A cookie-sized JavaSript library offering a promise-based wrapper for the IndexedDB (IDB) HTML5 database API.",
+  "keywords": [
+    "indexeddb",
+    "databases",
+    "objectstores",
+    "indexes",
+    "data",
+    "html5",
+    "idb"
+  ],
+  "license": "MIT",
+  "main": "lib/dash.js",
+  "dependencies": {},
+  "ignore": [
+    ".jshintrc",
+    ".jslintrc",
+    "docs",
+    "docs/demo",
+    "docs/demo/data",
+    "index.html",
+    "CNAME",
+    ".idea",
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "_release": "cecea60e4e",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "cecea60e4e6fdd03c7c25425fff0aae5d95ca44a"
+  },
+  "_source": "git://github.com/editor/dash.git",
+  "_target": "*",
+  "_originalSource": "dash",
+  "_direct": true
+}
