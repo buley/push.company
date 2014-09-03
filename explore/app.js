@@ -7,6 +7,9 @@ requirejs.config({
 		'underscore': '/bower_components/underscore/underscore'
     },
 	shim: {
+		'Q': {
+			exports: 'Q'
+		},
 		'dash': {
 			exports: 'dash'
 		},
