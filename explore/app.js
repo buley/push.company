@@ -41,7 +41,6 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
     lon = params[1],
     radius = params[2],
     map,
-		module_promise = module.promise,
     doMap = function() {
       L.mapbox.accessToken = 'pk.eyJ1IjoiYnVsZXkiLCJhIjoiZWwySzE4cyJ9.tKVH4x1b-W4ag-s7jqRKlA';
       map = L.mapbox.map('map', 'buley.j737pbkc');
@@ -60,45 +59,6 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
       map.setView( L.latLng(lat, lon), 14 );
       L.circleMarker( L.latLng(lat, lon), { radius: radius }).addTo(map);
     },
-	doOther = function() {
-			var getQueryStringValue = function(qs, variable) {
-					var pair,
-							vars = qs.split('&'),
-							i;
-					for (i = 0; i < vars.length; i++) {
-							pair = vars[i].split('%3D');
-							if (decodeURIComponent(pair[0]) === variable) {
-									return decodeURIComponent(pair[1]);
-							}
-					}
-				}, appendQuery = function() {
-var x = getQueryStringValue( window.location.hash.replace(/^#/, ''), 'x' ),
-    msg;
-if ( !!x ) {
-  try {
-    msg = JSON.parse( x );
-    if (!!msg) {
-      $( '#content' ).append( [
-        '<article style="padding: 10px; margin-bottom: 10px; border-bottom: 1px solid #1a1a1a; background: #ccc;">',
-        JSON.stringify( msg ),
-        '</article>'
-      ].join('') );
-    }
-  } catch( e ) {
-    //nothing yet
-  }
-  window.location.hash = "#ready=true";
-}
-e.preventDefault();
-e.stopPropigation();
-};
-$('#wrapper').on('click', 'a', function(e) {
-$( '#content' ).html('');
-e.preventDefault();
-e.stopPropigation();
-});
-window.addEventListener( 'popstate', appendQuery );
-	},
     doData = function() {
 
       dash.get.store({"database": "push", "store": "Places1", "store_key_path": "Id"})(function(ctx) {
@@ -137,15 +97,34 @@ window.addEventListener( 'popstate', appendQuery );
       }, function(d) { console.log("Not Added", d); })
 
     };
-	module.resolve();
+
 	React.renderComponent(
 	  React.DOM.div(null, 'Hello, world'),
 	  document.getElementById('explore'),
     function() {
-      doMap();
-      doData();
-		doOther();
+      require(['explore/presence', 'explore/mapper'], function(presence, mapper) {
+        var deferred = Q.defer(),
+            promise = deferred.promise,
+            outgoing = function(cb) {
+              promise.then(null, cb, cb);
+            },
+            incoming = bind(this, function() {
+              console.log("app.js: incoming", arguments);
+            });
+
+        Array.prototype.forEach.apply(arguments, function(interface) {
+          interface.then(function(options) {
+            options.incoming(outgoing);
+            options.outgoing(incoming);
+          });
+        });
+
+        deferred.resolve("hello from app.js");
+
+        module.resolve();
+
+      });
     }
 	);
-	return module_promise;
+	return module.promise;
 });
