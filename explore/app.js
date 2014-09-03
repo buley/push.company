@@ -1,7 +1,7 @@
 requirejs.config({
     baseUrl: '../',
     paths: {
-        'q': '/bower_components/q/q',
+    'q': '/bower_components/q/q',
 		'dash': '/bower_components/dash/lib/dash',
 		'mapbox': '/bower_components/mapbox.js/mapbox',
 		'underscore': '/bower_components/underscore/underscore',
@@ -9,7 +9,7 @@ requirejs.config({
 		'react': '/bower_components/react/react'
     },
 	shim: {
-		'Q': {
+		'q': {
 			exports: 'Q'
 		},
 		'dash': {
