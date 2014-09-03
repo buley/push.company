@@ -1,7 +1,7 @@
 requirejs.config({
     baseUrl: '../',
     paths: {
-        'q': '/bower_components/q/q.js'
+        'q': '/bower_components/q/q'
     }
 });
 
