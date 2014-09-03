@@ -4,7 +4,8 @@ requirejs.config({
         'q': '/bower_components/q/q',
 		'dash': '/bower_components/dash/lib/dash',
 		'mapbox': '/bower_components/mapbox.js/mapbox',
-		'underscore': '/bower_components/underscore/underscore'
+		'underscore': '/bower_components/underscore/underscore',
+		'jquery': '/bower_components/jquery/dist/jquery.js'
     },
 	shim: {
 		'Q': {
@@ -18,10 +19,13 @@ requirejs.config({
 		},
 		'underscore': {
 			exports: '_'
+		},
+		'jquery': {
+			exports: 'jQuery'
 		}
 	}
 });
 
-requirejs(['q', 'dash', 'mapbox'], function(Q, dash, mapbox) {
+requirejs(['q', 'jquery', 'underscore', 'dash', 'mapbox'], function(Q, $, _, dash, mapbox) {
 	console.log("AMD",arguments);
 });
