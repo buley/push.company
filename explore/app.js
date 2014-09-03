@@ -40,11 +40,12 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
     lat = params[0],
     lon = params[1],
     radius = params[2],
+    map,
 		module_promise = module.promise,
     doMap = function() {
+      map = L.mapbox.map('map', 'buley.j737pbkc');
       L.mapbox.accessToken = 'pk.eyJ1IjoiYnVsZXkiLCJhIjoiZWwySzE4cyJ9.tKVH4x1b-W4ag-s7jqRKlA';
-      var map = L.mapbox.map('map', 'buley.j737pbkc'),
-          locd= false;
+      var locd= false;
           install = function(cb) {
             addDatabases(function() {
               addStores( function() {
