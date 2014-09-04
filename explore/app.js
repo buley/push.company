@@ -123,6 +123,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
               context = JSON.parse(next_state);
               if (next_state !== previous_state) {
                 previous_state = next_state;
+                state = context;
                 component.replaceProps(context);
                 deferred.notify(context);
               }
