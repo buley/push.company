@@ -32,10 +32,10 @@ define(['q', 'react'], function(Q, React, L) {
     },
     incoming: function(interface) {
       interface.then(null, null, function(state) {
-        if (!props.location) {
-          props.location = current;
-          console.log('notify', props.location);
-          deferred.notify(props);
+        console.log('notify', state.location);
+        if (!state.location) {
+          state.location = current;
+          deferred.notify(state);
         }
         context = state;
       });
