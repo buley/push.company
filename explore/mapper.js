@@ -3,25 +3,12 @@ define(['q', 'react'], function(Q, React) {
       promise = deferred.promise,
       module = Q.defer(),
       context = {},
+      render = function() {
+        console.log('mapper render');
+        return React.DOM.div(null, !!context ? context.init - context.timestamp : null);
+      },
       component = React.createClass({
-        getInitialState: function() {
-          console.log('getInitialState');
-          return {};
-        },
-        componentWillMount: function() {
-          console.log('componentWillMount');
-        },
-        componentDidMount: function() {
-          console.log('did mount');
-          component = this;
-        },
-        componentWillReceiveProps: function() {
-          console.log('mapper componentWillReceiveProps');
-        },
-        render: function() {
-          console.log('mapper render');
-          return React.DOM.div(null, !!context ? context.init - context.timestamp : null);
-        }
+        render: render
       });
   module.resolve(component);
   return {

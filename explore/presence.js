@@ -3,11 +3,12 @@ define(['q', 'react' ], function(Q, React) {
       promise = deferred.promise,
       module = Q.defer(),
       context = {},
+      render = function() {
+        console.log('presence render');
+        return React.DOM.div(null, !!context ? context.init - context.timestamp : null);
+      },
       component = React.createClass({
-        render: function() {
-          console.log('presence render');
-          return React.DOM.div(null, !!context ? context.init - context.timestamp : null);
-        }
+        render: render
       });
   module.resolve(component);
   return {
