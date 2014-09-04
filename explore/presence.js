@@ -5,7 +5,7 @@ define(['q', 'react' ], function(Q, React) {
       context = {},
       render = function() {
         console.log('presence render');
-        return React.DOM.div(null, !!context ? context.init - context.timestamp : null);
+        return React.DOM.div(null, !!context ? context.timestamp - context.init: null);
       },
       component = React.createClass({
         render: render
