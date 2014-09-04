@@ -151,6 +151,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
               function() {
                 state.timestamp = Date.now();
                 requestStateChange(state);
+                requestStateChange(state);
                 module.resolve(component);
               }
             );
