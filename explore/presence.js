@@ -7,7 +7,7 @@ define(['q', 'react' ], function(Q, React) {
         render: function() {
           return 'WHY NOT';
         }
-      })({});
+      });
   module.resolve(component);
   return {
     outgoing: function(interface) {
@@ -16,7 +16,6 @@ define(['q', 'react' ], function(Q, React) {
     incoming: function(interface) {
       interface.then(null, null, function(state) {
         component.replaceProps(state);
-
         console.log("presence.js: dynamism", state);
         state.interfaces = state.interfaces || {};
         state.interfaces.presence = {
