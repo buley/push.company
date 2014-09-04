@@ -118,10 +118,10 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
           interface.ready(function(state) {
             interface.incoming(outgoing);
             interface.outgoing(incoming);
-            deferred.notify("hello from app.js");
           });
         });
 
+        deferred.notify("hello from app.js");
 
         module.resolve();
 
