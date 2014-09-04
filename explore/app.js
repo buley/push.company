@@ -143,6 +143,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
           internal = Q.defer(),
           incoming = function(interface) {
             interface.then(null, null, function(change) {
+              console.log('change',change.timestamp);
               requestStateChange(change);
             });
           },
