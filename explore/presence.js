@@ -16,7 +16,6 @@ define(['q', 'react' ], function(Q, React) {
     },
     incoming: function(interface) {
       interface.then(null, null, function(state) {
-        console.log('presence app');
         context = state;
       })
     },
