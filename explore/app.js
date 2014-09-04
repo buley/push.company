@@ -115,7 +115,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
               console.log('main componentWillReceiveProps');
             },
             render: function() {
-              return React.DOM.div(null, !!context ? context.init - context.timestamp : null);
+              return "Testing123";
             }
           }),
           component,
