@@ -107,14 +107,13 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
               component = this;
             },
             render: function() {
-              return React.DOM.div(null, "Testing123");
+              return React.DOM.div.apply(components);
             }
           }),
           component,
           internal = Q.defer(),
           incoming = function(interface) {
             interface.then(null, null, function(context) {
-              console.log('newish', context);
               if (!!component && !!component.isMounted && component.isMounted()) {
                 component.replaceProps(context);
               } else {
@@ -129,7 +128,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
           },
           ready = function() {
             React.renderComponent(
-              container.apply(this, components),
+              container.apply(this, state),
               document.getElementById('explore'),
               function() {
                 component.setProps(state);
