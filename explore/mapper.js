@@ -12,9 +12,7 @@ define(['q'], function(Q) {
       interface.then(null, null, function(state) {
         state.interfaces = state.interfaces || {};
         state.interfaces.mapper = {
-          foo: function() {
-            console.log('mapper.js: foo');
-          }
+          foo: 'foo'
         };
         deferred.notify(state);
         context = state;

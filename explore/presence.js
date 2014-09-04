@@ -14,9 +14,7 @@ define(['q'], function(Q) {
       interface.then(null, null, function(state) {
         state.interfaces = state.interfaces || {};
         state.interfaces.presence = {
-          bar: function() {
-            console.log('presence.js: bar');
-          }
+          bar: 'bar'
         };
         deferred.notify(state);
         context = state;
