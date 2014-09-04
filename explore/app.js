@@ -129,8 +129,8 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
             if (!!component && !!component.isMounted && component.isMounted()) {
               var next_state = state_queue.shift(),
                   ctx = JSON.parse(next_state);
+              component.replaceProps(ctx);
               if (next_state !== previous_state) {
-                component.replaceProps(ctx);
                 previous_state = next_state;
                 deferred.notify(ctx);
               }
@@ -154,7 +154,6 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
               document.getElementById('explore'),
               function() {
                 module.resolve(component);
-                component.setProps(state)
                 setInterval(function() {
                   var ctx = component.props;
                   ctx.timestamp = Date.now();
