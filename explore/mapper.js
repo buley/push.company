@@ -3,8 +3,10 @@ define(['q', 'react'], function(Q, React) {
       promise = deferred.promise,
       module = Q.defer(),
       context,
-      component = React.createClass({
+      component,
+      exported = React.createClass({
         render: function() {
+          component = this;
           return React.DOM.div(null, !!context ? context.init - context.timestamp : null);
         }
       });
@@ -16,6 +18,7 @@ define(['q', 'react'], function(Q, React) {
     incoming: function(interface) {
       interface.then(null, null, function(state) {
         context = state;
+        component.replaceProps(state);
       });
     },
     ready: module.promise.then.bind(module.promise)
