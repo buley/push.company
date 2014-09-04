@@ -126,6 +126,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
                 } else {
                   loaded = loaded + 1;
                 }
+                console.log('added',loaded);
               };
               interface.ready(readyHandler);
             };
