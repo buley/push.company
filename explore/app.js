@@ -134,7 +134,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
           },
           requestStateChange = function(state) {
             state_queue.push(state);
-            console.log('queue',state_queue.length);
+            console.log('queue',state_queue.length. state.timestamp);
             setTimeout(function() {
               doStateChange();
             }, 10);
@@ -183,7 +183,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
       setTimeout(function() {
         state.timestamp = Date.now();
         requestStateChange(state);
-      })
+      }, 4000)
 
     });
 	return module.promise;
