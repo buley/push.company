@@ -109,7 +109,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
                 console.log("app.js: incoming", arguments);
               })
             }).bind(this),
-            loaded = 0,
+            loaded = 1,
             ready = function() {
               console.log('saying hello');
               deferred.notify("hello from app.js");
@@ -121,7 +121,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
             interface.incoming(promise);
             interface.outgoing(incoming);
             loaded += 1;
-            if (arguments.length === loaded) {
+            if (loaded > arguments.length) {
               ready();
             }
           });

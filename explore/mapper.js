@@ -9,7 +9,7 @@ define(['q'], function(Q) {
       promise.then(null, cb, cb);
     },
     incoming: function(interface) {
-      console.log("mapper.js: incoming")
+      console.log("mapper.js: incoming", arguments)
       interface.notify(function() {
         console.log("mapper.js: incoming notification", arguments);
       });
