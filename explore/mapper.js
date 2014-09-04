@@ -7,6 +7,9 @@ define(['q', 'react'], function(Q, React) {
         return React.DOM.div(context, !!context ? context.init - context.timestamp : 'TK');
       },
       component = React.createClass({
+        componentWillReceiveProps: function() {
+          console.log('mapper componentWillReceiveProps');
+        },
         render: render
       });
   module.resolve(component);
