@@ -29,6 +29,7 @@ define(['q', 'react'], function(Q, React, L) {
     },
     incoming: function(interface) {
       interface.then(null, null, function(state) {
+        console.log('incoming',state.location);
         if (!state.location) {
           state.location = current;
           console.log('notify', state.location);
