@@ -114,7 +114,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
               deferred.notify("hello from app.js");
               module.resolve();
             },
-            interfaces = argumentsm
+            interfaces = arguments,
             loaded = 1,
             forEachHandler = function(interface) {
               var readyHandler = function(state) {
