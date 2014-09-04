@@ -169,7 +169,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
                   interface.incoming(promise);
                   interface.outgoing(incoming);
                   if (!!comp) {
-                    components.push(comp({}));
+                    components.push(comp());
                   }
                   if (loaded === interfaces.length) {
                     ready();
