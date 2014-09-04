@@ -131,6 +131,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
                   } else {
                     loaded = loaded + 1;
                   }
+                  console.log("COMPON",components, comp)
                   if (!!comp) {
                     components.push(comp(state));
                   }
