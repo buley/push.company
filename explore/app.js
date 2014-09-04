@@ -135,7 +135,6 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
             var readyHandler = function(comp) {
                   interface.incoming(promise);
                   interface.outgoing(incoming);
-                  console.log("COMPON",components, comp)
                   if (!!comp) {
                     components.push(comp(state));
                   }
@@ -148,6 +147,10 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
             interface.ready(readyHandler);
           };
 
+      setInterval(function() {
+        state.timestamp = Date.now();
+        deferred.notify(state);
+      }, 1000);
       Array.prototype.forEach.call(interfaces, forEachHandler);
 
     });
