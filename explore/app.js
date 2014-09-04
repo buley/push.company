@@ -164,7 +164,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
           },
           ready = function() {
             React.renderComponent(
-              container.apply(this, state),
+              container.apply(this, [state]),
               document.getElementById('explore'),
               function() {
                 module.resolve(component);
