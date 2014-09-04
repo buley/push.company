@@ -8,7 +8,7 @@ define(['q', 'react', 'dash', 'jquery' ], function(Q, React, dash, $) {
       },
       component = React.createClass({
         componentDidMount: function() {
-
+          var that = this;
           dash.get.store({"database": "push", "store": "Places1", "store_key_path": "Id"})(function(ctx) {
 
               ctx.index = "Name";
@@ -24,7 +24,7 @@ define(['q', 'react', 'dash', 'jquery' ], function(Q, React, dash, $) {
                   $.ajax( {
                     method: 'GET',
                     dataType: 'json',
-                    url: 'http://23.236.54.41/?latitude=' + this.props.location.latitude + '&longitude=' + this.props.location.longitude + '&max=1000',
+                    url: 'http://23.236.54.41/?latitude=' + that.props.location.latitude + '&longitude=' + that.props.location.longitude + '&max=1000',
                     success: function(data) {
                       var x,
                           xlen = data.Data.length,
