@@ -17,6 +17,16 @@ define(['q', 'react'], function(Q, React, L) {
       map,
       context = {},
       component = React.createClass({
+        componentWillReceiveProps: function(props) {
+          console.log('refreshing location');
+          if (!props.location) {
+            props.location = current;
+            console.log('notify', props.location);
+            deferred.notify(props);
+          } else {
+            context = props;
+          }
+        },
         render: function() {
           return React.DOM.div({id: "location"}, JSON.stringify(this.props.location));
         }
@@ -29,14 +39,7 @@ define(['q', 'react'], function(Q, React, L) {
     },
     incoming: function(interface) {
       interface.then(null, null, function(state) {
-        console.log('incoming',state.location);
-        if (!state.location) {
-          state.location = current;
-          console.log('notify', state.location);
-          deferred.notify(state);
-        } else {
-          context = state;
-        }
+        context = state;
       });
     },
     ready: module.promise.then.bind(module.promise)
