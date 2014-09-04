@@ -20,6 +20,7 @@ define(['q', 'react'], function(Q, React) {
     incoming: function(interface) {
       interface.then(null, null, function(state) {
         context = state;
+        console.log('mapper updated via app');
       });
     },
     ready: module.promise.then.bind(module.promise)
