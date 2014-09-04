@@ -9,8 +9,10 @@ define(['q'], function(Q) {
       promise.then(null, cb, cb);
     },
     incoming: function() {
-      console.log("presence.js: incoming", arguments);
-      deferred.notify("hello from presence.js");
+      interface.notify(function() {
+        console.log("presence.js: incoming", arguments);
+        deferred.notify("hello from presence.js");
+      })
     },
     ready: module.promise.then.bind(module.promise)
   }

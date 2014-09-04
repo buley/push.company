@@ -108,8 +108,10 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
               console.log("app.js: outgoing", typeof cb)
               promise.then(null, cb, cb);
             },
-            incoming = (function() {
-              console.log("app.js: incoming", arguments);
+            incoming = (function(interface) {
+              interface.notify(function() {
+                console.log("app.js: incoming", arguments);
+              })
             }).bind(this);
 
         Array.prototype.forEach.call(arguments, function(interface) {

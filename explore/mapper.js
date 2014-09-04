@@ -8,9 +8,11 @@ define(['q'], function(Q) {
       console.log("mapper.js: outgoing", typeof cb)
       promise.then(null, cb, cb);
     },
-    incoming: function() {
-      console.log("mapper.js: incoming", arguments);
-      deferred.notify("hello from mapper.js")
+    incoming: function(interface) {
+      interface.notify(function() {
+        console.log("mapper.js: incoming", arguments);
+        deferred.notify("hello from mapper.js");
+      })
     },
     ready: module.promise.then.bind(module.promise)
   };
