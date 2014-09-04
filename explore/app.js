@@ -139,7 +139,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
           };
 
       Array.prototype.forEach.call(interfaces, forEachHandler);
-
+      console.log("RENDERING",components);
       React.renderComponent(
         React.DOM.div.apply(this, components),
         document.getElementById('explore'),
