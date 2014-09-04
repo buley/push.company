@@ -114,9 +114,6 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
           state_queue = [],
           doStateChange = function() {
             if (0 === state_queue.length) {
-              setTimeout(function() {
-                doStateChange();
-              }, 100);
               return;
             }
             context = state_queue.shift();
