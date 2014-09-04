@@ -12,7 +12,7 @@ define(['q'], function(Q) {
       console.log("mapper.js: incoming", arguments)
       interface.then(null, null, function() {
         console.log("mapper.js: incoming notification", arguments);
-        deferred.notify("hello from presence.js");
+        deferred.notify("hello from mapper.js");
       });
     },
     ready: module.promise.then.bind(module.promise)
