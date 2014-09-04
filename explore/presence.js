@@ -8,7 +8,6 @@ define(['q', 'react', 'dash', 'jquery' ], function(Q, React, dash, $) {
         return React.DOM.div(null, (this.props.init - this.props.timestamp).toString());
       },
       component = React.createClass({
-        will
         componentDidMount: function() {
           var that = this,
               install = function(cb) {
