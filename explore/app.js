@@ -104,6 +104,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
           promise = deferred.promise,
           container = React.createClass({
             getInitialState: function() {
+              component = this;
               console.log('main getInitialState');
               return {};
             },
@@ -137,9 +138,8 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
             })
           },
           ready = function() {
-            container = container.apply(this, components)(state);
-            component = React.renderComponent(
-              container,
+            React.renderComponent(
+              container.apply(this, components)(state),
               document.getElementById('explore'),
               function() {
                 container.setProps(state);
