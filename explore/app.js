@@ -142,7 +142,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
               container.apply(this, components),
               document.getElementById('explore'),
               function() {
-                if (!!container && !!container.setProps) {
+                if (!!container && !!container.isMounted && container.isMounted()) {
                   container.setProps(state);
                 }
                 module.resolve(component);
