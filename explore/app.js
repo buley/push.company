@@ -180,6 +180,11 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
 
       incoming(internal.promise);
 
+      setTimeout(function() {
+        state.timestamp = Date.now();
+        requestStateChange(state);
+      })
+
     });
 	return module.promise;
 });
