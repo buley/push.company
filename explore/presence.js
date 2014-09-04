@@ -12,6 +12,7 @@ define(['q'], function(Q) {
       console.log("presence.js: incoming", arguments);
       interface.then(null, null, function() {
         console.log("presence.js: incoming notify", arguments);
+        deferred.notify("hello from presence.js");
       })
     },
     ready: module.promise.then.bind(module.promise)
