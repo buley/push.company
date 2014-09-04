@@ -102,13 +102,17 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
 	  document.getElementById('explore'),
     function() {
       require(['explore/presence', 'explore/mapper'], function(presence, mapper) {
-        var state = {},
+        var state = { init: Date.now() },
             deferred = Q.defer(),
             promise = deferred.promise,
             incoming = function(interface) {
-              var mod = this;
               interface.then(null, null, function(context) {
                 console.log("app.js: incoming", context);
+                if (JSON.stringify(context) !== JSON.stringify(state)) {
+                  console.log("app.js: notifying in turn", context);
+                  state = context;
+                  deferred.notify(state);
+                }
               })
             },
             ready = function() {
@@ -117,18 +121,17 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
             interfaces = arguments,
             loaded = 1,
             forEachHandler = function(interface) {
-              var readyHandler = function(state) {
-                    interface.incoming(promise);
-                    interface.outgoing(incoming);
-                    if (loaded === interfaces.length) {
-                      ready();
-                    } else {
-                      loaded = loaded + 1;
-                    }
-                  };
+              var readyHandler = function(mod) {
+                  interface.incoming(promise);
+                  interface.outgoing(incoming);
+                  if (loaded === interfaces.length) {
+                    ready();
+                  } else {
+                    loaded = loaded + 1;
+                  }
+                };
               interface.ready(readyHandler);
             };
-
 
         Array.prototype.forEach.call(interfaces, forEachHandler);
 
