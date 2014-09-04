@@ -178,9 +178,6 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
 
       incoming(internal.promise);
 
-      state.timestamp = Date.now();
-      requestStateChange(state);
-
     });
 	return module.promise;
 });
