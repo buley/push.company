@@ -113,9 +113,9 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
             }).bind(this);
 
         Array.prototype.forEach.apply(arguments, function(interface) {
-          interface.then(function(options) {
-            options.incoming(outgoing);
-            options.outgoing(incoming);
+          interface.ready(function(state) {
+            interface.incoming(outgoing);
+            interface.outgoing(incoming);
           });
         });
 
