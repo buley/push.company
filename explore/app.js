@@ -178,10 +178,8 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
 
       incoming(internal.promise);
 
-      setInterval(function() {
-        state.timestamp = Date.now();
-        requestStateChange(state);
-      }, 3000)
+      state.timestamp = Date.now();
+      requestStateChange(state);
 
     });
 	return module.promise;
