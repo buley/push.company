@@ -2,6 +2,7 @@ define(['q'], function(Q) {
   var deferred = Q.defer(),
       promise = deferred.promise,
       module = Q.defer();
+  module.resolve();
   return {
     outgoing: function(cb) {
       console.log("mapper.js: outgoing", typeof cb)
