@@ -117,8 +117,8 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
             if (0 === state_queue.length) {
               return;
             }
-            context = state_queue.shift();
             if (!!component && !!component.isMounted && component.isMounted()) {
+              context = state_queue.shift();
               component.replaceProps(context);
               next_state = JSON.stringify(context);
               if (next_state !== previous_state) {
