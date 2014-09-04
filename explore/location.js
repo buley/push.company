@@ -31,9 +31,11 @@ define(['q', 'react'], function(Q, React, L) {
       interface.then(null, null, function(state) {
         if (!state.location) {
           state.location = current;
+          console.log('notify', state.location);
           deferred.notify(state);
+        } else {
+          context = state;
         }
-        context = state;
       });
     },
     ready: module.promise.then.bind(module.promise)
