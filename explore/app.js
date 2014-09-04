@@ -124,8 +124,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
             }
           },
           executeStateChange = function(context) {
-            var next_state,
-                context;
+            var next_state;
             if (!!component && !!component.isMounted && component.isMounted()) {
               next_state = JSON.stringify(context);
               console.log("NEXT STATE",next_state);
