@@ -7,7 +7,7 @@ define(['q', 'react'], function(Q, React) {
         render: function() {
           return 'YES';
         }
-      });
+      })({});
   module.resolve(component);
   return {
     outgoing: function(interface) {
@@ -16,7 +16,7 @@ define(['q', 'react'], function(Q, React) {
     incoming: function(interface) {
       interface.then(null, null, function(state) {
         console.log('mapper.js: incoming', state);
-        context = state;
+        component.replaceProps(state);
       });
     },
     ready: module.promise.then.bind(module.promise)
