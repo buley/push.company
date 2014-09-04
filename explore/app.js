@@ -150,7 +150,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
               document.getElementById('explore'),
               function() {
                 state.timestamp = Date.now();
-                component.setProps(state);
+                requestStateChange(state);
                 module.resolve(component);
               }
             );
@@ -172,8 +172,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
                   }
                 };
             interface.ready(readyHandler);
-          },
-          updateState = internal.notify;
+          };
 
       Array.prototype.forEach.call(interfaces, forEachHandler);
 
