@@ -113,18 +113,18 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
           component,
           state_queue = [],
           doStateChange = function() {
+            var next_state;
             if (0 === state_queue.length) {
               return;
             }
             context = state_queue.shift();
             if (!!component && !!component.isMounted && component.isMounted()) {
-              console.log("REPLACING PROPS",context);
               component.replaceProps(context);
-            }
-            var next_state = JSON.stringify(context);
-            if (next_state !== previous_state) {
-              previous_state = next_state;
-              deferred.notify(state);
+              next_state = JSON.stringify(context);
+              if (next_state !== previous_state) {
+                previous_state = next_state;
+                deferred.notify(state);
+              }
             }
             if (state_queue.length > 0) {
               setTimeout(function() {
