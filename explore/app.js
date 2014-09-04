@@ -118,10 +118,13 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
             interfaces = arguments;
             forEachHandler = function(interface) {
               var readyHandler = function(state) {
-                console.log('ready', loaded === interfaces.length, loaded, interfaces.length);
+                console.log('ready', loaded === interfaces.length
+                console.log(loaded, interfaces.length);
+                console.log(interface);
                 interface.incoming(promise);
                 interface.outgoing(incoming);
                 if (loaded === interfaces.length) {
+                  console.log('doing ready()');
                   ready();
                 } else {
                   loaded = loaded + 1;
