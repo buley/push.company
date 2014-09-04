@@ -124,6 +124,8 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
             interface.then(null, null, function(context) {
               if (!!component && !!component.isMounted && component.isMounted()) {
                 component.replaceProps(context);
+              } else {
+                console.log('not mounted',context);
               }
               var next_state = JSON.stringify(context);
               if (next_state !== previous_state) {
