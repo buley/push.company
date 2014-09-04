@@ -105,7 +105,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
           container = React.createClass({
             getInitialState: function() {
               component = this;
-              console.log('main getInitialState');
+              console.log('main getInitialState', this, arguments);
               return {};
             },
             componentWillMount: function() {
