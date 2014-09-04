@@ -127,7 +127,6 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
           incoming = function(interface) {
             interface.then(null, null, function(context) {
               if (!!component && !!component.isMounted && component.isMounted()) {
-                console.log('updating props', component);
                 component.replaceProps(context);
               }
               var next_state = JSON.stringify(context);
@@ -142,9 +141,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
               container.apply(this, components),
               document.getElementById('explore'),
               function() {
-                if (!!component && !!component.isMounted && component.isMounted()) {
-                  component.setProps(state);
-                }
+                component.setProps(state);
                 module.resolve(component);
                 deferred.notify(state);
               }
