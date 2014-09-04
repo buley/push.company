@@ -7,7 +7,7 @@ define(['q', 'react'], function(Q, React) {
         render: function() {
           return React.DOM.div(null, 'MAYBE');
         }
-      })({});
+      });
   module.resolve(component);
   return {
     outgoing: function(interface) {
