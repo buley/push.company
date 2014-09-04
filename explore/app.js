@@ -125,17 +125,17 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
           components = [ null, "Test123" ],
           forEachHandler = function(interface) {
             var readyHandler = function(comp) {
-                interface.incoming(promise);
-                interface.outgoing(incoming);
-                if (loaded === interfaces.length) {
-                  ready();
-                } else {
-                  loaded = loaded + 1;
-                }
-              };
-            if (!!comp) {
-              components.push(comp);
-            }
+                  interface.incoming(promise);
+                  interface.outgoing(incoming);
+                  if (loaded === interfaces.length) {
+                    ready();
+                  } else {
+                    loaded = loaded + 1;
+                  }
+                  if (!!comp) {
+                    components.push(comp);
+                  }
+                };
             interface.ready(readyHandler);
           };
 

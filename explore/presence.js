@@ -2,8 +2,13 @@ define(['q'], function(Q) {
   var deferred = Q.defer(),
       promise = deferred.promise,
       module = Q.defer(),
-      context;
-  module.resolve();
+      context,
+      component = React.createClass({
+        render: function() {
+          return 'WHY NOT';
+        }
+      });
+  module.resolve(component);
   return {
     outgoing: function(interface) {
       interface(promise);
