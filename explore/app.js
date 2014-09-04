@@ -103,15 +103,20 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
     function() {
       require(['explore/presence', 'explore/mapper'], function(presence, mapper) {
         var state = { init: Date.now() },
+            previous_state = JSON.stringify(state),
             deferred = Q.defer(),
             promise = deferred.promise,
             incoming = function(interface) {
               interface.then(null, null, function(context) {
                 console.log("app.js: incoming", context);
-                if (JSON.stringify(context) !== JSON.stringify(state)) {
+                var next_state = JSON.stringify(context);
+                if (next_state !== previous_stae) {
                   console.log("app.js: notifying in turn", context);
+                  previous_state = next_state;
                   state = context;
                   deferred.notify(state);
+                } else {
+                  console.log("EXPECTED STATE");
                 }
               })
             },
