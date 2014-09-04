@@ -110,12 +110,12 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
               if (next_state !== previous_state) {
                 console.log("app.js: notifying in turn", context);
                 previous_state = next_state;
-                if (!!component) {
-                  component.replaceProps(context);
-                }
                 deferred.notify(state);
               } else {
                 console.log("EXPECTED STATE");
+                if (!!component) {
+                  component.replaceProps(context);
+                }
               }
             })
           },
