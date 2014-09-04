@@ -6,12 +6,11 @@ define(['q'], function(Q) {
   module.resolve();
   return {
     outgoing: function(interface) {
-      console.log("presence.js: outgoing")
       interface(promise);
     },
     incoming: function(interface) {
-      console.log("presence.js: incoming", arguments);
       interface.then(null, null, function(state) {
+        console.log("presence.js: incoming", state);
         state.interfaces = state.interfaces || {};
         state.interfaces.presence = {
           bar: 'bar'
