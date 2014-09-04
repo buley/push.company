@@ -114,6 +114,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
           internal = Q.defer(),
           incoming = function(interface) {
             interface.then(null, null, function(context) {
+              console.log('newish', context);
               if (!!component && !!component.isMounted && component.isMounted()) {
                 component.replaceProps(context);
               } else {
@@ -127,12 +128,10 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
             })
           },
           ready = function() {
-            console.log('ready', container(), components);
             React.renderComponent(
               container.apply(this, components),
               document.getElementById('explore'),
               function() {
-                console.log('setting initial',state);
                 component.setProps(state);
                 module.resolve(component);
                 deferred.notify(state);
