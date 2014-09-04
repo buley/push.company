@@ -9,11 +9,14 @@ define(['q', 'react'], function(Q, React, L) {
       lat = params[0],
       lon = params[1],
       radius = params[2],
+      current = {
+        latutude: lat,
+        longitude: lon,
+        radius: radius
+      },
       map,
       context = {},
       component = React.createClass({
-        componentDidMount: function(props) {
-        },
         render: function() {
           return React.DOM.div({id: "location"}, JSON.stringify(this.props.location));
         }
@@ -27,8 +30,8 @@ define(['q', 'react'], function(Q, React, L) {
     incoming: function(interface) {
       interface.then(null, null, function(state) {
         if (!state.location) {
-          state.location = params;
-          deferred.notify(state);        
+          state.location = current;
+          deferred.notify(state);
         }
         context = state;
       });
