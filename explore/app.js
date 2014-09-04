@@ -117,18 +117,19 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
             },
             interfaces = arguments;
             forEachHandler = function(interface) {
+              var readyHandler = function(state) {
+                console.log('ready', loaded === interfaces.length, loaded, interfaces.length);
+                interface.incoming(promise);
+                interface.outgoing(incoming);
+                if (loaded === interfaces.length) {
+                  ready();
+                } else {
+                  loaded = loaded + 1;
+                }
+              };
               interface.ready(readyHandler);
-            },
-            readyHandler = function(state) {
-              console.log('ready', loaded === interfaces.length, loaded, interfaces.length);
-              interface.incoming(promise);
-              interface.outgoing(incoming);
-              if (loaded === interfaces.length) {
-                ready();
-              } else {
-                loaded = loaded + 1;
-              }
             };
+
 
         Array.prototype.forEach.call(interfaces, forEachHandler);
 
