@@ -5,7 +5,7 @@ define(['q', 'react'], function(Q, React) {
       context = {},
       render = function() {
         console.log('mapper render');
-        return React.DOM.div(null, !!context ? context.init - context.timestamp : 'TK');
+        return React.DOM.div(context, !!context ? context.init - context.timestamp : 'TK');
       },
       component = React.createClass({
         getInitialState: function() {
