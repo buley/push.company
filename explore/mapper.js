@@ -4,7 +4,7 @@ define(['q', 'react'], function(Q, React) {
       module = Q.defer(),
       context = {},
       render = function() {
-        return React.DOM.div(null, !!this.props ? this.props.init - this.props.timestamp : 'TK');
+        return React.DOM.div(null, (this.props.init - this.props.timestamp).toString());
       },
       component = React.createClass({
         render: render
