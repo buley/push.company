@@ -114,7 +114,6 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
           state_queue = [],
           doStateChange = function() {
             context = state_queue.shift();
-            console.log('doing state change', context);
             if (!!component && !!component.isMounted && component.isMounted()) {
               component.replaceProps(context);
             }
@@ -144,7 +143,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
               container.apply(this, state),
               document.getElementById('explore'),
               function() {
-                component.setProps(state);
+                requestStateChange(state);
                 module.resolve(component);
                 deferred.notify(state);
               }
