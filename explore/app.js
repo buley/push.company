@@ -108,7 +108,9 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
             },
             render: function() {
               return React.DOM.div.apply(this, components.map(function(el) {
-                return el(this.props);
+                if (!!el) {
+                  return el(this.props);
+                }
               }));
             }
           }),
@@ -164,7 +166,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
           },
           interfaces = arguments,
           loaded = 1,
-          components = [],
+          components = [null],
           forEachHandler = function(interface) {
             var readyHandler = function(comp) {
                   interface.incoming(promise);
