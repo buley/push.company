@@ -120,9 +120,10 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
           interface.ready(function(state) {
             interface.incoming(promise);
             interface.outgoing(incoming);
-            loaded += 1;
-            if (loaded > arguments.length) {
+            if (loaded === arguments.length) {
               ready();
+            } else {
+              loaded += 1;
             }
           });
         });
