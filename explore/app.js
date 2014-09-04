@@ -113,21 +113,10 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
           component,
           state_queue = [],
           doStateChange = function() {
-            var next_state,
-                context;
             if (0 === state_queue.length) {
               return;
             }
-            if (!!component && !!component.isMounted && component.isMounted()) {
-              next_state = state_queue.shift();
-              context = JSON.parse(next_state);
-              component.replaceProps(context);
-              if (next_state !== previous_state) {
-                previous_state = next_state;
-                state = context;
-                deferred.notify(context);
-              }
-            }
+            executeStateChange();
             if (state_queue.length > 0) {
               setTimeout(function() {
                 doStateChange();
@@ -150,7 +139,6 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
           },
           requestStateChange = function(state) {
             state_queue.push(JSON.stringify(state));
-            console.log('queue',state_queue);
             setTimeout(function() {
               doStateChange();
             }, 10);
@@ -158,8 +146,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
           internal = Q.defer(),
           incoming = function(interface) {
             interface.then(null, null, function(context) {
-              //requestStateChange(context);
-              executeStateChange(context);
+              requestStateChange(context);
             });
           },
           ready = function() {
@@ -170,7 +157,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
                 module.resolve(component);
                 var context = component.props;
                 context.timestamp = Date.now();
-                executeStateChange(context);
+                requestStateChange(context);
               }
             );
           },
