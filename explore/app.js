@@ -107,7 +107,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
               component = this;
             },
             render: function() {
-              return React.DOM.div.apply(null, "TEST");
+              return React.DOM.div.apply(this, components);
             }
           }),
           component,
