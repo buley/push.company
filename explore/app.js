@@ -123,6 +123,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
               context = JSON.parse(next_state);
               if (next_state !== previous_state) {
                 previous_state = next_state;
+                console.log("REPLACEING",context);
                 component.replaceProps(context);
                 deferred.notify(state);
               }
@@ -151,10 +152,10 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
               container.apply(this, state),
               document.getElementById('explore'),
               function() {
-                setTimeout(function() {
+                Interval(function() {
                   state.timestamp = Date.now();
                   requestStateChange(state);
-                }, 5000)
+                }, 1000)
                 module.resolve(component);
               }
             );
