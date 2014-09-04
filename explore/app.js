@@ -118,7 +118,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
               return;
             }
             if (!!component && !!component.isMounted && component.isMounted()) {
-              context = state_queue.shift();
+              context = JSON.parse(state_queue.shift());
               component.replaceProps(context);
               next_state = JSON.stringify(context);
               if (next_state !== previous_state) {
@@ -133,8 +133,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
             }
           },
           requestStateChange = function(state) {
-            state_queue.push(state);
-            console.log('queue',state_queue.length, state.timestamp);
+            state_queue.push(JSON.stringify(state));
             setTimeout(function() {
               doStateChange();
             }, 10);
