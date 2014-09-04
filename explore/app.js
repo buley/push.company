@@ -135,6 +135,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
             })
           },
           ready = function() {
+            console.log('ready');
             React.renderComponent(
               container.apply(this, components),
               document.getElementById('explore'),
@@ -154,6 +155,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
             var readyHandler = function(comp) {
                   interface.incoming(promise);
                   interface.outgoing(incoming);
+                  console.log('ready handler');
                   if (!!comp) {
                     components.push(comp(state));
                     classes.push(comp);
