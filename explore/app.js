@@ -131,21 +131,20 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
               if (next_state !== previous_state) {
                 component.replaceProps(context);
                 previous_state = next_state;
-                state = context;
                 deferred.notify(context);
               }
             }
           },
-          requestStateChange = function(state) {
-            state_queue.push(JSON.stringify(state));
+          requestStateChange = function(change) {
+            state_queue.push(JSON.stringify(change));
             setTimeout(function() {
               doStateChange();
             }, 10);
           },
           internal = Q.defer(),
           incoming = function(interface) {
-            interface.then(null, null, function(context) {
-              requestStateChange(context);
+            interface.then(null, null, function(change) {
+              requestStateChange(change);
             });
           },
           ready = function() {
