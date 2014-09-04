@@ -5,7 +5,7 @@ define(['q', 'react' ], function(Q, React) {
       context,
       component = React.createClass({
         render: function() {
-          return React.DOM.div(null, context.init - context.timestamp);
+          return React.DOM.div(null, !!context ? context.init - context.timestamp : null);
         }
       });
   module.resolve(component);
