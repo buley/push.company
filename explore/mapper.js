@@ -3,8 +3,7 @@ define(['q', 'react'], function(Q, React) {
       promise = deferred.promise,
       module = Q.defer(),
       context,
-      component,
-      exported = React.createClass({
+      component = React.createClass({
         getInitialState: function() {
           console.log('getInitialState');
           return {};
