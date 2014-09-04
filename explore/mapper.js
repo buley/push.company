@@ -11,8 +11,7 @@ define(['q'], function(Q) {
     incoming: function(interface) {
       interface.notify(function() {
         console.log("mapper.js: incoming", arguments);
-        deferred.notify("hello from mapper.js");
-      })
+      });
     },
     ready: module.promise.then.bind(module.promise)
   };
