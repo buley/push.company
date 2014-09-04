@@ -107,9 +107,10 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
               component = this;
             },
             render: function() {
+              var that = this;
               return React.DOM.div.apply(this, components.map(function(el) {
                 if (!!el) {
-                  return el(this.props);
+                  return el(that.props);
                 }
               }));
             }
