@@ -150,7 +150,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
           interfaces = arguments,
           loaded = 1,
           classes = [],
-          components = [ null, "Test123" ],
+          components = [ "Test123" ],
           forEachHandler = function(interface) {
             var readyHandler = function(comp) {
                   interface.incoming(promise);
