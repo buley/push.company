@@ -143,7 +143,6 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
           internal = Q.defer(),
           incoming = function(interface) {
             interface.then(null, null, function(change) {
-              console.log('change',change.timestamp);
               requestStateChange(change);
             });
           },
@@ -153,7 +152,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
               document.getElementById('explore'),
               function() {
                 module.resolve(component);
-                container.setProps(state)
+                component.setProps(state)
                 setInterval(function() {
                   var ctx = component.props;
                   ctx.timestamp = Date.now();
