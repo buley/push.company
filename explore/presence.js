@@ -4,7 +4,6 @@ define(['q', 'react' ], function(Q, React) {
       module = Q.defer(),
       context = {},
       render = function() {
-        console.log('presence render');
         return React.DOM.div(context, !!context ? context.timestamp - context.init : 'TK');
       },
       component = React.createClass({
