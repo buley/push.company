@@ -30,8 +30,8 @@ requirejs.config({
 	}
 });
 
-requirejs(['q', 'jquery', 'underscore', 'react', 'mapbox'], function(Q, $, _, React, L) {
-	var module = Q.defer(),
+requirejs(['q', 'react'], function(Q, React) {
+	var module = Q.defer();
     require(['explore/presence', 'explore/mapper'], function(presence, mapper) {
       var state = { init: Date.now(), timestamp: Date.now() },
           previous_state = '',
