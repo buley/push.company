@@ -130,7 +130,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
               if (next_state !== previous_state) {
                 component.replaceProps(ctx);
                 previous_state = next_state;
-                deferred.notify(context);
+                deferred.notify(ctx);
               }
             }
           },
