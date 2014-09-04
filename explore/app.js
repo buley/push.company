@@ -110,7 +110,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
               interface.then(null, null, function(context) {
                 console.log("app.js: incoming", context);
                 var next_state = JSON.stringify(context);
-                if (next_state !== previous_stae) {
+                if (next_state !== previous_state) {
                   console.log("app.js: notifying in turn", context);
                   previous_state = next_state;
                   state = context;
