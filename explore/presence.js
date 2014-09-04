@@ -10,7 +10,7 @@ define(['q'], function(Q) {
     },
     incoming: function(interface) {
       console.log("presence.js: incoming", arguments);
-      interface.notify(function() {
+      interface.then(null, null, function() {
         console.log("presence.js: incoming notify", arguments);
       })
     },
