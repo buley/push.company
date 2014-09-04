@@ -125,7 +125,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
             if (loaded === interfaces.length) {
               ready();
             } else {
-              loaded += 1;
+              loaded = loaded + 1;
             }
           });
         });
