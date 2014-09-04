@@ -143,6 +143,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
               container.apply(this, state),
               document.getElementById('explore'),
               function() {
+                state.timestamp = Date.now();
                 requestStateChange(state);
                 module.resolve(component);
                 deferred.notify(state);
