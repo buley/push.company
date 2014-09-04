@@ -105,7 +105,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
         var deferred = Q.defer(),
             promise = deferred.promise,
             incoming = function(interface) {
-              interface.notify(function() {
+              interface.then(null, null, function() {
                 console.log("app.js: incoming", arguments);
               })
             },
