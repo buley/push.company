@@ -108,11 +108,15 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
             promise = deferred.promise,
             incoming = function(interface) {
               interface.then(null, null, function(context) {
-                var next_state = JSON.stringify(context),
-                    previous_state = JSON.stringify(state);
-                if (next_state !== previous_state) {
+                console.log("app.js: incoming", context);
+                var next_state = JSON.stringify(context);
+                if (next_state !== previous_stae) {
+                  console.log("app.js: notifying in turn", context);
+                  previous_state = next_state;
                   state = context;
                   deferred.notify(state);
+                } else {
+                  console.log("EXPECTED STATE");
                 }
               })
             },
