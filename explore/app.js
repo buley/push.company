@@ -112,19 +112,20 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
               interface.notify(function() {
                 console.log("app.js: incoming", arguments);
               })
-            }).bind(this);
+            }).bind(this),
+            loaded = 0;
 
         Array.prototype.forEach.call(arguments, function(interface) {
           interface.ready(function(state) {
-            console.log('interface ready');
             interface.incoming(outgoing);
             interface.outgoing(incoming);
+            loaded += 1;
+            if (arguments.length === loaded) {
+              deferred.notify("hello from app.js");
+              module.resolve();
+            }
           });
         });
-
-        deferred.notify("hello from app.js");
-
-        module.resolve();
 
       });
     }
