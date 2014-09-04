@@ -117,7 +117,6 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
             })
           },
           ready = function() {
-            console.log("READY",components);
             React.renderComponent(
               React.DOM.div.apply(this, components),
               document.getElementById('explore'),
@@ -125,9 +124,9 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
                 component = this;
                 component.setProps(state);
                 module.resolve(component);
+                deferred.notify(state);
               }
             );
-            deferred.notify(state);
           },
           interfaces = arguments,
           loaded = 1,
