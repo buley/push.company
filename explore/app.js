@@ -114,14 +114,15 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
               console.log('saying hello');
               deferred.notify("hello from app.js");
               module.resolve();
-            };
+            },
+            interfaces = arguments;
 
-        Array.prototype.forEach.call(arguments, function(interface) {
+        Array.prototype.forEach.call(interfaces, function(interface) {
           interface.ready(function(state) {
-            console.log('ready', loaded === arguments.length, loaded, arguments.length);
+            console.log('ready', loaded === interfaces.length, loaded, interfaces.length);
             interface.incoming(promise);
             interface.outgoing(incoming);
-            if (loaded === arguments.length) {
+            if (loaded === interfaces.length) {
               ready();
             } else {
               loaded += 1;
