@@ -124,11 +124,10 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
             }
           },
           executeStateChange = function() {
-            var next_state,
-                context = state_queue.shift();
+            var next_state = state_queue.shift(),
+                context;
             if (!!component && !!component.isMounted && component.isMounted()) {
-              next_state = JSON.stringify(context);
-              console.log("NEXT STATE",next_state);
+              context = JSON.parse(next_state);
               if (next_state !== previous_state) {
                 component.replaceProps(context);
                 previous_state = next_state;
