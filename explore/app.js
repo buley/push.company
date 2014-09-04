@@ -151,7 +151,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
               document.getElementById('explore'),
               function() {
                 state.timestamp = Date.now();
-                requestStateChange(state);
+                component.setProps(state);
                 module.resolve(component);
               }
             );

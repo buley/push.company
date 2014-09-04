@@ -8,7 +8,7 @@ define(['q', 'react'], function(Q, React) {
       },
       component = React.createClass({
         componentWillReceiveProps: function() {
-          console.log('mapper componentWillReceiveProps');
+          console.log('mapper componentWillReceiveProps', arguments);
         },
         render: render
       });
