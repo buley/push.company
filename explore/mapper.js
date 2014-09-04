@@ -4,12 +4,9 @@ define(['q', 'react'], function(Q, React) {
       module = Q.defer(),
       context = {},
       render = function() {
-        return React.DOM.div(context, !!context ? context.init - context.timestamp : 'TK');
+        return React.DOM.div(null, !!this.props ? this.props.init - this.props.timestamp : 'TK');
       },
       component = React.createClass({
-        componentWillReceiveProps: function() {
-          console.log('mapper componentWillReceiveProps', arguments);
-        },
         render: render
       });
   module.resolve(component);
@@ -20,7 +17,6 @@ define(['q', 'react'], function(Q, React) {
     incoming: function(interface) {
       interface.then(null, null, function(state) {
         context = state;
-        console.log('mapper updated via app');
       });
     },
     ready: module.promise.then.bind(module.promise)
