@@ -124,7 +124,6 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
           components = [ null, "Test123" ],
           forEachHandler = function(interface) {
             var readyHandler = function(comp) {
-                  console.log("READY",comp);
                   interface.incoming(promise);
                   interface.outgoing(incoming);
                   if (loaded === interfaces.length) {
@@ -140,6 +139,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
           };
 
       Array.prototype.forEach.call(interfaces, forEachHandler);
+      console.log("READY",components);
       React.renderComponent(
         React.DOM.div.apply(this, components),
         document.getElementById('explore'),
