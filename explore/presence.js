@@ -2,7 +2,7 @@ define(['q', 'react' ], function(Q, React) {
   var deferred = Q.defer(),
       promise = deferred.promise,
       module = Q.defer(),
-      context,
+      context = {},
       component = React.createClass({
         render: function() {
           console.log('presence render');
