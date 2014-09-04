@@ -156,7 +156,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
                 setInterval(function() {
                   var ctx = component.props;
                   ctx.timestamp = Date.now();
-                  requestStateChange(ctx);
+                  internal.notify(ctx);
                 }, 1000);
               }
             );
