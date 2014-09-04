@@ -15,12 +15,7 @@ define(['q', 'react' ], function(Q, React) {
     },
     incoming: function(interface) {
       interface.then(null, null, function(state) {
-        console.log("presence.js: dynamism", state);
-        state.interfaces = state.interfaces || {};
-        state.interfaces.presence = {
-          bar: 'bar'
-        };
-        deferred.notify(state);
+        context = state;
       })
     },
     ready: module.promise.then.bind(module.promise)
