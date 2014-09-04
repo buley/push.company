@@ -131,7 +131,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
           executeStateChange = function() {
             if (!!component && !!component.isMounted && component.isMounted()) {
               var next_state = state_queue.shift(),
-                  ctx = JSON.parse(next_state);
+                  ctx = 'function' === typeof next_state ? next_state(JSON.parse(previous_state)) : JSON.parse(next_state);
               component.replaceProps(ctx);
               if (next_state !== previous_state) {
                 previous_state = next_state;
@@ -143,7 +143,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
             state_queue.push(JSON.stringify(change));
             setTimeout(function() {
               doStateChange();
-            }, 10);
+            }, 100);
           },
           internal = Q.defer(),
           incoming = function(interface) {
@@ -157,11 +157,6 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
               document.getElementById('explore'),
               function() {
                 module.resolve(component);
-                setInterval(function() {
-                  var ctx = component.props;
-                  ctx.timestamp = Date.now();
-                  requestStateChange(ctx);
-                }, 1000);
               }
             );
           },
