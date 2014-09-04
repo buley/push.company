@@ -134,6 +134,19 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
               }, 100);
             }
           },
+          executeStateChange = function(context) {
+            var next_state,
+                context;
+            if (!!component && !!component.isMounted && component.isMounted()) {
+              next_state = JSON.stringify(context);
+              if (next_state !== previous_state) {
+                component.replaceProps(context);
+                previous_state = next_state;
+                state = context;
+                deferred.notify(context);
+              }
+            }
+          },
           requestStateChange = function(state) {
             state_queue.push(JSON.stringify(state));
             console.log('queue',state_queue);
@@ -145,17 +158,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
           incoming = function(interface) {
             interface.then(null, null, function(context) {
               //requestStateChange(context);
-              var next_state,
-                  context;
-              if (!!component && !!component.isMounted && component.isMounted()) {
-                next_state = JSON.stringify(context);
-                if (next_state !== previous_state) {
-                  component.replaceProps(context);
-                  previous_state = next_state;
-                  state = context;
-                  deferred.notify(context);
-                }
-              }
+              executeStateChange(context);
             });
           },
           ready = function() {
@@ -166,7 +169,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
                 module.resolve(component);
                 var context = component.props;
                 context.timestamp = Date.now();
-                requestStateChange(context);
+                executeStateChange(context);
               }
             );
           },
