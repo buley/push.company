@@ -153,6 +153,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
               document.getElementById('explore'),
               function() {
                 module.resolve(component);
+                container.setProps({});
                 setInterval(function() {
                   var ctx = component.props;
                   ctx.timestamp = Date.now();
