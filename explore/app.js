@@ -120,7 +120,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
               var readyHandler = function(state) {
                 interface.incoming(promise);
                 interface.outgoing(incoming);
-                console.log("LOADED",loaded, "LEN", interfaces.length);
+                console.log("LOADED",loaded, "LEN", interfaces);
                 if (loaded === interfaces.length) {
                   console.log('doing ready()');
                   ready();
