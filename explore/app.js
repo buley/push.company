@@ -112,6 +112,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
                 previous_state = next_state;
                 deferred.notify(state);
               } else {
+                console.log('updating props', context);
                 if (!!component) {
                   component.replaceProps(context);
                 }
