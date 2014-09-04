@@ -5,7 +5,7 @@ define(['q', 'react'], function(Q, React) {
       context,
       component = React.createClass({
         render: function() {
-          return 'YES';
+          return React.DOM.div(null, 'MAYBE');
         }
       })({});
   module.resolve(component);
