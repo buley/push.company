@@ -130,9 +130,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
           },
           requestStateChange = function(state) {
             state_queue.push(state);
-            setTimeout(function() {
-              doStateChange();
-            }, 100);
+            doStateChange();
           },
           internal = Q.defer(),
           incoming = function(interface) {
