@@ -118,6 +118,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
             }
             context = state_queue.shift();
             if (!!component && !!component.isMounted && component.isMounted()) {
+              console.log("REPLACING PROPS",context);
               component.replaceProps(context);
             }
             var next_state = JSON.stringify(context);
@@ -133,6 +134,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
           },
           requestStateChange = function(state) {
             state_queue.push(state);
+            console.log('queue',state_queue.length);
             setTimeout(function() {
               doStateChange();
             }, 10);
