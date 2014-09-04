@@ -126,9 +126,9 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
           internal = Q.defer(),
           incoming = function(interface) {
             interface.then(null, null, function(context) {
-              if (!!container) {
+              if (!!component) {
                 console.log('updating props', container);
-                container.replaceProps(context);
+                component.replaceProps(context);
               }
               var next_state = JSON.stringify(context);
               if (next_state !== previous_state) {
