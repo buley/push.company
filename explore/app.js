@@ -32,7 +32,7 @@ requirejs.config({
 
 requirejs(['q', 'react'], function(Q, React) {
 	var module = Q.defer();
-    require(['explore/presence', 'explore/mapper'], function(presence, mapper) {
+    require(['explore/presence', 'explore/mapper', 'explore/location'], function(presence, mapper) {
       var state = { init: Date.now(), timestamp: Date.now() },
           previous_state = '',
           deferred = Q.defer(),
