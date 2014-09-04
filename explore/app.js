@@ -116,6 +116,9 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
                 if (!!component) {
                   component.replaceProps(context);
                 }
+                classes.forEach(function(el) {
+                  el.replaceProps(context);
+                });
               }
             })
           },
@@ -133,6 +136,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
           },
           interfaces = arguments,
           loaded = 1,
+          classes = [],
           components = [ null, "Test123" ],
           forEachHandler = function(interface) {
             var readyHandler = function(comp) {
@@ -140,6 +144,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
                   interface.outgoing(incoming);
                   if (!!comp) {
                     components.push(comp(state));
+                    classes.push(comp);
                   }
                   if (loaded === interfaces.length) {
                     ready();
