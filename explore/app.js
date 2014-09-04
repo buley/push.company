@@ -137,7 +137,6 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
           },
           interfaces = arguments,
           loaded = 1,
-          classes = [],
           components = [null],
           forEachHandler = function(interface) {
             var readyHandler = function(comp) {
@@ -145,7 +144,6 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
                   interface.outgoing(incoming);
                   if (!!comp) {
                     components.push(comp(state));
-                    classes.push(comp);
                   }
                   if (loaded === interfaces.length) {
                     ready();
