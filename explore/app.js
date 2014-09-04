@@ -101,6 +101,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
 	  React.DOM.div(null, 'Hello, world'),
 	  document.getElementById('explore'),
     function() {
+      var component = this;
       require(['explore/presence', 'explore/mapper'], function(presence, mapper) {
         var state = { init: Date.now() },
             previous_state = JSON.stringify(state),
@@ -110,10 +111,10 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
               interface.then(null, null, function(context) {
                 console.log("app.js: incoming", context);
                 var next_state = JSON.stringify(context);
-                if (next_state !== previous_stae) {
+                if (next_state !== previous_state) {
                   console.log("app.js: notifying in turn", context);
                   previous_state = next_state;
-                  state = context;
+                  component.replaceProps(context);
                   deferred.notify(state);
                 } else {
                   console.log("EXPECTED STATE");
@@ -140,6 +141,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
 
         Array.prototype.forEach.call(interfaces, forEachHandler);
 
+        component.setProps(state);
         promise = promise.then( function() {
           module.resolve(state);
         });
