@@ -106,9 +106,9 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
           internal = Q.defer(),
           incoming = function(interface) {
             interface.then(null, null, function(context) {
-              console.log('updating state maybe',context);
               var next_state = JSON.stringify(context);
               if (next_state !== previous_state) {
+                console.log('updating state',next_state);
                 previous_state = next_state;
                 deferred.notify(state);
               } else {
