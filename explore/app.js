@@ -139,7 +139,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
           },
           ready = function() {
             React.renderComponent(
-              container.apply(this, components)(state),
+              container.apply(this, components),
               document.getElementById('explore'),
               function() {
                 if (!!container && !!container.setProps) {
