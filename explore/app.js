@@ -112,12 +112,12 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
               console.log("app.js: incoming", arguments);
             }).bind(this);
 
-        Array.prototype.forEach.apply(this, [arguments, function(interface) {
+        Array.prototype.forEach.call(arguments, function(interface) {
           interface.ready(function(state) {
             interface.incoming(outgoing);
             interface.outgoing(incoming);
           });
-        }]);
+        });
 
         deferred.resolve("hello from app.js");
 
