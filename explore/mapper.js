@@ -5,6 +5,7 @@ define(['q'], function(Q) {
   module.resolve();
   return {
     outgoing: function(cb) {
+      console.log("mapper.js: outgoing", typeof cb)
       promise.then(null, cb, cb);
     },
     incoming: function() {

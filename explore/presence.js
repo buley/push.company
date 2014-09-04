@@ -4,11 +4,12 @@ define(['q'], function(Q) {
       module = Q.defer();
   return {
     outgoing: function(cb) {
+      console.log("mapper.js: outgoing", typeof cb)
       promise.then(null, cb, cb);
     },
     incoming: function() {
       console.log("presence.js: incoming", arguments);
-      deferred.resolve("hello from presence.js");
+      deferred.notify("hello from presence.js");
     },
     ready: module.promise.then.bind(module.promise)
   }

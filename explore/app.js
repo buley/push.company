@@ -105,6 +105,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
         var deferred = Q.defer(),
             promise = deferred.promise,
             outgoing = function(cb) {
+              console.log("app.js: outgoing", typeof cb)
               promise.then(null, cb, cb);
             },
             incoming = (function() {
@@ -118,7 +119,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
           });
         });
 
-        deferred.resolve("hello from app.js");
+        deferred.notify("hello from app.js");
 
         module.resolve();
 
