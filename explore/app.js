@@ -110,7 +110,6 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
               })
             },
             ready = function() {
-              console.log('saying hello');
               deferred.notify("hello from app.js");
               module.resolve();
             },
@@ -120,7 +119,6 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
               var readyHandler = function(state) {
                     interface.incoming(promise);
                     interface.outgoing(incoming);
-                    console.log('added', loaded.toString(), loaded === interfaces.length);
                     if (loaded === interfaces.length) {
                       ready();
                     } else {

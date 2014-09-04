@@ -4,9 +4,9 @@ define(['q'], function(Q) {
       module = Q.defer();
   module.resolve();
   return {
-    outgoing: function(cb) {
-      console.log("presence.js: outgoing", typeof cb)
-      promise.then(null, cb, cb);
+    outgoing: function(interface) {
+      console.log("presence.js: outgoing")
+      interface(promise);
     },
     incoming: function(interface) {
       console.log("presence.js: incoming", arguments);
