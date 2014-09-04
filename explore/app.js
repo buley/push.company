@@ -108,6 +108,10 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
               console.log('main getInitialState', this, arguments);
               return {};
             },
+            componentWillMount: function() {
+              console.log('main componentWillMount');
+              return true;
+            },
             componentDidMount: function() {
               console.log('main did mount');
               component = this;
