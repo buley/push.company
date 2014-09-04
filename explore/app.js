@@ -157,7 +157,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
       setInterval(function() {
         state.timestamp = Date.now();
         internal.notify(state);
-      }, 5000);
+      }, 100);
       Array.prototype.forEach.call(interfaces, forEachHandler);
 
       incoming(internal.promise);
