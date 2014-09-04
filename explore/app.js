@@ -104,31 +104,33 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
       require(['explore/presence', 'explore/mapper'], function(presence, mapper) {
         var deferred = Q.defer(),
             promise = deferred.promise,
-            incoming = (function(interface) {
+            incoming = function(interface) {
               interface.notify(function() {
                 console.log("app.js: incoming", arguments);
               })
-            }).bind(this),
+            },
             loaded = 1,
             ready = function() {
               console.log('saying hello');
               deferred.notify("hello from app.js");
               module.resolve();
             },
-            interfaces = arguments;
+            interfaces = argumentsm
+            forEachHandler = function(interface) {
+              interface.ready(readyHandler);
+            },
+            readyHandler = function(state) {
+              console.log('ready', loaded === interfaces.length, loaded, interfaces.length);
+              interface.incoming(promise);
+              interface.outgoing(incoming);
+              if (loaded === interfaces.length) {
+                ready();
+              } else {
+                loaded = loaded + 1;
+              }
+            };
 
-        Array.prototype.forEach.call(interfaces, function(interface) {
-          interface.ready(function(state) {
-            console.log('ready', loaded === interfaces.length, loaded, interfaces.length);
-            interface.incoming(promise);
-            interface.outgoing(incoming);
-            if (loaded === interfaces.length) {
-              ready();
-            } else {
-              loaded = loaded + 1;
-            }
-          });
-        });
+        Array.prototype.forEach.call(interfaces, forEachHandler);
 
       });
     }
