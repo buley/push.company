@@ -18,7 +18,9 @@ define(['q', 'react'], function(Q, React) {
     incoming: function(interface) {
       interface.then(null, null, function(state) {
         context = state;
-        component.replaceProps(state);
+        if (!!component) {
+          component.replaceProps(state);
+        }
       });
     },
     ready: module.promise.then.bind(module.promise)
