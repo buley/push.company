@@ -109,7 +109,6 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
                 console.log("app.js: incoming", arguments);
               })
             },
-            loaded = 1,
             ready = function() {
               console.log('saying hello');
               deferred.notify("hello from app.js");
@@ -117,10 +116,10 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
             },
             interfaces = arguments;
             forEachHandler = function(interface) {
-              var readyHandler = function(state) {
+              var loaded = 1,
+                readyHandler = function(state) {
                 interface.incoming(promise);
                 interface.outgoing(incoming);
-                console.log("LOADED",loaded, "LEN", interfaces);
                 if (loaded === interfaces.length) {
                   console.log('doing ready()');
                   ready();
