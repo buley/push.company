@@ -111,17 +111,32 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
             }
           }),
           component,
+          state_queue = [],
+          doStateChange = function() {
+            context = state_queue.shift();
+            console.log('doing state change', context);
+            if (!!component && !!component.isMounted && component.isMounted()) {
+              component.replaceProps(context);
+            }
+            var next_state = JSON.stringify(context);
+            if (next_state !== previous_state) {
+              previous_state = next_state;
+              deferred.notify(state);
+            }
+            if (state_queue.length > 0) {
+              setTimeout(function() {
+                doStateChange();
+              }, 100);
+            }
+          },
+          requestStateChange = function(state) {
+            state_queue.push(state);
+            doStateChange();
+          },
           internal = Q.defer(),
           incoming = function(interface) {
             interface.then(null, null, function(context) {
-              if (!!component && !!component.isMounted && component.isMounted()) {
-                component.replaceProps(context);
-              }
-              var next_state = JSON.stringify(context);
-              if (next_state !== previous_state) {
-                previous_state = next_state;
-                deferred.notify(state);
-              }
+              requestStateChange(context);
             })
           },
           ready = function() {
@@ -152,12 +167,9 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
                   }
                 };
             interface.ready(readyHandler);
-          };
+          },
+          updateState = internal.notify;
 
-      setInterval(function() {
-        state.timestamp = Date.now();
-        internal.notify(state);
-      }, 100);
       Array.prototype.forEach.call(interfaces, forEachHandler);
 
       incoming(internal.promise);
