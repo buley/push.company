@@ -130,7 +130,9 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
           },
           requestStateChange = function(state) {
             state_queue.push(state);
-            doStateChange();
+            setTimeout(function() {
+              doStateChange();
+            }, 100);
           },
           internal = Q.defer(),
           incoming = function(interface) {
@@ -145,7 +147,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
               function() {
                 state.timestamp = Date.now();
                 console.log('requesting change');
-                requestStateChange(state);
+                component.setProps(state);
                 module.resolve(component);
                 deferred.notify(state);
               }
