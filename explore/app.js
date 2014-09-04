@@ -145,7 +145,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
         React.DOM.div.apply(this, components),
         document.getElementById('explore'),
         function() {
-          var component = this;
+          component = this;
           module.resolve(component);
         }
       );
