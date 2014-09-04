@@ -107,7 +107,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
               component = this;
             },
             render: function() {
-              return React.DOM.div.apply(this, components);
+              return React.DOM.div(null);
             }
           }),
           component,
@@ -149,11 +149,10 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
           },
           ready = function() {
             React.renderComponent(
-              container.apply(this, [state]),
+              container.apply(this, components),
               document.getElementById('explore'),
               function() {
                 module.resolve(component);
-                container.setProps({foo: 'bar'});
                 setInterval(function() {
                   var ctx = component.props;
                   ctx.timestamp = Date.now();
