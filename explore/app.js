@@ -98,7 +98,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
     };
 
     require(['explore/presence', 'explore/mapper'], function(presence, mapper) {
-      var state = { init: Date.now() },
+      var state = { init: Date.now(), timestamp: Date.now() },
           previous_state = '',
           deferred = Q.defer(),
           promise = deferred.promise,
