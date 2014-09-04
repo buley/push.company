@@ -5,8 +5,21 @@ define(['q', 'react'], function(Q, React) {
       context,
       component,
       exported = React.createClass({
-        render: function() {
+        getInitialState: function() {
+          console.log('getInitialState');
+          return {};
+        },
+        componentWillMount: function() {
+          console.log('componentWillMount');
+        },
+        componentDidMount: function() {
+          console.log('did mount');
           component = this;
+        },
+        componentWillReceiveProps: function() {
+          console.log('componentWillReceiveProps');
+        },
+        render: function() {
           return React.DOM.div(null, !!context ? context.init - context.timestamp : null);
         }
       });
