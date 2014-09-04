@@ -151,6 +151,5 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
       );
 
     });
-	);
 	return module.promise;
 });
