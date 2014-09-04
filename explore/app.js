@@ -31,7 +31,6 @@ requirejs.config({
 });
 
 requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, $, _, React, dash, L) {
-	console.log("AMD",arguments);
 	var module = Q.defer(),
     getParams = function() {
       return [ 38.538901, -121.700335, 15 ];

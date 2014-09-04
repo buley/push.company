@@ -10,6 +10,6 @@ define(['q'], function(Q) {
       console.log("presence.js: incoming", arguments);
       deferred.resolve("hello from presence.js");
     },
-    ready: module.promise.then
+    ready: module.promise.then.bind(module.promise)
   }
 });
