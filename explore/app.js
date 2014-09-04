@@ -126,7 +126,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
           internal = Q.defer(),
           incoming = function(interface) {
             interface.then(null, null, function(context) {
-              if (!!component && !!component.isMounted && component.isMounted())) {
+              if (!!component && !!component.isMounted && component.isMounted()) {
                 console.log('updating props', component);
                 component.replaceProps(context);
               }
