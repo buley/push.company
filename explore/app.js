@@ -142,7 +142,9 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
               container.apply(this, components)(state),
               document.getElementById('explore'),
               function() {
-                container.setProps(state);
+                if (!!container && !!container.setProps) {
+                  container.setProps(state);
+                }
                 module.resolve(component);
                 deferred.notify(state);
               }
