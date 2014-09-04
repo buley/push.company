@@ -103,18 +103,13 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
           deferred = Q.defer(),
           promise = deferred.promise,
           container = React.createClass({
-            getInitialState: function() {
-              component = this;
-              console.log('main getInitialState', this, arguments);
-              return {};
-            },
             componentWillMount: function() {
+              component = this;
               console.log('main componentWillMount');
               return true;
             },
             componentDidMount: function() {
               console.log('main did mount');
-              component = this;
             },
             componentWillReceiveProps: function() {
               console.log('main componentWillReceiveProps');
