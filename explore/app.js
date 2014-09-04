@@ -115,7 +115,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
               console.log('main componentWillReceiveProps');
             },
             render: function() {
-              return "Testing123";
+              return React.DOM.div(null, "Testing123");
             }
           }),
           component,
@@ -150,7 +150,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
           interfaces = arguments,
           loaded = 1,
           classes = [],
-          components = [],
+          components = [null],
           forEachHandler = function(interface) {
             var readyHandler = function(comp) {
                   interface.incoming(promise);
