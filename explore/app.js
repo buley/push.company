@@ -134,7 +134,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
           },
           requestStateChange = function(state) {
             state_queue.push(state);
-            console.log('queue',state_queue.length. state.timestamp);
+            console.log('queue',state_queue.length, state.timestamp);
             setTimeout(function() {
               doStateChange();
             }, 10);
