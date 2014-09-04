@@ -118,6 +118,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
 
         Array.prototype.forEach.call(arguments, function(interface) {
           interface.ready(function(state) {
+            console.log('ready');
             interface.incoming(promise);
             interface.outgoing(incoming);
             if (loaded === arguments.length) {
