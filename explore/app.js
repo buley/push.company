@@ -154,9 +154,9 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
               function() {
                 module.resolve(component);
                 setInterval(function() {
-                  var context = component.props;
-                  context.timestamp = Date.now();
-                  requestStateChange(context);
+                  var ctx = component.props;
+                  ctx.timestamp = Date.now();
+                  requestStateChange(ctx);
                 }, 1000);
               }
             );
