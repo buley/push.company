@@ -115,6 +115,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
             }).bind(this),
             loaded = 0,
             ready = function() {
+              console.log('saying hello');
               deferred.notify("hello from app.js");
               module.resolve();
             };
