@@ -133,7 +133,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
                     loaded = loaded + 1;
                   }
                   if (!!comp) {
-                    components.push(comp);
+                    components.push(comp(state));
                   }
                 };
             interface.ready(readyHandler);
