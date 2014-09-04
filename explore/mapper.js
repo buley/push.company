@@ -7,7 +7,12 @@ define(['q', 'react'], function(Q, React) {
         console.log('props',this.props, context);
         return React.DOM.div(null, (this.props.init - this.props.timestamp).toString());
       },
+      comp,
       component = React.createClass({
+        componentWillReceiveProps: function() {
+          comp = this;
+          console.log('mapper componentWillReceiveProps');
+        },
         render: render
       });
   module.resolve(component);
@@ -18,6 +23,7 @@ define(['q', 'react'], function(Q, React) {
     incoming: function(interface) {
       interface.then(null, null, function(state) {
         context = state;
+        comp.replaceProps(state);
       });
     },
     ready: module.promise.then.bind(module.promise)
