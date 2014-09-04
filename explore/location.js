@@ -18,12 +18,7 @@ define(['q', 'react'], function(Q, React, L) {
       context = {},
       component = React.createClass({
         componentWillReceiveProps: function(props) {
-          console.log('refreshing location');
-          if (!props.location) {
-            props.location = current;
-            console.log('notify', props.location);
-            deferred.notify(props);
-          }
+          console.log('location will');
         },
         render: function() {
           return React.DOM.div({id: "location"}, JSON.stringify(this.props.location));
@@ -37,6 +32,11 @@ define(['q', 'react'], function(Q, React, L) {
     },
     incoming: function(interface) {
       interface.then(null, null, function(state) {
+        if (!props.location) {
+          props.location = current;
+          console.log('notify', props.location);
+          deferred.notify(props);
+        }
         context = state;
       });
     },
