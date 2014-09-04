@@ -155,9 +155,11 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
               document.getElementById('explore'),
               function() {
                 module.resolve(component);
-                var context = component.props;
-                context.timestamp = Date.now();
-                requestStateChange(context);
+                setInterval(function() {
+                  var context = component.props;
+                  context.timestamp = Date.now();
+                  requestStateChange(context);
+                }, 1000);
               }
             );
           },
