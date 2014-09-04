@@ -152,7 +152,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
               container.apply(this, state),
               document.getElementById('explore'),
               function() {
-                Interval(function() {
+                setInterval(function() {
                   state.timestamp = Date.now();
                   requestStateChange(state);
                 }, 1000)
