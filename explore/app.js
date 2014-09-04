@@ -105,14 +105,6 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
           container = React.createClass({
             componentWillMount: function() {
               component = this;
-              console.log('main componentWillMount');
-              return true;
-            },
-            componentDidMount: function() {
-              console.log('main did mount');
-            },
-            componentWillReceiveProps: function() {
-              console.log('main componentWillReceiveProps');
             },
             render: function() {
               return React.DOM.div(null, "Testing123");
