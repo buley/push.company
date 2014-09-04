@@ -23,8 +23,6 @@ define(['q', 'react'], function(Q, React, L) {
             props.location = current;
             console.log('notify', props.location);
             deferred.notify(props);
-          } else {
-            context = props;
           }
         },
         render: function() {
