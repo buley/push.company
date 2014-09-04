@@ -102,16 +102,17 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
 	  document.getElementById('explore'),
     function() {
       require(['explore/presence', 'explore/mapper'], function(presence, mapper) {
-        var deferred = Q.defer(),
+        var state = {},
+            deferred = Q.defer(),
             promise = deferred.promise,
             incoming = function(interface) {
-              interface.then(null, null, function() {
-                console.log("app.js: incoming", arguments);
+              var mod = this;
+              interface.then(null, null, function(context) {
+                console.log("app.js: incoming", context);
               })
             },
             ready = function() {
-              deferred.notify("hello from app.js");
-              module.resolve();
+              deferred.notify(state);
             },
             interfaces = arguments,
             loaded = 1,
@@ -130,6 +131,10 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
 
 
         Array.prototype.forEach.call(interfaces, forEachHandler);
+
+        promise = promise.then( function() {
+          module.resolve(state);
+        });
 
       });
     }

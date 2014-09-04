@@ -11,7 +11,7 @@ define(['q'], function(Q) {
     },
     incoming: function(interface) {
       console.log("presence.js: incoming", arguments);
-      interface.then(null, null, function() {
+      interface.then(null, null, function(state) {
         state.interfaces = state.interfaces || {};
         state.interfaces.presence = {
           bar: function() {
