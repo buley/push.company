@@ -150,7 +150,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
               document.getElementById('explore'),
               function() {
                 state.timestamp = Date.now();
-                component.setProps(state);
+                requestStateChange(state);
                 module.resolve(component);
               }
             );
@@ -178,10 +178,10 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
 
       incoming(internal.promise);
 
-      setTimeout(function() {
+      setInterval(function() {
         state.timestamp = Date.now();
         requestStateChange(state);
-      }, 2000)
+      }, 3000)
 
     });
 	return module.promise;
