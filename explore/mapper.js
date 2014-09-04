@@ -8,19 +8,6 @@ define(['q', 'react'], function(Q, React) {
         return React.DOM.div(context, !!context ? context.init - context.timestamp : 'TK');
       },
       component = React.createClass({
-        getInitialState: function() {
-          console.log('getInitialState');
-          return {};
-        },
-        componentWillMount: function() {
-          console.log('componentWillMount');
-        },
-        componentDidMount: function() {
-          console.log('did mount');
-        },
-        componentWillReceiveProps: function() {
-          console.log('mapper componentWillReceiveProps');
-        },
         render: render
       });
   module.resolve(component);
