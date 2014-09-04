@@ -16,7 +16,7 @@ define(['q', 'react'], function(Q, React) {
           component = this;
         },
         componentWillReceiveProps: function() {
-          console.log('componentWillReceiveProps');
+          console.log('mapper componentWillReceiveProps');
         },
         render: function() {
           console.log('mapper render');
