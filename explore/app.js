@@ -102,6 +102,25 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
           previous_state = JSON.stringify(state),
           deferred = Q.defer(),
           promise = deferred.promise,
+          container = React.createClass({
+            getInitialState: function() {
+              console.log('main getInitialState');
+              return {};
+            },
+            componentWillMount: function() {
+              console.log('main componentWillMount');
+            },
+            componentDidMount: function() {
+              console.log('main did mount');
+              component = this;
+            },
+            componentWillReceiveProps: function() {
+              console.log('main componentWillReceiveProps');
+            },
+            render: function() {
+              return React.DOM.div(null, !!context ? context.init - context.timestamp : null);
+            }
+          }),
           component,
           internal = Q.defer(),
           incoming = function(interface) {
@@ -116,15 +135,13 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
                 if (!!component) {
                   component.replaceProps(context);
                 }
-                classes.forEach(function(el) {
-                  el.replaceProps(context);
-                });
               }
             })
           },
           ready = function() {
+            component = container.apply(this, components)
             React.renderComponent(
-              React.DOM.div.apply(this, components),
+              component,
               document.getElementById('explore'),
               function() {
                 component = this;
