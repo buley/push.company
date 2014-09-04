@@ -1,4 +1,4 @@
-define(['q'], function(Q) {
+define(['q', 'react' ], function(Q, React) {
   var deferred = Q.defer(),
       promise = deferred.promise,
       module = Q.defer(),
