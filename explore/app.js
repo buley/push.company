@@ -117,6 +117,16 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
             })
           },
           ready = function() {
+            console.log("READY",components);
+            React.renderComponent(
+              React.DOM.div.apply(this, components),
+              document.getElementById('explore'),
+              function() {
+                component = this;
+                component.setProps(state);
+                module.resolve(component);
+              }
+            );
             deferred.notify(state);
           },
           interfaces = arguments,
@@ -126,30 +136,20 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
             var readyHandler = function(comp) {
                   interface.incoming(promise);
                   interface.outgoing(incoming);
+                  console.log("COMPON",components, comp)
+                  if (!!comp) {
+                    components.push(comp(state));
+                  }
                   if (loaded === interfaces.length) {
                     ready();
                   } else {
                     loaded = loaded + 1;
-                  }
-                  console.log("COMPON",components, comp)
-                  if (!!comp) {
-                    components.push(comp(state));
                   }
                 };
             interface.ready(readyHandler);
           };
 
       Array.prototype.forEach.call(interfaces, forEachHandler);
-      console.log("READY",components);
-      React.renderComponent(
-        React.DOM.div.apply(this, components),
-        document.getElementById('explore'),
-        function() {
-          component = this;
-          component.setProps(state);
-          module.resolve(component);
-        }
-      );
 
     });
 	return module.promise;
