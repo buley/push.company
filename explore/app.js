@@ -97,57 +97,60 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
 
     };
 
-	React.renderComponent(
-	  React.DOM.div(null, 'Hello, world'),
-	  document.getElementById('explore'),
-    function() {
-      var component = this;
-      require(['explore/presence', 'explore/mapper'], function(presence, mapper) {
-        var state = { init: Date.now() },
-            previous_state = JSON.stringify(state),
-            deferred = Q.defer(),
-            promise = deferred.promise,
-            incoming = function(interface) {
-              interface.then(null, null, function(context) {
-                console.log("app.js: incoming", context);
-                var next_state = JSON.stringify(context);
-                if (next_state !== previous_state) {
-                  console.log("app.js: notifying in turn", context);
-                  previous_state = next_state;
-                  component.replaceProps(context);
-                  deferred.notify(state);
+    require(['explore/presence', 'explore/mapper'], function(presence, mapper) {
+      var state = { init: Date.now() },
+          previous_state = JSON.stringify(state),
+          deferred = Q.defer(),
+          promise = deferred.promise,
+          component,
+          incoming = function(interface) {
+            interface.then(null, null, function(context) {
+              console.log("app.js: incoming", context);
+              var next_state = JSON.stringify(context);
+              if (next_state !== previous_state) {
+                console.log("app.js: notifying in turn", context);
+                previous_state = next_state;
+                component.replaceProps(context);
+                deferred.notify(state);
+              } else {
+                console.log("EXPECTED STATE");
+              }
+            })
+          },
+          ready = function() {
+            deferred.notify(state);
+          },
+          interfaces = arguments,
+          loaded = 1,
+          components = [ null, "Test123" ],
+          forEachHandler = function(interface) {
+            var readyHandler = function(comp) {
+                interface.incoming(promise);
+                interface.outgoing(incoming);
+                if (loaded === interfaces.length) {
+                  ready();
                 } else {
-                  console.log("EXPECTED STATE");
+                  loaded = loaded + 1;
                 }
-              })
-            },
-            ready = function() {
-              deferred.notify(state);
-            },
-            interfaces = arguments,
-            loaded = 1,
-            forEachHandler = function(interface) {
-              var readyHandler = function(mod) {
-                  interface.incoming(promise);
-                  interface.outgoing(incoming);
-                  if (loaded === interfaces.length) {
-                    ready();
-                  } else {
-                    loaded = loaded + 1;
-                  }
-                };
-              interface.ready(readyHandler);
-            };
+              };
+            if (!!comp) {
+              components.push(comp);
+            }
+            interface.ready(readyHandler);
+          };
 
-        Array.prototype.forEach.call(interfaces, forEachHandler);
+      Array.prototype.forEach.call(interfaces, forEachHandler);
 
-        component.setProps(state);
-        promise = promise.then( function() {
-          module.resolve(state);
-        });
+      React.renderComponent(
+        React.DOM.div.apply(this, components),
+        document.getElementById('explore'),
+        function() {
+          var component = this;
+          module.resolve(component);
+        }
+      );
 
-      });
-    }
+    });
 	);
 	return module.promise;
 });
