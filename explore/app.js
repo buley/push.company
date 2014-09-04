@@ -144,8 +144,19 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
           internal = Q.defer(),
           incoming = function(interface) {
             interface.then(null, null, function(context) {
-              requestStateChange(context);
-            })
+              //requestStateChange(context);
+              var next_state,
+                  context;
+              if (!!component && !!component.isMounted && component.isMounted()) {
+                next_state = JSON.stringify(context);
+                if (next_state !== previous_state) {
+                  component.replaceProps(context);
+                  previous_state = next_state;
+                  state = context;
+                  deferred.notify(context);
+                }
+              }
+            });
           },
           ready = function() {
             React.renderComponent(
