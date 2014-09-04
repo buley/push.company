@@ -104,10 +104,6 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
       require(['explore/presence', 'explore/mapper'], function(presence, mapper) {
         var deferred = Q.defer(),
             promise = deferred.promise,
-            outgoing = function(cb) {
-              console.log("app.js: outgoing", typeof cb)
-              promise.then(null, cb, cb);
-            },
             incoming = (function(interface) {
               interface.notify(function() {
                 console.log("app.js: incoming", arguments);
@@ -122,7 +118,7 @@ requirejs(['q', 'jquery', 'underscore', 'react', 'dash', 'mapbox'], function(Q, 
 
         Array.prototype.forEach.call(arguments, function(interface) {
           interface.ready(function(state) {
-            interface.incoming(outgoing);
+            interface.incoming(promise);
             interface.outgoing(incoming);
             loaded += 1;
             if (arguments.length === loaded) {
