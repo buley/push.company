@@ -26,8 +26,10 @@ define(['q', 'react'], function(Q, React, L) {
     },
     incoming: function(interface) {
       interface.then(null, null, function(state) {
-        state.location = getParams();
-        deferred.notify(state);
+        if (!state.location) {
+          state.location = params;
+          deferred.notify(state);        
+        }
         context = state;
       });
     },
