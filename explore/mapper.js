@@ -19,6 +19,7 @@ define(['q', 'react'], function(Q, React) {
           console.log('componentWillReceiveProps');
         },
         render: function() {
+          console.log('mapper render');
           return React.DOM.div(null, !!context ? context.init - context.timestamp : null);
         }
       });
@@ -29,10 +30,8 @@ define(['q', 'react'], function(Q, React) {
     },
     incoming: function(interface) {
       interface.then(null, null, function(state) {
+        console.log('mapper app');
         context = state;
-        if (!!component) {
-          component.replaceProps(state);
-        }
       });
     },
     ready: module.promise.then.bind(module.promise)

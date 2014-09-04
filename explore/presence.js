@@ -5,6 +5,7 @@ define(['q', 'react' ], function(Q, React) {
       context,
       component = React.createClass({
         render: function() {
+          console.log('presence render');
           return React.DOM.div(null, !!context ? context.init - context.timestamp : null);
         }
       });
@@ -15,6 +16,7 @@ define(['q', 'react' ], function(Q, React) {
     },
     incoming: function(interface) {
       interface.then(null, null, function(state) {
+        console.log('presence app');
         context = state;
       })
     },
