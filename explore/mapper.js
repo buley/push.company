@@ -11,6 +11,7 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
             map = L.mapbox.map('map', 'buley.j737pbkc');
         },
         componentWillReceiveProps: function(props) {
+          console.log('props',props);
           var lat = props.location.latitude,
               long = props.location.longitude;
           map.setView(L.latLng(lat, lon), 14);
