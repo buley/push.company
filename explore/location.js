@@ -31,14 +31,14 @@ define(['q', 'react'], function(Q, React, L) {
       interface(promise);
     },
     incoming: function(interface) {
-		console.log('loc in');
+      console.log('notify', state.location);
+      if (!state.location) {
+        state.location = current;
+        deferred.notify(state);
+      }
+      context = state;
       interface.then(null, null, function(state) {
-        console.log('notify', state.location);
-        if (!state.location) {
-          state.location = current;
-          deferred.notify(state);
-        }
-        context = state;
+        console.log('loc in');
       });
     },
     ready: module.promise.then.bind(module.promise)
