@@ -9,19 +9,18 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
         componentDidMount: function() {
             L.mapbox.accessToken = 'pk.eyJ1IjoiYnVsZXkiLCJhIjoiZWwySzE4cyJ9.tKVH4x1b-W4ag-s7jqRKlA';
             map = L.mapbox.map('map', 'buley.j737pbkc');
-            marker.setLatLng(L.latLng(this.props.location.longitude, this.props.location.longitude));
+            if (!marker) {
+              marker = L.circleMarker( L.latLng(this.props.location.longitude, this.props.location.longitude), { radius: this.props.location.radius }).addTo(map);
+            } else {
+              marker.setLatLng(L.latLng(this.props.location.longitude, this.props.location.longitude));
+              marker.setRadius({ radius: this.props.location.radius })
+            }
         },
         componentWillReceiveProps: function(props) {
           console.log('props',props);
           var lat = props.location.latitude,
               long = props.location.longitude;
           map.setView(L.latLng(lat, lon), 14);
-          if (!marker) {
-            marker = L.circleMarker( L.latLng(lat, lon), { radius: radius }).addTo(map);
-          } else {
-            marker.setLatLng(L.latLng(lat, lon));
-            marker.setRadius({ radius: radius })
-          }
         },
         render: function() {
           return React.DOM.div({id: "mapper"}, (this.props.init - this.props.timestamp).toString());
