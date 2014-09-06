@@ -16,7 +16,7 @@ define(['q', 'react'], function(Q, React, L) {
       },
       incoming = function(interface) {
         if (!!component) {
-          var state = component.props;
+          var state = component.props || {};
           if (!state || !state.location) {
             state.location = current;
             deferred.notify(state);
