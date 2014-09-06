@@ -31,6 +31,7 @@ define(['q', 'react'], function(Q, React, L) {
       interface(promise);
     },
     incoming: function(interface) {
+		console.log('loc in');
       interface.then(null, null, function(state) {
         console.log('notify', state.location);
         if (!state.location) {
