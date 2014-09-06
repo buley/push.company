@@ -6,10 +6,10 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
       context = {},
       marker,
       component = React.createClass({
-        componentDidMount: function(props) {
+        componentDidMount: function() {
             L.mapbox.accessToken = 'pk.eyJ1IjoiYnVsZXkiLCJhIjoiZWwySzE4cyJ9.tKVH4x1b-W4ag-s7jqRKlA';
             map = L.mapbox.map('map', 'buley.j737pbkc');
-            marker.setLatLng(L.latLng(props.location.longitude, props.location.longitude));
+            marker.setLatLng(L.latLng(this.props.location.longitude, this.props.location.longitude));
         },
         componentWillReceiveProps: function(props) {
           console.log('props',props);
