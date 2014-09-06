@@ -33,7 +33,8 @@ requirejs.config({
 requirejs(['q', 'react'], function(Q, React) {
 	var module = Q.defer();
     require(['explore/presence', 'explore/mapper', 'explore/location'], function() {
-      var state = { init: Date.now(), timestamp: Date.now() },
+      var state = { init: Date.now(), timestamp: Date.now(), location: {
+        latitude: 38.538901, longitude: -121.700335, radius: 15 } },
           previous_state = '',
           deferred = Q.defer(),
           promise = deferred.promise,
