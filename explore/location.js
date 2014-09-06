@@ -14,6 +14,19 @@ define(['q', 'react'], function(Q, React, L) {
         longitude: lon,
         radius: radius
       },
+      incoming = function(interface) {
+        if (!!component) {
+          var state = component.props;
+          if (!state || !state.location) {
+            state.location = current;
+            deferred.notify(state);
+          }
+        }
+        interface.then(null, null, function(state) {
+          console.log('loc in', state);
+          context = state;
+        });
+      },
       map,
       context = {},
       component = React.createClass({
@@ -23,26 +36,14 @@ define(['q', 'react'], function(Q, React, L) {
         render: function() {
           return React.DOM.div({id: "location"}, JSON.stringify(this.props.location));
         }
-      });
+      })
   module.resolve(component);
 
   return {
     outgoing: function(interface) {
       interface(promise);
     },
-    incoming: function(interface) {
-      if (!!component) {
-        var state = component.props;
-        if (!state || !state.location) {
-          state.location = current;
-          deferred.notify(state);
-        }
-      }
-      interface.then(null, null, function(state) {
-        console.log('loc in', state);
-        context = state;
-      });
-    },
+    incoming: incoming,
     ready: module.promise.then.bind(module.promise)
   };
 });
