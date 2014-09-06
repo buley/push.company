@@ -8,7 +8,7 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
       component = React.createClass({
         componentDidMount: function() {
             L.mapbox.accessToken = 'pk.eyJ1IjoiYnVsZXkiLCJhIjoiZWwySzE4cyJ9.tKVH4x1b-W4ag-s7jqRKlA';
-            map = L.mapbox.map('map', 'buley.j737pbkc');
+            map = L.mapbox.map('map', 'buley.j737pbkc').setView(L.latLng(this.props.location.longitude, this.props.location.longitude), 14);
             if (!marker) {
               marker = L.circleMarker( L.latLng(this.props.location.longitude, this.props.location.longitude), { radius: this.props.location.radius }).addTo(map);
             } else {
