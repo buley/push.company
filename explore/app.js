@@ -114,7 +114,11 @@ requirejs(['q', 'react'], function(Q, React) {
                     loaded = loaded + 1;
                   }
                 };
-            interface.ready(readyHandler);
+            if (!!interface && !!interface.ready) {
+              interface.ready(readyHandler);
+            } else {
+              loaded = loaded + 1;
+            }
           };
 
       Array.prototype.forEach.call(interfaces, forEachHandler);
