@@ -12,7 +12,7 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
               marker = L.circleMarker( L.latLng(this.props.location.latitude, this.props.location.longitude), { radius: this.props.location.radius } );
               marker.addTo(map);
             } else {
-              marker.setLatLng(L.latLng(this.props.location.latitude this.props.location.longitude));
+              marker.setLatLng(L.latLng(this.props.location.latitude, this.props.location.longitude));
               marker.setRadius({ radius: this.props.location.radius })
             }
         },
