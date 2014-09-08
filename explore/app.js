@@ -91,7 +91,7 @@ requirejs(['q', 'react'], function(Q, React) {
           },
           ready = function() {
             React.renderComponent(
-              container.apply(this, [state]),
+              container(state),
               document.getElementById('explore'),
               function() {
                 module.resolve(component);
