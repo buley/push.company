@@ -46,7 +46,7 @@ requirejs(['q', 'react'], function(Q, React) {
               var that = this,
                   args = components.map(function(el) {
                     if (!!el) {
-                      return el;
+                      return el(that.props);
                     }
                   });
               args.unshift(null);
