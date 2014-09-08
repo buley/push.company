@@ -21,7 +21,7 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
           marker.setLatLng(L.latLng(props.location.longitude, props.location.longitude));
         },
         render: function() {
-          return React.DOM.div({id: "mapper"}, (this.props.init - this.props.timestamp).toString());
+          return React.DOM.div({id: "map"}, (this.props.init - this.props.timestamp).toString());
         }
       });
 
