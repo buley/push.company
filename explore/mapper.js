@@ -9,14 +9,13 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
         componentDidMount: function() {
             map = L.mapbox.map(this.getDOMNode(), 'buley.j737pbkc')
             if (!marker) {
-              marker = L.circleMarker( L.latLng(this.props.location.latitude, this.props.location.longitude), { radius: this.props.location.radius } );
-              marker.addTo(map);
-            } else {
-              marker.setLatLng(L.latLng(this.props.location.latitude, this.props.location.longitude));
-              marker.setRadius({ radius: this.props.location.radius })
+              marker = L.circleMarker( L.latLng(this.props.location.latitude, this.props.location.longitude), { radius: this.props.location.radius } )
+                .addTo(map);
             }
         },
         render: function() {
+          marker.setLatLng(L.latLng(this.props.location.latitude, this.props.location.longitude));
+          marker.setRadius({ radius: this.props.location.radius });
           return React.DOM.div({id: "map"});
         }
       });
