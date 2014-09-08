@@ -98,7 +98,7 @@ requirejs(['q', 'react'], function(Q, React) {
           },
           interfaces = arguments,
           loaded = 1,
-          components = [null],
+          components = [],
           forEachHandler = function(interface) {
             var readyHandler = function(comp) {
                   interface.incoming(promise);

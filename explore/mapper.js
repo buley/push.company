@@ -17,15 +17,13 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
             }
         },
         componentWillReceiveProps: function(props) {
-          console.log('props',props);
-          var lat = props.location.latitude,
-              long = props.location.longitude;
-          map.setView(L.latLng(lat, lon), 14);
+          marker.setLatLng(L.latLng(props.location.longitude, props.location.longitude));
         },
         render: function() {
           return React.DOM.div({id: "mapper"}, (this.props.init - this.props.timestamp).toString());
         }
       });
+
   module.resolve(component);
 
   return {
