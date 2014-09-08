@@ -43,12 +43,14 @@ requirejs(['q', 'react'], function(Q, React) {
               component = this;
             },
             render: function() {
-              var that = this;
-              return React.DOM.div.apply(this, components.map(function(el) {
-                if (!!el) {
-                  return el(that.props);
-                }
-              }));
+              var that = this,
+                  args = components.map(function(el) {
+                    if (!!el) {
+                      return el(that.props);
+                    }
+                  });
+              args.unshift(null);
+              return React.DOM.div.apply(this, args);
             }
           }),
           component,
