@@ -7,10 +7,10 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
       marker,
       component = React.createClass({
         componentDidMount: function() {
-            L.mapbox.accessToken = 'pk.eyJ1IjoiYnVsZXkiLCJhIjoiZWwySzE4cyJ9.tKVH4x1b-W4ag-s7jqRKlA';
             map = L.mapbox.map(this.getDOMNode(), 'buley.j737pbkc')
             if (!marker) {
               marker = L.circleMarker( L.latLng(this.props.location.longitude, this.props.location.longitude), { radius: this.props.location.radius } );
+              console.log('adding',marker,map);
               marker.addTo(map);
             } else {
               marker.setLatLng(L.latLng(this.props.location.longitude, this.props.location.longitude));
@@ -23,6 +23,8 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
       });
 
   module.resolve(component);
+
+  L.mapbox.accessToken = 'pk.eyJ1IjoiYnVsZXkiLCJhIjoiZWwySzE4cyJ9.tKVH4x1b-W4ag-s7jqRKlA';
 
   return {
     outgoing: function(interface) {
