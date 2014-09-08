@@ -9,16 +9,16 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
         componentDidMount: function() {
             L.mapbox.accessToken = 'pk.eyJ1IjoiYnVsZXkiLCJhIjoiZWwySzE4cyJ9.tKVH4x1b-W4ag-s7jqRKlA';
             map = L.mapbox.map(this.getDOMNode(), 'buley.j737pbkc')
+            if (!marker) {
+              marker = L.circleMarker( L.latLng(this.props.location.longitude, this.props.location.longitude), { radius: this.props.location.radius } );
+              marker.addTo(map);
+            } else {
+              marker.setLatLng(L.latLng(this.props.location.longitude, this.props.location.longitude));
+              marker.setRadius({ radius: this.props.location.radius })
+            }
         },
         render: function() {
-          if (!marker) {
-            marker = L.circleMarker( L.latLng(this.props.location.longitude, this.props.location.longitude), { radius: this.props.location.radius } );
-            marker.addTo(map);
-          } else {
-            marker.setLatLng(L.latLng(this.props.location.longitude, this.props.location.longitude));
-            marker.setRadius({ radius: this.props.location.radius })
-          }
-          return React.DOM.div({id: "map"}, (this.props.init - this.props.timestamp).toString());
+          return React.DOM.div({id: "map"});
         }
       });
 
