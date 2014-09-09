@@ -14,7 +14,7 @@ define(['q', 'jquery' ], function(Q, $) {
           deltaLat,
           deltaLon,
           toRadians = function(deg) {
-            return ( deg * Math.PI ) / 180;
+            return deg * Math.PI / 180;
           }
         if (!lat1 || !lon1 || !lat2 || !lon2 ) {
           return Infinity;
