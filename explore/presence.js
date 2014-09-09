@@ -51,8 +51,8 @@ define(['q', 'react', 'dash', 'jquery', 'explore/trig' ], function(Q, React, das
       interface.then(null, null, function(state) {
         var distance;
         if (JSON.stringify(current) !== JSON.stringify(state.location)) {
-          console.log("LOCATION CHANGE", current, state.location);
           distance = trig.distance(current, state.location);
+          console.log("LOCATION CHANGE", distance, current, state.location);
           current = state.location;
         }
         context = state;
