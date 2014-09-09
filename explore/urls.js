@@ -13,7 +13,7 @@ define(['q'], function(Q) {
         });
       },
       context,
-      getQuery = function(obj) {
+      getQuery = function(obj, prefix) {
         var x = 0,
             attr,
             str = [];
@@ -25,7 +25,11 @@ define(['q'], function(Q) {
             ].join("="));
           }
         }
-        return encodeURIComponent(str.join("&"));
+        if (0 === str.length) {
+          return "";
+        } else {
+          return prefix + encodeURIComponent(str.join("&"));
+        }
       },
       updateUrl = function(gets, hashes) {
         console.log("UPDATE", [
@@ -42,8 +46,8 @@ define(['q'], function(Q) {
             "//",
             window.location.host,
             window.location.pathname,
-            getQuery(gets),
-            getQuery(hashes)
+            getQuery(gets, "?"),
+            getQuery(hashes, "#")
           ].join(""),
           {}
         )
