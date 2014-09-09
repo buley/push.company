@@ -1,4 +1,4 @@
-define(['q', 'react', 'dash', 'jquery' ], function(Q, React, dash, $) {
+define(['q', 'react', 'dash', 'jquery', 'explore/trig' ], function(Q, React, dash, $, trig) {
   var deferred = Q.defer(),
       promise = deferred.promise,
       module = Q.defer(),
@@ -22,27 +22,26 @@ define(['q', 'react', 'dash', 'jquery' ], function(Q, React, dash, $) {
                   } );
                 } );
               };
+
           dash.get.store({"database": "push", "store": "Places1", "store_key_path": "Id"})(function(ctx) {
-
-              ctx.index = "Name";
-              ctx.index_key_path = "Name";
-              ctx.index_multi_entry = false; //same as default
-              ctx.index_unique = false; //same as default
-
-              dash.get.index(ctx)(function(c) {
-                ctx.index = 'Area';
-                ctx.index_key_path = 'area';
-                dash.get.index(c)(function(z) {
-                  console.log('installed');
-                });
+            ctx.index = "Name";
+            ctx.index_key_path = "Name";
+            ctx.index_multi_entry = false; //same as default
+            ctx.index_unique = false; //same as default
+            dash.get.index(ctx)(function(c) {
+              ctx.index = 'Area';
+              ctx.index_key_path = 'area';
+              dash.get.index(c)(function(z) {
+                console.log('installed');
+              });
             });
-
-        }, function(d) { console.log("Not Added", d); })
+          }, function(d) { console.log("Not Added", d); } );
 
         },
         render: render
       });
-  module.resolve(component);
+
+  module.resolve();
 
   return {
     outgoing: function(interface) {
@@ -50,8 +49,10 @@ define(['q', 'react', 'dash', 'jquery' ], function(Q, React, dash, $) {
     },
     incoming: function(interface) {
       interface.then(null, null, function(state) {
+        var distance;
         if (JSON.stringify(current) !== JSON.stringify(state.location)) {
           console.log("LOCATION CHANGE", current, state.location);
+          distance = trig.distance(current, state.location);
           current = state.location;
         }
         context = state;
