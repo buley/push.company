@@ -19,8 +19,7 @@ define(['q', 'jquery' ], function(Q, $) {
         if (!lat1 || !lon1 || !lat2 || !lon2 ) {
           return Infinity;
         }
-        console.log('DISTANCE', lat1, lon1, radius1, lat2, lon2, radius2);
-        R = 6371;
+        R = 6371000; //earth in meters
         deltaLat = toRadians(lat2-lat1);
         deltaLon = toRadians(lon2-lon1);
         a = Math.sin(deltaLat/2) * Math.sin(deltaLat/2) +
@@ -28,7 +27,7 @@ define(['q', 'jquery' ], function(Q, $) {
             Math.sin(deltaLon/2) * Math.sin(deltaLon/2);
         c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
         distance = R * c;
-        console.log("DISTANCE",distance);
+        console.log("DISTANCE in meters",distance);
         if (!radius1 || !radius2) {
           return distance;
         }
