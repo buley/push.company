@@ -1,4 +1,4 @@
-define(['q', 'react'], function(Q, React, L) {
+define(['q', 'react', 'underscore'], function(Q, React, _) {
   var deferred = Q.defer(),
       promise = deferred.promise,
       module = Q.defer(),
@@ -16,15 +16,9 @@ define(['q', 'react'], function(Q, React, L) {
         radius: radius
       },
       incoming = function(interface) {
-        if (!!component) {
-          var state = component.props || {};
-          if (!state || !state.location) {
-            state.location = current;
-            deferred.notify(state);
-          }
-        }
         interface.then(null, null, function(state) {
-          context = state;
+          context = _.extend(context, state);
+          deferred.notify(context);
         });
       },
       map,
@@ -33,8 +27,7 @@ define(['q', 'react'], function(Q, React, L) {
         current.latitude = position.coords.latitude;
         current.longitude = position.coords.longitude;
         current.radius = position.coords.accuracy;
-        context.location = current;
-        deferred.notify(context);
+        deferred.notify(_.extend(context, {location: current}));
       },
       onPositionError = function(err) {
         console.log("location.js position error", err);
