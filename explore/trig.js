@@ -2,7 +2,7 @@ define(['q', 'jquery' ], function(Q, $) {
   return {
     distance: function(one, two) {
       if (!one || !two) {
-        return Infinite;
+        return Infinity;
       }
       var lat1 = one.latitude,
           lon1 = one.longitude,
@@ -12,7 +12,7 @@ define(['q', 'jquery' ], function(Q, $) {
           radius2 = two.radius;
         console.log('DISTANCE', lat1, lon1, radius, lat2, lon2, radius);
         if (!lat1 || !lon1 || !lat2 || !lon2 ) {
-          return Infinite;
+          return Infinity;
         }
     }
   }
