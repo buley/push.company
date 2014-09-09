@@ -17,12 +17,15 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       },
       incoming = function(interface) {
         interface.then(null, null, function(state) {
-          deferred.notify(_.extend(context, {location: current}));
-          deferred.notify(context);
+          context.current = current;
+          context = _.extend(context, state);
+          if (!!context) {
+            deferred.notify(context);
+          }
         });
       },
       map,
-      context = {},
+      context,
       onPosition = function(position) {
         current.latitude = position.coords.latitude;
         current.longitude = position.coords.longitude;
