@@ -35,6 +35,7 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
     },
     incoming: function(interface) {
       interface.then(null, null, function(state) {
+        console.log('state',state);
         context = state;
       });
     },
