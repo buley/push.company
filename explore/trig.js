@@ -3,11 +3,14 @@ define(['q', 'jquery' ], function(Q, $) {
     distance: function(one, two) {
       var lat1 = one.latitude,
           lon1 = one.longitude,
-          radius = one.radius,
+          radius1 = one.radius,
           lat2 = two.latitude,
           lon2 = two.longitude,
-          radius = two.radius;
-        console.log('DISTANCE', lat1, lon1, radius, lat2, lon2, radius)
+          radius2 = two.radius;
+        console.log('DISTANCE', lat1, lon1, radius, lat2, lon2, radius);
+        if (!lat1 || !lon1 || !lat2 || !lon2 ) {
+          return Infinite;
+        }
     }
   }
 });
