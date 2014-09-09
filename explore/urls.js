@@ -4,9 +4,7 @@ define(['q'], function(Q) {
       previous,
       incoming = function(interface) {
         interface.then(null, null, function(state) {
-          state.route = state.route || {};
-          if (JSON.stringify(current) !== JSON.stringify(state.route)) {
-            console.log('route changed from outside', state.route);
+          if (!state.route || JSON.stringify(current) !== JSON.stringify(state.route)) {
             deferred.notify(_.extend({route: current}, state));
           }
         });
