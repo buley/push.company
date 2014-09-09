@@ -29,7 +29,8 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         current.latitude = position.coords.latitude;
         current.longitude = position.coords.longitude;
         current.radius = position.coords.accuracy;
-        deferred.notify(_.extend(context, {location: current}));
+        context = _.extend(context, {location: current});
+        deferred.notify(context);
       },
       onPositionError = function(err) {
         console.log("location.js position error", err);
