@@ -13,18 +13,18 @@ define(['q', 'jquery' ], function(Q, $) {
           distance,
           deltaLat,
           deltaLon,
-          toRadians = function() {
-            return
-          };
+          toRadians = function(deg) {
+            return ( deg * Math.PI ) / 180;
+          }
         if (!lat1 || !lon1 || !lat2 || !lon2 ) {
           return Infinity;
         }
         console.log('DISTANCE', lat1, lon1, radius1, lat2, lon2, radius2);
         R = 6371;
-        deltaLat = lat2-lat1;
-        deltaLon = lon2-lon1;
+        deltaLat = toRadians(lat2-lat1);
+        deltaLon = toRadians(lon2-lon1);
         a = Math.sin(deltaLat/2) * Math.sin(deltaLat/2) +
-            Math.cos(lat1) * Math.cos(lat2) *
+            Math.cos(toRadians(lat1)) * Math.cos(toRadians(lat2)) *
             Math.sin(deltaLon/2) * Math.sin(deltaLon/2);
         c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
         distance = R * c;
