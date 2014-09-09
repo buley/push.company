@@ -1,10 +1,15 @@
 define(['q'], function(Q) {
   var deferred = Q.defer(),
       module = Q.defer(),
+      previous,
       incoming = function(interface) {
         interface.then(null, null, function(state) {
-          context = _.extend({route: current}, state);
-          deferred.notify(context);
+          state.route = state.route || {};
+          if (JSON.stringify(current) !== JSON.stringify(state.route)) {
+            console.log('route changed from outside', state.route);
+          } else {
+            deferred.notify(_.extend({route: current}, state));
+          }
         });
       },
       context,
