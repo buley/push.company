@@ -21,10 +21,11 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             context = _.extend({ location: current }, state);
             deferred.notify(context);
           } else {
-            if (!!state.route && !!!!state.route.hash) {
-              if (!!state.route.hash.latitude && !!state.route.hash.latitude) {
-                current.latitude = state.route.hash.latitude;
-                current.longitude = state.route.hash.longitude;
+            context = state;
+            if (!!context.route && !!!!context.route.hash) {
+              if (!!context.route.hash.latitude && !!context.route.hash.latitude) {
+                current.latitude = context.route.hash.latitude;
+                current.longitude = context.route.hash.longitude;
                 context.location = current;
                 if (!!context.route.hash) {
                   delete context.route.hash.latitude;
