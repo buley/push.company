@@ -1,6 +1,9 @@
 define(['q', 'jquery' ], function(Q, $) {
   return {
     distance: function(one, two) {
+      if (!one || !two) {
+        return Infinite;
+      }
       var lat1 = one.latitude,
           lon1 = one.longitude,
           radius1 = one.radius,
