@@ -28,6 +28,14 @@ define(['q'], function(Q) {
         return encodeURIComponent(str.join("&"));
       },
       updateUrl = function(gets, hashes) {
+        console.log("UPDATE", [
+          window.location.protocol,
+          "//",
+          window.location.host,
+          window.location.pathname,
+          getQuery(gets),
+          getQuery(hashes)
+        ].join(""))
         history.replaceState(
           [
             window.location.protocol,
