@@ -3,11 +3,7 @@ define(['q'], function(Q) {
       module = Q.defer(),
       incoming = function(interface) {
         interface.then(null, null, function(state) {
-          if (!context) {
-            context = _.extend({route: current}, {});
-          } else {
-            context = _.extend({route: current}, state);
-          }
+          context = _.extend({route: current}, state);
           deferred.notify(context);
         });
       },
@@ -21,7 +17,7 @@ define(['q'], function(Q) {
           for (i = 0; i < vars.length; i++) {
               pair = vars[i].split('=');
               data[pair[0]] = pair[1];
-          }          
+          }
         }
         return data;
       },
