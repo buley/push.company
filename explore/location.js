@@ -11,7 +11,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       lon = params[1],
       radius = params[2],
       current = {
-        latutude: lat,
+        latitude: lat,
         longitude: lon,
         radius: radius
       },
