@@ -7,11 +7,39 @@ define(['q'], function(Q) {
           if (!state.route) {
             deferred.notify(_.extend({route: current}, state));
           } else if (JSON.stringify(current) !== JSON.stringify(state.route)) {
-            console.log('changed from outside', state.route);
+            updateUrl(current.get, current.hash);
+            current = state.route;
           }
         });
       },
       context,
+      getQuery = function(obj) {
+        var x = 0,
+            attr,
+            str = [];
+        for (attr in obj) {
+          if (obj.hasOwnProperty(attr)) {
+            str.push([
+                attr,
+                obj[attr]
+            ].join("="));
+          }
+        }
+        return encodeURIComponent(str.join("&"));
+      },
+      updateUrl = function(gets, hashes) {
+        history.replaceState(
+          [
+            window.location.protocol,
+            "//",
+            window.location.host,
+            window.location.pathname,
+            getQuery(gets),
+            getQuery(hashes)
+          ].join(""),
+          {}
+        )
+      },
       getQueryStringValues = function(qs) {
         var pair,
             vars = qs.split('&'),
