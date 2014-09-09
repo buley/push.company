@@ -8,16 +8,16 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
       component = React.createClass({
         componentDidMount: function() {
             map = L.mapbox.map(this.getDOMNode(), 'buley.j737pbkc')
-            if (!marker) {
+            if (!marker && !!this.props && !!this.props.location) {
               marker = L.circleMarker( L.latLng(this.props.location.latitude, this.props.location.longitude), { radius: this.props.location.radius } );
               marker.addTo(map);
-            } else {
+            } else if ( !!this.props && !!this.props.location ) {
               marker.setLatLng(L.latLng(this.props.location.latitude, this.props.location.longitude));
               marker.setRadius(this.props.location.radius);
             }
         },
         render: function() {
-          if (!!marker) {
+          if (!!marker && !!this.props && !!this.props.location) {
             marker.setLatLng(L.latLng(this.props.location.latitude, this.props.location.longitude));
             marker.setRadius(this.props.location.radius);
           }
