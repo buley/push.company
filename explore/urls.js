@@ -16,10 +16,12 @@ define(['q'], function(Q) {
         var pair,
             vars = qs.split('&'),
             i,
-            data;
-        for (i = 0; i < vars.length; i++) {
-            pair = vars[i].split('=');
-            data[pair[0]] = pair[1];
+            data = {};
+        if (!!qs) {
+          for (i = 0; i < vars.length; i++) {
+              pair = vars[i].split('=');
+              data[pair[0]] = pair[1];
+          }          
         }
         return data;
       },
