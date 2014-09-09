@@ -2,6 +2,7 @@ define(['q', 'react'], function(Q, React, L) {
   var deferred = Q.defer(),
       promise = deferred.promise,
       module = Q.defer(),
+      watch_id,
       getParams = function() {
         return [ 38.538901, -121.700335, 15 ];
       },
@@ -23,21 +24,30 @@ define(['q', 'react'], function(Q, React, L) {
           }
         }
         interface.then(null, null, function(state) {
-          console.log('loc in', state);
           context = state;
         });
       },
       map,
       context = {},
-      component = React.createClass({
-        componentWillReceiveProps: function(props) {
-          console.log('location will');
-        },
-        render: function() {
-          return React.DOM.div({id: "location"}, JSON.stringify(this.props.location));
-        }
-      })
-  module.resolve(component);
+      onPosition = function(position) {
+        current.latitude = position.coords.latitude;
+        current.longitude = position.coords.longitude;
+        current.radius = position.coords.accuracy;
+        context.location = current;
+        deferred.notify(context);
+      },
+      onPositionError = function(err) {
+        console.log("location.js position error", err);
+      }
+
+  module.resolve();
+  navigator.geolocation.getCurrentPosition(onPosition);
+
+  watch_id = navigator.geolocation.watchPosition(onPosition, geo_error, {
+    enableHighAccuracy: true,
+    maximumAge: 30000,
+    timeout: 27000
+  });
 
   return {
     outgoing: function(interface) {
