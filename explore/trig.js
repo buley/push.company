@@ -16,7 +16,7 @@ define(['q', 'jquery' ], function(Q, $) {
         if (!lat1 || !lon1 || !lat2 || !lon2 ) {
           return Infinity;
         }
-        console.log('DISTANCE', lat1, lon1, radius, lat2, lon2, radius);
+        console.log('DISTANCE', lat1, lon1, radius1, lat2, lon2, radius2);
         R = 6371;
         deltaLat = (lat2-lat1).toRadians();
         deltaLon = (lon2-lon1).toRadians();
