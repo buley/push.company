@@ -22,13 +22,14 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             deferred.notify(context);
           } else {
             if (!!state.route) {
-              console.log('ROUTE IS SET', state.route);
               if (!!state.route.hash.latitude && !!state.route.hash.latitude) {
                 current.latitude = state.route.hash.latitude;
                 current.longitude = state.route.hash.longitude;
                 context.route = current;
-                delete context.route.hash.latitude;
-                delete context.route.hash.longitude;
+                if (!!context.route.hash) {
+                  delete context.route.hash.latitude;
+                  delete context.route.hash.longitude;
+                }
                 console.log('REROUTE IS SET', context.route);
                 deferred.notify(context);
               }
