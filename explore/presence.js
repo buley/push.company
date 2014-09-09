@@ -3,6 +3,7 @@ define(['q', 'react', 'dash', 'jquery' ], function(Q, React, dash, $) {
       promise = deferred.promise,
       module = Q.defer(),
       context = {},
+      current,
       previous,
       render = function() {
         return React.DOM.div(null, (this.props.init - this.props.timestamp).toString());
@@ -49,6 +50,10 @@ define(['q', 'react', 'dash', 'jquery' ], function(Q, React, dash, $) {
     },
     incoming: function(interface) {
       interface.then(null, null, function(state) {
+        if (JSON.stringify(current) !== JSON.stringify(state.location)) {
+          console.log("LOCATION CHANGE", current, state.location);
+          current = state.location;
+        }
         context = state;
       });
     },
