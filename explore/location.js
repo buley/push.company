@@ -43,7 +43,7 @@ define(['q', 'react'], function(Q, React, L) {
   module.resolve();
   navigator.geolocation.getCurrentPosition(onPosition);
 
-  watch_id = navigator.geolocation.watchPosition(onPosition, geo_error, {
+  watch_id = navigator.geolocation.watchPosition(onPosition, onPositionError, {
     enableHighAccuracy: true,
     maximumAge: 30000,
     timeout: 27000
