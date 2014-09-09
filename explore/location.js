@@ -28,8 +28,8 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
                 current.longitude = state.route.hash.longitude;
                 delete state.route.hash.latitude;
                 delete state.route.hash.longitude;
-                console.log('REROUTE', state.route);
-                deferred.notify(context);
+                console.log('REROUTE IS SET', state.route);
+                deferred.notify(state);
               }
             }
           }
