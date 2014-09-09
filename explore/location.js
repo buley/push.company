@@ -19,7 +19,21 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         interface.then(null, null, function(state) {
           if (!context) {
             context = _.extend({ location: current }, state);
+            deferred.notify(context);
+          } else {
+            if (!!state.route) {
+              console.log('ROUTE IS SET', state.route);
+              if (!!state.route.hash.latitude && !!state.route.hash.latitude) {
+                current.latitude = state.route.hash.latitude;
+                current.longitude = state.route.hash.longitude;
+                delete state.route.hash.latitude;
+                delete state.route.hash.longitude;
+                console.log('REROUTE', state.route);
+                deferred.notify(context);
+              }
+            }
           }
+
         });
       },
       map,
