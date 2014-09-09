@@ -17,7 +17,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       },
       incoming = function(interface) {
         interface.then(null, null, function(state) {
-          context = _.extend(context, state);
+          deferred.notify(_.extend(context, {location: current}));
           deferred.notify(context);
         });
       },
