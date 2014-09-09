@@ -68,7 +68,7 @@ requirejs(['q', 'react'], function(Q, React) {
           },
           executeStateChange = function() {
             if (!!component && !!component.isMounted && component.isMounted()) {
-              var next_state = state_queue.shift(),
+              var next_state = state_queue.shift() || "",
                   ctx = 'function' === typeof next_state ? next_state(JSON.parse(previous_state)) : JSON.parse(next_state);
               component.replaceProps(ctx);
               if (next_state !== previous_state) {
