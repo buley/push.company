@@ -7,7 +7,6 @@ define(['q'], function(Q) {
           state.route = state.route || {};
           if (JSON.stringify(current) !== JSON.stringify(state.route)) {
             console.log('route changed from outside', state.route);
-          } else {
             deferred.notify(_.extend({route: current}, state));
           }
         });
