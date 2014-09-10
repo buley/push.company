@@ -21,7 +21,8 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
           success: function(data) {
             console.log('neighborhood data',data);
             neighborhood = data.Data;
-            context = _.extend(context, {neighborhood: neighborhood})
+            context = _.extend(context, {neighborhood: neighborhood});
+            deferred.notify(context);
           }
         })
       };
