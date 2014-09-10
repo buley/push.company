@@ -13,8 +13,7 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
     incoming: function(interface) {
       interface.then(null, null, function(state) {
         var distance,
-            notify = false,
-            prev;
+            notify = false;
         if (!!state.location) {
           if (!!augmented) {
             console.log('CURRENT',augmented.latitude, augmented.longitude);
@@ -22,12 +21,11 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
             if (augmented.latitude !== state.location.latitude ||
               augmented.longitude !== state.location.longitude) {
               distance = trig.distance(augmented, state.location);
-              prev = augmented;
-              prev.duration = Date.now() - prev.arrived;
-              prev.distance = Infinity === distance ? null : distance;
-              console.log("PREV",JSON.stringify(prev));
+              augmented.duration = Date.now() - augmented.arrived;
+              augmented.distance = Infinity === distance ? null : distance;
+              console.log("PREV",JSON.stringify(augmented));
               console.log("CURR",JSON.stringify(agumented));
-              context = _.extend(state, {location: state.location, previous_location: prev});
+              context = _.extend(state, {location: state.location, previous_location: augmented});
               augmented = {
                   latitude: state.location.latitude,
                   longitude: state.location.longitude,
