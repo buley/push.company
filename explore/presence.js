@@ -1,4 +1,4 @@
-define(['q', 'react', 'dash', 'jquery', 'explore/trig' ], function(Q, React, dash, $, trig) {
+define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function(Q, React, dash, $, _, trig) {
   var deferred = Q.defer(),
       promise = deferred.promise,
       module = Q.defer(),
@@ -52,8 +52,7 @@ define(['q', 'react', 'dash', 'jquery', 'explore/trig' ], function(Q, React, das
         var distance;
         if (JSON.stringify(current) !== JSON.stringify(state.location)) {
           distance = trig.distance(current, state.location);
-          console.log("LOCATION CHANGE", distance, current, state.location);
-          current = state.location;
+          current = _.clone(state.location);
         }
         context = state;
       });
