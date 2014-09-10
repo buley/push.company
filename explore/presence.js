@@ -27,7 +27,7 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
               prev.distance = Infinity === distance ? null : distance;
               console.log("PREV",JSON.stringify(prev));
               console.log("CURR",JSON.stringify(agumented));
-              context = _.extend(state, {location: current, previous_location: prev});
+              context = _.extend(state, {location: augmented, previous_location: prev});
               augmented = {
                   latitude: state.location.latitude,
                   longitude: state.location.longitude,
