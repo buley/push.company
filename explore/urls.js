@@ -32,15 +32,9 @@ define(['q'], function(Q) {
         }
       },
       updateUrl = function(gets, hashes) {
-        console.log("UPDATE", [
-          window.location.protocol,
-          "//",
-          window.location.host,
-          window.location.pathname,
-          getQuery(gets),
-          getQuery(hashes)
-        ].join(""))
         history.replaceState(
+          {},
+          window.title,
           [
             window.location.protocol,
             "//",
@@ -48,8 +42,7 @@ define(['q'], function(Q) {
             window.location.pathname,
             getQuery(gets, "?"),
             getQuery(hashes, "#")
-          ].join(""),
-          {}
+          ].join("")
         )
       },
       getQueryStringValues = function(qs) {
