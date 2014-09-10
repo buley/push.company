@@ -2,6 +2,7 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
   var deferred = Q.defer(),
       promise = deferred.promise,
       module = Q.defer(),
+      context = {},
       current = {};
   module.resolve();
 
@@ -22,7 +23,7 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
             prev = current;
             prev.duration = Date.now() - prev.arrived;
             prev.distance = Infinity === distance ? null : distance;
-            deferred.notify(_.extend(state, {location: current, previous_location: prev}));
+            deferred.notify(_.extend(state, {location: state.location, previous_location: prev}));
           }
           current = state.location;
           current.arrived = Date.now();
