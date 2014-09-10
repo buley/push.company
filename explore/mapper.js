@@ -29,7 +29,7 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
               console.log("DO NEIGHBORHOOD MAP",this.props.neighborhood);
               var layer = { data: [] },
                   marker;
-              this.props.neighborhood.forEach(function(item)) {
+              this.props.neighborhood.forEach(function(item) {
                 item.Places.forEach(function(place) {
                   layer.data.push(L.marker([item.Location.Latitude, item.Location.Longitude]).bindPopup(place.Name));
                 });
