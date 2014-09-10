@@ -53,7 +53,7 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
                 radius: state.location.radius,
                 arrived:  Date.now()
             };
-            if (augmented.latitude !== 0.0 && augmented.longitude > !== 0.0) {
+            if (augmented.latitude !== 0.0 && augmented.longitude !== 0.0) {
               fetchNeighbors(augmented.latitude, augmented.longitude, augmented.radius)
             }
           }
