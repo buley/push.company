@@ -51,15 +51,15 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
       interface.then(null, null, function(state) {
         var distance;
         if (JSON.stringify(current) !== JSON.stringify(state.location)) {
-          distance = trig.distance(current, state.location);
-          context = _.extend(context, state);
           if (!!current) {
+            distance = trig.distance(current, state.location);
             context.previous_location = current;
             context.previous_location.duration = Date.now() - context.previous_location.arrived;
             context.previous_location.distance = Infinity === distance ? null : distance;
           }
           current = context.location;
           current.arrived = Date.now();
+          context = _.extend(state, {location: current});
           deferred.notify(context);
         }
         context = state;
