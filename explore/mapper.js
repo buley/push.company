@@ -4,12 +4,14 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
       module = Q.defer(),
       map,
       context = {},
+      layers,
       marker,
       component = React.createClass({
         componentDidMount: function() {
             map = L.mapbox.map(this.getDOMNode(), 'buley.j737pbkc')
         },
         render: function() {
+          var key;
           if (!marker && !!this.props && !!this.props.location) {
             marker = L.circleMarker( L.latLng(this.props.location.latitude, this.props.location.longitude), { radius: this.props.location.radius } );
             marker.addTo(map);
@@ -18,7 +20,14 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
             marker.setRadius(this.props.location.radius);
           }
           if (!!this.props.neighborhood) {
-            console.log("DO NEIGHBORHOOD MAP",this.props.neighborhood);
+            key = [
+                this.props.location.latitude,
+                this.props.location.longitude,
+                this.props.location.radius,
+              ].join("|");
+            if (!layers[key]) {
+              console.log("DO NEIGHBORHOOD MAP",this.props.neighborhood);
+            }
           }
           map.fitWorld();
           return React.DOM.div({id: "map"});
