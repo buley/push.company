@@ -23,8 +23,9 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
             prev = augmented;
             prev.duration = Date.now() - prev.arrived;
             prev.distance = Infinity === distance ? null : distance;
+            console.log("OBJ",_.extend(state, {location: current, previous_location: prev}));
             current = state.location;
-            deferred.notify(_.extend(state, {location: current, previous_location: prev}));
+            //deferred.notify(_.extend(state, {location: current, previous_location: prev}));
             augmented = _.extend({}, state.location);
             augmented.arrived = Date.now();
           } else if (!!state.location) {
