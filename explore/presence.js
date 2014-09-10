@@ -28,11 +28,11 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
             current = JSON.parse(JSON.stringify(state.location));
             augmented = _.extend({}, state.location);
             augmented.arrived = Date.now();
-          } else if (!!state.location) {
-            current = state.location;
-            augmented = _.extend({}, state.location);
-            augmented.arrived = Date.now();
           }
+        } else if (!!state.location) {
+          current = state.location;
+          augmented = _.extend({}, state.location);
+          augmented.arrived = Date.now();
         }
       });
     },
