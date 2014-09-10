@@ -59,9 +59,6 @@ requirejs(['q', 'react'], function(Q, React) {
               return;
             }
             executeStateChange();
-            if (state_queue.length > 0) {
-              doStateChange();
-            }
           },
           executeStateChange = function() {
             if (!!component && !!component.isMounted && component.isMounted()) {
@@ -82,6 +79,8 @@ requirejs(['q', 'react'], function(Q, React) {
               }
               if (0 === state_queue.length) {
                 component.replaceProps(ctx);
+              } else {
+                doStateChange();
               }
             } else {
               setTimeout(function() {
