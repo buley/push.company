@@ -27,7 +27,7 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
             console.log("CURR WAS",JSON.stringify(current));
             console.log("PRESENT WAS",JSON.stringify(state.location));
             console.log("WTF", JSON.stringify(current) === JSON.stringify(state.location));
-            current = state.location;
+            current = JSON.decode(JSON.stringify(state.location));
             //deferred.notify(_.extend(state, {location: current, previous_location: prev}));
             augmented = _.extend({}, state.location);
             augmented.arrived = Date.now();
