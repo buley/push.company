@@ -16,7 +16,7 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
         var distance,
             notify = false,
             prev;
-        if (!!state.location) {
+        if (!!state.location && JSON.stringify(current) !== JSON.stringify(state.location)) {
           if (!!current) {
             if (JSON.stringify(current) !== JSON.stringify(state.location)) {
               distance = trig.distance(current, state.location);
@@ -25,7 +25,7 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
               prev.distance = Infinity === distance ? null : distance;
               deferred.notify(_.extend(state, {location: current, previous_location: prev}));
             }
-            current = state.location;
+            current = JSON.parse(JSON.stringify(state.location));
             augmented = _.extend({}, state.location);
             augmented.arrived = Date.now();
           } else if (!!state.location) {
