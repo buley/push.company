@@ -72,8 +72,7 @@ define(['q', 'underscore'], function(Q, _) {
           get: getQueryStringValues(window.location.search.substring(1)),
           hash: getQueryStringValues(decodeURIComponent(window.location.hash.substring(1)))
         }
-        console.log('reset state',context,_.extend({route: current}, context));
-        deferred.notify(_.extend({route: current}, context));
+        deferred.notify(_.extend(context, {route: current}));
       };
 
 
