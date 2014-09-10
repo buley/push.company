@@ -2,8 +2,10 @@ define(['q', 'underscore'], function(Q, _) {
   var deferred = Q.defer(),
       module = Q.defer(),
       previous,
+      context = {},
       incoming = function(interface) {
         interface.then(null, null, function(state) {
+          context = state;
           if (!state.route) {
             deferred.notify(_.extend(state, {route: current}));
           } else {
@@ -15,7 +17,6 @@ define(['q', 'underscore'], function(Q, _) {
         });
       },
       current = {},
-      context = {},
       getQuery = function(obj, prefix, encode) {
         var x = 0,
             attr,
