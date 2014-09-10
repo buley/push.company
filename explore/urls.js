@@ -12,7 +12,7 @@ define(['q'], function(Q) {
           }
         });
       },
-      context,
+      context = {},
       getQuery = function(obj, prefix) {
         var x = 0,
             attr,
