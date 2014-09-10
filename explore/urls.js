@@ -7,8 +7,8 @@ define(['q'], function(Q) {
           if (!state.route) {
             deferred.notify(_.extend({route: current}, state));
           } else if (JSON.stringify(current) !== JSON.stringify(state.route)) {
-            updateUrl(current.get, current.hash);
             current = state.route;
+            updateUrl(current.get, current.hash);
           }
         });
       },
@@ -32,14 +32,6 @@ define(['q'], function(Q) {
         }
       },
       updateUrl = function(gets, hashes) {
-        console.log("REPLACE STATE", [
-          window.location.protocol,
-          "//",
-          window.location.host,
-          window.location.pathname,
-          getQuery(gets, "?"),
-          getQuery(hashes, "#")
-        ].join(""));
         history.replaceState(
           {},
           window.title,
