@@ -15,7 +15,8 @@ define(['q', 'jquery' ], function(Q, $) {
           deltaLon,
           toRadians = function(deg) {
             return deg * Math.PI / 180;
-          }
+          },
+          total;
         if (!lat1 || !lon1 || !lat2 || !lon2 ) {
           return Infinity;
         }
@@ -27,7 +28,11 @@ define(['q', 'jquery' ], function(Q, $) {
             Math.sin(deltaLon/2) * Math.sin(deltaLon/2);
         c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
         distance = R * c;
-        return distance - (radius1 || 0) - (radius2 || 0);
+        total = distance - (radius1 || 0) - (radius2 || 0);
+        if (total < 0) {
+          total = 0;
+        }
+        return total;
     }
   }
 });
