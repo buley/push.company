@@ -56,14 +56,12 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
             notify = true;
             distance = trig.distance(current, state.location);
             state.previous_location = current;
-            state.previous_location.duration = Date.now() - context.previous_location.arrived;
+            state.previous_location.duration = Date.now() - state.previous_location.arrived;
             state.previous_location.distance = Infinity === distance ? null : distance;
           }
           current = state.location;
           current.arrived = Date.now();
           state.location = current;
-        } else {
-          context = state;
         }
       });
     },
