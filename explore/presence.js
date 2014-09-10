@@ -51,8 +51,8 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
       interface.then(null, null, function(state) {
         var distance;
         if (JSON.stringify(current) !== JSON.stringify(state.location)) {
-          distance = trig.distance(current, state.location);
-          current = _.clone(state.location);
+          distance = trig.distance(state.location, state.location);
+          state.location = state.location;
           console.log("DISTANCE",distance);
         }
         context = state;
