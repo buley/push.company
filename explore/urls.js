@@ -1,4 +1,4 @@
-define(['q'], function(Q) {
+define(['q', 'underscore'], function(Q, _) {
   var deferred = Q.defer(),
       module = Q.defer(),
       previous,
