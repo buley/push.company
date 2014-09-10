@@ -71,22 +71,22 @@ requirejs(['q', 'react'], function(Q, React) {
                   ctx;
               try {
                 if ('function' === typeof next_state) {
-                  ctx = next_state(JSON.parse(previous_state));
+                  ctx = next_state(previous_state);
                 } else {
-                  ctx = JSON.parse(next_state);
+                  ctx = next_state;
                 }
               } catch(e) {
                 ctx = {};
               }
               component.replaceProps(ctx);
-              if (next_state !== previous_state) {
+              if (JSON.stringify(next_state) !== JSON.stringify(previous_state)) {
                 previous_state = next_state;
                 deferred.notify(ctx);
               }
             }
           },
           requestStateChange = function(change) {
-            state_queue.push(JSON.stringify(change));
+            state_queue.push(change);
             doStateChange();
           },
           internal = Q.defer(),
