@@ -2,7 +2,6 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
   var deferred = Q.defer(),
       promise = deferred.promise,
       module = Q.defer(),
-      context = {},
       augmented;
   module.resolve();
 
@@ -21,17 +20,13 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
               distance = trig.distance(augmented, state.location);
               augmented.duration = Date.now() - augmented.arrived;
               augmented.distance = Infinity === distance ? null : distance;
-              context = _.extend(state, {location: state.location, previous_location: augmented});
-              if (augmented.latitude !== state.location.latitude ||
-                augmented.longitude !== state.location.longitude) {
-                deferred.notify(context);
-                augmented = {
-                    latitude: state.location.latitude,
-                    longitude: state.location.longitude,
-                    radius: state.location.radius,
-                    arrived:  Date.now()
-                };
-              }
+              deferred.notify(_.extend(state, {location: state.location, previous_location: augmented}));
+              augmented = {
+                  latitude: state.location.latitude,
+                  longitude: state.location.longitude,
+                  radius: state.location.radius,
+                  arrived:  Date.now()
+              };
             }
           } else {
             augmented = {
