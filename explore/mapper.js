@@ -20,7 +20,7 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
           if (!!this.props.neighborhood) {
             console.log("DO NEIGHBORHOOD MAP",this.props.neighborhood);
           }
-          marker.fitWorld();
+          map.fitWorld();
           return React.DOM.div({id: "map"});
         }
       });
