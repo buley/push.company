@@ -28,7 +28,6 @@ define(['q', 'jquery' ], function(Q, $) {
             Math.sin(deltaLon/2) * Math.sin(deltaLon/2);
         c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
         distance = R * c;
-        console.log(one, two,"DIST",distance,"RAD",radius1,radius2);
         total = distance - (radius1 || 0) - (radius2 || 0);
         if (total < 0) {
           total = 0;

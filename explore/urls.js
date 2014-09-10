@@ -74,6 +74,7 @@ define(['q', 'underscore'], function(Q, _) {
           get: getQueryStringValues(window.location.search.substring(1)),
           hash: getQueryStringValues(decodeURIComponent(window.location.hash.substring(1)))
         }
+        console.log('notifu route',current);
         deferred.notify(_.extend(context, {route: current}));
       };
 
