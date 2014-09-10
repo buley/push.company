@@ -78,10 +78,10 @@ requirejs(['q', 'react'], function(Q, React) {
               } catch(e) {
                 ctx = {};
               }
-              component.replaceProps(ctx);
               if (JSON.stringify(next_state) !== JSON.stringify(previous_state)) {
                 previous_state = next_state;
                 deferred.notify(ctx);
+                component.replaceProps(ctx);
               }
             }
           },
