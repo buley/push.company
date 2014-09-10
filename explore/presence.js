@@ -18,7 +18,7 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
             prev;
         if (!!state.location) {
           if (!!current) {
-            if (JSON.stringify(current) !== JSON.stringify(state.location)) {
+            if (current.latitude !== state.location.latitude || current.longitude !== state.location.longitude) {
               distance = trig.distance(current, state.location);
               prev = augmented;
               prev.duration = Date.now() - prev.arrived;
