@@ -82,7 +82,7 @@ requirejs(['q', 'react'], function(Q, React) {
               if (next_state !== previous_state) {
                 previous_state = next_state;
                 console.log("NOTIFY STATE", next_state, previous_state);
-                //deferred.notify(ctx);
+                deferred.notify(ctx);
               }
             }
           },
