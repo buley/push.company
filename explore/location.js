@@ -12,7 +12,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         interface.then(null, null, function(state) {
           var notify = false;
           if (!context) {
-            context = _.extend({ location: current }, state);
+            context = _.extend(state, { location: current });
             notify = true;
           } else {
             context = state;
