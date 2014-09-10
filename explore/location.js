@@ -52,7 +52,6 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           current.latitude = position.coords.latitude;
           current.longitude = position.coords.longitude;
           current.radius = position.coords.accuracy;
-          current.arrived = Date.now();
           if (!context) {
             context = {};
           }
