@@ -23,14 +23,17 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
               distance = trig.distance(augmented, state.location);
               augmented.duration = Date.now() - augmented.arrived;
               augmented.distance = Infinity === distance ? null : distance;
-              context = _.extend(state, {location: state.location, previous_location: augmented});
+              if (augmented.latitude !== state.location.latitude ||
+                augmented.longitude !== state.location.longitude) {
+                  context = _.extend(state, {location: state.location, previous_location: augmented});
+                  deferred.notify(context);
+              }
               augmented = {
                   latitude: state.location.latitude,
                   longitude: state.location.longitude,
                   radius: state.location.radius,
                   arrived:  Date.now()
               };
-              deferred.notify(context);
             }
           } else {
             augmented = {
