@@ -53,8 +53,8 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
         if (JSON.stringify(current) !== JSON.stringify(state.location)) {
           distance = trig.distance(current, state.location);
           context = _.extend(context, state);
-          context.previous_location = current;
-          if (!!context.previous_location) {
+          if (!!current) {
+            context.previous_location = current;
             context.previous_location.distance = Infinity === distance ? 0.0 : null;
           }
           current = context.location;
