@@ -25,13 +25,13 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
               if (augmented.latitude !== state.location.latitude ||
                 augmented.longitude !== state.location.longitude) {
                 deferred.notify(context);
+                augmented = {
+                    latitude: state.location.latitude,
+                    longitude: state.location.longitude,
+                    radius: state.location.radius,
+                    arrived:  Date.now()
+                };
               }
-              augmented = {
-                  latitude: state.location.latitude,
-                  longitude: state.location.longitude,
-                  radius: state.location.radius,
-                  arrived:  Date.now()
-              };
             }
           } else {
             augmented = {
