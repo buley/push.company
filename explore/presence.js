@@ -62,8 +62,9 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
           context.location = current;
           context = _.extend(state, context);
           deferred.notify(context);
+        } else {
+          context = state;
         }
-        context = state;
       });
     },
     ready: module.promise.then.bind(module.promise)
