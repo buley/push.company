@@ -31,7 +31,8 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
             deferred.notify(_.extend(state, {location: state.location, previous_location: prev}));
           } else {
             current = state.location;
-            current.arrived = Date.now();
+            augmented = _.extend({}, current);
+            augmented.arrived = Date.now();
           }
         }
       });
