@@ -92,7 +92,6 @@ requirejs(['q', 'react'], function(Q, React) {
             state_queue.push(change);
             doStateChange();
           },
-          internal = Q.defer(),
           incoming = function(interface) {
             interface.then(null, null, function(change) {
               requestStateChange(change);
@@ -131,8 +130,6 @@ requirejs(['q', 'react'], function(Q, React) {
           };
 
       Array.prototype.forEach.call(interfaces, forEachHandler);
-
-      incoming(internal.promise);
 
       requestStateChange({ init: Date.now() });
 
