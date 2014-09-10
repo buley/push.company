@@ -21,7 +21,7 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
             console.log('STATE',state.location.latitude, state.location.longitude);
             if (augmented.latitude !== state.location.latitude ||
               augmented.longitude !== state.location.longitude) {
-              distance = trig.distance(current, state.location);
+              distance = trig.distance(augmented, state.location);
               prev = augmented;
               prev.duration = Date.now() - prev.arrived;
               prev.distance = Infinity === distance ? null : distance;
