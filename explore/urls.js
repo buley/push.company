@@ -32,6 +32,14 @@ define(['q'], function(Q) {
         }
       },
       updateUrl = function(gets, hashes) {
+        console.log("REPLACE STATE", [
+          window.location.protocol,
+          "//",
+          window.location.host,
+          window.location.pathname,
+          getQuery(gets, "?"),
+          getQuery(hashes, "#")
+        ].join(""));
         history.replaceState(
           {},
           window.title,
