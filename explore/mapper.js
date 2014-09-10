@@ -5,6 +5,7 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
       map,
       context = {},
       layers = {},
+      vicinities = {},
       marker,
       component = React.createClass({
         componentDidMount: function() {
@@ -30,7 +31,6 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
                 this.props.location.radius,
               ].join("|");
             if (!layers[key]) {
-              console.log("DO NEIGHBORHOOD MAP",this.props.neighborhood);
               var layer = { data: [] };
               this.props.neighborhood.forEach(function(item) {
                 item.Places.forEach(function(place) {
@@ -43,15 +43,34 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
               layers[key] = layer;
             }
           }
+          if (!!this.props.vicinity) {
+            key = [
+                this.props.location.latitude,
+                this.props.location.longitude,
+                this.props.location.radius,
+              ].join("|");
+            if (!vicinities[key]) {
+              var layer = { data: [] };
+              this.props.vicinity.forEach(function(item) {
+                item.Places.forEach(function(place) {
+                  layer.data.push(L.marker([item.Location.Latitude, item.Location.Longitude]).bindPopup(place.Name));
+                });
+              });
+              layer.group = L.featureGroup(layer.data);
+              layer.group.addTo(map);
+              map.fitBounds(layer.group.getBounds())
+              vicinities[key] = layer;
+            }
+          }
           if (!!this.props.previous_location) {
             key = [
                 this.props.previous_location.latitude,
                 this.props.previous_location.longitude,
                 this.props.previous_location.radius,
               ].join("|");
-            if (!!layers[key]) {
-              map.removeLayer(layers[key].group);
-              delete layers[key];
+            if (!!vicinities[key]) {
+              map.removeLayer(vicinities[key].group);
+              delete vicinities[key];
             }
           }
 

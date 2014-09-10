@@ -7,6 +7,7 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
       module = Q.defer(),
       augmented,
       neighborhood,
+      vicinity,
       fetchNeighbors = function(lat, lon, radius) {
         console.log('fetching neighbors',arguments);
         $.ajax({
@@ -19,9 +20,9 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
             ].join(""),
           method: 'GET',
           success: function(data) {
-            console.log('neighborhood data',data);
-            neighborhood = data.Data;
-            context = _.extend(context, {neighborhood: neighborhood});
+            console.log('vicinity data',data);
+            vicinity = data.Data;
+            context = _.extend(context, {vicinity: vicinity});
             deferred.notify(context);
           }
         })
