@@ -25,7 +25,7 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
               prev.distance = Infinity === distance ? null : distance;
               deferred.notify(_.extend(state, {location: current, previous_location: prev}));
             }
-            current = JSON.parse(JSON.stringify(state.location));
+            current = state.location;
             augmented = _.extend({}, state.location);
             augmented.arrived = Date.now();
           } else if (!!state.location) {
