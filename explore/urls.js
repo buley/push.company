@@ -6,6 +6,7 @@ define(['q', 'underscore'], function(Q, _) {
         interface.then(null, null, function(state) {
           console.log("URLs",state);
           if (!state.route) {
+            context = _.extend(state, {route: current});
             deferred.notify(context);
           } else {
             if (JSON.stringify(current) !== JSON.stringify(state.route)) {
@@ -75,9 +76,6 @@ define(['q', 'underscore'], function(Q, _) {
           get: getQueryStringValues(window.location.search.substring(1)),
           hash: getQueryStringValues(decodeURIComponent(window.location.hash.substring(1)))
         }
-        context = _.extend(context, {route: current});
-        console.log('notify route',context);
-        deferred.notify(context);
       };
 
 
