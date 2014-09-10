@@ -69,6 +69,8 @@ define(['q'], function(Q) {
           get: getQueryStringValues(window.location.search.substring(1)),
           hash: getQueryStringValues(decodeURIComponent(window.location.hash.substring(1)))
         }
+        context = _.extend({route: current}, context);
+        deferred.notify(context);
       };
 
 
