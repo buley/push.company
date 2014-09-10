@@ -52,10 +52,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           current.longitude = position.coords.longitude;
           current.radius = position.coords.accuracy;
           if (!context) {
-            deferred.notify(function(state) {
-              console.log('lazt',state);
-              return _.extend(state, {location: current});
-            });
+            context = {};
           } else {
             deferred.notify(_.extend(context, {location: current, previous_location: null}));
           }
