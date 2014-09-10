@@ -26,7 +26,6 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
             current = state.location;
             augmented = _.extend({}, state.location);
             augmented.arrived = Date.now();
-            console.log("MOVED");
             deferred.notify(_.extend(state, {location: state.location, previous_location: prev}));
           } else {
             current = state.location;

@@ -12,7 +12,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         interface.then(null, null, function(state) {
           var notify = false;
           if (!context) {
-            context = _.extend(state, { location: current });
+            context = _.extend(_.extend({}, state), { location: current });
           } else {
             context = _.extend({}, state);
             if (!!context.route && !!context.route.hash) {
