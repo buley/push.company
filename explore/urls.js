@@ -33,7 +33,7 @@ define(['q', 'underscore'], function(Q, _) {
         if (0 === str.length) {
           return "";
         } else {
-          return prefix + str.join(encode ? "%26" : "&"));
+          return prefix + str.join(encode ? "%26" : "&");
         }
       },
       updateUrl = function(gets, hashes) {
