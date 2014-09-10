@@ -17,7 +17,7 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
             prev;
         if (!!state.location) {
           if (!!augmented) {
-            console.log('CURRENT',current.latitude, current.longitude);
+            console.log('CURRENT',augmented.latitude, augmented.longitude);
             console.log('STATE',state.location.latitude, state.location.longitude);
             if (augmented.latitude !== state.location.latitude ||
               augmented.longitude !== state.location.longitude) {
