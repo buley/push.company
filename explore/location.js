@@ -3,17 +3,10 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       promise = deferred.promise,
       module = Q.defer(),
       watch_id,
-      getParams = function() {
-        return [ 38.538901, -121.700335, 15 ];
-      },
-      params = getParams(),
-      lat = params[0],
-      lon = params[1],
-      radius = params[2],
       current = {
-        latitude: lat,
-        longitude: lon,
-        radius: radius
+        latitude: 0.0,
+        longitude: 0.0,
+        radius: 0.0
       },
       incoming = function(interface) {
         interface.then(null, null, function(state) {
