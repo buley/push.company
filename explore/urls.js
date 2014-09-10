@@ -5,7 +5,7 @@ define(['q', 'underscore'], function(Q, _) {
       incoming = function(interface) {
         interface.then(null, null, function(state) {
           if (!state.route) {
-            deferred.notify(_.extend({route: current}, state));
+            context = (_.extend(state, {route: current}));
           } else {
             context = _.extend({}, state);
             if (JSON.stringify(current) !== JSON.stringify(state.route)) {
