@@ -17,7 +17,10 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
             }
         },
         render: function() {
-          if (!!marker && !!this.props && !!this.props.location) {
+          if (!marker && !!this.props && !!this.props.location) {
+            marker = L.circleMarker( L.latLng(this.props.location.latitude, this.props.location.longitude), { radius: this.props.location.radius } );
+            marker.addTo(map);
+          } else if (!!marker && !!this.props && !!this.props.location) {
             marker.setLatLng(L.latLng(this.props.location.latitude, this.props.location.longitude));
             marker.setRadius(this.props.location.radius);
           }
@@ -35,7 +38,6 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
     },
     incoming: function(interface) {
       interface.then(null, null, function(state) {
-        console.log('state',JSON.stringify(state));
         context = state;
       });
     },
