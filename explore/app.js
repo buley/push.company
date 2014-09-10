@@ -33,7 +33,7 @@ requirejs.config({
 requirejs(['q', 'react'], function(Q, React) {
 	var module = Q.defer();
     require(['explore/presence', 'explore/mapper', 'explore/location', 'explore/urls' ], function() {
-      var state = { init: Date.now() },
+      var state = {},
           previous_state = '',
           deferred = Q.defer(),
           promise = deferred.promise,
@@ -133,6 +133,8 @@ requirejs(['q', 'react'], function(Q, React) {
       Array.prototype.forEach.call(interfaces, forEachHandler);
 
       incoming(internal.promise);
+
+      requestStateChange({ init: Date.now() });
 
     });
 	return module.promise;
