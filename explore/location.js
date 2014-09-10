@@ -37,6 +37,9 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
               }
             }
           }
+          if (true === notify) {
+            deferred.notify(context);
+          }
         });
       },
       map,
