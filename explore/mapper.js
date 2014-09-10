@@ -30,7 +30,7 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
               layers[key] = {};
             }
           }
-          map.fitWorld();
+          //map.fitWorld();
           return React.DOM.div({id: "map"});
         }
       });
