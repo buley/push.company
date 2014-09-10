@@ -40,6 +40,17 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
               layers[key] = layer;
             }
           }
+          if (!!this.props.previous_location) {
+            key = [
+                this.props.previous_location.latitude,
+                this.props.previous_location.longitude,
+                this.props.previous_location.radius,
+              ].join("|");
+            if (!!layers[key]) {
+              map.removeLayer(layers[key].group);
+            }
+          }
+
           return React.DOM.div({id: "map"});
         }
       });
