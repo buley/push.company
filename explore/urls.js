@@ -74,7 +74,7 @@ define(['q', 'underscore'], function(Q, _) {
         current = {
           get: getQueryStringValues(window.location.search.substring(1)),
           hash: getQueryStringValues(decodeURIComponent(window.location.hash.substring(1)))
-        }
+        };
         deferred.notify(context);
       };
 

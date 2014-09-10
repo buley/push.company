@@ -22,7 +22,10 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
               augmented.duration = Date.now() - augmented.arrived;
               augmented.distance = Infinity === distance ? null : distance;
               context = _.extend(state, {location: state.location, previous_location: augmented});
-              deferred.notify(context);
+              if (augmented.latitude !== state.location.latitude ||
+                augmented.longitude !== state.location.longitude) {
+                deferred.notify(context);
+              }
               augmented = {
                   latitude: state.location.latitude,
                   longitude: state.location.longitude,
