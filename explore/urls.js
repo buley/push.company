@@ -6,12 +6,16 @@ define(['q', 'underscore'], function(Q, _) {
         interface.then(null, null, function(state) {
           if (!state.route) {
             deferred.notify(_.extend({route: current}, state));
-          } else if (JSON.stringify(current) !== JSON.stringify(state.route)) {
-            current = state.route;
-            updateUrl(current.get, current.hash);
+          } else {
+            context = state;
+            if (JSON.stringify(current) !== JSON.stringify(state.route)) {
+              current = state.route;
+              updateUrl(current.get, current.hash);
+            }
           }
         });
       },
+      current = {},
       context = {},
       getQuery = function(obj, prefix) {
         var x = 0,
@@ -63,7 +67,6 @@ define(['q', 'underscore'], function(Q, _) {
         }
         return data;
       },
-      current = {},
       resetState = function() {
         current = {
           get: getQueryStringValues(window.location.search.substring(1)),
