@@ -81,7 +81,6 @@ requirejs(['q', 'react'], function(Q, React) {
               component.replaceProps(ctx);
               if (next_state !== previous_state) {
                 previous_state = next_state;
-                console.log("PREV",previous_state);
                 deferred.notify(ctx);
               }
             }

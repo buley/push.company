@@ -13,7 +13,6 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           var notify = false;
           if (!context) {
             context = _.extend(state, { location: current });
-            notify = true;
           } else {
             context = state;
             if (!!context.route && !!!!context.route.hash) {
