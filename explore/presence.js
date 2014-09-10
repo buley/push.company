@@ -50,18 +50,25 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
     incoming: function(interface) {
       interface.then(null, null, function(state) {
         var distance,
-            notify = false;
+            notify = false,
+            prev;
         if (JSON.stringify(current) !== JSON.stringify(state.location)) {
           if (!!current) {
             notify = true;
             distance = trig.distance(current, state.location);
-            state.previous_location = current;
-            state.previous_location.duration = Date.now() - state.previous_location.arrived;
-            state.previous_location.distance = Infinity === distance ? null : distance;
+            prev = current;
+            prev.duration = Date.now() - context.previous_location.arrived;
+            prev.distance = Infinity === distance ? null : distance;
           }
           current = state.location;
           current.arrived = Date.now();
-          state.location = current;
+          context.location = current;
+          context = _.extend(state, {location: current, previous_location: prev});
+          if (true === notify) {
+            deferred.notify(context);
+          }
+        } else {
+          context = state;
         }
       });
     },
