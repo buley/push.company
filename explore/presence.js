@@ -15,7 +15,7 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
         var distance,
             notify = false,
             prev;
-        if (JSON.stringify(current) !== JSON.stringify(state.location)) {
+        if (!!state.location && JSON.stringify(current) !== JSON.stringify(state.location)) {
           if (!!current) {
             notify = true;
             distance = trig.distance(current, state.location);
