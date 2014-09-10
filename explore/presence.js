@@ -24,10 +24,10 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
             prev.duration = Date.now() - prev.arrived;
             prev.distance = Infinity === distance ? null : distance;
             current = state.location;
-            augmented = _.extend({}, state.location);
-            augmented.arrived = Date.now();
             console.log('deferred',deferred.promise.inspect());
             deferred.notify(_.extend(state, {location: current, previous_location: prev}));
+            augmented = _.extend({}, state.location);
+            augmented.arrived = Date.now();
           } else {
             current = state.location;
             augmented = _.extend({}, state.location);
