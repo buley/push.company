@@ -59,7 +59,8 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
           }
           current = state.location;
           current.arrived = Date.now();
-          context = _.extend(state, {location: current});
+          context.location = current;
+          context = _.extend(state, context);
           deferred.notify(context);
         }
         context = state;
