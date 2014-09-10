@@ -20,7 +20,8 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
           if (!!current) {
             console.log('CURRENT',current.latitude, current.longitude);
             console.log('STATE',state.location.latitude, state.location.longitude);
-            if (current.latitude !== state.location.latitude || current.longitude !== state.location.longitude) {
+            if (augmented.latitude !== state.location.latitude ||
+              augmented.longitude !== state.location.longitude) {
               distance = trig.distance(current, state.location);
               prev = augmented;
               prev.duration = Date.now() - prev.arrived;
@@ -34,12 +35,12 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
               deferred.notify(context);
             }
           } else {
-            current = {
+            augmented = {
                 latitude: state.location.latitude,
                 longitude: state.location.longitude,
                 radius: state.location.radius
             };
-            augmented = _.extend({}, state.location);
+            augmented = current;
             augmented.arrived = Date.now();
           }
         }
