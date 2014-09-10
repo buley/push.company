@@ -30,7 +30,7 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
             if (JSON.stringify(current) !== JSON.stringify(state.location)) {
               deferred.notify(_.extend(state, {location: current, previous_location: prev}));
             }
-            current = JSON.decode(JSON.stringify(state.location));
+            current = JSON.parse(JSON.stringify(state.location));
             augmented = _.extend({}, state.location);
             augmented.arrived = Date.now();
           } else if (!!state.location) {
