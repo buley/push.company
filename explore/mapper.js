@@ -18,6 +18,7 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
             marker.setLatLng(L.latLng(this.props.location.latitude, this.props.location.longitude));
             marker.setRadius(this.props.location.radius);
           }
+          marker.fitWorld();
           return React.DOM.div({id: "map"});
         }
       });
