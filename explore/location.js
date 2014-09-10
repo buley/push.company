@@ -54,6 +54,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         } else {
           context = _.extend(context, {location: current});
         }
+        deferred.notify(context);
       },
       onPositionError = function(err) {
         console.log("location.js position error", err);
