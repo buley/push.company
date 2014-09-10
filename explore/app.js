@@ -81,7 +81,7 @@ requirejs(['q', 'react'], function(Q, React) {
                 deferred.notify(ctx);
                 component.replaceProps(ctx);
               } else {
-                console.log("SETTLED");
+                console.log("SETTLED",JSON.stringify(next_state));
               }
             } else {
               setTimeout(function() {
