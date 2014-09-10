@@ -57,7 +57,7 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
             notify = true;
             distance = trig.distance(current, state.location);
             prev = current;
-            prev.duration = Date.now() - context.previous_location.arrived;
+            prev.duration = Date.now() - prev.arrived;
             prev.distance = Infinity === distance ? null : distance;
           }
           current = state.location;
