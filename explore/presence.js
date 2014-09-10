@@ -38,10 +38,9 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
             augmented = {
                 latitude: state.location.latitude,
                 longitude: state.location.longitude,
-                radius: state.location.radius
+                radius: state.location.radius,
+                arrived:  Date.now()
             };
-            augmented = current;
-            augmented.arrived = Date.now();
           }
         }
       });
