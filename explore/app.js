@@ -78,7 +78,7 @@ requirejs(['q', 'react'], function(Q, React) {
               }
               if (JSON.stringify(next_state) !== previous_state) {
                 previous_state = JSON.stringify(next_state);
-                deferred.notify(JSON.parse(JSON.strinfify(ctx)));
+                deferred.notify(JSON.parse(JSON.stringify(ctx)));
                 component.replaceProps(ctx);
               }
             } else {
