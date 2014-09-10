@@ -1,8 +1,6 @@
 define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function(Q, React, dash, $, _, trig) {
   var durationMinimumMilliseconds = function(radius) {
-        var meters_per_ms = 0.001385824, //3.1mph
-            diameter = 2 * radius,
-        return ((2 * radius) / meters_per_ms);
+        return ((2 * radius) / 0.001385824); //3.1mph
       },
       deferred = Q.defer(),
       promise = deferred.promise,
