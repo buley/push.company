@@ -16,9 +16,8 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
             marker = L.circleMarker( L.latLng(this.props.location.latitude, this.props.location.longitude), { radius: this.props.location.radius } );
             marker.addTo(map);
           } else if (!!marker && !!this.props && !!this.props.location) {
-            map.removeLayer(marker);
-            marker = L.circleMarker( L.latLng(this.props.location.latitude, this.props.location.longitude), { radius: this.props.location.radius } );
-            marker.addTo(map);
+            marker.setLatLng(L.latLng(this.props.location.latitude, this.props.location.longitude));
+            marker.setRadius(this.props.location.radius);
           }
           if (!!this.props.neighborhood) {
             key = [
@@ -27,6 +26,7 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
                 this.props.location.radius,
               ].join("|");
             if (!layers[key]) {
+              console.log("DO NEIGHBORHOOD MAP",this.props.neighborhood);
               var layer = { data: [] },
                   marker;
               this.props.neighborhood.forEach(function(item) {
@@ -48,7 +48,7 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
               ].join("|");
             if (!!layers[key]) {
               map.removeLayer(layers[key].group);
-              delete layers[key]; 
+              delete layers[key];
             }
           }
 
