@@ -19,7 +19,7 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
             ].join(""),
           method: 'GET',
           success: function(data) {
-            console.log('data',data);
+            console.log('neighborhood data',data);
             neighborhood = data;
             deferred.notify(context)
           }
