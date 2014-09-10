@@ -27,7 +27,16 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
               ].join("|");
             if (!layers[key]) {
               console.log("DO NEIGHBORHOOD MAP",this.props.neighborhood);
-              layers[key] = {};
+              var layer = { data: [] },
+                  marker;
+              this.props.neighborhood.forEach(function(item)) {
+                item.Places.forEach(function(place) {
+                  layer.data.push(L.marker([item.Location.Latitude, item.Location.Longitude]).bindPopup(place.Name));
+                });
+              };
+              layer.group = L.layerGroup(layer.data);
+              layer.group.addTo(map);
+              layers[key] = layer;
             }
           }
           return React.DOM.div({id: "map"});
