@@ -63,10 +63,17 @@ define(['q'], function(Q) {
         }
         return data;
       },
-      current = {
-        get: getQueryStringValues(window.location.search.substring(1)),
-        hash: getQueryStringValues(decodeURIComponent(window.location.hash.substring(1)))
+      current = {},
+      resetState = function() {
+        current = {
+          get: getQueryStringValues(window.location.search.substring(1)),
+          hash: getQueryStringValues(decodeURIComponent(window.location.hash.substring(1)))
+        }
       };
+
+
+  window.addEventListener( 'popstate', resetState );
+  resetState();
 
   module.resolve();
 
