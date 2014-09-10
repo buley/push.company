@@ -33,7 +33,7 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
                 item.Places.forEach(function(place) {
                   layer.data.push(L.marker([item.Location.Latitude, item.Location.Longitude]).bindPopup(place.Name));
                 });
-              };
+              });
               layer.group = L.layerGroup(layer.data);
               layer.group.addTo(map);
               layers[key] = layer;
