@@ -18,6 +18,8 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
             prev;
         if (!!state.location) {
           if (!!current) {
+            console.log('CURRENT',current.latitude, current.longitude);
+            console.log('STATE',state.location.latitude, state.location.longitude);
             if (current.latitude !== state.location.latitude || current.longitude !== state.location.longitude) {
               distance = trig.distance(current, state.location);
               prev = augmented;
