@@ -60,9 +60,7 @@ requirejs(['q', 'react'], function(Q, React) {
             }
             executeStateChange();
             if (state_queue.length > 0) {
-              setTimeout(function() {
-                doStateChange();
-              }, 100);
+              doStateChange();
             }
           },
           executeStateChange = function() {
@@ -83,6 +81,10 @@ requirejs(['q', 'react'], function(Q, React) {
                 deferred.notify(ctx);
                 component.replaceProps(ctx);
               }
+            } else {
+              setTimeout(function() {
+                doStateChange();
+              }, 100);
             }
           },
           requestStateChange = function(change) {
