@@ -2,7 +2,6 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
   var deferred = Q.defer(),
       promise = deferred.promise,
       module = Q.defer(),
-      context = {},
       current = {};
   module.resolve();
 
