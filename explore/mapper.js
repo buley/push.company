@@ -10,13 +10,15 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
             map = L.mapbox.map(this.getDOMNode(), 'buley.j737pbkc')
         },
         render: function() {
-          console.log('state',JSON.stringify(this.props));
           if (!marker && !!this.props && !!this.props.location) {
             marker = L.circleMarker( L.latLng(this.props.location.latitude, this.props.location.longitude), { radius: this.props.location.radius } );
             marker.addTo(map);
           } else if (!!marker && !!this.props && !!this.props.location) {
             marker.setLatLng(L.latLng(this.props.location.latitude, this.props.location.longitude));
             marker.setRadius(this.props.location.radius);
+          }
+          if (!!this.props.neighborhood) {
+            console.log("DO NEIGHBORHOOD MAP",this.props.neighborhood);
           }
           marker.fitWorld();
           return React.DOM.div({id: "map"});
