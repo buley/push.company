@@ -36,6 +36,7 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
               });
               layer.group = L.layerGroup(layer.data);
               layer.group.addTo(map);
+              map.fitWorld();
               layers[key] = layer;
             }
           }
