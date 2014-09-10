@@ -3,7 +3,6 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
       promise = deferred.promise,
       module = Q.defer(),
       context = {},
-      current,
       augmented;
   module.resolve();
 
@@ -17,7 +16,7 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
             notify = false,
             prev;
         if (!!state.location) {
-          if (!!current) {
+          if (!!augmented) {
             console.log('CURRENT',current.latitude, current.longitude);
             console.log('STATE',state.location.latitude, state.location.longitude);
             if (augmented.latitude !== state.location.latitude ||
@@ -29,9 +28,12 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
               console.log("PREV",JSON.stringify(prev));
               console.log("CURR",JSON.stringify(current));
               context = _.extend(state, {location: current, previous_location: prev});
-              current = state.location;
-              augmented = _.extend({}, state.location);
-              augmented.arrived = Date.now();
+              augmented = {
+                  latitude: state.location.latitude,
+                  longitude: state.location.longitude,
+                  radius: state.location.radius,
+                  arrived:  Date.now()
+              };
               deferred.notify(context);
             }
           } else {
