@@ -10,7 +10,6 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
             map = L.mapbox.map(this.getDOMNode(), 'buley.j737pbkc')
         },
         render: function() {
-          console.log('state',JSON.stringify(this.props));
           if (!marker && !!this.props && !!this.props.location) {
             marker = L.circleMarker( L.latLng(this.props.location.latitude, this.props.location.longitude), { radius: this.props.location.radius } );
             marker.addTo(map);
