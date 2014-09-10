@@ -6,13 +6,13 @@ define(['q', 'underscore'], function(Q, _) {
         interface.then(null, null, function(state) {
           console.log("URLs",state);
           if (!state.route) {
-            context = _.extend(state, {route: current});
             deferred.notify(context);
           } else {
-            context = _.extend({}, state);
             if (JSON.stringify(current) !== JSON.stringify(state.route)) {
               current = context.route;
               updateUrl(current.get, current.hash);
+            } else {
+              context = _.extend(state, {route: current});
             }
           }
         });
