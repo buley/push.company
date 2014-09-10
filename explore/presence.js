@@ -6,6 +6,7 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
       promise = deferred.promise,
       module = Q.defer(),
       augmented,
+      neighborhood,
       fetchNeighbors = function(lat, lon, radius) {
         console.log('fetching neighbors',arguments);
         $.ajax({
@@ -19,6 +20,8 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
           method: 'GET',
           success: function(data) {
             console.log('data',data);
+
+            deferred.notify(context)
           }
         })
       };
@@ -33,6 +36,7 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
         var distance,
             notify = false;
         if (!!state.location) {
+          context = _.extend({}, state);
           if (!!augmented) {
             if (augmented.latitude !== state.location.latitude ||
               augmented.longitude !== state.location.longitude) {
@@ -42,7 +46,8 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
                 console.log("LONG ENOUGH", augmented.duration, durationMinimumMilliseconds(augmented.radius));
               }
               augmented.distance = Infinity === distance ? null : distance;
-              deferred.notify(_.extend(state, {location: state.location, previous_location: augmented}));
+              context = _.extend(state, {location: state.location, previous_location: augmented});
+              notify = true;
               augmented = {
                   latitude: state.location.latitude,
                   longitude: state.location.longitude,
@@ -64,6 +69,14 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
               fetchNeighbors(augmented.latitude, augmented.longitude, augmented.radius)
             }
           }
+
+          if (!!neighborhood && !context.neighborhood) {
+            context.neighborhood = neighborhood;
+          }
+          if (true === notify) {
+            deferred.notify(context);
+          }
+
         }
       });
     },
