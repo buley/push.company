@@ -1,5 +1,10 @@
 define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function(Q, React, dash, $, _, trig) {
-  var deferred = Q.defer(),
+  var durationMinimumMilliseconds = function(radius) {
+        var meters_per_ms = 0.001385824, //3.1mph
+            diameter = 2 * radius,
+        return ((2 * radius) / meters_per_ms);
+      },
+      deferred = Q.defer(),
       promise = deferred.promise,
       module = Q.defer(),
       augmented,
@@ -34,6 +39,9 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
               augmented.longitude !== state.location.longitude) {
               distance = trig.distance(augmented, state.location);
               augmented.duration = Date.now() - augmented.arrived;
+              if (augmented.duration > durationMinimumMilliseconds(augmented.radius)) {
+                console.log("LONG ENOUGH", augmented.duration, durationMinimumMilliseconds(augmented.radius));
+              }
               augmented.distance = Infinity === distance ? null : distance;
               deferred.notify(_.extend(state, {location: state.location, previous_location: augmented}));
               augmented = {
