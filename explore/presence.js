@@ -16,15 +16,13 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
             notify = false;
         if (!!state.location) {
           if (!!augmented) {
-            console.log('CURRENT',augmented.latitude, augmented.longitude);
-            console.log('STATE',state.location.latitude, state.location.longitude);
             if (augmented.latitude !== state.location.latitude ||
               augmented.longitude !== state.location.longitude) {
+              console.log('CURRENT',augmented.latitude, augmented.longitude);
+              console.log('STATE',state.location.latitude, state.location.longitude);
               distance = trig.distance(augmented, state.location);
               augmented.duration = Date.now() - augmented.arrived;
               augmented.distance = Infinity === distance ? null : distance;
-              console.log("PREV",JSON.stringify(augmented));
-              console.log("CURR",JSON.stringify(augmented));
               context = _.extend(state, {location: state.location, previous_location: augmented});
               augmented = {
                   latitude: state.location.latitude,
