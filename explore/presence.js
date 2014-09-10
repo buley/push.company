@@ -56,7 +56,7 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
           if (!!current) {
             context.previous_location = current;
             context.previous_location.duration = Date.now() - context.previous_location.arrived;
-            context.previous_location.distance = Infinity === distance ? 0.0 : null;
+            context.previous_location.distance = Infinity === distance ? null : distance;
           }
           current = context.location;
           current.arrived = Date.now();
