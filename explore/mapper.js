@@ -4,7 +4,7 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
       module = Q.defer(),
       map,
       context = {},
-      layers,
+      layers = {},
       marker,
       component = React.createClass({
         componentDidMount: function() {
@@ -30,7 +30,6 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
               layers[key] = {};
             }
           }
-          //map.fitWorld();
           return React.DOM.div({id: "map"});
         }
       });
