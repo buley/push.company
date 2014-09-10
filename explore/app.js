@@ -79,7 +79,6 @@ requirejs(['q', 'react'], function(Q, React) {
               if (JSON.stringify(next_state) !== previous_state) {
                 previous_state = JSON.stringify(next_state);
                 deferred.notify(ctx);
-                console.log("PROPS", ctx);
                 component.replaceProps(ctx);
               }
             } else {
@@ -95,7 +94,7 @@ requirejs(['q', 'react'], function(Q, React) {
           internal = Q.defer(),
           incoming = function(interface) {
             interface.then(null, null, function(change) {
-              requestStateChange(JSON.parse(JSON.stringify(change)));
+              requestStateChange(change);
             });
           },
           ready = function() {
