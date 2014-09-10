@@ -27,7 +27,9 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
               current = JSON.parse(JSON.stringify(state.location));
               augmented = _.extend({}, state.location);
               augmented.arrived = Date.now();
-              deferred.notify(context);
+              if (JSON.stringify(current) !== JSON.stringify(state.location)) {
+                deferred.notify(context);
+              }
             }
           } else {
             current = JSON.parse(JSON.stringify(state.location));
