@@ -27,7 +27,6 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
                 this.props.location.radius,
               ].join("|");
             if (!layers[key]) {
-              console.log("DO NEIGHBORHOOD MAP",this.props.neighborhood);
               var layer = { data: [] },
                   marker;
               this.props.neighborhood.forEach(function(item) {
@@ -49,6 +48,7 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
               ].join("|");
             if (!!layers[key]) {
               map.removeLayer(layers[key].group);
+              delete layers[key]; 
             }
           }
 
