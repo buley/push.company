@@ -49,11 +49,16 @@ define(['q'], function(Q) {
         var pair,
             vars = qs.split('&'),
             i,
+            val,
             data = {};
         if (!!qs) {
           for (i = 0; i < vars.length; i++) {
               pair = vars[i].split('=');
-              data[pair[0]] = pair[1];
+              val = parseFloat(pair[1], 10);
+              if (true === isNaN(val)) {
+                val = pair[1];
+              }
+              data[pair[0]] = val;
           }
         }
         return data;
