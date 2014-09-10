@@ -15,6 +15,7 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
         var distance,
             notify = false,
             prev;
+        console.log("CURRENT",JSON.stringify(current), JSON.stringify(state.location));
         if (!!state.location && JSON.stringify(current) !== JSON.stringify(state.location)) {
           if (!!current) {
             notify = true;
@@ -25,7 +26,7 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
             current = state.location;
             current.arrived = Date.now();
             console.log("MOVED");
-            //deferred.notify(_.extend(state, {location: state.location, previous_location: prev}));
+            deferred.notify(_.extend(state, {location: state.location, previous_location: prev}));
           } else {
             current = state.location;
             current.arrived = Date.now();
