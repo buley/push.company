@@ -55,17 +55,14 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
           if (!!current) {
             notify = true;
             distance = trig.distance(current, state.location);
-            context.previous_location = current;
-            context.previous_location.duration = Date.now() - context.previous_location.arrived;
-            context.previous_location.distance = Infinity === distance ? null : distance;
+            state.previous_location = current;
+            state.previous_location.duration = Date.now() - context.previous_location.arrived;
+            state.previous_location.distance = Infinity === distance ? null : distance;
           }
           current = state.location;
           current.arrived = Date.now();
-          context.location = current;
-          context = _.extend(state, context);
-          if (true === notify) {
-            deferred.notify(context);
-          }
+          state.location = current;
+          deferred.notify(state);
         } else {
           context = state;
         }
