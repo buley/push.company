@@ -42,6 +42,7 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
                   radius: state.location.radius,
                   arrived:  Date.now()
               };
+              fetchNeighbors(augmented.latitude, augmented.longitude, augmented.radius)
             }
           } else {
             augmented = {
