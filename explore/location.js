@@ -45,17 +45,17 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       map,
       context,
       onPosition = function(position) {
-        current.latitude = position.coords.latitude;
-        current.longitude = position.coords.longitude;
-        current.radius = position.coords.accuracy;
-        if (!context) {
-          context = _.extend({}, {location: current});
-        } else {
-          context = _.extend(context, {location: current});
-        }
         if (position.coords.latitude !== current.latitude ||
             position.coords.longitude !== current.longitude ||
             position.coords.accuracy !== current.radius) {
+          current.latitude = position.coords.latitude;
+          current.longitude = position.coords.longitude;
+          current.radius = position.coords.accuracy;
+          if (!context) {
+            context = _.extend({}, {location: current});
+          } else {
+            context = _.extend(context, {location: current});
+          }
           deferred.notify(context);
         }
       },
