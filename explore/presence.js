@@ -54,7 +54,7 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
           distance = trig.distance(current, state.location);
           context = _.extend(context, state);
           context.previous_location = current;
-          context.previous_location.distance = distance;
+          context.previous_location.distance = Infinity === distance ? 0.0 : distance;
           current = context.location;
           deferred.notify(context);
         }
