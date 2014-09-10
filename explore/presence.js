@@ -3,7 +3,8 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
       promise = deferred.promise,
       module = Q.defer(),
       context = {},
-      current;
+      current,
+      augmented;
   module.resolve();
 
   return {
@@ -20,11 +21,12 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
           if (!!current) {
             notify = true;
             distance = trig.distance(current, state.location);
-            prev = current;
+            prev = augmented;
             prev.duration = Date.now() - prev.arrived;
             prev.distance = Infinity === distance ? null : distance;
             current = state.location;
-            current.arrived = Date.now();
+            augmented = _.extend({}, current);
+            augmented.arrived = Date.now();
             console.log("MOVED");
             deferred.notify(_.extend(state, {location: state.location, previous_location: prev}));
           } else {
