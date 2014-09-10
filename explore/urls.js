@@ -33,7 +33,7 @@ define(['q', 'underscore'], function(Q, _) {
       },
       updateUrl = function(gets, hashes) {
         history.replaceState(
-          {},
+          context,
           window.title,
           [
             window.location.protocol,
@@ -65,6 +65,7 @@ define(['q', 'underscore'], function(Q, _) {
       },
       current = {},
       resetState = function() {
+        console.log('reset state');
         current = {
           get: getQueryStringValues(window.location.search.substring(1)),
           hash: getQueryStringValues(decodeURIComponent(window.location.hash.substring(1)))
