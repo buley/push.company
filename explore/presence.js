@@ -23,10 +23,13 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
             prev = current;
             prev.duration = Date.now() - prev.arrived;
             prev.distance = Infinity === distance ? null : distance;
+            current = state.location;
+            current.arrived = Date.now();
             deferred.notify(_.extend(state, {location: state.location, previous_location: prev}));
+          } else {
+            current = state.location;
+            current.arrived = Date.now();
           }
-          current = state.location;
-          current.arrived = Date.now();
         }
       });
     },
