@@ -17,22 +17,23 @@ define(['q', 'underscore'], function(Q, _) {
       },
       current = {},
       context = {},
-      getQuery = function(obj, prefix) {
+      getQuery = function(obj, prefix, encode) {
         var x = 0,
             attr,
             str = [];
+        encode = encode || false;
         for (attr in obj) {
           if (obj.hasOwnProperty(attr)) {
             str.push([
                 attr,
                 obj[attr]
-            ].join("="));
+            ].join(encode ? "%3D" : "="));
           }
         }
         if (0 === str.length) {
           return "";
         } else {
-          return prefix + encodeURIComponent(str.join("&"));
+          return prefix + str.join(encode ? "%26" : "&"));
         }
       },
       updateUrl = function(gets, hashes) {
@@ -45,7 +46,7 @@ define(['q', 'underscore'], function(Q, _) {
             window.location.host,
             window.location.pathname,
             getQuery(gets, "?"),
-            getQuery(hashes, "#")
+            getQuery(hashes, "#", true)
           ].join("")
         )
       },
