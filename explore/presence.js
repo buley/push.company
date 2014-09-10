@@ -10,6 +10,8 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
       vicinity,
       fetchNeighbors = function(lat, lon, radius) {
         console.log('fetching neighbors',arguments);
+      },
+      fetchVicinity = function(lat, lon, radius) {
         $.ajax({
           dataType: 'json',
           url: [
@@ -20,7 +22,6 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
             ].join(""),
           method: 'GET',
           success: function(data) {
-            console.log('vicinity data',data);
             vicinity = data.Data;
             context = _.extend(context, {vicinity: vicinity});
             deferred.notify(context);
@@ -57,7 +58,8 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
                   arrived:  Date.now()
               };
               if (augmented.latitude !== 0.0 && augmented.longitude !== 0.0) {
-                fetchNeighbors(augmented.latitude, augmented.longitude, augmented.radius)
+                fetchVicinity(augmented.latitude, augmented.longitude, augmented.radius);
+                fetchNeighbors(augmented.latitude, augmented.longitude, augmented.radius);
               }
             }
           } else {
@@ -68,7 +70,8 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
                 arrived:  Date.now()
             };
             if (augmented.latitude !== 0.0 && augmented.longitude !== 0.0) {
-              fetchNeighbors(augmented.latitude, augmented.longitude, augmented.radius)
+              fetchVicinity(augmented.latitude, augmented.longitude, augmented.radius);
+              fetchNeighbors(augmented.latitude, augmented.longitude, augmented.radius);
             }
           }
 
