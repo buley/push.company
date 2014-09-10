@@ -25,7 +25,8 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
             prev.distance = Infinity === distance ? null : distance;
             console.log("OBJ",_.extend(state, {location: current, previous_location: prev}));
             console.log("CURR WAS",JSON.stringify(current));
-            console.log("PRESENT WAS",JSON.stringify(state.location))
+            console.log("PRESENT WAS",JSON.stringify(state.location));
+            console.log("WTF", JSON.stringify(current) === JSON.stringify(state.location));
             current = state.location;
             //deferred.notify(_.extend(state, {location: current, previous_location: prev}));
             augmented = _.extend({}, state.location);
