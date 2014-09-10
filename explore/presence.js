@@ -23,14 +23,16 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
               prev = augmented;
               prev.duration = Date.now() - prev.arrived;
               prev.distance = Infinity === distance ? null : distance;
+              console.log("PREV",JSON.stringify(prev));
+              console.log("CURR",JSON.stringify(current));
               context = _.extend(state, {location: current, previous_location: prev});
-              current = JSON.parse(JSON.stringify(state.location));
+              current = state.location;
               augmented = _.extend({}, state.location);
               augmented.arrived = Date.now();
               deferred.notify(context);
             }
           } else {
-            current = JSON.parse(JSON.stringify(state.location));;
+            current = state.location;
             augmented = _.extend({}, state.location);
             augmented.arrived = Date.now();
           }
