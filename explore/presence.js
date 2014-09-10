@@ -9,6 +9,7 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
       fetchNeighbors = function(lat, lon, radius) {
         console.log('fetching neighbors',arguments);
         $.ajax({
+          dataType: 'json',
           url: [
             'http://23.236.54.41/presence?',
             'latitude=' + lat + '&',
