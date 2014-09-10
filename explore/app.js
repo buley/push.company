@@ -80,7 +80,6 @@ requirejs(['q', 'react'], function(Q, React) {
               }
               component.replaceProps(ctx);
               if (next_state !== previous_state) {
-                console.log("NOTIFY STATE", next_state, previous_state);
                 previous_state = next_state;
                 deferred.notify(ctx);
               }
@@ -88,9 +87,7 @@ requirejs(['q', 'react'], function(Q, React) {
           },
           requestStateChange = function(change) {
             state_queue.push(JSON.stringify(change));
-            setTimeout(function() {
-              doStateChange();
-            }, 100);
+            doStateChange();
           },
           internal = Q.defer(),
           incoming = function(interface) {
