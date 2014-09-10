@@ -13,14 +13,14 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
         render: function() {
           var key;
           if (!marker && !!this.props && !!this.props.location) {
-            marker = L.circleMarker( L.latLng(this.props.location.latitude, this.props.location.longitude), {
+            marker = L.circleMarker( [this.props.location.latitude, this.props.location.longitude], {
               color: '#000',
               fill: false,
               radius: this.props.location.radius
             } );
             marker.addTo(map);
           } else if (!!marker && !!this.props && !!this.props.location) {
-            marker.setLatLng(L.latLng(this.props.location.latitude, this.props.location.longitude));
+            marker.setLatLng([this.props.location.latitude, this.props.location.longitude]);
             marker.setRadius(this.props.location.radius);
           }
           if (!!this.props.neighborhood) {
