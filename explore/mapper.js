@@ -34,9 +34,9 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
                   layer.data.push(L.marker([item.Location.Latitude, item.Location.Longitude]).bindPopup(place.Name));
                 });
               });
-              layer.group = L.layerGroup(layer.data);
+              layer.group = L.featureGroup(layer.data);
               layer.group.addTo(map);
-              map.fitBounds(layer.group.getBounds());
+              map.fitBounds(layer.group.getBounds())
               layers[key] = layer;
             }
           }
