@@ -53,7 +53,9 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         } else {
           context = _.extend(context, {location: current});
         }
-        if (position.coords.latitude !== current.latitude || position.coords.longitude !== current.longitude || position.coords.accuracy !== current.radius) {
+        if (position.coords.latitude !== current.latitude ||
+            position.coords.longitude !== current.longitude ||
+            position.coords.accuracy !== current.radius) {
           deferred.notify(context);
         }
       },
