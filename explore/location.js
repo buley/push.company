@@ -51,10 +51,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           current.latitude = position.coords.latitude;
           current.longitude = position.coords.longitude;
           current.radius = position.coords.accuracy;
-          if (!context) {
-            context = {};
-          }
-          deferred.notify(_.extend(context, {location: current, previous_location: null}));
+          deferred.notify(_.extend(context || {}, {location: current, previous_location: null}));
         }
       },
       onPositionError = function(err) {
