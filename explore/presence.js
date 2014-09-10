@@ -24,7 +24,7 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
               augmented.duration = Date.now() - augmented.arrived;
               augmented.distance = Infinity === distance ? null : distance;
               console.log("PREV",JSON.stringify(augmented));
-              console.log("CURR",JSON.stringify(agumented));
+              console.log("CURR",JSON.stringify(augmented));
               context = _.extend(state, {location: state.location, previous_location: augmented});
               augmented = {
                   latitude: state.location.latitude,
