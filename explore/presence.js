@@ -16,23 +16,24 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
         var distance,
             notify = false,
             prev;
-        if (!!state.location && JSON.stringify(current) !== JSON.stringify(state.location)) {
+        if (!!state.location) {
           if (!!current) {
             if (JSON.stringify(current) !== JSON.stringify(state.location)) {
               distance = trig.distance(current, state.location);
               prev = augmented;
               prev.duration = Date.now() - prev.arrived;
               prev.distance = Infinity === distance ? null : distance;
-              deferred.notify(_.extend(state, {location: current, previous_location: prev}));
+              context = _.extend(state, {location: current, previous_location: prev});
+              current = JSON.parse(JSON.stringify(state.location));
+              augmented = _.extend({}, state.location);
+              augmented.arrived = Date.now();
+              deferred.notify(context);
             }
+          } else {
             current = JSON.parse(JSON.stringify(state.location));
             augmented = _.extend({}, state.location);
             augmented.arrived = Date.now();
           }
-        } else if (!!state.location) {
-          current = state.location;
-          augmented = _.extend({}, state.location);
-          augmented.arrived = Date.now();
         }
       });
     },
