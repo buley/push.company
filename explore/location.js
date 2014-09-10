@@ -48,12 +48,15 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         if (position.coords.latitude !== current.latitude ||
             position.coords.longitude !== current.longitude ||
             position.coords.accuracy !== current.radius) {
+          var previous = current;
           current.latitude = position.coords.latitude;
           current.longitude = position.coords.longitude;
           current.radius = position.coords.accuracy;
+          current.arrived = Date.new();
           if (!context) {
-            deferred.notify(_.extend(context, {location: current, previous_location: null}));
+            context = {};
           }
+          deferred.notify(_.extend(context, {location: current, previous_location: previous}));
         }
       },
       onPositionError = function(err) {
