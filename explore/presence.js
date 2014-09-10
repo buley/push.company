@@ -57,7 +57,7 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
             context.previous_location.duration = Date.now() - context.previous_location.arrived;
             context.previous_location.distance = Infinity === distance ? null : distance;
           }
-          current = context.location;
+          current = state.location;
           current.arrived = Date.now();
           context = _.extend(state, {location: current});
           deferred.notify(context);
