@@ -16,13 +16,20 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           } else {
             context = state;
             if (!!context.route && !!!!context.route.hash) {
-              if (!!context.route.hash.latitude && !!context.route.hash.latitude) {
-                current.latitude = context.route.hash.latitude;
-                current.longitude = context.route.hash.longitude;
-                context.location = current;
-                if (!!context.route.hash) {
-                  delete context.route.hash.latitude;
-                  delete context.route.hash.longitude;
+              if (!!context.route.hash.latitude || !!context.route.hash.longitude) {
+                if (!!context.route.hash.latitude) {
+                  current.latitude = context.route.hash.latitude;
+                  context.location = current;
+                  if (!!context.route.hash) {
+                    delete context.route.hash.latitude;
+                  }
+                }
+                if (!!context.route.hash.longitude) {
+                  current.longitude = context.route.hash.longitude;
+                  context.location = current;
+                  if (!!context.route.hash) {
+                    delete context.route.hash.longitude;
+                  }
                 }
                 deferred.notify(context);
               }
