@@ -27,6 +27,7 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
               ].join("|");
             if (!layers[key]) {
               console.log("DO NEIGHBORHOOD MAP",this.props.neighborhood);
+              layers[key] = {};
             }
           }
           map.fitWorld();
