@@ -67,16 +67,19 @@ define(['q', 'underscore'], function(Q, _) {
         }
         return data;
       },
-      resetState = function() {
+      resetState = function(e) {
         current = {
           get: getQueryStringValues(window.location.search.substring(1)),
           hash: getQueryStringValues(decodeURIComponent(window.location.hash.substring(1)))
         };
+        if (null !== e) {
+          deferred.notify(_.extend(context, {route: current}));
+        }
       };
 
 
   window.addEventListener( 'popstate', resetState );
-  resetState();
+  resetState(null);
 
   module.resolve();
 
