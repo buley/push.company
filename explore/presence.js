@@ -34,7 +34,11 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
               deferred.notify(context);
             }
           } else {
-            current = state.location;
+            current = {
+                latitude: state.location.latitude,
+                longitude: state.location.longitude,
+                radius: state.location.radius
+            };
             augmented = _.extend({}, state.location);
             augmented.arrived = Date.now();
           }
