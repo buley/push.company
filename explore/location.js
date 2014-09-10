@@ -14,7 +14,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           if (!context) {
             context = _.extend(state, { location: current });
           } else {
-            context = state;
+            context = _.extend({}, state);
             if (!!context.route && !!!!context.route.hash) {
               if (!!context.route.hash.latitude || !!context.route.hash.longitude) {
                 if (!!context.route.hash.latitude) {
