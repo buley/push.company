@@ -10,9 +10,10 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       },
       incoming = function(interface) {
         interface.then(null, null, function(state) {
+          var notify = false;
           if (!context) {
             context = _.extend({ location: current }, state);
-            deferred.notify(context);
+            notify = true;
           } else {
             context = state;
             if (!!context.route && !!!!context.route.hash) {
@@ -20,20 +21,25 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
                 if (!!context.route.hash.latitude) {
                   current.latitude = context.route.hash.latitude;
                   context.location = current;
-                  if (!!context.route.hash) {
-                    delete context.route.hash.latitude;
-                  }
+                  delete context.route.hash.latitude;
                 }
                 if (!!context.route.hash.longitude) {
                   current.longitude = context.route.hash.longitude;
                   context.location = current;
-                  if (!!context.route.hash) {
-                    delete context.route.hash.longitude;
-                  }
+                  delete context.route.hash.longitude;
                 }
-                deferred.notify(context);
+                notify = true;
+              }
+              if (!!context.route.hash.radius) {
+                current.radius = context.route.hash.radius;
+                context.location = current;
+                delete context.route.hash.radius;
+                notify = true;
               }
             }
+          }
+          if (true === notify) {
+            deferred.notify(context);
           }
 
         });
