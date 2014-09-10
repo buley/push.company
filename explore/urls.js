@@ -4,7 +4,6 @@ define(['q', 'underscore'], function(Q, _) {
       previous,
       incoming = function(interface) {
         interface.then(null, null, function(state) {
-          console.log("URLs",state);
           if (!state.route) {
             context = _.extend(state, {route: current});
             deferred.notify(context);
