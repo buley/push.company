@@ -27,10 +27,12 @@ define(['q', 'jquery' ], function(Q, $) {
             Math.sin(deltaLon/2) * Math.sin(deltaLon/2);
         c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
         distance = R * c;
+        console.log("DISTANCE in meters",distance);
         if (!radius1 || !radius2) {
           return distance;
         }
-        return distance;
+        console.log("RADIUS",radius1,radius2);
+        return 0.0;
     }
   }
 });
