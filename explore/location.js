@@ -15,7 +15,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             context = _.extend(state, { location: current });
           } else {
             context = _.extend({}, state);
-            if (!!context.route && !!!!context.route.hash) {
+            if (!!context.route && !!context.route.hash) {
               if (!!context.route.hash.latitude || !!context.route.hash.longitude) {
                 if (!!context.route.hash.latitude) {
                   current.latitude = context.route.hash.latitude;
@@ -53,7 +53,9 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         } else {
           context = _.extend(context, {location: current});
         }
-        deferred.notify(context);
+        if (position.coords.latitude !== current.latitude || position.coords.longitude !== current.longitude || position.coords.accuracy !== current.radius) {
+          deferred.notify(context);
+        }
       },
       onPositionError = function(err) {
         console.log("location.js position error", err);
