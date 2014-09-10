@@ -52,7 +52,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           current.longitude = position.coords.longitude;
           current.radius = position.coords.accuracy;
           if (!!context) {
-            deferred.notify(_.extend(context, {location: current, previous_location: null}));
+            deferred.notify(_.extend(context, {location: current}));
           }
         }
       },
