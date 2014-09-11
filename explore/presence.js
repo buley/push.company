@@ -31,17 +31,21 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig'], function(
             def.resolve(vicinity);
             if (!!vicinity && vicinity.length > 0) {
               vicinity.forEach(function(item) {
-                var place = item.Place;
-                place.Latitude = item.Location.Latitude;
-                place.Longitude = item.Location.Longitude;
-                place.Radius = item.Location.Radius;
-                dash.add.entry({
-                  database: database,
-                  store: store,
-                  data: place
-                })(function(ctx){
-                  console.log("Place added", ctx.data);
-                });
+                if (!!item.Places && item.Places.length > 0) {
+                  item.Places.forEach(function(place) {
+
+                    place.Latitude = item.Location.Latitude;
+                    place.Longitude = item.Location.Longitude;
+                    place.Radius = item.Location.Radius;
+                    dash.add.entry({
+                      database: database,
+                      store: store,
+                      data: place
+                    })(function(ctx){
+                      console.log("Place added", ctx.data);
+                    });
+                  });
+                }
               });
             }
           }
