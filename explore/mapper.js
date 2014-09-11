@@ -10,8 +10,10 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
       marker,
       control,
       overlays = [ "Hyperlocal", "Local" ],
+      instance,
       component = React.createClass({
         componentDidMount: function() {
+            instance = this;
             map = L.mapbox.map(this.getDOMNode(), 'buley.j737pbkc');
             map.on('baselayerchange', onBaseLayerChange);
             map.on('overlayadd', onOverlayAdd);
