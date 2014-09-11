@@ -34,15 +34,11 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
             if (!layers[key]) {
               layer = { data: [] };
               if (!!this.props.neighborhood && this.props.neighborhood.length > 0) {
-                this.props.neighborhood.forEach(function(item) {
-                  if (!!item.Places && item.Places.length > 0) {
-                    item.Places.forEach(function(place) {
-                      layer.data.push(
-                        L.marker([item.Latitude, item.Longitude])
-                        .bindPopup(place.Name)
-                      );
-                    });
-                  }
+                this.props.neighborhood.forEach(function(place) {
+                  layer.data.push(
+                    L.marker([item.Latitude, item.Longitude])
+                    .bindPopup(place.Name)
+                  );
                 });
               }
               if (layer.data.length > 0) {
