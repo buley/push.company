@@ -10,7 +10,7 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
       vicinities = {},
       marker,
       control,
-      overlays = [ "Hyperlocal", "Local" ],
+      overlays = [ "Hyperlocal" ],
       instance,
       component = React.createClass({
         componentDidMount: function() {
