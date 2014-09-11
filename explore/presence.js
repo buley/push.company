@@ -34,6 +34,7 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
 
   dash.get.database({'database': 'push' })(function(ctx){
     ctx.store_key_path = 'Id';
+    ctx.store = 'Places4';
     dash.get.store(ctx)(function(ctx2){
       ctx2.index = 'Name';
       ctx2.index_key_path = 'Name';
