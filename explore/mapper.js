@@ -6,6 +6,7 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
       context = {},
       layers = {},
       control_layers,
+      map_state = {},
       vicinities = {},
       marker,
       control,
@@ -133,14 +134,18 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
       },
       onOverlayRemove = function(e) {
         overlays = _.without(overlays, e.name);
+        map_state.overlays = overlays;
+        context = _.extend(context, { map: map_state});
+        deferred.notify(context);
         console.log('onOverlayRemove',e.name, overlays);
-        instance.render();
       },
       onOverlayAdd = function(e) {
         overlays.push(e.name);
         overlays = _.unique(overlays);
+        map_state.overlays = overlays;
+        context = _.extend(context, { map: map_state});
+        deferred.notify(context);
         console.log('onOverlayAdd',e.name, overlays);
-        instance.render();
       };
 
   module.resolve(component);
