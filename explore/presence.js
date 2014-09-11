@@ -12,13 +12,16 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig'], function(
       vicinity,
       fetchNeighbors = function(lat, lon, radius) {
         console.log('fetching neighbors',arguments);
+        neighborhood = [];
         dash.get.entries({
           database: database,
           store: store,
-          store_key_path: 'Id',
-          collect: true
-        })(function(ctx){
-          console.log('x',ctx);
+          store_key_path: 'Id'
+        })(function(ctx) {
+          context = _.extend(context, {neighborhood: neighborhood});
+          deferred.notify(context);
+        }, null, function(ctx){
+          neighborhood.push(ctx.entry);
         });
       },
       fetchVicinity = function(lat, lon, radius) {
