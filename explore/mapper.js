@@ -15,7 +15,7 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
         render: function() {
           var key,
               layer,
-              control_layers = {};
+              control_layers;
           if (!marker && !!this.props && !!this.props.location) {
             marker = L.circleMarker( [this.props.location.latitude, this.props.location.longitude], {
               color: '#000',
@@ -48,6 +48,7 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
                 layer.group.addTo(map);
                 map.fitBounds(layer.group.getBounds())
                 layers[key] = layer;
+                control_layers = control_layers || {};
                 control_layers["Local"] = layer.group;
               }
             }
@@ -83,6 +84,7 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
               if (layer.data.length > 0) {
                 layer.group = L.featureGroup(layer.data);
                 layer.group.addTo(map);
+                control_layers = control_layers || {};
                 control_layers["Hyperlocal"] = layer.group;
                 map.fitBounds(layer.group.getBounds())
                 vicinities[key] = layer;
