@@ -158,18 +158,17 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
     incoming: function(interface) {
       interface.then(null, null, function(state) {
         var notify = false;
-        if (!state.presence || JSON.stringify(state.presence) !== JSON.stringify(presence)) {
+        if (!state.presence || JSON.stringify(state.presence) !== JSON.stringify(present)) {
           state.presence = present;
           notify = true;
         }
-        if (!state.previous_presence || JSON.stringify(state.previous_presence) !== JSON.stringify(previous_presence)) {
+        if (!state.previous_presence || JSON.stringify(state.previous_presence) !== JSON.stringify(was_present)) {
           state.previous_presence = was_present;
           notify = true;
         }
         if (true === notify) {
           deferred.notify(state);
         }
-
         context = state;
       });
     },
