@@ -23,7 +23,6 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
         }
       }),
       renderMap = function() {
-
         var key,
             layer,
             ids = [];
@@ -129,11 +128,13 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
       onOverlayRemove = function(e) {
         overlays = _.without(overlays, e.name);
         console.log('onOverlayRemove',overlays);
+        renderMap();
       },
       onOverlayAdd = function(e) {
         overlays.push(e.name);
         overlays = _.unique(overlays);
         console.log('onOverlayAdd',overlays);
+        renderMap();
       };
 
   module.resolve(component);
