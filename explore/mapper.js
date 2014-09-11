@@ -128,18 +128,18 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
       },
       onBaseLayerChange = function(e) {
         console.log('onBaseLayerChange',e);
-        renderMap.apply(component, []);
+        renderMap.apply({props: component.props }, []);
       },
       onOverlayRemove = function(e) {
         overlays = _.without(overlays, e.name);
         console.log('onOverlayRemove',overlays);
-        renderMap.apply(component, []);
+        renderMap.apply({props: component.props }, []);
       },
       onOverlayAdd = function(e) {
         overlays.push(e.name);
         overlays = _.unique(overlays);
         console.log('onOverlayAdd',overlays);
-        renderMap.apply(component, []);
+        renderMap.apply({props: component.props }, []);
       };
 
   module.resolve(component);
