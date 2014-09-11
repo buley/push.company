@@ -107,7 +107,7 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
             control.addTo(map);
           } else if (!!map && !!control_layers && !!control) {
             control.removeFrom(map);
-            control = L.control.layers(control_layers)
+            control = L.control.layers({}, control_layers)
             control.addTo(map);
           }
 
