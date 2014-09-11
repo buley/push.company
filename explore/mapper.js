@@ -77,7 +77,7 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
               this.props.location.radius,
             ].join("|");
           if (!!layers[key]) {
-            map.removeLayer(layers[key].group);
+            //map.removeLayer(layers[key].group);
             delete layers[key];
           }
           layer = { data: ( !!layer ? layer.data || [] : [] ) };
@@ -113,7 +113,7 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
             delete vicinities[key];
           }
           if (!!layers[key]) {
-            map.removeLayer(layers[key].group);
+            //map.removeLayer(layers[key].group);
             delete layers[key];
           }
         }
