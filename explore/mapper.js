@@ -89,7 +89,9 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
           if (layer.data.length > 0) {
             layer.group = L.featureGroup(layer.data);
             map.fitBounds(layer.group.getBounds());
-            layer.group.addTo(map);
+            if (_.contains(overla"Local")) {
+              layer.group.addTo(map);
+            }
             layers[key] = layer;
             control_layers = control_layers || {};
             control_layers["Local"] = layer.group;
