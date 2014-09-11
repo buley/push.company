@@ -51,11 +51,15 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
               ].join("|");
             if (!vicinities[key]) {
               var layer = { data: [] };
-              this.props.vicinity.forEach(function(item) {
-                item.Places.forEach(function(place) {
-                  layer.data.push(L.marker([item.Location.Latitude, item.Location.Longitude]).bindPopup(place.Name));
+              if (!!this.props.vicinity && this.props.vicinity.length > 0) {
+                this.props.vicinity.forEach(function(item) {
+                  if (!!item.Places && item.Places.length > 0) {
+                    item.Places.forEach(function(place) {
+                      layer.data.push(L.marker([item.Location.Latitude, item.Location.Longitude]).bindPopup(place.Name));
+                    });
+                  }
                 });
-              });
+              }
               layer.group = L.featureGroup(layer.data);
               layer.group.addTo(map);
               map.fitBounds(layer.group.getBounds())
