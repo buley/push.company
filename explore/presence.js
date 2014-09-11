@@ -36,8 +36,8 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig'], function(
     console.log('d1',ctx.db);
     dash.get.store({
       database: 'push2',
-      store_key_path: 'Id',
-      store: 'Places4'
+      store: 'Places4',
+      store_key_path: 'Id'
     })(function(ctx2){
 
     console.log('d2',ctx2);
