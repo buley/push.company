@@ -12,6 +12,7 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
         console.log('fetching neighbors',arguments);
       },
       fetchVicinity = function(lat, lon, radius) {
+        var def = Q.defer();
         $.ajax({
           dataType: 'json',
           url: [
@@ -25,8 +26,10 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
             vicinity = data.Data;
             context = _.extend(context, {vicinity: vicinity});
             deferred.notify(context);
+            def.success(vicinity);
           }
-        })
+        });
+        return def;
       };
   module.resolve();
 
@@ -58,7 +61,7 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
                   arrived:  Date.now()
               };
               if (augmented.latitude !== 0.0 && augmented.longitude !== 0.0) {
-                fetchVicinity(augmented.latitude, augmented.longitude, augmented.radius, function(vicinity) {
+                fetchVicinity(augmented.latitude, augmented.longitude, augmented.radius).then(function(vicinity) {
                   fetchNeighbors(augmented.latitude, augmented.longitude, augmented.radius);
                 });
               }
@@ -71,7 +74,7 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
                 arrived:  Date.now()
             };
             if (augmented.latitude !== 0.0 && augmented.longitude !== 0.0) {
-              fetchVicinity(augmented.latitude, augmented.longitude, augmented.radius, function(vicinity) {
+              fetchVicinity(augmented.latitude, augmented.longitude, augmented.radius).then(function(vicinity) {
                 fetchNeighbors(augmented.latitude, augmented.longitude, augmented.radius);
               });
             }
