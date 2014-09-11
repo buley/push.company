@@ -14,7 +14,11 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
             map = L.mapbox.map(this.getDOMNode(), 'buley.j737pbkc')
         },
         render: function() {
-          var key,
+          var key = [
+              this.props.location.latitude,
+              this.props.location.longitude,
+              this.props.location.radius,
+            ].join("|"),
               layer,
               ids = [];
           if (!marker && !!this.props && !!this.props.location) {
@@ -29,11 +33,6 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
             marker.setRadius(this.props.location.radius);
           }
           if (!!this.props.vicinity) {
-            key = [
-                this.props.location.latitude,
-                this.props.location.longitude,
-                this.props.location.radius,
-              ].join("|");
             if (!!vicinities[key]) {
               map.removeLayer(vicinities[key].group);
               delete vicinities[key];
@@ -58,11 +57,6 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
             }
           }
           if (!!this.props.neighborhood) {
-            key = [
-                this.props.location.latitude,
-                this.props.location.longitude,
-                this.props.location.radius,
-              ].join("|");
             if (!!layers[key]) {
               map.removeLayer(layers[key].group);
               delete layers[key];
