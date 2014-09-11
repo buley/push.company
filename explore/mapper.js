@@ -44,10 +44,12 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
                   }
                 });
               }
-              layer.group = L.featureGroup(layer.data);
-              layer.group.addTo(map);
-              map.fitBounds(layer.group.getBounds())
-              layers[key] = layer;
+              if (layer.data.length > 0) {
+                layer.group = L.featureGroup(layer.data);
+                layer.group.addTo(map);
+                map.fitBounds(layer.group.getBounds())
+                layers[key] = layer;
+              }
             }
           }
           if (!!this.props.vicinity) {
@@ -67,10 +69,12 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
                   }
                 });
               }
-              layer.group = L.featureGroup(layer.data);
-              layer.group.addTo(map);
-              map.fitBounds(layer.group.getBounds())
-              vicinities[key] = layer;
+              if (layer.data.length > 0) {
+                layer.group = L.featureGroup(layer.data);
+                layer.group.addTo(map);
+                map.fitBounds(layer.group.getBounds())
+                vicinities[key] = layer;
+              }
             }
           }
           if (!!this.props.previous_location) {
