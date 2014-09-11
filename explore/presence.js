@@ -32,8 +32,6 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig'], function(
         return def.promise;
       };
 
-  dash.get.database({'database': 'push5', 'store': 'Places1', store_key_path: 'Id' })(function(ctx2){
-    console.log('d1',ctx2.db, ctx2.objectstore);
       dash.get.index({
         database: 'push5',
         store: 'Places1',
@@ -59,7 +57,6 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig'], function(
           });
         });
       });
-  });
 
   module.resolve();
 
