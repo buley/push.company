@@ -32,7 +32,7 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig'], function(
         return def.promise;
       };
 
-  dash.get.database({'database': 'push' })(function(ctx){
+  dash.get.database({'database': 'push1' })(function(ctx){
     ctx.store_key_path = 'Id';
     ctx.store = 'Places4';
     console.log('d1', ctx);
