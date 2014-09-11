@@ -33,16 +33,18 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig'], function(
       };
 
   dash.get.database({'database': 'push1' })(function(ctx){
-    dash.get.store(_.extend(ctx, {
+    dash.get.store({
+      database: 'push1',
       store_key_path: 'Id',
       store: 'Places4'
-    }))(function(ctx2){
-      ctx2.index = 'Name';
-      ctx2.index_key_path = 'Name';
-      ctx2.index_unique = false;
-      ctx2.index_multi_entry = false;
+    })(function(ctx2){
       console.log('d2');
-      dash.get.index(ctx2)(function(ctx3){
+      dash.get.index({
+        database: 'push',
+        store: 'Places4',
+        index: 'Name',
+        index_key_path: 'Name'
+      })(function(ctx3){
         ctx2.index = 'Latitude';
         ctx2.index_key_path = 'Latitude';
         ctx2.index_unique = false;
