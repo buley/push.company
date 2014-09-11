@@ -34,6 +34,7 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig'], function(
 
   dash.get.database({'database': 'push3' })(function(ctx){
     console.log('d1',ctx.db);
+    dash.remove.database({'database': 'push2', 'store': 'Places2', key_path: 'Id' })(function(ctx){ console.log('x',ctx); });
     dash.get.store({
       database: 'push3',
       store: 'Places4',
