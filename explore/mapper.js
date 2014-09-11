@@ -63,8 +63,8 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
           }
           if (layer.data.length > 0) {
             layer.group = L.featureGroup(layer.data);
-            if (_.contains(overlays, "Hyperlocal")) {
-              //layer.group.addTo(map);
+            if (_.contains(this.props.map.overlays, "Hyperlocal")) {
+              layer.group.addTo(map);
             }
             control_layers = control_layers || {};
             control_layers["Hyperlocal"] = layer.group;
@@ -84,7 +84,7 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
           layer = { data: ( !!layer ? layer.data || [] : [] ) };
           if (!!this.props.neighborhood && this.props.neighborhood.length > 0) {
             this.props.neighborhood.forEach(function(place) {
-              if (false === _.contains(overlays, "Hyperlocal") || false === _.contains(ids, place.Id)) {
+              if (false === _.contains(this.props.map.overlays, "Hyperlocal") || false === _.contains(ids, place.Id)) {
                 layer.data.push(
                   L.marker([place.Latitude, place.Longitude]).bindPopup(place.Name)
                 );
@@ -94,8 +94,8 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
           if (layer.data.length > 0) {
             layer.group = L.featureGroup(layer.data);
             map.fitBounds(layer.group.getBounds());
-            if (_.contains(overlays, "Local")) {
-              //layer.group.addTo(map);
+            if (_.contains(this.props.map.overlays, "Local")) {
+              layer.group.addTo(map);
             }
             layers[key] = layer;
             control_layers = control_layers || {};
@@ -120,11 +120,9 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
         }
         if (!!map && !control && !!control_layers) {
           console.log('CONTROL',control_layers);
-          control = L.control.layers(control_layers)
           control.addTo(map);
         } else if (!!map && !!control_layers && !!control) {
           control.removeFrom(map);
-          control = L.control.layers({}, control_layers)
           control.addTo(map);
         }
 
