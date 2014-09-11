@@ -9,7 +9,7 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
       vicinities = {},
       marker,
       control,
-      overlays = [],
+      overlays = [ "Hyperlocal", "Local" ],
       onBaseLayerChange = function(e) {
         console.log('onBaseLayerChange',e);
       },
@@ -95,7 +95,8 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
             }
             if (layer.data.length > 0) {
               layer.group = L.featureGroup(layer.data);
-              map.fitBounds(layer.group.getBounds())
+              map.fitBounds(layer.group.getBounds());
+              layer.group.addTo(map);
               layers[key] = layer;
               control_layers = control_layers || {};
               control_layers["Local"] = layer.group;
