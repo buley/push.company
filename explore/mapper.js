@@ -103,8 +103,7 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
 
           if (!!map && !control) {
             console.log('CONTROL',control_layers);
-            control = L.control({'position': 'topright'});
-            control.addTo(map);
+            control = L.control.layers(control_layers).addTo(map);
 
           }
 
