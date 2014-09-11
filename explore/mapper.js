@@ -18,7 +18,7 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
             map.on('overlayremove', onOverlayRemove);
         },
         render: function() {
-          renderMap();
+          renderMap.apply(this, arguments);
           return React.DOM.div({id: "map"});
         }
       }),
