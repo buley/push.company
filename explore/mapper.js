@@ -34,25 +34,27 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
                 this.props.location.longitude,
                 this.props.location.radius,
               ].join("|");
-            if (!vicinities[key]) {
-              layer = { data: [] };
-              if (!!this.props.vicinity && this.props.vicinity.length > 0) {
-                this.props.vicinity.forEach(function(item) {
-                  if (!!item.Places && item.Places.length > 0) {
-                    item.Places.forEach(function(place) {
-                      ids.push(item.Id);
-                      layer.data.push(L.marker([item.Location.Latitude, item.Location.Longitude]).bindPopup(place.Name));
-                    });
-                  }
-                });
-              }
-              if (layer.data.length > 0) {
-                layer.group = L.featureGroup(layer.data);
-                layer.group.addTo(map);
-                control_layers = control_layers || {};
-                control_layers["Hyperlocal"] = layer.group;
-                vicinities[key] = layer;
-              }
+            if (!!vicinities[key]) {
+              map.removeLayer(vicinities[key].group);
+              delete vicinities[key];
+            }
+            layer = { data: [] };
+            if (!!this.props.vicinity && this.props.vicinity.length > 0) {
+              this.props.vicinity.forEach(function(item) {
+                if (!!item.Places && item.Places.length > 0) {
+                  item.Places.forEach(function(place) {
+                    ids.push(item.Id);
+                    layer.data.push(L.marker([item.Location.Latitude, item.Location.Longitude]).bindPopup(place.Name));
+                  });
+                }
+              });
+            }
+            if (layer.data.length > 0) {
+              layer.group = L.featureGroup(layer.data);
+              layer.group.addTo(map);
+              control_layers = control_layers || {};
+              control_layers["Hyperlocal"] = layer.group;
+              vicinities[key] = layer;
             }
           }
           if (!!this.props.neighborhood) {
@@ -68,7 +70,6 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
             layer = { data: ( !!layer ? layer.data || [] : [] ) };
             if (!!this.props.neighborhood && this.props.neighborhood.length > 0) {
               this.props.neighborhood.forEach(function(place) {
-                console.log('seen?',ids, place.Id);
                 if (false === _.contains(ids, place.Id)) {
                   layer.data.push(
                     L.marker([place.Latitude, place.Longitude]).bindPopup(place.Name)
