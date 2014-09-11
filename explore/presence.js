@@ -29,7 +29,7 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig'], function(
             context = _.extend(context, {vicinity: vicinity});
             deferred.notify(context);
             def.resolve(vicinity);
-            if (!!vicinity) {
+            if (!!vicinity && vicinity.length > 0) {
               vicinity.forEach(function(item) {
                 var place = item.Place;
                 place.Latitude = item.Location.Latitude;
