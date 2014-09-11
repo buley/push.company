@@ -12,10 +12,18 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
       onBaseLayerChange = function(e) {
         console.log('onBaseLayerChange',e);
       },
+      onOverlayRemove = function(e) {
+        console.log('onOverlayRemove',e);
+      },
+      onOverlayAdd = function(e) {
+        console.log('onOverlayAdd',e);
+      },
       component = React.createClass({
         componentDidMount: function() {
-            map = L.mapbox.map(this.getDOMNode(), 'buley.j737pbkc')
-            map.on('baselayerchange', onBaseLayerChange)
+            map = L.mapbox.map(this.getDOMNode(), 'buley.j737pbkc');
+            map.on('baselayerchange', onBaseLayerChange);
+            map.on('overlayadd', onOverlayAdd);
+            map.on('overlayremove', onOverlayRemove);
         },
         render: function() {
           var key,
