@@ -60,7 +60,9 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
           }
           if (layer.data.length > 0) {
             layer.group = L.featureGroup(layer.data);
-            layer.group.addTo(map);
+            if (_.contains(overlays, "Hyperlocal")) {
+              layer.group.addTo(map);
+            }
             control_layers = control_layers || {};
             control_layers["Hyperlocal"] = layer.group;
             vicinities[key] = layer;
@@ -89,7 +91,7 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
           if (layer.data.length > 0) {
             layer.group = L.featureGroup(layer.data);
             map.fitBounds(layer.group.getBounds());
-            if (_.contains(overla"Local")) {
+            if (_.contains(overlays, "Local")) {
               layer.group.addTo(map);
             }
             layers[key] = layer;
