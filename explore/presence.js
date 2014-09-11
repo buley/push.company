@@ -12,7 +12,7 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig'], function(
       vicinity,
       fetchNeighbors = function(lat, lon, radius) {
         console.log('fetching neighbors',arguments);
-        dash.get.entries({
+        /*dash.get.entries({
           'database': 'push',
           'store': 'Places'
         })(function(ctx){
@@ -21,8 +21,7 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig'], function(
           console.log('e',e);
         }, function(ctx){
           console.log('c',ctx);
-        });
-
+        });*/
       },
       fetchVicinity = function(lat, lon, radius) {
         var def = Q.defer();
@@ -44,7 +43,6 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig'], function(
               vicinity.forEach(function(item) {
                 if (!!item.Places && item.Places.length > 0) {
                   item.Places.forEach(function(place) {
-
                     place.Latitude = item.Location.Latitude;
                     place.Longitude = item.Location.Longitude;
                     place.Radius = item.Location.Radius;
