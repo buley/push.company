@@ -32,13 +32,14 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig'], function(
         return def.promise;
       };
 
-  dash.get.database({'database': 'push1' })(function(ctx){
+  dash.get.database({'database': 'push2' })(function(ctx){
+    console.log('d1',ctx);
     dash.get.store({
       database: 'push1',
       store_key_path: 'Id',
       store: 'Places4'
     })(function(ctx2){
-      console.log('d2');
+      console.log('d2',ctx2);
       dash.get.index({
         database: 'push',
         store: 'Places4',
@@ -49,7 +50,7 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig'], function(
         ctx2.index_key_path = 'Latitude';
         ctx2.index_unique = false;
         ctx2.index_multi_entry = false;
-        console.log('d3');
+        console.log('d3',ctx3);
         dash.get.index(ctx2)(function(ctx4){
           ctx2.index = 'Longitude';
           ctx2.index_key_path = 'Longitude';
