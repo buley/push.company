@@ -75,7 +75,6 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
                 layer.group.addTo(map);
                 control_layers = control_layers || {};
                 control_layers["Hyperlocal"] = layer.group;
-                map.fitBounds(layer.group.getBounds())
                 vicinities[key] = layer;
               }
             }
