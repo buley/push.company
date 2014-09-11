@@ -97,7 +97,10 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
           }
           if (!!map && !control && !!control_layers) {
             console.log('CONTROL',control_layers);
-            control = L.control.layers(control_layers).addTo(map);
+            control = L.control.layers(control_layers)
+            control.addTo(map);
+          } else if (!!map && !!control_layers && !!control) {
+            control = L.control.layers(control_layers);
           }
 
           return React.DOM.div({id: "map"});
