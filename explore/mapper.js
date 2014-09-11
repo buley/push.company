@@ -7,6 +7,7 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
       layers = {},
       vicinities = {},
       marker,
+      control,
       component = React.createClass({
         componentDidMount: function() {
             map = L.mapbox.map(this.getDOMNode(), 'buley.j737pbkc')
@@ -100,9 +101,12 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
             }
           }
 
-          console.log('CONTROL',control_layers);
+          if (!!map && !control) {
+            console.log('CONTROL',control_layers);
+            control = L.control({'position': 'topright'});
+            control.addTo(map);
 
-          L.control({'position': 'topright'}).addTo(map);
+          }
 
           return React.DOM.div({id: "map"});
         }
