@@ -57,6 +57,11 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
             }
           }
           if (!!this.props.neighborhood) {
+            key = [
+                this.props.location.latitude,
+                this.props.location.longitude,
+                this.props.location.radius,
+              ].join("|");
             if (!!layers[key]) {
               map.removeLayer(layers[key].group);
               delete layers[key];
