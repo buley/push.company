@@ -79,7 +79,6 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
             }
             if (layer.data.length > 0) {
               layer.group = L.featureGroup(layer.data);
-              layer.group.addTo(map);
               map.fitBounds(layer.group.getBounds())
               layers[key] = layer;
               control_layers = control_layers || {};
