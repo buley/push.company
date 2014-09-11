@@ -37,7 +37,7 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
                   if (!!item.Places && item.Places.length > 0) {
                     item.Places.forEach(function(place) {
                       layer.data.push(
-                        L.marker([item.Location.Latitude, item.Location.Longitude])
+                        L.marker([item.Latitude, item.Longitude])
                         .bindPopup(place.Name)
                       );
                     });
