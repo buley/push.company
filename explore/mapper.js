@@ -9,14 +9,18 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
       vicinities = {},
       marker,
       control,
+      overlays = [],
       onBaseLayerChange = function(e) {
         console.log('onBaseLayerChange',e);
       },
       onOverlayRemove = function(e) {
-        console.log('onOverlayRemove',e);
+        overlays = _.without(overlays, e.name);
+        console.log('onOverlayRemove',overlays);
       },
       onOverlayAdd = function(e) {
-        console.log('onOverlayAdd',e);
+        overlays.push(e.name);
+        overlays = _.unique(overlays);
+        console.log('onOverlayAdd',overlays);
       },
       component = React.createClass({
         componentDidMount: function() {
