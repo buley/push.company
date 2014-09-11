@@ -65,10 +65,11 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
               layer = { data: ( !!layer ? layer.data || [] : [] ) };
               if (!!this.props.neighborhood && this.props.neighborhood.length > 0) {
                 this.props.neighborhood.forEach(function(place) {
+                  console.log('seen?',ids, place.Id);
                   if (false === _.contains(ids, place.Id)) {
                     layer.data.push(
                       L.marker([place.Latitude, place.Longitude]).bindPopup(place.Name)
-                    );                    
+                    );
                   }
                 });
               }
