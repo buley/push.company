@@ -12,7 +12,8 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
             map = L.mapbox.map(this.getDOMNode(), 'buley.j737pbkc')
         },
         render: function() {
-          var key;
+          var key,
+              layer;
           if (!marker && !!this.props && !!this.props.location) {
             marker = L.circleMarker( [this.props.location.latitude, this.props.location.longitude], {
               color: '#000',
@@ -31,7 +32,7 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
                 this.props.location.radius,
               ].join("|");
             if (!layers[key]) {
-              var layer = { data: [] };
+              layer = { data: [] };
               if (!!this.props.neighborhood && this.props.neighborhood.length > 0) {
                 this.props.neighborhood.forEach(function(item) {
                   if (!!item.Places && item.Places.length > 0) {
@@ -52,6 +53,17 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
               }
             }
           }
+          if (!!this.props.previous_location) {
+            key = [
+                this.props.previous_location.latitude,
+                this.props.previous_location.longitude,
+                this.props.previous_location.radius,
+              ].join("|");
+            if (!!layers[key]) {
+              map.removeLayer(layers[key].group);
+              delete layers[key];
+            }
+          }
           if (!!this.props.vicinity) {
             key = [
                 this.props.location.latitude,
@@ -59,7 +71,7 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
                 this.props.location.radius,
               ].join("|");
             if (!vicinities[key]) {
-              var layer = { data: [] };
+              layer = { data: [] };
               if (!!this.props.vicinity && this.props.vicinity.length > 0) {
                 this.props.vicinity.forEach(function(item) {
                   if (!!item.Places && item.Places.length > 0) {
