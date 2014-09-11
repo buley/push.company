@@ -39,26 +39,23 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig'], function(
         index: 'Name',
         index_key_path: 'Name'
       })(function(ctx3){
-        console.log('d3',ctx3);
         dash.get.index({
           database: 'push5',
           store: 'Places1',
           index: 'Latitude',
           index_key_path: 'Latitude'
         })(function(ctx4){
-          console.log('d4',ctx4);
           dash.get.index({
             database: 'push5',
             store: 'Places1',
             index: 'Longitude',
             index_key_path: 'Longitude'
           })(function(ctx5){
-            console.log('dash done',ctx3, ctx4, ctx5);
+            module.resolve();
           });
         });
       });
 
-  module.resolve();
 
   return {
     outgoing: function(interface) {
