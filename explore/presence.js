@@ -37,6 +37,7 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig'], function(
       dash.get.index({
         database: 'push5',
         store: 'Places1',
+        store_key_path: 'Id',
         index: 'Name',
         index_key_path: 'Name'
       })(function(ctx3){
