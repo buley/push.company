@@ -26,7 +26,7 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
             vicinity = data.Data;
             context = _.extend(context, {vicinity: vicinity});
             deferred.notify(context);
-            def.success(vicinity);
+            def.resolve(vicinity);
           }
         });
         return def.promise;
