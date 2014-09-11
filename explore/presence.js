@@ -58,8 +58,9 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
                   arrived:  Date.now()
               };
               if (augmented.latitude !== 0.0 && augmented.longitude !== 0.0) {
-                fetchVicinity(augmented.latitude, augmented.longitude, augmented.radius);
-                fetchNeighbors(augmented.latitude, augmented.longitude, augmented.radius);
+                fetchVicinity(augmented.latitude, augmented.longitude, augmented.radius, function(vicinity) {
+                  fetchNeighbors(augmented.latitude, augmented.longitude, augmented.radius);
+                });
               }
             }
           } else {
@@ -70,8 +71,9 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
                 arrived:  Date.now()
             };
             if (augmented.latitude !== 0.0 && augmented.longitude !== 0.0) {
-              fetchVicinity(augmented.latitude, augmented.longitude, augmented.radius);
-              fetchNeighbors(augmented.latitude, augmented.longitude, augmented.radius);
+              fetchVicinity(augmented.latitude, augmented.longitude, augmented.radius, function(vicinity) {
+                fetchNeighbors(augmented.latitude, augmented.longitude, augmented.radius);
+              });
             }
           }
 
