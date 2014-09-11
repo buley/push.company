@@ -10,8 +10,6 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
       vicinities = {},
       marker,
       control,
-      present = [],
-      was_present = [],
       overlays = [ "Local" ],
       instance,
       component = React.createClass({
@@ -30,8 +28,7 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
       renderMap = function() {
         var key,
             layer,
-            ids = [],
-            next_present = [];
+            ids = [];
         if (!marker && !!this.props && !!this.props.location) {
           marker = L.circleMarker( [this.props.location.latitude, this.props.location.longitude], {
             color: '#000',
@@ -60,15 +57,10 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
                 item.Places.forEach(function(place) {
                   ids.push(item.Id);
                   layer.data.push(L.marker([item.Location.Latitude, item.Location.Longitude]).bindPopup(place.Name));
-                  if(item.Location.Distance < this.props.location.radius) {
-                    next_present.push(item.Id);
-                  }
                 });
               }
             });
           }
-          was_present = present;
-          present = _.unique(next_present);
           if (layer.data.length > 0) {
             layer.group = L.featureGroup(layer.data);
             if (_.contains(overlays, "Hyperlocal")) {
@@ -157,18 +149,6 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
     },
     incoming: function(interface) {
       interface.then(null, null, function(state) {
-        var notify = false;
-        if (!state.presence || JSON.stringify(state.presence) !== JSON.stringify(present)) {
-          state.presence = present;
-          notify = true;
-        }
-        if (!state.previous_presence || JSON.stringify(state.previous_presence) !== JSON.stringify(was_present)) {
-          state.previous_presence = was_present;
-          notify = true;
-        }
-        if (true === notify) {
-          deferred.notify(state);
-        }
         context = state;
       });
     },
