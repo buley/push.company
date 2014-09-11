@@ -33,13 +33,15 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig'], function(
       };
 
   dash.get.database({'database': 'push2' })(function(ctx){
-    console.log('d1',ctx);
+    console.log('d1',ctx.db);
     dash.get.store({
       database: 'push2',
       store_key_path: 'Id',
       store: 'Places4'
     })(function(ctx2){
-      console.log('d2',ctx2);
+
+    console.log('d2',ctx2);
+      /*
       dash.get.index({
         database: 'push2',
         store: 'Places4',
@@ -62,6 +64,7 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig'], function(
           });
         });
       });
+      */
     });
   });
 
