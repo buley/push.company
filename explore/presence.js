@@ -15,13 +15,10 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig'], function(
         dash.get.entries({
           database: database,
           store: store,
-          store_key_path: 'Id'
+          store_key_path: 'Id',
+          collect: true
         })(function(ctx){
           console.log('x',ctx);
-        }, function(e){
-          console.log('e',e);
-        }, function(ctx){
-          console.log('c',ctx);
         });
       },
       fetchVicinity = function(lat, lon, radius) {
