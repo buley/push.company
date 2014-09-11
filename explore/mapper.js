@@ -69,7 +69,6 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
           }
           was_present = present;
           present = _.unique(next_present);
-          context = _.extend(context, {presence: present, previous_presence: was_present});
           if (layer.data.length > 0) {
             layer.group = L.featureGroup(layer.data);
             if (_.contains(overlays, "Hyperlocal")) {
@@ -158,6 +157,19 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
     },
     incoming: function(interface) {
       interface.then(null, null, function(state) {
+        var notify = false;
+        if (!state.presence || JSON.stringify(state.presence) !== JSON.stringify(presence)) {
+          state.presence = present;
+          notify = true;
+        }
+        if (!state.previous_presence || JSON.stringify(state.previous_presence) !== JSON.stringify(previous_presence)) {
+          state.previous_presence = was_present;
+          notify = true;
+        }
+        if (true === notify) {
+          deferred.notify(state);
+        }
+
         context = state;
       });
     },
