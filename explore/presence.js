@@ -53,8 +53,8 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig'], function(
             store: 'Places1',
             index: 'Longitude',
             index_key_path: 'Longitude'
-          })(function(ctx4){
-            console.log('dash done',ctx3, ctx4);
+          })(function(ctx5){
+            console.log('dash done',ctx3, ctx4, ctx5);
           });
         });
       });
