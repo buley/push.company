@@ -60,7 +60,9 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
           }
           if (layer.data.length > 0) {
             layer.group = L.featureGroup(layer.data);
-            layer.group.addTo(map);
+            if (_.contains(overlays, "Hyperlocal")) {
+              layer.group.addTo(map);
+            }
             control_layers = control_layers || {};
             control_layers["Hyperlocal"] = layer.group;
             vicinities[key] = layer;
@@ -89,7 +91,9 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
           if (layer.data.length > 0) {
             layer.group = L.featureGroup(layer.data);
             map.fitBounds(layer.group.getBounds());
-            layer.group.addTo(map);
+            if (_.contains(overlays, "Local")) {
+              layer.group.addTo(map);
+            }
             layers[key] = layer;
             control_layers = control_layers || {};
             control_layers["Local"] = layer.group;
@@ -128,13 +132,12 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
       onOverlayRemove = function(e) {
         overlays = _.without(overlays, e.name);
         console.log('onOverlayRemove',overlays);
-        renderMap();
+        renderMap
       },
       onOverlayAdd = function(e) {
         overlays.push(e.name);
         overlays = _.unique(overlays);
         console.log('onOverlayAdd',overlays);
-        renderMap();
       };
 
   module.resolve(component);
