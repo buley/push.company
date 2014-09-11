@@ -29,7 +29,7 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
             def.success(vicinity);
           }
         });
-        return def;
+        return def.promise;
       };
   module.resolve();
 
