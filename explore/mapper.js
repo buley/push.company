@@ -118,13 +118,6 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
             delete layers[key];
           }
         }
-        if (!!map && !control && !!control_layers) {
-          console.log('CONTROL',control_layers);
-          control.addTo(map);
-        } else if (!!map && !!control_layers && !!control) {
-          control.removeFrom(map);
-          control.addTo(map);
-        }
 
       },
       onBaseLayerChange = function(e) {
