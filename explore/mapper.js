@@ -38,8 +38,7 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
               if (!!this.props.neighborhood && this.props.neighborhood.length > 0) {
                 this.props.neighborhood.forEach(function(place) {
                   layer.data.push(
-                    L.marker([place.Latitude, place.Longitude])
-                      .bindPopup(place.Name)
+                    L.marker([place.Latitude, place.Longitude]).bindPopup(place.Name)
                   );
                 });
               }
@@ -50,18 +49,8 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
                 layers[key] = layer;
                 control_layers = control_layers || {};
                 control_layers["Local"] = layer.group;
+                console.log('control_layers',control_layers);
               }
-            }
-          }
-          if (!!this.props.previous_location) {
-            key = [
-                this.props.previous_location.latitude,
-                this.props.previous_location.longitude,
-                this.props.previous_location.radius,
-              ].join("|");
-            if (!!layers[key]) {
-              map.removeLayer(layers[key].group);
-              delete layers[key];
             }
           }
           if (!!this.props.vicinity) {
@@ -100,6 +89,10 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
             if (!!vicinities[key]) {
               map.removeLayer(vicinities[key].group);
               delete vicinities[key];
+            }
+            if (!!layers[key]) {
+              map.removeLayer(layers[key].group);
+              delete layers[key];
             }
           }
           if (!!map && !control && !!control_layers) {
