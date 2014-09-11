@@ -9,9 +9,13 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
       vicinities = {},
       marker,
       control,
+      onBaseLayerChange = function(e) {
+        console.log('onBaseLayerChange',e);
+      },
       component = React.createClass({
         componentDidMount: function() {
             map = L.mapbox.map(this.getDOMNode(), 'buley.j737pbkc')
+            map.on('baselayerchange', onBaseLayerChange)
         },
         render: function() {
           var key,
