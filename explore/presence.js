@@ -2,6 +2,8 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig'], function(
   var durationMinimumMilliseconds = function(radius) {
         return ((2 * radius) / 0.001385824); //3.1mph
       },
+      database = "push",
+      store = "Places",
       deferred = Q.defer(),
       promise = deferred.promise,
       module = Q.defer(),
@@ -33,21 +35,21 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig'], function(
       };
 
       dash.get.index({
-        database: 'push5',
-        store: 'Places1',
+        database: database,
+        store: store,
         store_key_path: 'Id',
         index: 'Name',
         index_key_path: 'Name'
       })(function(ctx3){
         dash.get.index({
-          database: 'push5',
-          store: 'Places1',
+          database: database,
+          store: store,
           index: 'Latitude',
           index_key_path: 'Latitude'
         })(function(ctx4){
           dash.get.index({
-            database: 'push5',
-            store: 'Places1',
+            database: database,
+            store: store,
             index: 'Longitude',
             index_key_path: 'Longitude'
           })(function(ctx5){
