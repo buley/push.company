@@ -5,6 +5,7 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
       map,
       context = {},
       layers = {},
+      control_layers,
       vicinities = {},
       marker,
       control,
@@ -14,8 +15,7 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
         },
         render: function() {
           var key,
-              layer,
-              control_layers;
+              layer;
           if (!marker && !!this.props && !!this.props.location) {
             marker = L.circleMarker( [this.props.location.latitude, this.props.location.longitude], {
               color: '#000',
