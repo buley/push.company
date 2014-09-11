@@ -60,7 +60,7 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
                 this.props.location.radius,
               ].join("|");
             if (!layers[key]) {
-              layer = { data: layer.data || [] };
+              layer = { data: ( )!!layer ? layer.data || [] : [] ) };
               if (!!this.props.neighborhood && this.props.neighborhood.length > 0) {
                 this.props.neighborhood.forEach(function(place) {
                   layer.data.push(
