@@ -1,1 +1,0 @@
-When adding or putting values, the various uniqueness rules for the store and indexes together apply to any entries added to that object store. 

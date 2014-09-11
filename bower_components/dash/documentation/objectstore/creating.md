@@ -1,1 +1,0 @@
-[Creating an object store](http://www.w3.org/TR/IndexedDB/#widl-IDBDatabase-createObjectStore) requires a "versionchange" type transaction.

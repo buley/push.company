@@ -1,1 +1,0 @@
-[`Clear`ing](http://www.w3.org/TR/IndexedDB/#widl-IDBObjectStore-clear) an object store requires a "readwrite" type transaction.
