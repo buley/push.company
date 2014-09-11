@@ -10,6 +10,8 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
       vicinities = {},
       marker,
       control,
+      present = [],
+      was_present = [],
       overlays = [ "Local" ],
       instance,
       component = React.createClass({
@@ -57,6 +59,7 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
                 item.Places.forEach(function(place) {
                   ids.push(item.Id);
                   layer.data.push(L.marker([item.Location.Latitude, item.Location.Longitude]).bindPopup(place.Name));
+                  console.log("DIST", item.Location.Distance);
                 });
               }
             });
