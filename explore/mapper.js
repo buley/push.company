@@ -100,11 +100,10 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
               delete vicinities[key];
             }
           }
-
+          console.log(control_layers);
           if (!!map && !control) {
             console.log('CONTROL',control_layers);
             control = L.control.layers(control_layers).addTo(map);
-
           }
 
           return React.DOM.div({id: "map"});
