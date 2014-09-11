@@ -1,4 +1,4 @@
-define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function(Q, React, dash, $, _, trig) {
+define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig'], function(Q, React, dash, $, _, trig) {
   var durationMinimumMilliseconds = function(radius) {
         return ((2 * radius) / 0.001385824); //3.1mph
       },
@@ -35,29 +35,34 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig' ], function
   dash.get.database({'database': 'push' })(function(ctx){
     ctx.store_key_path = 'Id';
     ctx.store = 'Places4';
+    console.log('d1');
     dash.get.store(ctx)(function(ctx2){
       ctx2.index = 'Name';
       ctx2.index_key_path = 'Name';
       ctx2.index_unique = false;
       ctx2.index_multi_entry = false;
+      console.log('d2');
       dash.get.index(ctx2)(function(ctx3){
         ctx2.index = 'Latitude';
         ctx2.index_key_path = 'Latitude';
         ctx2.index_unique = false;
         ctx2.index_multi_entry = false;
+        console.log('d3');
         dash.get.index(ctx2)(function(ctx4){
           ctx2.index = 'Longitude';
           ctx2.index_key_path = 'Longitude';
           ctx2.index_unique = false;
           ctx2.index_multi_entry = false;
+          console.log('d4');
           dash.get.index(ctx2)(function(ctx4){
-            module.resolve();
             console.log('dash done',ctx3, ctx4);
           });
         });
       });
     });
   });
+
+  module.resolve();
 
   return {
     outgoing: function(interface) {
