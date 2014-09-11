@@ -33,7 +33,7 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig'], function(
       };
 
   dash.get.database({'database': 'push3', 'store': 'Places4', store_key_path: 'Id' })(function(ctx2){
-    console.log('d1',ctx.db, ctx.objectstore);
+    console.log('d1',ctx2.db, ctx2.objectstore);
       dash.get.index({
         database: 'push2',
         store: 'Places4',
