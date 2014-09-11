@@ -12,6 +12,17 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig'], function(
       vicinity,
       fetchNeighbors = function(lat, lon, radius) {
         console.log('fetching neighbors',arguments);
+        dash.get.entries({
+          'database': 'push',
+          'store': 'Places'
+        })(function(ctx){
+          console.log('x',ctx);
+        }, function(e){
+          console.log('e',e);
+        }, function(ctx){
+          console.log('c',ctx);
+        });
+
       },
       fetchVicinity = function(lat, lon, radius) {
         var def = Q.defer();
