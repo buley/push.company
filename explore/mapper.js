@@ -117,21 +117,21 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
           }
 
           return React.DOM.div({id: "map"});
-        },
-        onBaseLayerChange = function(e) {
-          console.log('onBaseLayerChange',e);
-        },
-        onOverlayRemove = function(e) {
-          overlays = _.without(overlays, e.name);
-          console.log('onOverlayRemove',overlays);
-        },
-        onOverlayAdd = function(e) {
-          overlays.push(e.name);
-          overlays = _.unique(overlays);
-          console.log('onOverlayAdd',overlays);
         }
-      });
-
+      }),
+      onBaseLayerChange = function(e) {
+        console.log('onBaseLayerChange',e);
+      },
+      onOverlayRemove = function(e) {
+        overlays = _.without(overlays, e.name);
+        console.log('onOverlayRemove',overlays);
+      },
+      onOverlayAdd = function(e) {
+        overlays.push(e.name);
+        overlays = _.unique(overlays);
+        console.log('onOverlayAdd',overlays);
+      };
+      
   module.resolve(component);
 
   L.mapbox.accessToken = 'pk.eyJ1IjoiYnVsZXkiLCJhIjoiZWwySzE4cyJ9.tKVH4x1b-W4ag-s7jqRKlA';
