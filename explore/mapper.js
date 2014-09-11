@@ -61,7 +61,7 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
                 this.props.location.longitude,
                 this.props.location.radius,
               ].join("|");
-            if (!layers[key]) {
+            if (true || !layers[key]) {
               layer = { data: ( !!layer ? layer.data || [] : [] ) };
               if (!!this.props.neighborhood && this.props.neighborhood.length > 0) {
                 this.props.neighborhood.forEach(function(place) {
