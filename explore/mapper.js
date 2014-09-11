@@ -130,7 +130,6 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
       },
       onBaseLayerChange = function(e) {
         console.log('onBaseLayerChange',e);
-        renderMap.apply(instance, []);
       },
       onOverlayRemove = function(e) {
         overlays = _.without(overlays, e.name);
