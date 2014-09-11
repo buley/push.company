@@ -102,7 +102,7 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
 
           console.log('CONTROL',control_layers);
 
-          //L.control.layers({}, control_layers).addTo(map);
+          L.control.layers(control_layers).addTo(map);
 
           return React.DOM.div({id: "map"});
         }
