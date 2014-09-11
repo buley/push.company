@@ -61,28 +61,31 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
                 this.props.location.longitude,
                 this.props.location.radius,
               ].join("|");
-            if (true || !layers[key]) {
-              layer = { data: ( !!layer ? layer.data || [] : [] ) };
-              if (!!this.props.neighborhood && this.props.neighborhood.length > 0) {
-                this.props.neighborhood.forEach(function(place) {
-                  console.log('seen?',ids, place.Id);
-                  if (false === _.contains(ids, place.Id)) {
-                    layer.data.push(
-                      L.marker([place.Latitude, place.Longitude]).bindPopup(place.Name)
-                    );
-                  }
-                });
-              }
-              if (layer.data.length > 0) {
-                layer.group = L.featureGroup(layer.data);
-                layer.group.addTo(map);
-                map.fitBounds(layer.group.getBounds())
-                layers[key] = layer;
-                control_layers = control_layers || {};
-                control_layers["Local"] = layer.group;
-              }
+            if (!!layers[key]) {
+              map.removeLayer(layers[key].group);
+              delete layers[key];
+            }
+            layer = { data: ( !!layer ? layer.data || [] : [] ) };
+            if (!!this.props.neighborhood && this.props.neighborhood.length > 0) {
+              this.props.neighborhood.forEach(function(place) {
+                console.log('seen?',ids, place.Id);
+                if (false === _.contains(ids, place.Id)) {
+                  layer.data.push(
+                    L.marker([place.Latitude, place.Longitude]).bindPopup(place.Name)
+                  );
+                }
+              });
+            }
+            if (layer.data.length > 0) {
+              layer.group = L.featureGroup(layer.data);
+              layer.group.addTo(map);
+              map.fitBounds(layer.group.getBounds())
+              layers[key] = layer;
+              control_layers = control_layers || {};
+              control_layers["Local"] = layer.group;
             }
           }
+
           if (!!this.props.previous_location) {
             key = [
                 this.props.previous_location.latitude,
