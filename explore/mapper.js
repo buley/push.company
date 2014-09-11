@@ -46,7 +46,7 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
               this.props.location.radius,
             ].join("|");
           if (!!vicinities[key]) {
-            map.removeLayer(vicinities[key].group);
+            //map.removeLayer(vicinities[key].group);
             delete vicinities[key];
           }
           layer = { data: [] };
@@ -94,7 +94,7 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
             layer.group = L.featureGroup(layer.data);
             map.fitBounds(layer.group.getBounds());
             if (_.contains(overlays, "Local")) {
-              layer.group.addTo(map);
+              //layer.group.addTo(map);
             }
             layers[key] = layer;
             control_layers = control_layers || {};
