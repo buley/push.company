@@ -1,4 +1,4 @@
-define(['q', 'react', 'mapbox'], function(Q, React, L) {
+define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
   var deferred = Q.defer(),
       promise = deferred.promise,
       module = Q.defer(),
@@ -15,7 +15,8 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
         },
         render: function() {
           var key,
-              layer;
+              layer,
+              ids = [];
           if (!marker && !!this.props && !!this.props.location) {
             marker = L.circleMarker( [this.props.location.latitude, this.props.location.longitude], {
               color: '#000',
@@ -39,6 +40,7 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
                 this.props.vicinity.forEach(function(item) {
                   if (!!item.Places && item.Places.length > 0) {
                     item.Places.forEach(function(place) {
+                      ids.push(item.Id);
                       layer.data.push(L.marker([item.Location.Latitude, item.Location.Longitude]).bindPopup(place.Name));
                     });
                   }
@@ -63,9 +65,11 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
               layer = { data: ( !!layer ? layer.data || [] : [] ) };
               if (!!this.props.neighborhood && this.props.neighborhood.length > 0) {
                 this.props.neighborhood.forEach(function(place) {
-                  layer.data.push(
-                    L.marker([place.Latitude, place.Longitude]).bindPopup(place.Name)
-                  );
+                  if (false === _.contains(ids, place.Id)) {
+                    layer.data.push(
+                      L.marker([place.Latitude, place.Longitude]).bindPopup(place.Name)
+                    );                    
+                  }
                 });
               }
               if (layer.data.length > 0) {
