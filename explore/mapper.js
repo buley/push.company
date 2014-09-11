@@ -94,7 +94,7 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
               delete layers[key];
             }
           }
-          if (!!map && !control && !!control_layers) {
+          if (!!map && !control && !!control_layers && !!control_layers.Local && !!control_layers.Hyperlocal) {
             console.log('CONTROL',control_layers);
             control = L.control.layers(control_layers)
             control.addTo(map);
