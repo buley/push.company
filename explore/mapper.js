@@ -63,7 +63,7 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
           if (layer.data.length > 0) {
             layer.group = L.featureGroup(layer.data);
             if (_.contains(overlays, "Hyperlocal")) {
-              layer.group.addTo(map);
+              //layer.group.addTo(map);
             }
             control_layers = control_layers || {};
             control_layers["Hyperlocal"] = layer.group;
