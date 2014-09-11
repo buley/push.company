@@ -27,32 +27,6 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
             marker.setLatLng([this.props.location.latitude, this.props.location.longitude]);
             marker.setRadius(this.props.location.radius);
           }
-          if (!!this.props.neighborhood) {
-            key = [
-                this.props.location.latitude,
-                this.props.location.longitude,
-                this.props.location.radius,
-              ].join("|");
-            if (!layers[key]) {
-              layer = { data: [] };
-              if (!!this.props.neighborhood && this.props.neighborhood.length > 0) {
-                this.props.neighborhood.forEach(function(place) {
-                  layer.data.push(
-                    L.marker([place.Latitude, place.Longitude]).bindPopup(place.Name)
-                  );
-                });
-              }
-              if (layer.data.length > 0) {
-                layer.group = L.featureGroup(layer.data);
-                layer.group.addTo(map);
-                map.fitBounds(layer.group.getBounds())
-                layers[key] = layer;
-                control_layers = control_layers || {};
-                control_layers["Local"] = layer.group;
-                console.log('control_layers',control_layers);
-              }
-            }
-          }
           if (!!this.props.vicinity) {
             key = [
                 this.props.location.latitude,
@@ -76,6 +50,31 @@ define(['q', 'react', 'mapbox'], function(Q, React, L) {
                 control_layers = control_layers || {};
                 control_layers["Hyperlocal"] = layer.group;
                 vicinities[key] = layer;
+              }
+            }
+          }
+          if (!!this.props.neighborhood) {
+            key = [
+                this.props.location.latitude,
+                this.props.location.longitude,
+                this.props.location.radius,
+              ].join("|");
+            if (!layers[key]) {
+              layer = { data: layer.data || [] };
+              if (!!this.props.neighborhood && this.props.neighborhood.length > 0) {
+                this.props.neighborhood.forEach(function(place) {
+                  layer.data.push(
+                    L.marker([place.Latitude, place.Longitude]).bindPopup(place.Name)
+                  );
+                });
+              }
+              if (layer.data.length > 0) {
+                layer.group = L.featureGroup(layer.data);
+                layer.group.addTo(map);
+                map.fitBounds(layer.group.getBounds())
+                layers[key] = layer;
+                control_layers = control_layers || {};
+                control_layers["Local"] = layer.group;
               }
             }
           }
