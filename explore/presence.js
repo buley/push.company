@@ -11,7 +11,7 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig'], function(
       neighborhood,
       present = [],
       was_present = [],
-      next_present = []
+      next_present = [],
       vicinity,
       fetchNeighbors = function(lat, lon, radius) {
         console.log('fetching neighbors',arguments);
