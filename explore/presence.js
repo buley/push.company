@@ -176,14 +176,12 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig'], function(
                   fetchNeighbors(augmented.latitude, augmented.longitude, augmented.radius).then(function(neighbors) {
                     //mapreduce neighbors
                     console.log('update previous places', presence_eligible);
-                    if(presence_eligible) {
-                      console.log("CURRENT");
-                      if (!!state.vicinity) {
-                        console.log('update vicinity',state.vicinity);
-                      }
-                      if (!!state.neighborhood) {
-                        console.log('update neighborhood',state.neighborhood);
-                      }
+                    console.log("CURRENT");
+                    if (!!state.vicinity) {
+                      console.log('update vicinity',state.vicinity);
+                    }
+                    if (!!state.neighborhood) {
+                      console.log('update neighborhood',state.neighborhood);
                     }
                   })
                 });
