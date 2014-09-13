@@ -63,7 +63,7 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
             delete vicinities[key];
           }
           layer = { data: [] };
-          if (!!this.props.vicinity && this.props.vicinity.length > 0) {
+          if (true === _.contains(overlays, "Hyperlocal") && !!this.props.vicinity && this.props.vicinity.length > 0) {
             this.props.vicinity.forEach(function(item) {
               if (!!item.Places && item.Places.length > 0) {
                 item.Places.forEach(function(place) {
@@ -101,7 +101,7 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
             delete layers[key];
           }
           layer = { data: ( !!layer ? layer.data || [] : [] ) };
-          if (!!this.props.neighborhood && this.props.neighborhood.length > 0) {
+          if ((0 === overlays.length || true === _.contains(overlays, "Local")) && !!this.props.neighborhood && this.props.neighborhood.length > 0) {
             this.props.neighborhood.forEach(function(place) {
               if (true === _.contains(overlays, "Local") && (false === _.contains(overlays, "Hyperlocal") || false === _.contains(ids, place.Id))) {
                 layer.data.push(
