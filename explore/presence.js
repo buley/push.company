@@ -4,6 +4,7 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig'], function(
       },
       database = "push",
       store = "Places",
+      presence = "presence",
       deferred = Q.defer(),
       promise = deferred.promise,
       module = Q.defer(),
@@ -85,7 +86,45 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig'], function(
             index: 'Longitude',
             index_key_path: 'Longitude'
           })(function(ctx5){
-            module.resolve();
+            dash.get.index({
+              database: database,
+              store: presence,
+              store_key_path: 'VisitId',
+              auto_increment: true,
+              index: 'Id',
+              index_key_path: 'Id'
+            })(function(ctx6){
+              dash.get.index({
+                database: database,
+                store: presence,
+                index: 'Latitude',
+                index_key_path: 'Latitude'
+              })(function(ctx7){
+                dash.get.index({
+                  database: database,
+                  store: presence,
+                  index: 'Longitude',
+                  index_key_path: 'Longitude'
+                })(function(ctx8){
+                  dash.get.index({
+                    database: database,
+                    store: presence,
+                    index: 'Duration',
+                    index_key_path: 'Duration'
+                  })(function(ctx9){
+                    dash.get.index({
+                      database: database,
+                      store: presence,
+                      index: 'Timestamp',
+                      index_key_path: 'Timestamp'
+                    })(function(ctx10){
+                      module.resolve();
+                    });
+                  });
+                });
+              });
+            });
+
           });
         });
       });
