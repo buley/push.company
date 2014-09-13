@@ -2,6 +2,7 @@ define(['q', 'underscore'], function(Q, _) {
   var deferred = Q.defer(),
       module = Q.defer(),
       previous,
+      current_str,
       context = {},
       incoming = function(interface) {
         interface.then(null, null, function(state) {
