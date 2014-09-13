@@ -2,9 +2,9 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig'], function(
   var durationMinimumMilliseconds = function(radius) {
         return ((2 * radius) / 0.001385824); //3.1mph
       },
-      database = "push",
+      database = "Push",
       store = "Places",
-      presence = "presence",
+      presence = "Presence",
       deferred = Q.defer(),
       promise = deferred.promise,
       module = Q.defer(),
