@@ -162,8 +162,10 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
       interface.then(null, null, function(state) {
         context = state;
 		console.log('x',state);
-		if (!!state.params.hash) {
-	
+		if (!!state.route && !!state.route.hash && !!state.route.hash.overlay) {
+      overlays = state.route.hash.overlay.split(",");
+      delete state.route.hash.overlay;
+
 		}
       });
     },
