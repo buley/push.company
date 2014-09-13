@@ -69,7 +69,7 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
           }
           was_present = present;
           present = next_present;
-          context = _.(context, {presence: present, previous_presence: was_present});
+          context = _.extend(context, {presence: present, previous_presence: was_present});
           if (layer.data.length > 0) {
             layer.group = L.featureGroup(layer.data);
             if (_.contains(overlays, "Hyperlocal")) {
