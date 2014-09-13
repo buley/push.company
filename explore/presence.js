@@ -12,6 +12,7 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig'], function(
       neighborhood,
       vicinity,
       fetchNeighbors = function(lat, lon, radius) {
+        var def = Q.defer();
         neighborhood = [];
         dash.get.entries({
           database: database,
@@ -20,9 +21,11 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig'], function(
         })(function(ctx) {
           context = _.extend(context, {neighborhood: neighborhood});
           deferred.notify(context);
+          def.resolve(ctx);
         }, null, function(ctx){
           neighborhood.push(ctx.entry);
         });
+        return def.promise;
       },
       fetchVicinity = function(lat, lon, radius) {
         var def = Q.defer();
@@ -163,7 +166,9 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig'], function(
               };
               if (augmented.latitude !== 0.0 && augmented.longitude !== 0.0) {
                 fetchVicinity(augmented.latitude, augmented.longitude, augmented.radius).then(function(vicinity) {
+                  //mapreduce vicinity
                   fetchNeighbors(augmented.latitude, augmented.longitude, augmented.radius).then(function(neighbors) {
+                    //mapreduce neighbors
                     console.log('update previous places', presence_eligible, state.neighbors.length, state.vicinity.length)
                   })
                 });
