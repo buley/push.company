@@ -17,7 +17,6 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig'], function(
           store: store,
           store_key_path: 'Id'
         })(function(ctx) {
-          console.log('fetching neighbors',neighborhood.length);
           context = _.extend(context, {neighborhood: neighborhood});
           deferred.notify(context);
         }, null, function(ctx){

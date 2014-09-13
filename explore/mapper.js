@@ -12,7 +12,7 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
       control,
       present = [],
       was_present = [],
-      overlays = [ "Local", "Hyperlocal" ],
+      overlays = [ "Hyperlocal" ],
       instance,
       component = React.createClass({
         componentDidMount: function() {
