@@ -53,6 +53,10 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig'], function(
                       data: place
                     })(function(ctx){
                       console.log("Place added", ctx.data);
+                    }, function(ctx){
+                      console.log("Place not added", ctx);
+                    }, function(ctx){
+                      console.log("Place notify", ctx);
                     });
                   });
                 }
