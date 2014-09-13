@@ -9,8 +9,9 @@ define(['q', 'underscore'], function(Q, _) {
           if (!state.route) {
             deferred.notify(_.extend(state, {route: current}));
           } else {
-            if (JSON.stringify(current) !== JSON.stringify(state.route)) {
+            if (current_str !== JSON.stringify(state.route)) {
               current = context.route;
+              current_str = JSON.stringify(context.route);
               updateUrl(current.get, current.hash);
             }
           }
