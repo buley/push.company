@@ -121,13 +121,19 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig'], function(
                       index: 'Timestamp',
                       index_key_path: 'Timestamp'
                     })(function(ctx10){
-                      module.resolve();
+                      dash.get.index({
+                        database: database,
+                        store: presence,
+                        index: 'Distance',
+                        index_key_path: 'Distance'
+                      })(function(ctx11){
+                        module.resolve();
+                      });
                     });
                   });
                 });
               });
             });
-
           });
         });
       });
@@ -169,7 +175,16 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig'], function(
                   //mapreduce vicinity
                   fetchNeighbors(augmented.latitude, augmented.longitude, augmented.radius).then(function(neighbors) {
                     //mapreduce neighbors
-                    console.log('update previous places', presence_eligible, state.neighbors.length, state.vicinity.length)
+                    console.log('update previous places', presence_eligible);
+                    if(presence_eligible) {
+                      console.log("CURRENT");
+                      if (!!state.vicinity) {
+                        console.log('update vicinity',state.vicinity);
+                      }
+                      if (!!state.neighborhood) {
+                        console.log('update neighborhood',state.neighborhood);
+                      }
+                    }
                   })
                 });
               }
