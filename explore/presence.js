@@ -32,7 +32,7 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig'], function(
             'http://23.236.54.41/presence?',
             'latitude=' + lat + '&',
             'longitude='+ lon + '&',
-            'max=5000&limit=100&radius=' + radius
+            'max=500&limit=100&radius=' + radius
             ].join(""),
           method: 'GET',
           success: function(data) {
