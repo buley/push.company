@@ -37,7 +37,7 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
             next_present = [];
         if (refs.length > 0) {
           refs.forEach(function(ref) {
-            ref.removeFrom(map);
+            map.removeLayer(ref);
           });
           refs = [];
         }
