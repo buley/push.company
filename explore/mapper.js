@@ -10,6 +10,7 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
       vicinities = {},
       marker,
       control,
+      refs = [],
       present = [],
       was_present = [],
       overlays_default = [ "Hyperlocal" ],
@@ -30,10 +31,16 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
       }),
       renderMap = function() {
         var key,
-			that = this,
+			      that = this,
             layer,
             ids = [],
             next_present = [];
+        if (refs.length > 0) {
+          refs.forEach(function(ref) {
+            ref.removeFrom(map);
+          });
+          refs = [];
+        }
         if (!marker && !!this.props && !!this.props.location) {
           marker = L.circleMarker( [this.props.location.latitude, this.props.location.longitude], {
             color: '#000',
@@ -76,6 +83,7 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
             layer.group = L.featureGroup(layer.data);
             if (_.contains(overlays, "Hyperlocal")) {
               layer.group.addTo(map);
+              refs.push(layer.group);
             }
             control_layers = control_layers || {};
             control_layers["Hyperlocal"] = layer.group;
@@ -107,6 +115,7 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
             map.fitBounds(layer.group.getBounds());
             if (_.contains(overlays, "Local")) {
               layer.group.addTo(map);
+              refs.push(layer.group);
             }
             layers[key] = layer;
             control_layers = control_layers || {};
@@ -161,13 +170,12 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
     incoming: function(interface) {
       interface.then(null, null, function(state) {
         context = state;
-		if (!!state.route && !!state.route.hash && !!state.route.hash.overlay) {
-      overlays = state.route.hash.overlay.split(",");
-      map_state.overlays = overlays;
-      delete state.route.hash.overlay;
-      deferred.notify(context);
-
-		}
+    		if (!!state.route && !!state.route.hash && !!state.route.hash.overlay) {
+          overlays = _.unique(state.route.hash.overlay.split(","));
+          map_state.overlays = overlays;
+          delete context.route.hash.overlay;
+          deferred.notify(context);
+    		}
       });
     },
     ready: module.promise.then.bind(module.promise)
