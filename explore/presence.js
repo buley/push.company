@@ -11,13 +11,13 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig'], function(
       neighborhood,
       vicinity,
       fetchNeighbors = function(lat, lon, radius) {
-        console.log('fetching neighbors',arguments);
         neighborhood = [];
         dash.get.entries({
           database: database,
           store: store,
           store_key_path: 'Id'
         })(function(ctx) {
+          console.log('fetching neighbors',neighborhood.length);
           context = _.extend(context, {neighborhood: neighborhood});
           deferred.notify(context);
         }, null, function(ctx){
@@ -32,7 +32,7 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig'], function(
             'http://23.236.54.41/presence?',
             'latitude=' + lat + '&',
             'longitude='+ lon + '&',
-            'max=1000&limit=10&radius=' + radius
+            'max=1000&limit=100&radius=' + radius
             ].join(""),
           method: 'GET',
           success: function(data) {
