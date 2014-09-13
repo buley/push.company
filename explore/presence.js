@@ -137,7 +137,8 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig'], function(
     incoming: function(interface) {
       interface.then(null, null, function(state) {
         var distance,
-            notify = false;
+            notify = false,
+            presence_eligible;
         if (!!state.location) {
           context = _.extend({}, state);
           if (!!augmented) {
@@ -147,6 +148,9 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig'], function(
               augmented.duration = Date.now() - augmented.arrived;
               if (augmented.duration > durationMinimumMilliseconds(augmented.radius)) {
                 console.log("LONG ENOUGH", augmented.duration, durationMinimumMilliseconds(augmented.radius));
+                presence_eligible = true;
+              } else {
+                presence_eligible = false;
               }
               augmented.distance = Infinity === distance ? null : distance;
               context = _.extend(state, {location: state.location, previous_location: augmented});
@@ -159,7 +163,9 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig'], function(
               };
               if (augmented.latitude !== 0.0 && augmented.longitude !== 0.0) {
                 fetchVicinity(augmented.latitude, augmented.longitude, augmented.radius).then(function(vicinity) {
-                  fetchNeighbors(augmented.latitude, augmented.longitude, augmented.radius);
+                  fetchNeighbors(augmented.latitude, augmented.longitude, augmented.radius).then(function(neighbors) {
+                    console.log('update previous places', presence_eligible, state.neighbors.length, state.vicinity.length)
+                  })
                 });
               }
             }
