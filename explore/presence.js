@@ -9,9 +9,6 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig'], function(
       module = Q.defer(),
       augmented,
       neighborhood,
-      present = [],
-      was_present = [],
-      next_present = [],
       vicinity,
       fetchNeighbors = function(lat, lon, radius) {
         console.log('fetching neighbors',arguments);
@@ -43,7 +40,6 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig'], function(
             context = _.extend(context, {vicinity: vicinity});
             deferred.notify(context);
             def.resolve(vicinity);
-            next_present = [];
             if (!!vicinity && vicinity.length > 0) {
               vicinity.forEach(function(item) {
                 if (!!item.Places && item.Places.length > 0) {
@@ -58,15 +54,10 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig'], function(
                     })(function(ctx){
                       console.log("Place added", ctx.data);
                     });
-                    if (item.Location.Distance < context.location.radius) {
-                      next_present.push = place;
-                    }
                   });
                 }
               });
             }
-            was_present = present;
-            present = next_present;
           }
         });
         return def.promise;
@@ -146,18 +137,6 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig'], function(
 
           if (!!neighborhood && !context.neighborhood) {
             context.neighborhood = neighborhood;
-          }
-
-          if (!state.presence || JSON.stringify(state.presence) !== JSON.stringify(present)) {
-            state.presence = present;
-            notify = true;
-          }
-          if (!state.previous_presence || JSON.stringify(state.previous_presence) !== JSON.stringify(was_present)) {
-            state.previous_presence = was_present;
-            notify = true;
-          }
-          if (true === notify) {
-            deferred.notify(state);
           }
 
           if (true === notify) {

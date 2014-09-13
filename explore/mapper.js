@@ -10,6 +10,8 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
       vicinities = {},
       marker,
       control,
+      present = [],
+      was_present = [],
       overlays = [ "Local" ],
       instance,
       component = React.createClass({
@@ -28,7 +30,8 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
       renderMap = function() {
         var key,
             layer,
-            ids = [];
+            ids = [],
+            next_present = [];
         if (!marker && !!this.props && !!this.props.location) {
           marker = L.circleMarker( [this.props.location.latitude, this.props.location.longitude], {
             color: '#000',
@@ -57,10 +60,16 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
                 item.Places.forEach(function(place) {
                   ids.push(item.Id);
                   layer.data.push(L.marker([item.Location.Latitude, item.Location.Longitude]).bindPopup(place.Name));
+                  if(item.Location.Distance < this.props.location.radius) {
+                    next_present.push(item.Id);
+                  }
                 });
               }
             });
           }
+          was_present = present;
+          present = next_present;
+          context = _.(context, {presence: present, previous_presence: was_present});
           if (layer.data.length > 0) {
             layer.group = L.featureGroup(layer.data);
             if (_.contains(overlays, "Hyperlocal")) {
