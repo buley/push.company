@@ -29,6 +29,7 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
       }),
       renderMap = function() {
         var key,
+			that = this,
             layer,
             ids = [],
             next_present = [];
@@ -60,7 +61,7 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
                 item.Places.forEach(function(place) {
                   ids.push(item.Id);
                   layer.data.push(L.marker([item.Location.Latitude, item.Location.Longitude]).bindPopup(place.Name));
-                  if(item.Location.Distance < this.props.location.radius) {
+                  if(item.Location.Distance < that.props.location.radius) {
                     next_present.push(item.Id);
                   }
                 });
