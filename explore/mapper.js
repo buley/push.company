@@ -12,7 +12,8 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
       control,
       present = [],
       was_present = [],
-      overlays = [ "Hyperlocal" ],
+      overlays_default = [ "Hyperlocal" ],
+	  overlays = overlays_default,
       instance,
       component = React.createClass({
         componentDidMount: function() {
@@ -160,6 +161,10 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
     incoming: function(interface) {
       interface.then(null, null, function(state) {
         context = state;
+		console.log('x',state);
+		if (!!state.params.hash) {
+	
+		}
       });
     },
     ready: module.promise.then.bind(module.promise)
