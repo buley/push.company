@@ -162,10 +162,10 @@ define(['q',
         });
         def.resolve();
         return def.promise;
-      }
+      };
 
-  addBehaviors.then(function() {
-    installStorage.then(function() {
+  addBehaviors().then(function() {
+    installStorage().then(function() {
       module.resolve();
     });
   })
