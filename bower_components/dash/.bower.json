@@ -32,11 +32,11 @@
     "test",
     "tests"
   ],
-  "_release": "fd99bffac4",
+  "_release": "e042745e03",
   "_resolution": {
     "type": "branch",
     "branch": "master",
-    "commit": "fd99bffac4039057a4f6d2443ab01eda7893217b"
+    "commit": "e042745e0354f4f2ccf4fef7462c4a9f764d6037"
   },
   "_source": "git://github.com/editor/dash.git",
   "_target": "*",
