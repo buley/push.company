@@ -1,12 +1,21 @@
 requirejs.config({
     baseUrl: '../',
     paths: {
-    'q': '/bower_components/q/q',
-		'dash': '/bower_components/dash/lib/dash',
-		'mapbox': '/bower_components/mapbox.js/mapbox',
-		'underscore': '/bower_components/underscore/underscore',
-		'jquery': '/bower_components/jquery/dist/jquery',
-		'react': '/bower_components/react/react'
+      'q': '/bower_components/q/q',
+  		'dash': '/bower_components/dash/lib/dash',
+  		'mapbox': '/bower_components/mapbox.js/mapbox',
+  		'underscore': '/bower_components/underscore/underscore',
+  		'jquery': '/bower_components/jquery/dist/jquery',
+  		'react': '/bower_components/react/react',
+      'cache': 'bower_components/dash/behaviors/cache.dev.js',
+      'changes': 'bower_components/dash/behaviors/changes.dev.js',
+      'collect': 'bower_components/dash/behaviors/collect.dev.js',
+      'live': 'bower_components/dash/behaviors/live.dev.js',
+      'map': 'bower_components/dash/behaviors/map.dev.js',
+      'mapreduce': 'bower_components/dash/behaviors/mapreduce.dev.js',
+      'match': 'bower_components/dash/behaviors/match.dev.js',
+      'shorthand': 'bower_components/dash/behaviors/shorthand.dev.js',
+      'stats': 'bower_components/dash/behaviors/stats.dev.js'
     },
 	shim: {
 		'q': {
@@ -26,7 +35,34 @@ requirejs.config({
 		},
 		'react': {
 			exports: 'React'
-		}
+		},
+    'cache': {
+      exports: 'dashCache'
+    },
+    'changes': {
+      exports: 'dashChanges'
+    },
+    'collect': {
+      exports: 'dashCollect'
+    },
+    'live': {
+      exports: 'dashLive'
+    },
+    'map': {
+      exports: 'dashMap'
+    },
+    'mapreduce': {
+      exports: 'dashMapReduce'
+    },
+    'match': {
+      exports: 'dashMatch'
+    },
+    'shorthand': {
+      exports: 'dashShorthand'
+    },
+    'stats': {
+      exports: 'dashStats'
+    }
 	}
 });
 

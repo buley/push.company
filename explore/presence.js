@@ -1,4 +1,19 @@
-define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig'], function(Q, React, dash, $, _, trig) {
+define(['q',
+  'react',
+  'dash',
+  'jquery',
+  'underscore',
+  'explore/trig',
+  'bower_components/dash/behaviors/cache.dev.js',
+  'bower_components/dash/behaviors/changes.dev.js',
+  'bower_components/dash/behaviors/collect.dev.js',
+  'bower_components/dash/behaviors/live.dev.js',
+  'bower_components/dash/behaviors/map.dev.js',
+  'bower_components/dash/behaviors/mapreduce.dev.js',
+  'bower_components/dash/behaviors/match.dev.js',
+  'bower_components/dash/behaviors/shorthand.dev.js',
+  'bower_components/dash/behaviors/stats.dev.js'
+], function(Q, React, dash, $, _, trig, cache, changes, collect, live, map, mapreduce, match, shorthand, stats) {
   var durationMinimumMilliseconds = function(radius) {
         return ((2 * radius) / 0.001385824); //3.1mph
       },
@@ -68,66 +83,68 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig'], function(
           }
         });
         return def.promise;
-      };
-
-      dash.get.index({
-        database: database,
-        store: store,
-        store_key_path: 'Id',
-        index: 'Name',
-        index_key_path: 'Name'
-      })(function(ctx3){
+      },
+      installStorage = function() {
+        var def = Q.defer();
         dash.get.index({
           database: database,
           store: store,
-          index: 'Latitude',
-          index_key_path: 'Latitude'
-        })(function(ctx4){
+          store_key_path: 'Id',
+          index: 'Name',
+          index_key_path: 'Name'
+        })(function(ctx3){
           dash.get.index({
             database: database,
             store: store,
-            index: 'Longitude',
-            index_key_path: 'Longitude'
-          })(function(ctx5){
+            index: 'Latitude',
+            index_key_path: 'Latitude'
+          })(function(ctx4){
             dash.get.index({
               database: database,
-              store: presence,
-              store_key_path: 'VisitId',
-              auto_increment: true,
-              index: 'Id',
-              index_key_path: 'Id'
-            })(function(ctx6){
+              store: store,
+              index: 'Longitude',
+              index_key_path: 'Longitude'
+            })(function(ctx5){
               dash.get.index({
                 database: database,
                 store: presence,
-                index: 'Latitude',
-                index_key_path: 'Latitude'
-              })(function(ctx7){
+                store_key_path: 'VisitId',
+                auto_increment: true,
+                index: 'Id',
+                index_key_path: 'Id'
+              })(function(ctx6){
                 dash.get.index({
                   database: database,
                   store: presence,
-                  index: 'Longitude',
-                  index_key_path: 'Longitude'
-                })(function(ctx8){
+                  index: 'Latitude',
+                  index_key_path: 'Latitude'
+                })(function(ctx7){
                   dash.get.index({
                     database: database,
                     store: presence,
-                    index: 'Duration',
-                    index_key_path: 'Duration'
-                  })(function(ctx9){
+                    index: 'Longitude',
+                    index_key_path: 'Longitude'
+                  })(function(ctx8){
                     dash.get.index({
                       database: database,
                       store: presence,
-                      index: 'Timestamp',
-                      index_key_path: 'Timestamp'
-                    })(function(ctx10){
+                      index: 'Duration',
+                      index_key_path: 'Duration'
+                    })(function(ctx9){
                       dash.get.index({
                         database: database,
                         store: presence,
-                        index: 'Distance',
-                        index_key_path: 'Distance'
-                      })(function(ctx11){
-                        module.resolve();
+                        index: 'Timestamp',
+                        index_key_path: 'Timestamp'
+                      })(function(ctx10){
+                        dash.get.index({
+                          database: database,
+                          store: presence,
+                          index: 'Distance',
+                          index_key_path: 'Distance'
+                        })(function(ctx11){
+                          def.resolve();
+                        });
                       });
                     });
                   });
@@ -136,8 +153,22 @@ define(['q', 'react', 'dash', 'jquery', 'underscore', 'explore/trig'], function(
             });
           });
         });
-      });
+        return def.promise;
+      },
+      addBehaviors = function() {
+        var def = Q.defer();
+        [ cache, changes, collect, live, map, mapreduce, match, shorthand, stats ].forEach(function(influence) {
+          dash.add.behavior(influence);
+        });
+        def.resolve();
+        return def.promise;
+      }
 
+  addBehaviors.then(function() {
+    installStorage.then(function() {
+      module.resolve();
+    });
+  })
 
   return {
     outgoing: function(interface) {
