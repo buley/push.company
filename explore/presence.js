@@ -4,15 +4,15 @@ define(['q',
   'jquery',
   'underscore',
   'explore/trig',
-  'bower_components/dash/behaviors/cache.dev.js',
-  'bower_components/dash/behaviors/changes.dev.js',
-  'bower_components/dash/behaviors/collect.dev.js',
-  'bower_components/dash/behaviors/live.dev.js',
-  'bower_components/dash/behaviors/map.dev.js',
-  'bower_components/dash/behaviors/mapreduce.dev.js',
-  'bower_components/dash/behaviors/match.dev.js',
-  'bower_components/dash/behaviors/shorthand.dev.js',
-  'bower_components/dash/behaviors/stats.dev.js'
+  'cache',
+  'changes',
+  'collect',
+  'live',
+  'map',
+  'mapreduce',
+  'match',
+  'shorthand',
+  'stats'
 ], function(Q, React, dash, $, _, trig, cache, changes, collect, live, map, mapreduce, match, shorthand, stats) {
   var durationMinimumMilliseconds = function(radius) {
         return ((2 * radius) / 0.001385824); //3.1mph
