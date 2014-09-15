@@ -4,7 +4,6 @@ define(['q',
   'jquery',
   'underscore',
   'explore/trig',
-  'cache',
   'changes',
   'collect',
   'live',
@@ -13,7 +12,7 @@ define(['q',
   'match',
   'shorthand',
   'stats'
-], function(Q, React, dash, $, _, trig, cache, changes, collect, live, map, mapreduce, match, shorthand, stats) {
+], function(Q, React, dash, $, _, trig, changes, collect, live, map, mapreduce, match, shorthand, stats) {
   var durationMinimumMilliseconds = function(radius) {
         return ((2 * radius) / 0.001385824); //3.1mph
       },
@@ -157,7 +156,7 @@ define(['q',
       },
       addBehaviors = function() {
         var def = Q.defer();
-        [ cache, changes, collect, live, map, mapreduce, match, shorthand, stats ].forEach(function(influence) {
+        [ changes, collect, live, map, mapreduce, match, shorthand, stats ].forEach(function(influence) {
           dash.add.behavior(influence);
         });
         def.resolve();
