@@ -20,7 +20,7 @@ self.dashCollect = self.dashCollect || (function(environment) {
       if (that.exists(ste.context.collector)) {
         ste.context.collection = that.clone(collections[ste.context.collector]);
       }
-      delete ste.collector;
+      delete ste.context.collector;
       deferred.resolve(ste);
     }, function(ctx) {
       delete ctx.collector;
@@ -29,9 +29,8 @@ self.dashCollect = self.dashCollect || (function(environment) {
     }, function(ctx) {
       if (that.exists(ste.context.entry)) {
         collections[ste.context.collector].push(ste.context.entry);
-        ste.context.collection = that.clone(collections[ste.context.collector]);
       }
-      delete ctx.collector;
+      delete ctx.context.collector;
       deferred.notify(ctx);
     });
     state.promise = deferred.promise;
