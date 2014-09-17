@@ -137,10 +137,10 @@ define(['q',
                               last: 0,
                               first: Date.now()
                             };
-                            item.Stats[zattr][attr].total += duration;
-                            item.Stats[zattr][attr].count += 1;
-                            item.Stats[zattr][attr].score += combined;
-                            item.Stats[zattr][attr].last = Date.now();
+                            item.Stats[zattr][xval][attr].total += duration;
+                            item.Stats[zattr][xval][attr].count += 1;
+                            item.Stats[zattr][xval][attr].score += combined;
+                            item.Stats[zattr][xval][attr].last = Date.now();
 
                           }
 
