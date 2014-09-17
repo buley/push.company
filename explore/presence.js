@@ -105,7 +105,7 @@ define(['q',
                   distance = item.Distance;
                   duration = item.Duration;
                   options.present = item.Radius;
-                  if ( distance > 0.0 ) {
+                  if (distance > 0.0 ) {
                     item.Stats = item.Stats || {
                       Day: {},
                       Week: {},
@@ -113,7 +113,7 @@ define(['q',
                       Year: {},
                       All: {}
                     };
-                    for( attr in options) {
+                    for (attr in options) {
                       if (options.hasOwnProperty(attr)) {
                         if (distance < options[attr]) {
 
@@ -124,23 +124,23 @@ define(['q',
                               zitem,
                               zattr;
 
-                              for (z = 0; z < zlen; z += 1) {
-                                zattr = items[z];
+                          for (z = 0; z < zlen; z += 1) {
+                            zattr = items[z];
 
-                                item.Stats.Day[zattr] = item.Stats.Day[zattr] || {};
-                                item.Stats.Day[zattr][attr] = item.Stats.Day[zattr][attr] || {
-                                  total: 0,
-                                  count: 0,
-                                  score: 0,
-                                  last: 0,
-                                  first: Date.now()
-                                };
-                                item.Stats.Day[zattr][attr].total += duration;
-                                item.Stats.Day[zattr][attr].count += 1;
-                                item.Stats.Day[zattr][attr].score += combined;
-                                item.Stats.Day[zattr][attr].last = Date.now();
+                            item.Stats.Day[zattr] = item.Stats.Day[zattr] || {};
+                            item.Stats.Day[zattr][attr] = item.Stats.Day[zattr][attr] || {
+                              total: 0,
+                              count: 0,
+                              score: 0,
+                              last: 0,
+                              first: Date.now()
+                            };
+                            item.Stats.Day[zattr][attr].total += duration;
+                            item.Stats.Day[zattr][attr].count += 1;
+                            item.Stats.Day[zattr][attr].score += combined;
+                            item.Stats.Day[zattr][attr].last = Date.now();
 
-                              }
+                          }
 
                         }
                       }
