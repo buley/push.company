@@ -79,91 +79,73 @@ define(['q',
                 if ("fresh" === Id) {
                   continue;
                 }
-                var x = 0, item, obj, combined;
+                var x = 0, item, obj, combined, distance;
                 cblips = reduced[Id].Blips;
                 for (x = 0; x < cblips.length; x += 1) {
                   item = cblips[x];
                   combined = Math.pow(( item.Distance / item.Duration ), -1/2);
-                  if ( item.Distance <= item.Radius ) {
+                  distance = item.Distance;
+
+                  if ( distance > 0.0 ) {
+                    console.log("LALL", Id);
+                  }
+
+                  if (distance < item.Radius) {
                     console.log("PRESENT", Id);
                   }
-                  if ( item.Distance <= 20 ) {
-                    console.log("L20", Id);
-                  }
-                  if ( item.Distance <= 50 ) {
-                    console.log("L50", Id);
-                  }
-                  if ( item.Distance <= 100 ) {
-                    console.log("L100", Id);
-                  }
-                  if ( item.Distance <= 200 ) {
-                    console.log("L200", Id);
-                  }
-                  if ( item.Distance <= 500 ) {
-                    console.log("L500", Id);
-                  }
-                  if ( item.Distance <= 1000 ) {
-                    console.log("L1000", Id);
-                  }
-                  if ( item.Distance <= 2000 ) {
-                    console.log("L2000", Id);
-                  }
-                  if ( item.Distance <= 5000 ) {
-                    console.log("L5000", Id);
-                  }
-                  if ( item.Distance <= 10000 ) {
-                    console.log("L10000", Id);
-                  }
-                  if ( item.Distance <= 20000 ) {
-                    console.log("L20000", Id);
-                  }
-                  if ( item.Distance <= 50000 ) {
-                    console.log("L50000", Id);
-                  }
 
-                  if ( item.Distance <= 100000 ) {
-                    console.log("L100000", Id);
-                  }
-
-                  if ( item.Distance <= 200000 ) {
-                    console.log("L200000", Id);
-                  }
-
-                  if ( item.Distance <= 500000 ) {
-                    console.log("L500000", Id);
-                  }
-
-                  if ( item.Distance <= 1000000 ) {
-                    console.log("L1000000", Id);
-                  }
-
-                  if ( item.Distance <= 1609.34 ) {
+                  if ( distance <= 1609.34 ) {
                     console.log("LMile", Id);
                   }
 
-                  if ( item.Distance <= 804.67200 ) {
+                  if ( distance <= 804.67200 ) {
                     console.log("LHalfMile", Id);
                   }
 
-                  if ( item.Distance <= 402.33600 ) {
+                  if ( distance <= 402.33600 ) {
                     console.log("LQuarterMile", Id);
                   }
 
-                  if ( item.Distance <= 304.8 ) {
+                  if ( distance <= 304.8 ) {
                     console.log("L1000FT", Id);
                   }
 
-                  if ( item.Distance <= 152.4 ) {
+                  if ( distance <= 228.6 ) {
+                    console.log("L750FT", Id);
+                  }
+
+                  if ( distance <= 152.4 ) {
                     console.log("L500FT", Id);
                   }
 
-                  if ( item.Distance <= 30.48 ) {
+                  if ( distance <= 91.44 ) {
+                    console.log("L300FT", Id);
+                  }
+
+                  if ( distance <= 45.72 ) {
+                    console.log("L150FT", Id);
+                  }
+
+                  if ( distance <= 30.48 ) {
                     console.log("L100FT", Id);
                   }
 
-                  if ( item.Distance <= 6.096 ) {
+                  if ( distance <= 22.86 ) {
+                    console.log("L75FT", Id);
+                  }
+
+                  if ( distance <= 15.24 ) {
+                    console.log("L50FT", Id);
+                  }
+
+                  if ( distance <= 6.096 ) {
+                    console.log("L25FT", Id);
+                  }
+
+                  if ( distance <= 3.048 ) {
                     console.log("L10FT", Id);
                   }
+
 
                   console.log("Id",Id, item, combined);
                 }
