@@ -212,7 +212,7 @@ define(['q',
                     var x = 0,
                         y = 0,
                         location,
-                        vicnity = state.vicinity,
+                        vicinity = state.vicinity,
                         place;
                     if (!!vicinity) {
                       console.log('update vicinity',vicinity);
