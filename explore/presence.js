@@ -79,7 +79,7 @@ define(['q',
                 if ("fresh" === Id) {
                   continue;
                 }
-                var x = 0, item, obj, combined, distance,
+                var x = 0, item, obj, combined, distance, duration,
                   options = {
                     'All': Infinity,
                     'Present': 0,
@@ -103,14 +103,46 @@ define(['q',
                   item = cblips[x];
                   combined = Math.pow(( item.Distance / item.Duration ), -1/2);
                   distance = item.Distance;
+                  duration = item.Duration;
                   options.present = item.Radius;
                   if ( distance > 0.0 ) {
-                    console.log("LALL", Id);
-                    item.Stats = item.Stats || {};
+                    item.Stats = item.Stats || {
+                      Day: {},
+                      Week: {},
+                      Month: {},
+                      Year: {},
+                      All: {}
+                    };
                     for( attr in options) {
                       if (options.hasOwnProperty(attr)) {
                         if (distance < options[attr]) {
-                          console.log(attr, distance);
+
+                          // Day
+                          var items = [ 'All', 'Hour', 'Day', 'Month', 'Year' ],
+                              z = 0,
+                              zlen = items.length,
+                              zitem,
+                              zattr;
+
+                              for (z = 0; z < zlen; z += 1) {
+                                zattr = items[z];
+
+                                item.Stats.Day[zattr] = item.Stats.Day[item.Day] || {};
+                                item.Stats.Day[zattr][attr] = item.Stats.Day[item.Day][attr] || {
+                                  total: 0,
+                                  count: 0,
+                                  score: 0,
+                                  last: 0,
+                                  first: Date.now()
+                                };
+                                item.Stats.Day[zattr][attr].total += duration;
+                                item.Stats.Day[zattr][attr].count += 1;
+                                item.Stats.Day[zattr][attr].score += combined;
+                                item.Stats.Day[zattr][attr].last = Date.now();
+
+
+                              }
+
                         }
                       }
                     }
