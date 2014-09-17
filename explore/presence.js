@@ -96,7 +96,8 @@ define(['q',
                     'Ft50': 15.24,
                     'Ft25': 7.62,
                     'Ft10': 3.048
-                  };
+                  },
+                  attr;
                 cblips = reduced[Id].Blips;
                 for (x = 0; x < cblips.length; x += 1) {
                   item = cblips[x];
@@ -106,6 +107,13 @@ define(['q',
                   if ( distance > 0.0 ) {
                     console.log("LALL", Id);
                     item.Stats = item.Stats || {};
+                    for( attr in options) {
+                      if (options.hasOwnProperty(attr)) {
+                        if (distance < options[attr]) {
+                          console.log(attr, distance);
+                        }
+                      }
+                    }
                   }
 
                   console.log("Id",Id, item, combined);
