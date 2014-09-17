@@ -3,6 +3,7 @@ define(['q',
   'dash',
   'jquery',
   'underscore',
+  'xdate',
   'explore/trig',
   'changes',
   'collect',
@@ -12,7 +13,7 @@ define(['q',
   'match',
   'shorthand',
   'stats'
-], function(Q, React, dash, $, _, trig, changes, collect, live, map, mapreduce, match, shorthand, stats) {
+], function(Q, React, dash, $, _, XDate, trig, changes, collect, live, map, mapreduce, match, shorthand, stats) {
   var durationMinimumMilliseconds = function(radius) {
         return ((2 * radius) / 0.001385824); //3.1mph
       },
