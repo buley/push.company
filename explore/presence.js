@@ -18,7 +18,7 @@ define(['q',
       },
       database = "Push",
       store = "Places",
-      presence = "Pings",
+      blips = "Blips",
       deferred = Q.defer(),
       promise = deferred.promise,
       module = Q.defer(),
@@ -84,7 +84,70 @@ define(['q',
         });
         return def.promise;
       },
-      installStorage = function() {
+      installBlips = function() {
+        var def = Q.defer();
+        dash.get.index({
+          database: database,
+          store: blips,
+          store_key_path: 'Blips',
+          auto_increment: true,
+          index: 'Id',
+          index_key_path: 'Id'
+        })(function(ctx6){
+          dash.get.index({
+            database: database,
+            store: presence,
+            index: 'Latitude',
+            index_key_path: 'Latitude'
+          })(function(ctx7){
+            dash.get.index({
+              database: database,
+              store: presence,
+              index: 'Longitude',
+              index_key_path: 'Longitude'
+            })(function(ctx8){
+              dash.get.index({
+                database: database,
+                store: presence,
+                index: 'ClientDuration',
+                index_key_path: 'ClientDuration'
+              })(function(ctx9){
+                dash.get.index({
+                  database: database,
+                  store: presence,
+                  index: 'ClientDepart',
+                  index_key_path: 'ClientDepart'
+                })(function(ctx10){
+                  dash.get.index({
+                    database: database,
+                    store: presence,
+                    index: 'ClientLatitude',
+                    index_key_path: 'ClientLatitude'
+                  })(function(ctx7){
+                    dash.get.index({
+                      database: database,
+                      store: presence,
+                      index: 'ClientLongitude',
+                      index_key_path: 'ClientLongitude'
+                    })(function(ctx8){
+                      dash.get.index({
+                        database: database,
+                        store: presence,
+                        index: 'ClientDistance',
+                        index_key_path: 'ClientDistance'
+                      })(function(ctx11){
+                        def.resolve();
+                      });
+                    });
+                  });
+                });
+              });
+            });
+          });
+        });
+        return def.promise;
+      },
+      installPlaces = function() {
         var def = Q.defer();
         dash.get.index({
           database: database,
@@ -105,65 +168,7 @@ define(['q',
               index: 'Longitude',
               index_key_path: 'Longitude'
             })(function(ctx5){
-              dash.get.index({
-                database: database,
-                store: presence,
-                store_key_path: 'Ping',
-                auto_increment: true,
-                index: 'Id',
-                index_key_path: 'Id'
-              })(function(ctx6){
-                dash.get.index({
-                  database: database,
-                  store: presence,
-                  index: 'Latitude',
-                  index_key_path: 'Latitude'
-                })(function(ctx7){
-                  dash.get.index({
-                    database: database,
-                    store: presence,
-                    index: 'Longitude',
-                    index_key_path: 'Longitude'
-                  })(function(ctx8){
-                    dash.get.index({
-                      database: database,
-                      store: presence,
-                      index: 'ClientDuration',
-                      index_key_path: 'ClientDuration'
-                    })(function(ctx9){
-                      dash.get.index({
-                        database: database,
-                        store: presence,
-                        index: 'ClientDepart',
-                        index_key_path: 'ClientDepart'
-                      })(function(ctx10){
-                        dash.get.index({
-                          database: database,
-                          store: presence,
-                          index: 'ClientLatitude',
-                          index_key_path: 'ClientLatitude'
-                        })(function(ctx7){
-                          dash.get.index({
-                            database: database,
-                            store: presence,
-                            index: 'ClientLongitude',
-                            index_key_path: 'ClientLongitude'
-                          })(function(ctx8){
-                            dash.get.index({
-                              database: database,
-                              store: presence,
-                              index: 'ClientDistance',
-                              index_key_path: 'ClientDistance'
-                            })(function(ctx11){
-                              def.resolve();
-                            });
-                          });
-                        });
-                      });
-                    });
-                  });
-                });
-              });
+              def.resolve();
             });
           });
         });
@@ -179,8 +184,10 @@ define(['q',
       };
 
   addBehaviors().then(function() {
-    installStorage().then(function() {
-      module.resolve();
+    installPlaces().then(function() {
+      installBlips().then(function() {
+        module.resolve();
+      });
     });
   })
 
