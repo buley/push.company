@@ -128,26 +128,35 @@ define(['q',
                           for (z = 0; z < zlen; z += 1) {
                             zattr = items[z];
                             if ( 'All' === zattr ) {
-                              xval = 'All';
+                              item.Stats[zattr] = item.Stats[zattr] || {};
+                              item.Stats[zattr][attr] = item.Stats[zattr][attr] || {
+                                total: 0,
+                                count: 0,
+                                score: 0,
+                                last: 0,
+                                first: Date.now()
+                              };
+                              item.Stats[zattr][attr].total += duration;
+                              item.Stats[zattr][attr].count += 1;
+                              item.Stats[zattr][attr].score += combined;
+                              item.Stats[zattr][attr].last = Date.now();
                             } else {
                               xval = item[zattr];
+                              item.Stats[zattr] = item.Stats[zattr] || {};
+                              item.Stats[zattr][xval] = item.Stats[zattr][xval] || {};
+                              item.Stats[zattr][xval][attr] = item.Stats[zattr][xval][attr] || {
+                                total: 0,
+                                count: 0,
+                                score: 0,
+                                last: 0,
+                                first: Date.now()
+                              };
+                              item.Stats[zattr][xval][attr].total += duration;
+                              item.Stats[zattr][xval][attr].count += 1;
+                              item.Stats[zattr][xval][attr].score += combined;
+                              item.Stats[zattr][xval][attr].last = Date.now();
                             }
-                            item.Stats[zattr] = item.Stats[zattr] || {};
-                            item.Stats[zattr][xval] = item.Stats[zattr][xval] || {};
-                            item.Stats[zattr][xval][attr] = item.Stats[zattr][xval][attr] || {
-                              total: 0,
-                              count: 0,
-                              score: 0,
-                              last: 0,
-                              first: Date.now()
-                            };
-                            item.Stats[zattr][xval][attr].total += duration;
-                            item.Stats[zattr][xval][attr].count += 1;
-                            item.Stats[zattr][xval][attr].score += combined;
-                            item.Stats[zattr][xval][attr].last = Date.now();
-
                           }
-
                         }
                       }
                     }
