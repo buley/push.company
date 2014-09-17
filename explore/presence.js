@@ -82,7 +82,7 @@ define(['q',
                 var x = 0, item, obj, combined, distance,
                   options = {
                     'All': Infinity,
-                    'Present': item.Radius,
+                    'Present': 0,
                     'Mile': 1609.34,
                     'HalfMile': 804.67200,
                     'QuarterMile': 402.33600,
@@ -103,7 +103,7 @@ define(['q',
                   item = cblips[x];
                   combined = Math.pow(( item.Distance / item.Duration ), -1/2);
                   distance = item.Distance;
-
+                  options.present = item.Radius;
                   if ( distance > 0.0 ) {
                     console.log("LALL", Id);
                     item.Stats = item.Stats || {};
