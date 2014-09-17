@@ -72,11 +72,12 @@ define(['q',
         })(function(c) {
             console.log("FINISHED", c);
             var Id,
-                cblips;
-            for (Id in c) {
-              if (c.hasOwnProperty(Id)) {
+                cblips,
+                reduced = c.reduced;
+            for (Id in reduced) {
+              if (reduced.hasOwnProperty(Id)) {
                 var x = 0, item;
-                cblips = c[Id].Blips;
+                cblips = c.reduced[Id].Blips;
                 for (x = 0; x < cblips.length; x += 1) {
                   item = cblips[x];
                   console.log("Id",Id, item, Math.pow(( item.Distance / item.Duration ), -1/2));
