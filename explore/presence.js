@@ -221,7 +221,7 @@ define(['q',
                         for (y = 0; y < location.Places; y += 1) {
                           place = location.Places[y];
                           place.Timestamp = Date.now()
-                          place.ClientDistance = place.Location.Distance;
+                          place.ClientDistance = location.Location.Distance;
                           place.ClientDuration = place.Timestamp - previous.arrived;
                           place.ClientArrived = previous.arrived;
                           place.ClientRadius = previous.radius;
