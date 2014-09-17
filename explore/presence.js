@@ -230,6 +230,7 @@ define(['q',
     installPlaces().then(function() {
       installBlips().then(function() {
         module.resolve();
+        summarizeBlips();
       });
     });
   })
