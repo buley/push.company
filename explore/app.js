@@ -2,7 +2,7 @@ requirejs.config({
     baseUrl: '../',
     paths: {
       'q': '/bower_components/q/q',
-  		'dash': '/bower_components/dash/lib/dash',
+  		'dash': '/bower_components/dash/lib/dash.dev',
   		'mapbox': '/bower_components/mapbox.js/mapbox',
   		'underscore': '/bower_components/underscore/underscore',
   		'jquery': '/bower_components/jquery/dist/jquery',

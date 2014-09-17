@@ -89,54 +89,63 @@ define(['q',
         dash.get.index({
           database: database,
           store: blips,
-          store_key_path: 'Blips',
+          store_key_path: 'BlipId',
           auto_increment: true,
           index: 'Id',
           index_key_path: 'Id'
-        })(function(ctx6){
+        })(function(ctx0){
           dash.get.index({
             database: database,
             store: blips,
-            index: 'Latitude',
-            index_key_path: 'Latitude'
-          })(function(ctx7){
+            store_key_path: 'Blips',
+            auto_increment: true,
+            index: 'Id',
+            index_key_path: 'Id'
+          })(function(ctx6){
             dash.get.index({
               database: database,
               store: blips,
-              index: 'Longitude',
-              index_key_path: 'Longitude'
-            })(function(ctx8){
+              index: 'Latitude',
+              index_key_path: 'Latitude'
+            })(function(ctx7){
               dash.get.index({
                 database: database,
                 store: blips,
-                index: 'ClientDuration',
-                index_key_path: 'ClientDuration'
-              })(function(ctx9){
+                index: 'Longitude',
+                index_key_path: 'Longitude'
+              })(function(ctx8){
                 dash.get.index({
                   database: database,
                   store: blips,
-                  index: 'ClientDepart',
-                  index_key_path: 'ClientDepart'
-                })(function(ctx10){
+                  index: 'ClientDuration',
+                  index_key_path: 'ClientDuration'
+                })(function(ctx9){
                   dash.get.index({
                     database: database,
                     store: blips,
-                    index: 'ClientLatitude',
-                    index_key_path: 'ClientLatitude'
-                  })(function(ctx7){
+                    index: 'ClientDepart',
+                    index_key_path: 'ClientDepart'
+                  })(function(ctx10){
                     dash.get.index({
                       database: database,
                       store: blips,
-                      index: 'ClientLongitude',
-                      index_key_path: 'ClientLongitude'
-                    })(function(ctx8){
+                      index: 'ClientLatitude',
+                      index_key_path: 'ClientLatitude'
+                    })(function(ctx7){
                       dash.get.index({
                         database: database,
                         store: blips,
-                        index: 'ClientDistance',
-                        index_key_path: 'ClientDistance'
-                      })(function(ctx11){
-                        def.resolve();
+                        index: 'ClientLongitude',
+                        index_key_path: 'ClientLongitude'
+                      })(function(ctx8){
+                        dash.get.index({
+                          database: database,
+                          store: blips,
+                          index: 'ClientDistance',
+                          index_key_path: 'ClientDistance'
+                        })(function(ctx11){
+                          def.resolve();
+                        });
                       });
                     });
                   });
