@@ -27,6 +27,39 @@ define(['q',
       previous,
       neighborhood,
       vicinity,
+      summarizeBlips = function() {
+        var def = Q.defer();
+                dash.get.entries({
+            database: "Push",
+            store: "Blips",
+            index_left_open: "",
+            reduce: function(reduced, el) {
+              reduced = reduced || {};
+              reduced[el.Id] = reduced[el.Id] || el;
+              reduced[el.Id].Blips = reduced[el.Id].Blips || [];
+              reduced[el.Id].Blips.push({
+                Latitude: el.ClientLatitude,
+                Longitude: el.ClientLongitude,
+                Radius: el.ClientRadius,
+                Duration: el.ClientDuration,
+                Distance: el.ClientDistance
+              });
+              return reduced;
+            },
+            map: function(e) {
+                var d = XDate(e.ClientDepart);
+                e.ClientYear = d.toString("yyyy");
+                e.ClientMonth = d.toString("MMMM");
+                e.ClientDay = d.toString("ddd");
+                e.ClientHours = d.toString("HH");
+                return e;
+            }
+        })(function(c) {
+            console.log("FINISHED", c);
+            def.resolve(c);
+        }, null, null);
+        return def.promise;
+      },
       fetchNeighbors = function(lat, lon, radius) {
         var def = Q.defer();
         neighborhood = [];
