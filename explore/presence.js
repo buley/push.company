@@ -36,6 +36,14 @@ define(['q',
             reduce: function(reduced, el) {
               reduced = reduced || {};
               reduced[el.Id] = reduced[el.Id] || el;
+              var attr;
+              for (attr in reduced[el.Id]) {
+                if (reduced[el.Id].hasOwnProperty(attr)) {
+                  if (null !== attr.match(/Client/)) {
+                    delete reduced[el.Id][attr];
+                  }
+                }
+              }
               reduced[el.Id].Blips = reduced[el.Id].Blips || [];
               reduced[el.Id].Blips.push({
                 Latitude: el.ClientLatitude,
@@ -48,7 +56,7 @@ define(['q',
                 Year: el.ClientYear,
                 Hour: el.ClientHour
               });
-              return reduced;
+                            return reduced;
             },
             map: function(e) {
                 var d = XDate(e.ClientDepart);
