@@ -79,11 +79,93 @@ define(['q',
                 if ("fresh" === Id) {
                   continue;
                 }
-                var x = 0, item;
+                var x = 0, item, obj, combined;
                 cblips = reduced[Id].Blips;
                 for (x = 0; x < cblips.length; x += 1) {
                   item = cblips[x];
-                  console.log("Id",Id, item, Math.pow(( item.Distance / item.Duration ), -1/2));
+                  combined = Math.pow(( item.Distance / item.Duration ), -1/2);
+                  if ( item.Distance <= item.Radius ) {
+                    console.log("PRESENT", Id);
+                  }
+                  if ( item.Distance <= 20 ) {
+                    console.log("L20", Id);
+                  }
+                  if ( item.Distance <= 50 ) {
+                    console.log("L50", Id);
+                  }
+                  if ( item.Distance <= 100 ) {
+                    console.log("L100", Id);
+                  }
+                  if ( item.Distance <= 200 ) {
+                    console.log("L200", Id);
+                  }
+                  if ( item.Distance <= 500 ) {
+                    console.log("L500", Id);
+                  }
+                  if ( item.Distance <= 1000 ) {
+                    console.log("L1000", Id);
+                  }
+                  if ( item.Distance <= 2000 ) {
+                    console.log("L2000", Id);
+                  }
+                  if ( item.Distance <= 5000 ) {
+                    console.log("L5000", Id);
+                  }
+                  if ( item.Distance <= 10000 ) {
+                    console.log("L10000", Id);
+                  }
+                  if ( item.Distance <= 20000 ) {
+                    console.log("L20000", Id);
+                  }
+                  if ( item.Distance <= 50000 ) {
+                    console.log("L50000", Id);
+                  }
+
+                  if ( item.Distance <= 100000 ) {
+                    console.log("L100000", Id);
+                  }
+
+                  if ( item.Distance <= 200000 ) {
+                    console.log("L200000", Id);
+                  }
+
+                  if ( item.Distance <= 500000 ) {
+                    console.log("L500000", Id);
+                  }
+
+                  if ( item.Distance <= 1000000 ) {
+                    console.log("L1000000", Id);
+                  }
+
+                  if ( item.Distance <= 1609.34 ) {
+                    console.log("LMile", Id);
+                  }
+
+                  if ( item.Distance <= 804.67200 ) {
+                    console.log("LHalfMile", Id);
+                  }
+
+                  if ( item.Distance <= 402.33600 ) {
+                    console.log("LQuarterMile", Id);
+                  }
+
+                  if ( item.Distance <= 304.8 ) {
+                    console.log("L1000FT", Id);
+                  }
+
+                  if ( item.Distance <= 152.4 ) {
+                    console.log("L500FT", Id);
+                  }
+
+                  if ( item.Distance <= 30.48 ) {
+                    console.log("L100FT", Id);
+                  }
+
+                  if ( item.Distance <= 6.096 ) {
+                    console.log("L10FT", Id);
+                  }
+
+                  console.log("Id",Id, item, combined);
                 }
               }
             }
@@ -345,7 +427,6 @@ define(['q',
                           place.ClientRadius = previous.radius;
                           place.ClientLatitude = previous.latitude;
                           place.ClientLongitude = previous.longitude;
-                          console.log('update vicinity',place);
                           dash.add.entry( {
                             database: database,
                             store: blips,
