@@ -229,6 +229,27 @@ define(['q',
         });
         return def.promise;
       },
+      installMeta = function() {
+        var def = Q.defer();
+        dash.get.index({
+          database: database,
+          store: store,
+          store_key_path: 'Id',
+          auto_increment: true,
+          index: 'Key',
+          index_key_path: 'Key'
+        })(function(ctx3){
+          dash.get.index({
+            database: database,
+            store: store,
+            index: 'Value',
+            index_key_path: 'Value'
+          })(function(ctx4){
+            def.resolve();
+          });
+        });
+        return def.promise;
+      },
       addBehaviors = function() {
         var def = Q.defer();
         [ changes, collect, live, mapreduce, match, shorthand, stats ].forEach(function(influence) {
@@ -241,8 +262,10 @@ define(['q',
   addBehaviors().then(function() {
     installPlaces().then(function() {
       installBlips().then(function() {
-        module.resolve();
-        summarizeBlips();
+        installMeta().then(function() {
+          module.resolve();
+          summarizeBlips();
+        });
       });
     });
   })
