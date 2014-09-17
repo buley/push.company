@@ -42,7 +42,11 @@ define(['q',
                 Longitude: el.ClientLongitude,
                 Radius: el.ClientRadius,
                 Duration: el.ClientDuration,
-                Distance: el.ClientDistance
+                Distance: el.ClientDistance,
+                Day: el.ClientDay,
+                Month: el.ClientMonth,
+                Year: el.ClientYear,
+                Hour: el.ClientHour
               });
               return reduced;
             },
@@ -50,8 +54,8 @@ define(['q',
                 var d = XDate(e.ClientDepart);
                 e.ClientYear = d.toString("yyyy");
                 e.ClientMonth = d.toString("MMMM");
-                e.ClientDay = d.toString("ddd");
-                e.ClientHours = d.toString("HH");
+                e.ClientDay = d.toString("dddd");
+                e.ClientHour = d.toString("HH");
                 return e;
             }
         })(function(c) {
