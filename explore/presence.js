@@ -127,7 +127,11 @@ define(['q',
 
                           for (z = 0; z < zlen; z += 1) {
                             zattr = items[z];
-                            xval = item[zattr];
+                            if ( 'All' === zattr ) {
+                              xval = 'All';
+                            } else {
+                              xval = item[zattr];
+                            }
                             item.Stats[zattr] = item.Stats[zattr] || {};
                             item.Stats[zattr][xval] = item.Stats[zattr][xval] || {};
                             item.Stats[zattr][xval][attr] = item.Stats[zattr][xval][attr] || {
