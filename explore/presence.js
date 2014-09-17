@@ -260,8 +260,8 @@ define(['q',
                           place.ClientLatitude = previous.latitude;
                           place.ClientLongitude = previous.longitude;
                           dash.add.entry( {
-                            database: "push",
-                            store: "Presence",
+                            database: database,
+                            store: blips,
                             data: place
                           })(function(ct) {
                             console.log('added',ct);
