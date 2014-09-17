@@ -248,7 +248,7 @@ define(['q',
             index: 'Value',
             index_key_path: 'Value'
           })(function(ctx4){
-            def.resolve();å
+            def.resolve();
           });
         });
         return def.promise;
