@@ -23,6 +23,7 @@ define(['q',
       promise = deferred.promise,
       module = Q.defer(),
       augmented,
+      previous,
       neighborhood,
       vicinity,
       fetchNeighbors = function(lat, lon, radius) {
@@ -194,6 +195,7 @@ define(['q',
               augmented.distance = Infinity === distance ? null : distance;
               context = _.extend(state, {location: state.location, previous_location: augmented});
               notify = true;
+              previous = augmented;
               augmented = {
                   latitude: state.location.latitude,
                   longitude: state.location.longitude,
@@ -205,10 +207,29 @@ define(['q',
                   //mapreduce vicinity
                   fetchNeighbors(augmented.latitude, augmented.longitude, augmented.radius).then(function(neighbors) {
                     //mapreduce neighbors
-                    console.log('update previous places', presence_eligible);
+                    console.log('update previous places', presence_eligible, previous);
                     console.log("CURRENT");
-                    if (!!state.vicinity) {
-                      console.log('update vicinity',state.vicinity);
+                    var x = 0,
+                        y = 0,
+                        location,
+                        vicnity = state.vicinity,
+                        place;
+                    if (!!vicinity) {
+                      console.log('update vicinity',vicinity);
+                      for (x = 0; x < vicinity.length; x += 1) {
+                        location = vicinity[x];
+                        foreach (y = 0; y < location.Places) {
+                          place = location.Places[y];
+                          place.Timestamp = Date.now()
+                          place.ClientDistance = place.Location.Distance;
+                          place.ClientDuration = place.Timestamp - previous.arrived;
+                          place.ClientArrived = previous.arrived;
+                          place.ClientRadius = previous.radius;
+                          place.ClientLatitude = previous.latitude;
+                          place.ClientLongitude = previous.longitude;
+                          console.log("PLACE",place);
+                        }
+                      }
                     }
                     if (!!state.neighborhood) {
                       console.log('update neighborhood',state.neighborhood);
