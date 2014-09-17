@@ -36,16 +36,8 @@ define(['q',
             reduce: function(reduced, el) {
               reduced = reduced || {};
               reduced[el.Id] = reduced[el.Id] || el;
-              var attr;
-              for (attr in reduced[el.Id]) {
-                if (reduced[el.Id].hasOwnProperty(attr)) {
-                  if (null !== attr.match(/Client/)) {
-                    delete reduced[el.Id][attr];
-                  }
-                }
-              }
               reduced[el.Id].Blips = reduced[el.Id].Blips || [];
-              reduced[el.Id].Blips.push({
+              reduced[el.Id].Blips.push(_.extend({}, {
                 Latitude: el.ClientLatitude,
                 Longitude: el.ClientLongitude,
                 Radius: el.ClientRadius,
@@ -55,8 +47,16 @@ define(['q',
                 Month: el.ClientMonth,
                 Year: el.ClientYear,
                 Hour: el.ClientHour
-              });
-                            return reduced;
+              }));
+              var attr;
+              for (attr in reduced[el.Id]) {
+                if (reduced[el.Id].hasOwnProperty(attr)) {
+                  if (null !== attr.match(/Client/)) {
+                    delete reduced[el.Id][attr];
+                  }
+                }
+              }
+              return reduced;
             },
             map: function(e) {
                 var d = XDate(e.ClientDepart);
@@ -245,7 +245,7 @@ define(['q',
             index: 'Value',
             index_key_path: 'Value'
           })(function(ctx4){
-            def.resolve();
+            def.resolve();å
           });
         });
         return def.promise;
