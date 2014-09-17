@@ -212,14 +212,16 @@ define(['q',
                     var x = 0,
                         y = 0,
                         location,
+                        places,
                         vicinity = state.vicinity,
                         place;
                     if (!!vicinity) {
                       console.log('update vicinity',vicinity);
                       for (x = 0; x < vicinity.length; x += 1) {
                         location = vicinity[x];
-                        for (y = 0; y < location.Places; y += 1) {
-                          place = location.Places[y];
+                        places = location.Places;
+                        for (y = 0; y < places.length; y += 1) {
+                          place = places[y];
                           place.Timestamp = Date.now()
                           place.ClientDistance = location.Location.Distance;
                           place.ClientDuration = place.Timestamp - previous.arrived;
