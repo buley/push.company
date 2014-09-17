@@ -18,7 +18,7 @@ define(['q',
       },
       database = "Push",
       store = "Places",
-      presence = "Presence",
+      presence = "Pings",
       deferred = Q.defer(),
       promise = deferred.promise,
       module = Q.defer(),
@@ -108,7 +108,7 @@ define(['q',
               dash.get.index({
                 database: database,
                 store: presence,
-                store_key_path: 'VisitId',
+                store_key_path: 'Ping',
                 auto_increment: true,
                 index: 'Id',
                 index_key_path: 'Id'
@@ -128,22 +128,36 @@ define(['q',
                     dash.get.index({
                       database: database,
                       store: presence,
-                      index: 'Duration',
-                      index_key_path: 'Duration'
+                      index: 'ClientDuration',
+                      index_key_path: 'ClientDuration'
                     })(function(ctx9){
                       dash.get.index({
                         database: database,
                         store: presence,
-                        index: 'Timestamp',
-                        index_key_path: 'Timestamp'
+                        index: 'ClientDepart',
+                        index_key_path: 'ClientDepart'
                       })(function(ctx10){
                         dash.get.index({
                           database: database,
                           store: presence,
-                          index: 'Distance',
-                          index_key_path: 'Distance'
-                        })(function(ctx11){
-                          def.resolve();
+                          index: 'ClientLatitude',
+                          index_key_path: 'ClientLatitude'
+                        })(function(ctx7){
+                          dash.get.index({
+                            database: database,
+                            store: presence,
+                            index: 'ClientLongitude',
+                            index_key_path: 'ClientLongitude'
+                          })(function(ctx8){
+                            dash.get.index({
+                              database: database,
+                              store: presence,
+                              index: 'ClientDistance',
+                              index_key_path: 'ClientDistance'
+                            })(function(ctx11){
+                              def.resolve();
+                            });
+                          });
                         });
                       });
                     });
