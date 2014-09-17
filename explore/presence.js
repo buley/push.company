@@ -185,7 +185,7 @@ define(['q',
       },
       addBehaviors = function() {
         var def = Q.defer();
-        [ changes, collect, live, map, mapreduce, match, shorthand, stats ].forEach(function(influence) {
+        [ changes, collect, live, mapreduce, match, shorthand, stats ].forEach(function(influence) {
           dash.add.behavior(influence);
         });
         def.resolve();
