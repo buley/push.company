@@ -237,8 +237,6 @@ define(['q',
                   //mapreduce vicinity
                   fetchNeighbors(augmented.latitude, augmented.longitude, augmented.radius).then(function(neighbors) {
                     //mapreduce neighbors
-                    console.log('update previous places', presence_eligible, previous);
-                    console.log("CURRENT");
                     var x = 0,
                         y = 0,
                         location,
@@ -246,7 +244,6 @@ define(['q',
                         vicinity = state.vicinity,
                         place;
                     if (!!vicinity) {
-                      console.log('update vicinity',vicinity);
                       for (x = 0; x < vicinity.length; x += 1) {
                         location = vicinity[x];
                         places = location.Places;
@@ -259,6 +256,7 @@ define(['q',
                           place.ClientRadius = previous.radius;
                           place.ClientLatitude = previous.latitude;
                           place.ClientLongitude = previous.longitude;
+                          console.log('update vicinity',place);
                           dash.add.entry( {
                             database: database,
                             store: blips,
