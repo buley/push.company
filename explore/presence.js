@@ -122,13 +122,15 @@ define(['q',
                               z = 0,
                               zlen = items.length,
                               zitem,
-                              zattr;
+                              zattr,
+                              xval;
 
                           for (z = 0; z < zlen; z += 1) {
                             zattr = items[z];
-
+                            xval = item[zattr];
                             item.Stats[zattr] = item.Stats[zattr] || {};
-                            item.Stats[zattr][attr] = item.Stats[zattr][attr] || {
+                            item.Stats[zattr][xval] = item.Stats[zattr][xval] || {};
+                            item.Stats[zattr][xval][attr] = item.Stats[zattr][xval][attr] || {
                               total: 0,
                               count: 0,
                               score: 0,
