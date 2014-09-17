@@ -229,7 +229,13 @@ define(['q',
                           place.ClientRadius = previous.radius;
                           place.ClientLatitude = previous.latitude;
                           place.ClientLongitude = previous.longitude;
-                          console.log("PLACE",place);
+                          dash.add.entry( {
+                            database: "push",
+                            store: "Presence",
+                            data: place
+                          })(function(ct) {
+                            console.log('added',ct);
+                          })
                         }
                       }
                     }
