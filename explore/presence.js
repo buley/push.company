@@ -140,7 +140,6 @@ define(['q',
                                 item.Stats.Day[zattr][attr].score += combined;
                                 item.Stats.Day[zattr][attr].last = Date.now();
 
-
                               }
 
                         }
