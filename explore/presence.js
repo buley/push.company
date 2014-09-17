@@ -218,7 +218,7 @@ define(['q',
                       console.log('update vicinity',vicinity);
                       for (x = 0; x < vicinity.length; x += 1) {
                         location = vicinity[x];
-                        foreach (y = 0; y < location.Places) {
+                        foreach (y = 0; y < location.Places; y += 1) {
                           place = location.Places[y];
                           place.Timestamp = Date.now()
                           place.ClientDistance = place.Location.Distance;
