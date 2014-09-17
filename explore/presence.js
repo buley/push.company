@@ -127,8 +127,8 @@ define(['q',
                               for (z = 0; z < zlen; z += 1) {
                                 zattr = items[z];
 
-                                item.Stats.Day[zattr] = item.Stats.Day[item.Day] || {};
-                                item.Stats.Day[zattr][attr] = item.Stats.Day[item.Day][attr] || {
+                                item.Stats.Day[zattr] = item.Stats.Day[zattr] || {};
+                                item.Stats.Day[zattr][attr] = item.Stats.Day[zattr][attr] || {
                                   total: 0,
                                   count: 0,
                                   score: 0,
