@@ -34,7 +34,7 @@ define(['q',
             store: "Blips",
             index_left_open: "",
             reduce: function(reduced, el) {
-              reduced = reduced || {};
+              reduced = reduced || { fresh: true };
               reduced[el.Id] = reduced[el.Id] || el;
               reduced[el.Id].Blips = reduced[el.Id].Blips || [];
               reduced[el.Id].Blips.push(_.extend({}, {
@@ -48,13 +48,16 @@ define(['q',
                 Year: el.ClientYear,
                 Hour: el.ClientHour
               }));
-              var attr;
-              for (attr in reduced[el.Id]) {
-                if (reduced[el.Id].hasOwnProperty(attr)) {
-                  if (null !== attr.match(/Client/)) {
-                    delete reduced[el.Id][attr];
+              if (true === reduced[el.Id].fresh) {
+                var attr;
+                for (attr in reduced[el.Id]) {
+                  if (reduced[el.Id].hasOwnProperty(attr)) {
+                    if (null !== attr.match(/Client/)) {
+                      delete reduced[el.Id][attr];
+                    }
                   }
                 }
+                delete reduced[el.Id].fresh;
               }
               return reduced;
             },
