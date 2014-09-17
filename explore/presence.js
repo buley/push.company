@@ -76,6 +76,9 @@ define(['q',
                 reduced = c.reduced;
             for (Id in reduced) {
               if (reduced.hasOwnProperty(Id)) {
+                if ("fresh" === Id) {
+                  continue;
+                }
                 var x = 0, item;
                 cblips = reduced[Id].Blips;
                 for (x = 0; x < cblips.length; x += 1) {
