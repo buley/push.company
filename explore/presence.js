@@ -71,6 +71,16 @@ define(['q',
             }
         })(function(c) {
             console.log("FINISHED", c);
+            var Id;
+            for (Id in c) {
+              if (c.hasOwnProperty(Id)) {
+                var x = 0, item;
+                for (x = 0; x < c[Id].Blips.length; x += 1) {
+                  item = c[Id].Blips[x];
+                  console.log("Id",Id, item, Math.pow(( item.Distance / item.Duration ), -1/2));
+                }
+              }
+            }
             def.resolve(c);
         }, null, null);
         return def.promise;
