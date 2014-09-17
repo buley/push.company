@@ -260,6 +260,8 @@ define(['q',
                           dash.add.entry( {
                             database: database,
                             store: blips,
+                            store_key_path: "BlipId",
+                            auto_increment: true,
                             data: place
                           })(function(ct) {
                             console.log('added',ct);
