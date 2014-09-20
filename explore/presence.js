@@ -55,6 +55,7 @@ define(['q',
                     }
                   }
                 }
+              }
             } else {
               for (a2 in from[a1]) {
                 if (from[a1].hasOwnProperty(a2)) {
