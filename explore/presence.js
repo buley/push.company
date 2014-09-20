@@ -49,6 +49,7 @@ define(['q',
                           to[a1][a2][a3] = from[a1][a2][a3];
                         }
                       } else {
+                        to[a1][a2][a3] = to[a1][a2][a3] || 0;
                         to[a1][a2][a3] += from[a1][a2][a3];
                       }
                     }
@@ -74,6 +75,7 @@ define(['q',
                               to[a1][a2][a3][a4] = from[a1][a2][a3][a4];
                             }
                           } else {
+                            to[a1][a2][a3][a4] = to[a1][a2][a3][a4] || 0;
                             to[a1][a2][a3][a4] += from[a1][a2][a3][a4];
                           }
                         }
