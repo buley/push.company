@@ -28,6 +28,8 @@ define(['q',
       neighborhood,
       vicinity,
       mergeStats = function(to, from) {
+        to = to || {};
+        from = from || {};
         var a1, a2;
         for (a1 in from) {
           if (from.hasOwnProperty(a1)) {
