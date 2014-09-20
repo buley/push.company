@@ -31,9 +31,23 @@ define(['q',
         var a1, a2;
         for (a1 in from) {
           if (from.hasOwnProperty(a1)) {
+            if ("All" === a1) {
+              console.log('All', from[a1]);
+            } else {
+              for (a2 in from[a1]) {
+                if (from[a1].hasOwnProperty(a2)) {
+                  if ("All" === a2) {
+                    console.log('All', from[a1][a2]);
+                  } else {
+                    console.log(a2, from[a1][a2]);
+                  }
+                }
+              }
 
+            }
           }
         }
+        return to;
       },
       summarizeBlips = function() {
         var def = Q.defer();
