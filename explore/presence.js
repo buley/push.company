@@ -27,6 +27,14 @@ define(['q',
       previous,
       neighborhood,
       vicinity,
+      mergeStats = function(to, from) {
+        var a1, a2;
+        for (a1 in from) {
+          if (from.hasOwnProperty(a1)) {
+
+          }
+        }
+      },
       summarizeBlips = function() {
         var def = Q.defer();
                 dash.get.entries({
@@ -113,6 +121,8 @@ define(['q',
                   options.present = item.Radius;
                   if (distance > 0.0 ) {
                     finished[Id] = finished[Id] || {};
+                    finished[Id].BlipIds = finished[Id].BlipIds || [];
+                    finished[Id].BlipIds.push(item.BlipId);
                     finished[Id].Stats = finished[Id].Stats || {
                       Day: {},
                       Week: {},
@@ -171,7 +181,11 @@ define(['q',
                 dash.get.entry({database:"Push",store: "Places", key: Id })(function(e){
                   var entry = e.entry;
                   entry.Stats = entry.Stats || {};
-                  //spin through finished[Id] and append to sums
+                  entry.Stats = mergeStats( entry.Stats, finished[Id].Stats );
+                  console.log('Updating stats', Id);
+                  dash.update.entry({database:"Push",store: "Places", key: Id, data: entry })(function(e){
+                    console.log("Updated stats",entry.Stats);
+                  });
                 });
 
               }
