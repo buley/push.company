@@ -199,7 +199,7 @@ define(['q',
                     var entry = e.entry;
                     entry.Stats = entry.Stats || {};
                     entry.Stats = mergeStats( entry.Stats, finished[Xid].Stats );
-                    console.log('Updating stats', Xid);
+                    console.log('Updating stats', Xid, entry);
                     dash.update.entry({database:"Push",store: "Places", key: Xid, data: entry })(function(e){
                       console.log("Updated stats",entry.Stats);
                     });
