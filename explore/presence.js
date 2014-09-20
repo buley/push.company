@@ -70,7 +70,6 @@ define(['q',
                 return e;
             }
         })(function(c) {
-            console.log("FINISHED", c);
             var Id,
                 cblips,
                 reduced = c.reduced,
@@ -131,8 +130,8 @@ define(['q',
                           for (z = 0; z < zlen; z += 1) {
                             zattr = items[z];
                             if ( 'All' === zattr ) {
-                              finished[Id].Stats[zattr] = item.Stats[zattr] || {};
-                              finished[Id].Stats[zattr][attr] = item.Stats[zattr][attr] || {
+                              finished[Id].Stats[zattr] = finished[Id].Stats[zattr] || {};
+                              finished[Id].Stats[zattr][attr] = finished[Id].Stats[zattr][attr] || {
                                 total: 0,
                                 count: 0,
                                 score: 0,
@@ -145,9 +144,9 @@ define(['q',
                               finished[Id].Stats[zattr][attr].last = Date.now();
                             } else {
                               xval = item[zattr];
-                              finished[Id].Stats[zattr] = item.Stats[zattr] || {};
-                              finished[Id].Stats[zattr][xval] = item.Stats[zattr][xval] || {};
-                              finished[Id].Stats[zattr][xval][attr] = item.Stats[zattr][xval][attr] || {
+                              finished[Id].Stats[zattr] = finished[Id].Stats[zattr] || {};
+                              finished[Id].Stats[zattr][xval] = finished[Id].Stats[zattr][xval] || {};
+                              finished[Id].Stats[zattr][xval][attr] = finished[Id].Stats[zattr][xval][attr] || {
                                 total: 0,
                                 count: 0,
                                 score: 0,
