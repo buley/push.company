@@ -34,7 +34,6 @@ define(['q',
         for (a1 in from) {
           if (from.hasOwnProperty(a1)) {
             if ("All" === a1) {
-              console.log('All', from[a1]);
               for (a2 in from[a1]) {
                 if (from[a1].hasOwnProperty(a2)) {
                   for (a3 in from[a1][a2]) {
@@ -236,7 +235,7 @@ define(['q',
                     var entry = e.entry;
                     entry.Stats = entry.Stats || {};
                     entry.Stats = mergeStats( entry.Stats, finished[Xid].Stats );
-                    //console.log('Updating stats', Xid, entry);
+                    console.log('Updating stats', Xid, entry);
                     dash.update.entry({database:"Push",store: "Places", key: Xid, data: entry })(function(e){
                       console.log("Updated stats",Xid, e.data.Stats);
                     });
