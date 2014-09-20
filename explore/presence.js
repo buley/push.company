@@ -156,13 +156,14 @@ define(['q',
                               item.Stats[zattr][xval][attr].score += combined;
                               item.Stats[zattr][xval][attr].last = Date.now();
                             }
-                            delete item[zattr];
+                          }
+                          for (z = 0; z < zlen; z += 1) {
+                              delete item[items[z]];
                           }
                         }
                       }
                     }
                   }
-
                   console.log("Id",Id, item);
                 }
               }
