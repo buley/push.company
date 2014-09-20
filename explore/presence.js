@@ -238,7 +238,7 @@ define(['q',
                     entry.Stats = entry.Stats || {};
                     entry.Stats = mergeStats( entry.Stats, finished[Xid].Stats );
                     console.log('Updating stats', Xid, entry);
-                    dash.update.entry({database:"Push",store: "Places", key: Xid, data: entry })(function(e){
+                    dash.update.entry({database:"Push",store: "Places", data: entry })(function(e){
                       console.log("Updated stats",Xid, e.data.Stats);
                     });
                   });
