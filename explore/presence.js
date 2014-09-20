@@ -168,7 +168,7 @@ define(['q',
             }
             for ( Id in finished ) {
               if (finished.hasOwnProperty(Id)) {
-                dash.get.entry({database:"Push",store: "Places", key: "JN94.QC7D" })(function(e){
+                dash.get.entry({database:"Push",store: "Places", key: Id })(function(e){
                   var entry = e.entry;
                   entry.Stats = entry.Stats || {};
                   //spin through finished[Id] and append to sums
