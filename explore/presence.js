@@ -97,7 +97,13 @@ define(['q',
                     'Ft25': 7.62,
                     'Ft10': 3.048
                   },
-                  attr;
+                  attr,
+                  items = [ 'All', 'Hour', 'Day', 'Month', 'Year' ],
+                      z = 0,
+                      zlen = items.length,
+                      zitem,
+                      zattr;
+
                 cblips = reduced[Id].Blips;
                 for (x = 0; x < cblips.length; x += 1) {
                   item = cblips[x];
@@ -118,12 +124,7 @@ define(['q',
                         if (distance < options[attr]) {
 
                           // Day
-                          var items = [ 'All', 'Hour', 'Day', 'Month', 'Year' ],
-                              z = 0,
-                              zlen = items.length,
-                              zitem,
-                              zattr,
-                              xval;
+                          var xval;
 
                           for (z = 0; z < zlen; z += 1) {
                             zattr = items[z];
@@ -157,12 +158,12 @@ define(['q',
                               item.Stats[zattr][xval][attr].last = Date.now();
                             }
                           }
-                          for (z = 0; z < zlen; z += 1) {
-                              delete item[items[z]];
-                          }
                         }
                       }
                     }
+                  }
+                  for (z = 0; z < zlen; z += 1) {
+                      delete item[items[z]];
                   }
                   console.log("Id",Id, item);
                 }
