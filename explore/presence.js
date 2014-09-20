@@ -194,15 +194,17 @@ define(['q',
             }
             for ( Id in finished ) {
               if (finished.hasOwnProperty(Id)) {
-                dash.get.entry({database:"Push",store: "Places", key: Id })(function(e){
-                  var entry = e.entry;
-                  entry.Stats = entry.Stats || {};
-                  entry.Stats = mergeStats( entry.Stats, finished[Id].Stats );
-                  console.log('Updating stats', Id);
-                  dash.update.entry({database:"Push",store: "Places", key: Id, data: entry })(function(e){
-                    console.log("Updated stats",entry.Stats);
+                (function(Xid) {
+                  dash.get.entry({database:"Push",store: "Places", key: Xid })(function(e){
+                    var entry = e.entry;
+                    entry.Stats = entry.Stats || {};
+                    entry.Stats = mergeStats( entry.Stats, finished[Xid].Stats );
+                    console.log('Updating stats', Xid);
+                    dash.update.entry({database:"Push",store: "Places", key: Xid, data: entry })(function(e){
+                      console.log("Updated stats",entry.Stats);
+                    });
                   });
-                });
+                }(Id));
 
               }
             }
