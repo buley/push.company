@@ -30,7 +30,7 @@ define(['q',
       mergeStats = function(to, from) {
         to = to || {};
         from = from || {};
-        var a1, a2, a3;
+        var a1, a2, a3, a4;
         for (a1 in from) {
           if (from.hasOwnProperty(a1)) {
             if ("All" === a1) {
@@ -40,7 +40,11 @@ define(['q',
                 if (from[a1].hasOwnProperty(a2)) {
                   for (a3 in from[a1][a2]) {
                     if (from[a1][a2].hasOwnProperty(a3)) {
-                      console.log(a1, a2, a3, from[a1][a2][a3]);
+                      for (a4 in from[a1][a2][a3]) {
+                        if (from[a1][a2][a3].hasOwnProperty(a4)) {
+                          console.log(a1, a2, a3, a4, from[a1][a2][a3][a4]);
+                        }
+                      }
                     }
                   }
                 }
