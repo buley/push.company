@@ -73,7 +73,8 @@ define(['q',
             console.log("FINISHED", c);
             var Id,
                 cblips,
-                reduced = c.reduced;
+                reduced = c.reduced,
+                finished = {};
             for (Id in reduced) {
               if (reduced.hasOwnProperty(Id)) {
                 if ("fresh" === Id) {
@@ -112,7 +113,8 @@ define(['q',
                   duration = item.Duration;
                   options.present = item.Radius;
                   if (distance > 0.0 ) {
-                    item.Stats = item.Stats || {
+                    finished[Id] = finished[Id] || {};
+                    finished[Id].Stats = finished[Id].Stats || {
                       Day: {},
                       Week: {},
                       Month: {},
@@ -129,46 +131,43 @@ define(['q',
                           for (z = 0; z < zlen; z += 1) {
                             zattr = items[z];
                             if ( 'All' === zattr ) {
-                              item.Stats[zattr] = item.Stats[zattr] || {};
-                              item.Stats[zattr][attr] = item.Stats[zattr][attr] || {
+                              finished[Id].Stats[zattr] = item.Stats[zattr] || {};
+                              finished[Id].Stats[zattr][attr] = item.Stats[zattr][attr] || {
                                 total: 0,
                                 count: 0,
                                 score: 0,
                                 last: 0,
                                 first: Date.now()
                               };
-                              item.Stats[zattr][attr].total += duration;
-                              item.Stats[zattr][attr].count += 1;
-                              item.Stats[zattr][attr].score += combined;
-                              item.Stats[zattr][attr].last = Date.now();
+                              finished[Id].Stats[zattr][attr].total += duration;
+                              finished[Id].Stats[zattr][attr].count += 1;
+                              finished[Id].Stats[zattr][attr].score += combined;
+                              finished[Id].Stats[zattr][attr].last = Date.now();
                             } else {
                               xval = item[zattr];
-                              item.Stats[zattr] = item.Stats[zattr] || {};
-                              item.Stats[zattr][xval] = item.Stats[zattr][xval] || {};
-                              item.Stats[zattr][xval][attr] = item.Stats[zattr][xval][attr] || {
+                              finished[Id].Stats[zattr] = item.Stats[zattr] || {};
+                              finished[Id].Stats[zattr][xval] = item.Stats[zattr][xval] || {};
+                              finished[Id].Stats[zattr][xval][attr] = item.Stats[zattr][xval][attr] || {
                                 total: 0,
                                 count: 0,
                                 score: 0,
                                 last: 0,
                                 first: Date.now()
                               };
-                              item.Stats[zattr][xval][attr].total += duration;
-                              item.Stats[zattr][xval][attr].count += 1;
-                              item.Stats[zattr][xval][attr].score += combined;
-                              item.Stats[zattr][xval][attr].last = Date.now();
+                              finished[Id].Stats[zattr][xval][attr].total += duration;
+                              finished[Id].Stats[zattr][xval][attr].count += 1;
+                              finished[Id].Stats[zattr][xval][attr].score += combined;
+                              finished[Id].Stats[zattr][xval][attr].last = Date.now();
                             }
                           }
                         }
                       }
                     }
                   }
-                  for (z = 0; z < zlen; z += 1) {
-                      delete item[items[z]];
-                  }
-                  console.log("Id",Id, item);
                 }
               }
             }
+            console.log("FINISHED",finished);
             def.resolve(c);
         }, null, null);
         return def.promise;
