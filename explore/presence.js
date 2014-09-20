@@ -35,6 +35,26 @@ define(['q',
           if (from.hasOwnProperty(a1)) {
             if ("All" === a1) {
               console.log('All', from[a1]);
+              for (a2 in from[a1]) {
+                if (from[a1].hasOwnProperty(a2)) {
+                  for (a3 in from[a1][a2]) {
+                    if (from[a1][a2].hasOwnProperty(a3)) {
+                      to[a1] = to[a1] || {};
+                      to[a1][a2] = to[a1][a2] || {};
+                      if ("last" === a3) {
+                        if (!to[a1][a2][a3] || to[a1][a2][a3] < from[a1][a2][a3]) {
+                          to[a1][a2][a3] = from[a1][a2][a3];
+                        }
+                      } else if ("first" === a3) {
+                        if (!to[a1][a2][a3] || to[a1][a2][a3] > from[a1][a2][a3]) {
+                          to[a1][a2][a3] = from[a1][a2][a3];
+                        }
+                      } else {
+                        to[a1][a2][a3] += from[a1][a2][a3];
+                      }
+                    }
+                  }
+                }
             } else {
               for (a2 in from[a1]) {
                 if (from[a1].hasOwnProperty(a2)) {
@@ -42,14 +62,26 @@ define(['q',
                     if (from[a1][a2].hasOwnProperty(a3)) {
                       for (a4 in from[a1][a2][a3]) {
                         if (from[a1][a2][a3].hasOwnProperty(a4)) {
-                          console.log(a1, a2, a3, a4, from[a1][a2][a3][a4]);
+                          to[a1] = to[a1] || {};
+                          to[a1][a2] = to[a1][a2] || {};
+                          to[a1][a2][a3] = to[a1][a2][a3] || {};
+                          if ("last" === a4) {
+                            if (!to[a1][a2][a3][a4] || to[a1][a2][a3][a4] < from[a1][a2][a3][a4]) {
+                              to[a1][a2][a3][a4] = from[a1][a2][a3][a4];
+                            }
+                          } else if ("first" === a4) {
+                            if (!to[a1][a2][a3][a4] || to[a1][a2][a3][a4] > from[a1][a2][a3][a4]) {
+                              to[a1][a2][a3][a4] = from[a1][a2][a3][a4];
+                            }
+                          } else {
+                            to[a1][a2][a3][a4] += from[a1][a2][a3][a4];
+                          }
                         }
                       }
                     }
                   }
                 }
               }
-
             }
           }
         }
