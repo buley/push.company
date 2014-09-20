@@ -39,9 +39,9 @@ define(['q',
               for (a2 in from[a1]) {
                 if (from[a1].hasOwnProperty(a2)) {
                   if ("All" === a2) {
-                    console.log('All', from[a1][a2]);
+                    console.log('All', a2, from[a1][a2]);
                   } else {
-                    console.log(a2, from[a1][a2]);
+                    console.log(a1, a2, from[a1][a2]);
                   }
                 }
               }
