@@ -63,8 +63,15 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
   module.resolve();
 
   window.addEventListener( 'beforeunload', function() {
-    context.location = null;
-    deferred.notify(context);
+
+    current.latitude = position.coords.latitude;
+    current.longitude = position.coords.longitude;
+    current.radius = position.coords.accuracy;
+    context = _.extend(context, {location: current});
+    if (!!context) {
+      deferred.notify(context);
+    }
+
   });
 
   if (!!navigator && !!navigator.geolocation) {

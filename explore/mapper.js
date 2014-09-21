@@ -170,7 +170,6 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
     incoming: function(interface) {
       interface.then(null, null, function(state) {
         context = state;
-        console.log("STATE",state);
     		if (!!state.route && !!state.route.hash && !!state.route.hash.overlay) {
           overlays = _.unique(state.route.hash.overlay.split(","));
           map_state.overlays = overlays;
