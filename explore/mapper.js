@@ -52,7 +52,7 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
           marker.setLatLng([this.props.location.latitude, this.props.location.longitude]);
           marker.setRadius(this.props.location.radius);
         }
-        if (!!this.props.vicinity) {
+        if (!!this.props.location && !!this.props.vicinity) {
           key = [
               this.props.location.latitude,
               this.props.location.longitude,
