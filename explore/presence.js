@@ -239,13 +239,14 @@ define(['q',
                     var entry = e.entry;
                     entry.Stats = entry.Stats || {};
                     entry.Stats = mergeStats( entry.Stats, finished[Xid].Stats );
-                    dash.update.entry({database:"Push",store: "Places", data: entry });
+                    dash.update.entry({database:"Push",store: "Places", data: entry })(function() {
+                      for (q = 0, qlen = finished[Xid].BlipIds.length; q < qlen; q += 1) {
+                        console.log("Removed Blip", finished[Xid].BlipIds[q]);
+                        dash.remove.entry({database:"Push",store:"Blips",key: finished[Xid].BlipIds[q]});
+                      }
+                    })
                   });
                 }(Id));
-                for (q = 0, qlen = finished[Id].BlipIds.length; q < qlen; q += 1) {
-                  console.log("Removed Blip", finished[Id].BlipIds[q]);
-                  dash.remove.entry({database:"Push",store:"Blips",key: finished[Id].BlipIds[q]});
-                }
               }
             }
             def.resolve(c);
