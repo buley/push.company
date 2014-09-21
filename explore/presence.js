@@ -457,6 +457,7 @@ define(['q',
     },
     incoming: function(interface) {
       interface.then(null, null, function(state) {
+        console.log('state update');
         var distance,
             notify = false,
             presence_eligible;
@@ -468,7 +469,6 @@ define(['q',
               distance = trig.distance(augmented, state.location);
               augmented.duration = Date.now() - augmented.arrived;
               if (augmented.duration > durationMinimumMilliseconds(augmented.radius)) {
-                console.log("LONG ENOUGH", augmented.duration, durationMinimumMilliseconds(augmented.radius));
                 presence_eligible = true;
               } else {
                 presence_eligible = false;
