@@ -527,6 +527,8 @@ define(['q',
                     updatePosition(vicinity, neighborhood);
                   })
                 });
+              } else {
+                updatePosition();
               }
             }
           } else {
