@@ -65,6 +65,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
   window.addEventListener( 'onbeforeunload', function() {
     context.location = null;
     deferred.notify(context);
+    console.log('unloaded');
   });
 
   if (!!navigator && !!navigator.geolocation) {
