@@ -243,7 +243,7 @@ define(['q',
                     });
                   });
                 }(Id));
-
+                console.log(finished[Id].BlipIds);
               }
             }
             def.resolve(c);
