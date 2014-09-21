@@ -439,6 +439,42 @@ define(['q',
         });
         def.resolve();
         return def.promise;
+      },
+      updatePosition() {
+        var x = 0,
+            y = 0,
+            location,
+            places,
+            vicinity = context.vicinity,
+            place;
+        if (!!vicinity) {
+          for (x = 0; x < vicinity.length; x += 1) {
+            location = vicinity[x];
+            places = location.Places;
+            for (y = 0; y < places.length; y += 1) {
+              place = places[y];
+              place.ClientDistance = location.Location.Distance;
+              place.ClientDepart = Date.now()
+              place.ClientDuration = place.ClientDepart - previous.arrived;
+              place.ClientArrived = previous.arrived;
+              place.ClientRadius = previous.radius;
+              place.ClientLatitude = previous.latitude;
+              place.ClientLongitude = previous.longitude;
+              dash.add.entry( {
+                database: database,
+                store: blips,
+                store_key_path: "BlipId",
+                auto_increment: true,
+                data: place
+              })(function(ct) {
+                console.log('added',ct);
+              })
+            }
+          }
+        }
+        if (!!state.neighborhood) {
+          console.log('update neighborhood',state.neighborhood);
+        }
       };
 
   addBehaviors().then(function() {
@@ -488,40 +524,7 @@ define(['q',
                   //mapreduce vicinity
                   fetchNeighbors(augmented.latitude, augmented.longitude, augmented.radius).then(function(neighbors) {
                     //mapreduce neighbors
-                    var x = 0,
-                        y = 0,
-                        location,
-                        places,
-                        vicinity = state.vicinity,
-                        place;
-                    if (!!vicinity) {
-                      for (x = 0; x < vicinity.length; x += 1) {
-                        location = vicinity[x];
-                        places = location.Places;
-                        for (y = 0; y < places.length; y += 1) {
-                          place = places[y];
-                          place.ClientDistance = location.Location.Distance;
-                          place.ClientDepart = Date.now()
-                          place.ClientDuration = place.ClientDepart - previous.arrived;
-                          place.ClientArrived = previous.arrived;
-                          place.ClientRadius = previous.radius;
-                          place.ClientLatitude = previous.latitude;
-                          place.ClientLongitude = previous.longitude;
-                          dash.add.entry( {
-                            database: database,
-                            store: blips,
-                            store_key_path: "BlipId",
-                            auto_increment: true,
-                            data: place
-                          })(function(ct) {
-                            console.log('added',ct);
-                          })
-                        }
-                      }
-                    }
-                    if (!!state.neighborhood) {
-                      console.log('update neighborhood',state.neighborhood);
-                    }
+                    updatePosition(vicinity, neighborhood);
                   })
                 });
               }
@@ -559,6 +562,7 @@ define(['q',
           context.neighborhood = [];
           context.vicinity = [];
           deferred.notify(context);
+          updatePosition();
         }
       });
     },
