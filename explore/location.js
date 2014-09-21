@@ -45,7 +45,6 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       map,
       context,
       onPosition = function(position) {
-        console.log('position',position);
         if (position.coords.latitude !== current.latitude ||
             position.coords.longitude !== current.longitude ||
             position.coords.accuracy !== current.radius) {

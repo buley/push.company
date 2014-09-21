@@ -487,8 +487,8 @@ define(['q',
         var distance,
             notify = false,
             presence_eligible;
+        context = _.extend({}, state);
         if (!!state.location) {
-          context = _.extend({}, state);
           if (!!augmented) {
             if (augmented.latitude !== state.location.latitude ||
               augmented.longitude !== state.location.longitude) {
