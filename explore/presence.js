@@ -559,10 +559,10 @@ define(['q',
               radius: 0.0,
               arrived: Date.now()
           };
+          updatePosition();
           context.neighborhood = [];
           context.vicinity = [];
           deferred.notify(context);
-          updatePosition();
         }
       });
     },
