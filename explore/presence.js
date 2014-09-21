@@ -112,6 +112,7 @@ define(['q',
                 Year: el.ClientYear,
                 Hour: el.ClientHour
               }));
+
               if (true === reduced[el.Id].fresh) {
                 var attr;
                 for (attr in reduced[el.Id]) {
@@ -135,6 +136,7 @@ define(['q',
         })(function(c) {
             var Id,
                 cblips,
+                cities = {},
                 reduced = c.reduced,
                 finished = {},
                 q, qlen;
@@ -224,6 +226,19 @@ define(['q',
                               finished[Id].Stats[zattr][xval][attr].score += combined;
                               finished[Id].Stats[zattr][xval][attr].last = Date.now();
                             }
+
+                            cities[item.City] = cities[item.City] || {
+                              total: 0,
+                              count: 0,
+                              score: 0,
+                              last: 0,
+                              first: Date.now()
+                            };
+                            cities[item.City].total += duration;
+                            cities[item.City].count += 1;
+                            cities[item.City].score += combined;
+                            cities[item.City].last = Date.now();
+
                           }
                         }
                       }
@@ -232,6 +247,7 @@ define(['q',
                 }
               }
             }
+            console.log("CITIES",cities);
             for ( Id in finished ) {
               if (finished.hasOwnProperty(Id)) {
                 (function(Xid) {
