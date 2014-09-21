@@ -515,7 +515,7 @@ define(['q',
                   //mapreduce vicinity
                   fetchNeighbors(augmented.latitude, augmented.longitude, augmented.radius).then(function(neighbors) {
                     //mapreduce neighbors
-                    updatePosition(vicinity, neighborhood);
+                    updatePosition();
                   })
                 });
               } else {
@@ -536,7 +536,7 @@ define(['q',
                 });
               });
             } else {
-              updatePosition(true);
+              updatePosition();
             }
           }
 
@@ -549,7 +549,7 @@ define(['q',
           }
 
         } else {
-          updatePosition();
+          updatePosition(true);
         }
       });
     },
