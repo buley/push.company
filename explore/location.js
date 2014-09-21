@@ -45,6 +45,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       map,
       context,
       onPosition = function(position) {
+        console.log('position',position);
         if (position.coords.latitude !== current.latitude ||
             position.coords.longitude !== current.longitude ||
             position.coords.accuracy !== current.radius) {
@@ -63,7 +64,6 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
   module.resolve();
 
   window.addEventListener( 'beforeunload', function() {
-
     current.latitude = 0.0;
     current.longitude = 0.0;
     current.radius = 0.0;
@@ -71,7 +71,6 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
     if (!!context) {
       deferred.notify(context);
     }
-
   });
 
   if (!!navigator && !!navigator.geolocation) {
