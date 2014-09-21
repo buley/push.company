@@ -100,6 +100,7 @@ define(['q',
               reduced[el.Id] = reduced[el.Id] || el;
               reduced[el.Id].Blips = reduced[el.Id].Blips || [];
               reduced[el.Id].Blips.push(_.extend({}, {
+                Id: el.BlipId,
                 Latitude: el.ClientLatitude,
                 Longitude: el.ClientLongitude,
                 Radius: el.ClientRadius,
@@ -176,7 +177,7 @@ define(['q',
                   if (distance > 0.0 ) {
                     finished[Id] = finished[Id] || {};
                     finished[Id].BlipIds = finished[Id].BlipIds || [];
-                    finished[Id].BlipIds.push(item.BlipId);
+                    finished[Id].BlipIds.push(item.Id);
                     finished[Id].Stats = finished[Id].Stats || {
                       Day: {},
                       Week: {},
