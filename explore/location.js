@@ -62,6 +62,11 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
 
   module.resolve();
 
+  window.addEventListener( 'onbeforeunload', function() {
+    context.location = null;
+    deferred.notify(context);
+  });
+
   if (!!navigator && !!navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(onPosition);
     watch_id = navigator.geolocation.watchPosition(onPosition, onPositionError, {
