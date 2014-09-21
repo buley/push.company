@@ -434,7 +434,7 @@ define(['q',
         def.resolve();
         return def.promise;
       },
-      updatePosition = function() {
+      updatePosition = function(nosummary) {
         var x = 0,
             y = 0,
             location,
@@ -464,7 +464,9 @@ define(['q',
             }
           }
         }
-        summarizeBlips();
+        if (true !== nosummary) {
+          summarizeBlips();
+        }
       };
 
   addBehaviors().then(function() {
@@ -518,7 +520,7 @@ define(['q',
                   })
                 });
               } else {
-                updatePosition();
+                updatePosition(true);
               }
             }
           } else {
@@ -535,7 +537,7 @@ define(['q',
                 });
               });
             } else {
-              updatePosition();
+              updatePosition(true);
             }
           }
 
