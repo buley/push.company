@@ -463,9 +463,7 @@ define(['q',
             }
           }
         }
-        if (true !== nosummary) {
-          summarizeBlips();
-        }
+        summarizeBlips();
       };
 
   addBehaviors().then(function() {
