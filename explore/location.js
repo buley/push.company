@@ -64,9 +64,9 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
 
   window.addEventListener( 'beforeunload', function() {
 
-    current.latitude = position.coords.latitude;
-    current.longitude = position.coords.longitude;
-    current.radius = position.coords.accuracy;
+    current.latitude = 0.0;
+    current.longitude = 0.0;
+    current.radius = 0.0;
     context = _.extend(context, {location: current});
     if (!!context) {
       deferred.notify(context);
