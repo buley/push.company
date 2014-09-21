@@ -440,7 +440,9 @@ define(['q',
             places,
             vicinity = context.vicinity,
             place,
-            all;
+            all,
+            head = Q.defer(),
+            tail = head.promise;
         if (!!vicinity) {
           for (x = 0; x < vicinity.length; x += 1) {
             location = vicinity[x];
@@ -454,20 +456,23 @@ define(['q',
               place.ClientRadius = previous.radius;
               place.ClientLatitude = previous.latitude;
               place.ClientLongitude = previous.longitude;
-              all.push( dash.add.entry( {
-                database: database,
-                store: blips,
-                store_key_path: "BlipId",
-                auto_increment: true,
-                data: place
-              }) );
+              tail = tail.then(function() {
+                dash.add.entry({
+                  database: database,
+                  store: blips,
+                  store_key_path: "BlipId",
+                  auto_increment: true,
+                  data: place
+                });
+              });
             }
           }
         }
-        Q.all(all).then(function() {
+        tail.then(function() {
           console.log("ALL GOOD");
           summarizeBlips();
         });
+        head.resolve();
       };
 
   addBehaviors().then(function() {
