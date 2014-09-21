@@ -137,7 +137,7 @@ define(['q',
                 cblips,
                 reduced = c.reduced,
                 finished = {},
-                q, qlen, qitem;
+                q, qlen;
             for (Id in reduced) {
               if (reduced.hasOwnProperty(Id)) {
                 if ("fresh" === Id) {
@@ -243,7 +243,6 @@ define(['q',
                   });
                 }(Id));
                 for (q = 0, qlen = finished[Id].BlipIds.length; q < qlen; q += 1) {
-                  qitem = ;
                   console.log("Removed Blip", finished[Id].BlipIds[q]);
                   dash.remove.entry({database:"Push",store:"Blips",key: finished[Id].BlipIds[q]});
                 }
