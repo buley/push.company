@@ -544,6 +544,8 @@ define(['q',
                   updatePosition();
                 });
               });
+            } else {
+              updatePosition();
             }
           }
 
