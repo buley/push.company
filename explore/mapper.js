@@ -90,7 +90,7 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
             vicinities[key] = layer;
           }
         }
-        if (!!this.props.neighborhood) {
+        if (!!this.props.location && !!this.props.neighborhood) {
           key = [
               this.props.location.latitude,
               this.props.location.longitude,
