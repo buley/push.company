@@ -457,7 +457,6 @@ define(['q',
     },
     incoming: function(interface) {
       interface.then(null, null, function(state) {
-        console.log('state update');
         var distance,
             notify = false,
             presence_eligible;
@@ -548,6 +547,16 @@ define(['q',
             deferred.notify(context);
           }
 
+        } else {
+          augmented = {
+              latitude: 0.0,
+              longitude: 0.0,
+              radius: 0.0,
+              arrived: Date.now()
+          };
+          context.neighborhood = [];
+          context.vicinity = [];
+          deferred.notify(context);
         }
       });
     },
