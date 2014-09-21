@@ -297,13 +297,8 @@ define(['q',
                       database: database,
                       store: store,
                       data: place
-                    })(function(ctx){
-                      console.log("Place added", ctx.data);
-                    }, function(ctx){
-                      console.log("Place not added", ctx);
-                    }, function(ctx){
-                      console.log("Place notify", ctx);
                     });
+                    
                   });
                 }
               });
@@ -466,14 +461,9 @@ define(['q',
                 store_key_path: "BlipId",
                 auto_increment: true,
                 data: place
-              })(function(ct) {
-                console.log('added',ct);
-              })
+              });
             }
           }
-        }
-        if (!!context.neighborhood) {
-          console.log('update neighborhood',context.neighborhood);
         }
       };
 
