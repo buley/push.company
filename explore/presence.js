@@ -439,7 +439,8 @@ define(['q',
             location,
             places,
             vicinity = context.vicinity,
-            place;
+            place,
+            all;
         if (!!vicinity) {
           for (x = 0; x < vicinity.length; x += 1) {
             location = vicinity[x];
@@ -453,17 +454,20 @@ define(['q',
               place.ClientRadius = previous.radius;
               place.ClientLatitude = previous.latitude;
               place.ClientLongitude = previous.longitude;
-              dash.add.entry( {
+              all.push( dash.add.entry( {
                 database: database,
                 store: blips,
                 store_key_path: "BlipId",
                 auto_increment: true,
                 data: place
-              });
+              }) );
             }
           }
         }
-        summarizeBlips();
+        Q.all(all).then(function() {
+          console.log("ALL GOOD");
+          summarizeBlips();
+        });
       };
 
   addBehaviors().then(function() {
