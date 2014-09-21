@@ -62,7 +62,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
 
   module.resolve();
 
-  window.addEventListener( 'onbeforeunload', function() {
+  window.addEventListener( 'beforeunload', function() {
     context.location = null;
     deferred.notify(context);
     console.log('unloaded');
