@@ -136,7 +136,8 @@ define(['q',
             var Id,
                 cblips,
                 reduced = c.reduced,
-                finished = {};
+                finished = {},
+                q, qlen, qitem;
             for (Id in reduced) {
               if (reduced.hasOwnProperty(Id)) {
                 if ("fresh" === Id) {
@@ -241,7 +242,11 @@ define(['q',
                     dash.update.entry({database:"Push",store: "Places", data: entry });
                   });
                 }(Id));
-                console.log("Blips", finished[Id].BlipIds);
+                for (q = 0, qlen = finished[Id].BlipIds.length; ) {
+                  qitem = finished[Id].BlipIds[q];
+                  console.log("Removed Blip", qitem.Id);
+                  dash.remove.entry({database:"Push",store:"Blips",key: qitem.Id});
+                }
               }
             }
             def.resolve(c);
