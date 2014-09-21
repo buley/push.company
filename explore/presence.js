@@ -540,7 +540,9 @@ define(['q',
             };
             if (augmented.latitude !== 0.0 && augmented.longitude !== 0.0) {
               fetchVicinity(augmented.latitude, augmented.longitude, augmented.radius).then(function(vicinity) {
-                fetchNeighbors(augmented.latitude, augmented.longitude, augmented.radius);
+                fetchNeighbors(augmented.latitude, augmented.longitude, augmented.radius)(function() {
+                  updatePosition();
+                });
               });
             }
           }
