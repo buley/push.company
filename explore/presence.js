@@ -241,7 +241,6 @@ define(['q',
                     entry.Stats = mergeStats( entry.Stats, finished[Xid].Stats );
                     dash.update.entry({database:"Push",store: "Places", data: entry })(function() {
                       for (q = 0, qlen = finished[Xid].BlipIds.length; q < qlen; q += 1) {
-                        console.log("Removed Blip", finished[Xid].BlipIds[q]);
                         dash.remove.entry({database:"Push",store:"Blips",key: finished[Xid].BlipIds[q]});
                       }
                     });
@@ -520,7 +519,7 @@ define(['q',
                   })
                 });
               } else {
-                updatePosition(true);
+                updatePosition();
               }
             }
           } else {
