@@ -472,8 +472,8 @@ define(['q',
             }
           }
         }
-        if (!!state.neighborhood) {
-          console.log('update neighborhood',state.neighborhood);
+        if (!!context.neighborhood) {
+          console.log('update neighborhood',context.neighborhood);
         }
       };
 
