@@ -549,6 +549,7 @@ define(['q',
           }
 
         } else {
+          console.log('location cleared');
           augmented = {
               latitude: 0.0,
               longitude: 0.0,
