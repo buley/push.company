@@ -101,6 +101,10 @@ define(['q',
               reduced[el.Id] = reduced[el.Id] || el;
               reduced[el.Id].Blips = reduced[el.Id].Blips || [];
               reduced[el.Id].Blips.push(_.extend({}, {
+                City: el.City,
+                State: el.State,
+                Zip: el.Zip,
+                ZipPlus4: el.ZipPlus4,
                 Id: el.BlipId,
                 Latitude: el.ClientLatitude,
                 Longitude: el.ClientLongitude,
