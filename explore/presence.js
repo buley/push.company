@@ -243,9 +243,9 @@ define(['q',
                   });
                 }(Id));
                 for (q = 0, qlen = finished[Id].BlipIds.length; q < qlen; q += 1) {
-                  qitem = finished[Id].BlipIds[q];
-                  console.log("Removed Blip", qitem.Id);
-                  dash.remove.entry({database:"Push",store:"Blips",key: qitem.Id});
+                  qitem = ;
+                  console.log("Removed Blip", finished[Id].BlipIds[q]);
+                  dash.remove.entry({database:"Push",store:"Blips",key: finished[Id].BlipIds[q]});
                 }
               }
             }
