@@ -440,7 +440,7 @@ define(['q',
         def.resolve();
         return def.promise;
       },
-      updatePosition() {
+      updatePosition = function() {
         var x = 0,
             y = 0,
             location,
