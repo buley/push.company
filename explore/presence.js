@@ -242,7 +242,7 @@ define(['q',
                     dash.update.entry({database:"Push",store: "Places", data: entry });
                   });
                 }(Id));
-                for (q = 0, qlen = finished[Id].BlipIds.length; ) {
+                for (q = 0, qlen = finished[Id].BlipIds.length; q += 1) {
                   qitem = finished[Id].BlipIds[q];
                   console.log("Removed Blip", qitem.Id);
                   dash.remove.entry({database:"Push",store:"Blips",key: qitem.Id});
