@@ -124,8 +124,7 @@ define(['q',
                 delete reduced[el.Id].fresh;
               }
               return reduced;
-            },
-            map: function(e) {
+            },            map: function(e) {
                 var d = XDate(e.ClientDepart);
                 e.ClientYear = d.toString("yyyy");
                 e.ClientMonth = d.toString("MMMM");
@@ -245,7 +244,7 @@ define(['q',
                         console.log("Removed Blip", finished[Xid].BlipIds[q]);
                         dash.remove.entry({database:"Push",store:"Blips",key: finished[Xid].BlipIds[q]});
                       }
-                    })
+                    });
                   });
                 }(Id));
               }
@@ -465,6 +464,7 @@ define(['q',
             }
           }
         }
+        summarizeBlips();
       };
 
   addBehaviors().then(function() {
