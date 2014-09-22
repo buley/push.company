@@ -623,6 +623,7 @@ define(['q',
                     auto_increment: true,
                     data: place
                   })(function() {
+                    console.log('added blip');
                     d.resolve();
                   });
                 })
