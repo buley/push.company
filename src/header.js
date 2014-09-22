@@ -4,10 +4,34 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
       module = Q.defer(),
       context = {},
       instance,
+      nodeHeight = function(el, sum) {
+        var x, xlen;
+        sum = sum || 0;
+        if (!!el.children && el.children.length > 0) {
+          for (x = 0, xlen = el.children.length; x < xlen; x += 1) {
+            sum += nodeHeight(el.children[x], sum);
+          }
+        } else {
+          sum += el.offsetHeight;
+        }
+        return sum;
+      },
+      nodeWidth = function() {
+        var x, xlen;
+        sum = sum || 0;
+        if (!!el.children && el.children.length > 0) {
+          for (x = 0, xlen = el.children.length; x < xlen; x += 1) {
+            sum += nodeWidth(el.children[x], sum);
+          }
+        } else {
+          sum += el.offsetWidth;
+        }
+        return sum;
+      },
       component = React.createClass({
         componentDidMount: function() {
             instance = this;
-            console.log("header mounted");
+            console.log("header mounted", getDOMNode());
         },
         render: function() {
           //TODO: Render map
