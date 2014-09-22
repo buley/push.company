@@ -12,6 +12,7 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
         render: function() {
           //TODO: Render map
           //renderMap.apply(this, arguments);
+          console.log('header render');
           return React.DOM.div({id: "header"});
         }
       });

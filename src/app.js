@@ -72,7 +72,7 @@ requirejs.config({
 
 requirejs(['q', 'react'], function(Q, React) {
 	var module = Q.defer();
-    require(['src/presence', 'src/mapper', 'src/location', 'src/urls' ], function() {
+    require(['src/header', 'src/presence', 'src/mapper', 'src/location', 'src/urls' ], function() {
       var state = {},
           previous_state = '',
           deferred = Q.defer(),
