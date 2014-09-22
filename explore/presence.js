@@ -297,6 +297,15 @@ define(['q',
 
             dash.get.entry({database: database,store: meta, index_key: "Key", key: "Cities" })(function(e) {
               console.log('Cities c',e);
+              if (!e.entry || !e.entry.Value) {
+                e.entry = e.entry || {};
+                e.entry.Value = cities;
+              } else {
+                //merge
+              }
+              dash.update.entry({database: database, store: meta, data: e})(function(z) {
+                console.log('added Cities',z);
+              });
             }, function(e){
               console.log('Cities err',e);
               dash.add.entry({database: database, store: meta, data: {
@@ -311,7 +320,16 @@ define(['q',
 
             dash.get.entry({database:database,store: meta, index: "Key", key: "Zips" })(function(e) {
               console.log('Zips c',e);
-            }, function(e){
+              if (!e.entry || !e.entry.Value) {
+                e.entry = e.entry || {};
+                e.entry.Value = zips;
+              } else {
+                //merge
+              }
+              dash.update.entry({database: database, store: meta, data: e})(function(z) {
+                console.log('added Zips',z);
+              });
+          }, function(e){
               console.log('Zips err',e);
               dash.add.entry({database: database, store: meta, data: {
                 Key: "Zips",
@@ -325,6 +343,16 @@ define(['q',
 
             dash.get.entry({database: database,store: meta, index_key: "Key", key: "ZipPlus4s" })(function(e) {
               console.log('ZipPlus4s c',e);
+              if (!e.entry || !e.entry.Value) {
+                e.entry = e.entry || {};
+                e.entry.Value = zipsplus;
+              } else {
+                //merge
+              }
+              dash.update.entry({database: database, store: meta, data: e})(function(z) {
+                console.log('added ZipPlus4s',z);
+              });
+
             }, function(e){
               console.log('ZipPlus4s err',e);
               dash.add.entry({database: database, store: meta, data: {
