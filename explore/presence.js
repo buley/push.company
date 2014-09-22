@@ -319,7 +319,6 @@ define(['q',
             });
 
             dash.get.entry({database:database,store: meta, index: "Key", key: "Zips" })(function(e) {
-              console.log('Zips c',e);
               if (!e.entry || !e.entry.Value) {
                 e.entry = e.entry || {};
                 e.entry.Value = zips;
@@ -348,6 +347,7 @@ define(['q',
                 }
                 //merge
               }
+              console.log('Zips updating',e);
               dash.update.entry({database: database, store: meta, data: e})(function(z) {
                 console.log('added Zips',z);
               });
