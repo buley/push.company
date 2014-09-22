@@ -5,6 +5,9 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
       context = {},
       instance,
       nodeHeight = function(el, sum) {
+        if (!el) {
+          return NaN;
+        }
         var x, xlen;
         sum = sum || 0;
         if (!!el.children && el.children.length > 0) {
@@ -16,7 +19,10 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
         }
         return sum;
       },
-      nodeWidth = function() {
+      nodeWidth = function(el, sum) {
+        if (!el) {
+          return NaN;
+        }
         var x, xlen;
         sum = sum || 0;
         if (!!el.children && el.children.length > 0) {
@@ -31,7 +37,7 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
       component = React.createClass({
         componentDidMount: function() {
             instance = this;
-            console.log("header mounted", this.getDOMNode());
+            console.log("header mounted", nodeWidth(this.getDOMNode()), nodeHeight(this.getDOMNode()) );
         },
         render: function() {
           //TODO: Render map
