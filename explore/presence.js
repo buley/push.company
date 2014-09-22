@@ -20,6 +20,7 @@ define(['q',
       database = "Push",
       store = "Places",
       blips = "Blips",
+      meta = "Meta",
       context = {},
       deferred = Q.defer(),
       promise = deferred.promise,
@@ -277,7 +278,6 @@ define(['q',
                 }
               }
             }
-            console.log("EXTRAS",cities, zips, zipsplus);
             for ( Id in finished ) {
               if (finished.hasOwnProperty(Id)) {
                 (function(Xid) {
@@ -294,6 +294,13 @@ define(['q',
                 }(Id));
               }
             }
+            console.log("EXTRAS",cities, zips, zipsplus);
+            /*
+            dash.get.entry({database:"Push",store: "Meta", index_key: "Key", key: "Cities" })(function(e) {
+              console.log('c',e);
+            }, function(e){console.log('e',e);}, function(e){console.log('s',e);}));
+            */
+
             def.resolve(c);
         }, null, null);
         return def.promise;
@@ -454,7 +461,7 @@ define(['q',
         var def = Q.defer();
         dash.get.index({
           database: database,
-          store: store,
+          store: meta,
           store_key_path: 'Id',
           auto_increment: true,
           index: 'Key',
@@ -462,7 +469,7 @@ define(['q',
         })(function(ctx3){
           dash.get.index({
             database: database,
-            store: store,
+            store: meta,
             index: 'Value',
             index_key_path: 'Value'
           })(function(ctx4){
