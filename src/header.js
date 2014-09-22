@@ -41,12 +41,10 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
       component = React.createClass({
         componentDidMount: function() {
             instance = this;
-            console.log("header mounted", nodeWidth(this.getDOMNode()), nodeHeight(this.getDOMNode()) );
         },
         render: function() {
           //TODO: Render map
           //renderMap.apply(this, arguments);
-          console.log('header render');
           return React.DOM.header({
             id: "header-container",
             "data-header-container-height": this.isMounted() ? nodeHeight(this.getDOMNode()) : 0,
