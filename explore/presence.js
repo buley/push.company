@@ -349,23 +349,15 @@ define(['q',
 
                   }
                 }
-                console.log('map',map);
                 e.entry.Value = map;
               }
-              console.log('Zips updating',e.entry.Value);
-              dash.update.entry({database: database, store: meta, data: e.entry})(function(z) {
-                console.log('added Zips',z);
-              });
+              dash.update.entry({database: database, store: meta, data: e.entry});
+
           }, function(e){
-              console.log('Zips err',e);
               dash.add.entry({database: database, store: meta, data: {
                 Key: "Zips",
                 Value: zips
-              }})(function(z) {
-                console.log('added Zips',z);
-              });
-            }, function(e){
-              console.log('Zips s',e);
+              }});
             });
 
             dash.get.entry({database: database,store: meta, index_key: "Key", key: "ZipPlus4s" })(function(e) {
@@ -616,7 +608,6 @@ define(['q',
           }
         }
         tail.then(function() {
-          console.log("ALL GOOD");
           summarizeBlips();
         });
         head.resolve();
@@ -666,9 +657,7 @@ define(['q',
               };
               if (augmented.latitude !== 0.0 && augmented.longitude !== 0.0) {
                 fetchVicinity(augmented.latitude, augmented.longitude, augmented.radius).then(function(vicinity) {
-                  //mapreduce vicinity
                   fetchNeighbors(augmented.latitude, augmented.longitude, augmented.radius).then(function(neighbors) {
-                    //mapreduce neighbors
                     updatePosition();
                   })
                 });
