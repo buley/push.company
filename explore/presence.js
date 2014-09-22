@@ -318,7 +318,7 @@ define(['q',
               console.log('Cities s',e);
             });
 
-            dash.get.entry({database:database,store: meta, index: "Key", key: "Zips" })(function(e) {
+            dash.get.entry({database: database,store: meta, index: "Key", key: "Zips" })(function(e) {
               if (!e.entry || !e.entry.Value) {
                 e.entry = e.entry || {};
                 e.entry.Value = zips;
@@ -326,6 +326,7 @@ define(['q',
                 var zip, attr, map = e.entry.Value || {};
                 for(zip in zips) {
                   if (zips.hasOwnProperty(zip)) {
+
                     map[zip] = map[zip] || {
                       total: 0,
                       count: 0,
@@ -337,12 +338,15 @@ define(['q',
                     map[zip].total += zips[zip].total;
                     map[zip].count += zips[zip].count;
                     map[zip].score += zips[zip].score;
+
                     if (!map[zip].last || zips[zip].last > map[zip].last) {
                       map[zip].last = zips[zip].last;
                     }
+
                     if (!map[zip].first || zips[zip].first < map[zip].first) {
                       map[zip].first = zips[zip].first;
                     }
+
                   }
                 }
                 console.log('map',map);
@@ -386,6 +390,8 @@ define(['q',
             }, function(e){
               console.log('ZipPlus4s s',e);
             });
+
+            console.log('zips',zips,zipsplus,cities);
 
             def.resolve(c);
         }, null, null);
