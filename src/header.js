@@ -50,13 +50,9 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
             "data-header-container-height": this.isMounted() ? nodeHeight(this.getDOMNode()) : 0,
             "data-header-container-width": this.isMounted() ? nodeWidth(this.getDOMNode()) : 0
           }, React.DOM.div({
-            id: "header-inner",
-            "data-header-inner-height": this.isMounted() ? nodeHeight(this.getDOMNode()) : 0,
-            "data-header-inner-width": this.isMounted() ? nodeWidth(this.getDOMNode()) : 0
+            id: "header-inner"
           }, React.DOM.div({
-            id: "header",
-            "data-header-height": this.isMounted() ? nodeHeight(this.getDOMNode()) : 0,
-            "data-header-width": this.isMounted() ? nodeWidth(this.getDOMNode()) : 0
+            id: "header"
           })));
         }
       });
