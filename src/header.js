@@ -31,7 +31,7 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
       component = React.createClass({
         componentDidMount: function() {
             instance = this;
-            console.log("header mounted", getDOMNode());
+            console.log("header mounted", this.getDOMNode());
         },
         render: function() {
           //TODO: Render map
