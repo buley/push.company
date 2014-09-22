@@ -301,6 +301,8 @@ define(['q',
               }
             }
 
+            console.log('ran');
+
             dash.get.entry({database: database,store: meta, index: "Key", key: "Cities" })(function(e) {
               var city, attr, map;
               if (!e.entry || !e.entry.Value) {
