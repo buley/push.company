@@ -47,7 +47,7 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
             id: "header-container",
             "data-header-container-height": this.isMounted() ? nodeHeight(this.getDOMNode()) : 0,
             "data-header-container-width": this.isMounted() ? nodeWidth(this.getDOMNode()) : 0
-          }}, React.DOM.div({
+          }, React.DOM.div({
             id: "header-inner"
           }, React.DOM.div({
             id: "header"
