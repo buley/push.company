@@ -348,7 +348,7 @@ define(['q',
                 //merge
               }
               console.log('Zips updating',e);
-              dash.update.entry({database: database, store: meta, data: e})(function(z) {
+              dash.update.entry({database: database, store: meta, data: e.entry})(function(z) {
                 console.log('added Zips',z);
               });
           }, function(e){
@@ -370,7 +370,7 @@ define(['q',
               } else {
                 //merge
               }
-              dash.update.entry({database: database, store: meta, data: e})(function(z) {
+              dash.update.entry({database: database, store: meta, data: e.entry})(function(z) {
                 console.log('added ZipPlus4s',z);
               });
 
