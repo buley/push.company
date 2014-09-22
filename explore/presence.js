@@ -636,6 +636,7 @@ define(['q',
           }
         }
         tail.then(function() {
+          console.log('summarizing');
           summarizeBlips();
         });
         head.resolve();
