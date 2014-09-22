@@ -1,0 +1,15 @@
+{
+  "name": "requirejs",
+  "homepage": "https://github.com/jrburke/requirejs",
+  "version": "2.1.15",
+  "_release": "2.1.15",
+  "_resolution": {
+    "type": "version",
+    "tag": "2.1.15",
+    "commit": "dca6a8a0d22adf71f316a83ed7caddc605ed0c03"
+  },
+  "_source": "https://github.com/jrburke/requirejs.git",
+  "_target": "~2.1.15",
+  "_originalSource": "https://github.com/jrburke/requirejs.git",
+  "_direct": true
+}
