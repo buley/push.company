@@ -309,7 +309,7 @@ define(['q',
               console.log('Cities s',e);
             });
 
-            dash.get.entry({database:"Push",store: "Meta", index_key: "Key", key: "Zips" })(function(e) {
+            dash.get.entry({database:"Push",store: "Meta", index: "Key", key: "Zips" })(function(e) {
               console.log('Zips c',e);
             }, function(e){
               console.log('Zips err',e);
@@ -322,7 +322,6 @@ define(['q',
             }, function(e){
               console.log('Zips s',e);
             });
-
 
             dash.get.entry({database:"Push",store: "Meta", index_key: "Key", key: "ZipPlus4s" })(function(e) {
               console.log('ZipPlus4s c',e);
@@ -502,7 +501,9 @@ define(['q',
           store_key_path: 'Id',
           auto_increment: true,
           index: 'Key',
-          index_key_path: 'Key'
+          index_key_path: 'Key',
+          index_unique: true,
+          index_multi_entry: false
         })(function(ctx3){
           dash.get.index({
             database: database,
