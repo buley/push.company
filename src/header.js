@@ -16,8 +16,8 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
           }
         } else {
           sum += el.offsetHeight +
-           parseFloat(el.style.getPropertyValue('marginTop')) +
-           parseFloat(el.style.getPropertyValue('marginBottom'));
+           parseFloat(el.style.getPropertyValue('margin-top')) +
+           parseFloat(el.style.getPropertyValue('margin-bottom'));
         }
         return sum;
       },
