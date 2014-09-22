@@ -29,7 +29,9 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
         sum = sum || 0;
         if (!!el.children && el.children.length > 0) {
           for (x = 0, xlen = el.children.length; x < xlen; x += 1) {
-            sum += nodeWidth(el.children[x], 0);
+            sum += nodeWidth(el.children[x], 0) +
+             (parseFloat(el.style.getPropertyValue('padding-top')) || 0) +
+             (parseFloat(el.style.getPropertyValue('padding-bottom')) || 0);
           }
         } else {
           sum += el.offsetWidth;/* +
