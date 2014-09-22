@@ -301,8 +301,6 @@ define(['q',
               }
             }
 
-            console.log('ran');
-
             dash.get.entry({database: database,store: meta, index: "Key", key: "Cities" })(function(e) {
               var city, attr, map;
               if (!e.entry || !e.entry.Value) {
@@ -622,8 +620,6 @@ define(['q',
                   store_key_path: "BlipId",
                   auto_increment: true,
                   data: place
-                })(function(c) {
-                  console.log("BLIP",c);
                 });
               });
             }
@@ -642,6 +638,9 @@ define(['q',
       installBlips().then(function() {
         installMeta().then(function() {
           module.resolve();
+          summarizeBlips().then(function() {
+
+          });
         });
       });
     });
