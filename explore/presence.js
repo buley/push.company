@@ -367,13 +367,36 @@ define(['q',
               }});
             });
             dash.get.entry({database: database,store: meta, index_key: "Key", key: "ZipPlus4s" })(function(e) {
+
               if (!e.entry || !e.entry.Value) {
                 e.entry = e.entry || {};
-                e.entry.Value = zipsplus;
+                e.entry.Value = cities;
               } else {
-                //merge
+                var zip, attr, map = e.entry.Value || {};
+                for(zip in zipsplus) {
+                  if (zipsplus.hasOwnProperty(zip)) {
+                    map[zip] = map[zip] || {
+                      total: 0,
+                      count: 0,
+                      score: 0,
+                      last: 0,
+                      first: Date.now()
+                    };
+                    map[zip].total += zipsplus[zip].total;
+                    map[zip].count += zipsplus[zip].count;
+                    map[zip].score += zipsplus[zip].score;
+                    if (!map[zip].last || zipsplus[zip].last > map[zip].last) {
+                      map[zip].last = zipsplus[zip].last;
+                    }
+                    if (!map[zip].first || zipsplus[zip].first < map[zip].first) {
+                      map[zip].first = zipsplus[zip].first;
+                    }
+                  }
+                }
+                e.entry.Value = map;
               }
               dash.update.entry({database: database, store: meta, data: e.entry});
+
             }, function(e){
               dash.add.entry({database: database, store: meta, data: {
                 Key: "ZipPlus4s",
