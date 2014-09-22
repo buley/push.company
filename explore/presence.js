@@ -331,21 +331,11 @@ define(['q',
                 e.entry.Value = map;
               }
               dash.update.entry({database: database, store: meta, data: e.entry});
-
             }, function(e){
-
-              console.log('YEAH',e);
               dash.add.entry({database: database, store: meta, data: {
                 Key: "Cities",
                 Value: cities
-              }})(function(e) {
-                console.log("CITIES1",e);
-              }, function(e) {
-                console.log("CITIES2",e);
-              }, function(e) {
-                console.log("CITIES3",e);
-              });
-
+              }});
             });
 
             dash.get.entry({database: database,store: meta, index: "Key", key: "Zips" })(function(e) {
