@@ -175,6 +175,7 @@ define(['q',
                       z = 0,
                       zlen = items.length,
                       zitem,
+                      xval,
                       zattr;
 
                 cblips = reduced[Id].Blips;
@@ -198,9 +199,6 @@ define(['q',
                     for (attr in options) {
                       if (options.hasOwnProperty(attr)) {
                         if (distance < options[attr]) {
-
-                          // Day
-                          var xval;
 
                           for (z = 0; z < zlen; z += 1) {
                             zattr = items[z];
@@ -278,6 +276,7 @@ define(['q',
                 }
               }
             }
+
             for ( Id in finished ) {
               if (finished.hasOwnProperty(Id)) {
                 (function(Xid) {
@@ -296,26 +295,40 @@ define(['q',
             }
 
             dash.get.entry({database: database,store: meta, index_key: "Key", key: "Cities" })(function(e) {
-              console.log('Cities c',e);
               if (!e.entry || !e.entry.Value) {
                 e.entry = e.entry || {};
                 e.entry.Value = cities;
               } else {
-                //merge
+                var city, attr, map = e.entry.Value || {};
+                for(city in cities) {
+                  if (cities.hasOwnProperty(city)) {
+                    map[city] = map[city] || {
+                      total: 0,
+                      count: 0,
+                      score: 0,
+                      last: 0,
+                      first: Date.now()
+                    };
+                    map[city].total += cities[city].total;
+                    map[city].count += cities[city].count;
+                    map[city].score += cities[city].score;
+                    if (!map[city].last || cities[city].last > map[city].last) {
+                      map[city].last = cities[city].last;
+                    }
+                    if (!map[city].first || cities[city].first < map[city].first) {
+                      map[city].first = cities[city].first;
+                    }
+                  }
+                }
+                e.entry.Value = map;
               }
-              dash.update.entry({database: database, store: meta, data: e})(function(z) {
-                console.log('added Cities',z);
-              });
+              dash.update.entry({database: database, store: meta, data: e.entry});
+
             }, function(e){
-              console.log('Cities err',e);
               dash.add.entry({database: database, store: meta, data: {
                 Key: "Cities",
                 Value: cities
-              }})(function(z) {
-                console.log('added Cities',z);
-              });
-            }, function(e){
-              console.log('Cities s',e);
+              }});
             });
 
             dash.get.entry({database: database,store: meta, index: "Key", key: "Zips" })(function(e) {
@@ -326,7 +339,6 @@ define(['q',
                 var zip, attr, map = e.entry.Value || {};
                 for(zip in zips) {
                   if (zips.hasOwnProperty(zip)) {
-
                     map[zip] = map[zip] || {
                       total: 0,
                       count: 0,
@@ -334,32 +346,26 @@ define(['q',
                       last: 0,
                       first: Date.now()
                     };
-
                     map[zip].total += zips[zip].total;
                     map[zip].count += zips[zip].count;
                     map[zip].score += zips[zip].score;
-
                     if (!map[zip].last || zips[zip].last > map[zip].last) {
                       map[zip].last = zips[zip].last;
                     }
-
                     if (!map[zip].first || zips[zip].first < map[zip].first) {
                       map[zip].first = zips[zip].first;
                     }
-
                   }
                 }
                 e.entry.Value = map;
               }
               dash.update.entry({database: database, store: meta, data: e.entry});
-
           }, function(e){
               dash.add.entry({database: database, store: meta, data: {
                 Key: "Zips",
                 Value: zips
               }});
             });
-
             dash.get.entry({database: database,store: meta, index_key: "Key", key: "ZipPlus4s" })(function(e) {
               if (!e.entry || !e.entry.Value) {
                 e.entry = e.entry || {};
@@ -367,24 +373,13 @@ define(['q',
               } else {
                 //merge
               }
-              dash.update.entry({database: database, store: meta, data: e.entry})(function(z) {
-                console.log('added ZipPlus4s',z);
-              });
-
+              dash.update.entry({database: database, store: meta, data: e.entry});
             }, function(e){
-              console.log('ZipPlus4s err',e);
               dash.add.entry({database: database, store: meta, data: {
                 Key: "ZipPlus4s",
                 Value: zipsplus
-              }})(function(z) {
-                console.log('added ZipPlus4s',z);
-              });
-            }, function(e){
-              console.log('ZipPlus4s s',e);
+              }});
             });
-
-            console.log('zips',zips,zipsplus,cities);
-
             def.resolve(c);
         }, null, null);
         return def.promise;
