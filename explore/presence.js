@@ -691,7 +691,7 @@ define(['q',
                 latitude: state.location.latitude,
                 longitude: state.location.longitude,
                 radius: state.location.radius,
-                arrived:  Date.now()
+                arrived: Date.now()
             };
             if (augmented.latitude !== 0.0 && augmented.longitude !== 0.0) {
               fetchVicinity(augmented.latitude, augmented.longitude, augmented.radius).then(function(vicinity) {
