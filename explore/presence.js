@@ -325,6 +325,7 @@ define(['q',
               dash.update.entry({database: database, store: meta, data: e.entry});
 
             }, function(e){
+              console.log('YEAH',e);
               dash.add.entry({database: database, store: meta, data: {
                 Key: "Cities",
                 Value: cities
