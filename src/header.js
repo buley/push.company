@@ -15,7 +15,7 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
             sum += nodeHeight(el.children[x], sum);
           }
         } else {
-          sum += el.get('offsetHeight') +
+          sum += el.offsetHeight +
            parseFloat(el.getComputedStyle('marginTop')) +
            parseFloat(el.getComputedStyle('marginBottom'));
         }
