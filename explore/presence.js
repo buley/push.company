@@ -323,7 +323,7 @@ define(['q',
                 e.entry = e.entry || {};
                 e.entry.Value = zips;
               } else {
-                var zip, attr, map = e.entry.Value;
+                var zip, attr, map = e.entry.Value || {};
                 for(zip in zips) {
                   if (zips.hasOwnProperty(zip)) {
                     map[zip] = map[zip] || {
@@ -345,6 +345,7 @@ define(['q',
                     }
                   }
                 }
+                console.log('map',map);
                 e.entry.Value = map;
               }
               console.log('Zips updating',e.entry.Value);
