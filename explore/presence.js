@@ -294,7 +294,7 @@ define(['q',
               }
             }
 
-            dash.get.entry({database: database,store: meta, index_key: "Key", key: "Cities" })(function(e) {
+            dash.get.entry({database: database,store: meta, index: "Key", key: "Cities" })(function(e) {
               var city, attr, map;
               if (!e.entry || !e.entry.Value) {
                 e.entry = e.entry || {};
@@ -338,6 +338,7 @@ define(['q',
               }, function(e) {
                 console.log("CITIES3",e);
               });
+
             });
 
             dash.get.entry({database: database,store: meta, index: "Key", key: "Zips" })(function(e) {
@@ -375,7 +376,7 @@ define(['q',
                 Value: zips
               }});
             });
-            dash.get.entry({database: database,store: meta, index_key: "Key", key: "ZipPlus4s" })(function(e) {
+            dash.get.entry({database: database,store: meta, index: "Key", key: "ZipPlus4s" })(function(e) {
 
               if (!e.entry || !e.entry.Value) {
                 e.entry = e.entry || {};
