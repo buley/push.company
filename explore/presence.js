@@ -345,9 +345,9 @@ define(['q',
                     }
                   }
                 }
-                //merge
+                e.entry.Value = map;
               }
-              console.log('Zips updating',e);
+              console.log('Zips updating',e.entry.Value);
               dash.update.entry({database: database, store: meta, data: e.entry})(function(z) {
                 console.log('added Zips',z);
               });
