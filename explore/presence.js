@@ -601,7 +601,6 @@ define(['q',
         return def.promise;
       },
       updatePosition = function(nosummary) {
-        console.log('updatePosition?',nosummary);
         var x = 0,
             y = 0,
             location,
@@ -637,7 +636,9 @@ define(['q',
           }
         }
         tail.then(function() {
-          summarizeBlips();
+          if(true === nosummary) {
+            summarizeBlips();
+          }
         });
         head.resolve();
       };
