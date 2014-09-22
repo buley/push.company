@@ -613,15 +613,21 @@ define(['q',
               place.ClientRadius = previous.radius;
               place.ClientLatitude = previous.latitude;
               place.ClientLongitude = previous.longitude;
-              tail = tail.then(function() {
-                dash.add.entry({
-                  database: database,
-                  store: blips,
-                  store_key_path: "BlipId",
-                  auto_increment: true,
-                  data: place
-                });
-              });
+              tail = (function(t) {
+                var d = Q.defer();
+                t.then(function() {
+                  dash.add.entry({
+                    database: database,
+                    store: blips,
+                    store_key_path: "BlipId",
+                    auto_increment: true,
+                    data: place
+                  })(function() {
+                    d.resolve();
+                  });
+                })
+                return d.promise;
+              }(tail));
             }
           }
         }
