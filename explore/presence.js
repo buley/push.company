@@ -324,6 +324,28 @@ define(['q',
                 e.entry = e.entry || {};
                 e.entry.Value = zips;
               } else {
+                var zip, attr, map = e.entry.Value;
+                for(zip in zips) {
+                  if (zips.hasOwnProperty(zip)) {
+                    map[zip] = map[zip] || {
+                      total: 0,
+                      count: 0,
+                      score: 0,
+                      last: 0,
+                      first: Date.now()
+                    };
+
+                    map[zip].total += zips[zip].total;
+                    map[zip].count += zips[zip].count;
+                    map[zip].score += zips[zip].score;
+                    if (!map[zip].last || zips[zip].last > map[zip].last) {
+                      map[zip].last = zips[zip].last;
+                    }
+                    if (!map[zip].first || zips[zip].first < map[zip].first) {
+                      map[zip].first = zips[zip].first;
+                    }
+                  }
+                }
                 //merge
               }
               dash.update.entry({database: database, store: meta, data: e})(function(z) {
@@ -342,7 +364,6 @@ define(['q',
             });
 
             dash.get.entry({database: database,store: meta, index_key: "Key", key: "ZipPlus4s" })(function(e) {
-              console.log('ZipPlus4s c',e);
               if (!e.entry || !e.entry.Value) {
                 e.entry = e.entry || {};
                 e.entry.Value = zipsplus;
