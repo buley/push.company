@@ -16,8 +16,8 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
           }
         } else {
           sum += el.offsetHeight +
-           parseFloat(el.getComputedStyle('marginTop')) +
-           parseFloat(el.getComputedStyle('marginBottom'));
+           parseFloat(el.style.getPropertyValue('marginTop')) +
+           parseFloat(el.style.getPropertyValue('marginBottom'));
         }
         return sum;
       },
@@ -33,8 +33,8 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
           }
         } else {
           sum += el.offsetHeight +
-           parseFloat(el.getComputedStyle('marginTop')) +
-           parseFloat(el.getComputedStyle('marginBottom'));
+           parseFloat(el.style.getPropertyValue('marginTop')) +
+           parseFloat(el.style.getPropertyValue('marginBottom'));
         }
         return sum;
       },
