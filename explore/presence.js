@@ -588,14 +588,7 @@ define(['q',
           index_unique: true,
           index_multi_entry: false
         })(function(ctx3){
-          dash.get.index({
-            database: database,
-            store: meta,
-            index: 'Value',
-            index_key_path: 'Value'
-          })(function(ctx4){
-            def.resolve();
-          });
+          def.resolve();
         });
         return def.promise;
       },
