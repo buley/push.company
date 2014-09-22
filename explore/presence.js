@@ -294,12 +294,49 @@ define(['q',
                 }(Id));
               }
             }
-            console.log("EXTRAS",cities, zips, zipsplus);
-            /*
+
             dash.get.entry({database:"Push",store: "Meta", index_key: "Key", key: "Cities" })(function(e) {
-              console.log('c',e);
-            }, function(e){console.log('e',e);}, function(e){console.log('s',e);}));
-            */
+              console.log('Cities c',e);
+            }, function(e){
+              console.log('Cities err',e);
+              dash.add.entry({database:"Push",store: "Meta", data: {
+                Key: "Cities",
+                Value: cities
+              }})(function(z) {
+                console.log('added Cities',z);
+              });
+            }, function(e){
+              console.log('Cities s',e);
+            });
+
+            dash.get.entry({database:"Push",store: "Meta", index_key: "Key", key: "Zips" })(function(e) {
+              console.log('Zips c',e);
+            }, function(e){
+              console.log('Zips err',e);
+              dash.add.entry({database:"Push",store: "Meta", data: {
+                Key: "Zips",
+                Value: zips
+              }})(function(z) {
+                console.log('added Zips',z);
+              });
+            }, function(e){
+              console.log('Zips s',e);
+            });
+
+
+            dash.get.entry({database:"Push",store: "Meta", index_key: "Key", key: "ZipPlus4s" })(function(e) {
+              console.log('ZipPlus4s c',e);
+            }, function(e){
+              console.log('ZipPlus4s err',e);
+              dash.add.entry({database:"Push",store: "Meta", data: {
+                Key: "ZipPlus4s",
+                Value: zipsplus
+              }})(function(z) {
+                console.log('added ZipPlus4s',z);
+              });
+            }, function(e){
+              console.log('ZipPlus4s s',e);
+            });
 
             def.resolve(c);
         }, null, null);
