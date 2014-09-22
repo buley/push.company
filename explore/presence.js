@@ -683,7 +683,7 @@ define(['q',
                   })
                 });
               } else {
-                updatePosition();
+                updatePosition(true);
               }
             }
           } else {
@@ -700,7 +700,7 @@ define(['q',
                 });
               });
             } else {
-              updatePosition();
+              updatePosition(true);
             }
           }
 

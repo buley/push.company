@@ -67,7 +67,6 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
     current.longitude = 0.0;
     current.radius = 0.0;
     context = _.extend(context, {location: current});
-    console.log('emptied out loc');
     if (!!context) {
       deferred.notify(context);
     }
