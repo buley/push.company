@@ -625,6 +625,7 @@ define(['q',
             }
           }
         }
+        console.log('finishing');
         tail.then(function() {
           if (true !== nosummary) {
             summarizeBlips();
@@ -638,9 +639,7 @@ define(['q',
       installBlips().then(function() {
         installMeta().then(function() {
           module.resolve();
-          summarizeBlips().then(function() {
-
-          });
+          summarizeBlips();
         });
       });
     });
