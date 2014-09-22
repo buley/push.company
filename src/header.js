@@ -12,7 +12,7 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
         sum = sum || 0;
         if (!!el.children && el.children.length > 0) {
           for (x = 0, xlen = el.children.length; x < xlen; x += 1) {
-            sum += nodeHeight(el.children[x], sum);
+            sum += nodeHeight(el.children[x], 0);
           }
         }
         sum += el.offsetHeight;
