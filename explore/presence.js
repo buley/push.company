@@ -627,7 +627,6 @@ define(['q',
         }
         tail.then(function() {
           if (true !== nosummary) {
-            console.log('finishing');
             summarizeBlips();
           }
         });
