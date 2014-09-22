@@ -636,8 +636,10 @@ define(['q',
           }
         }
         tail.then(function() {
-          console.log('summarizing');
-          summarizeBlips();
+          if (true !== nosummary) {
+            console.log('summarizing');
+            summarizeBlips();            
+          }
         });
         head.resolve();
       };
