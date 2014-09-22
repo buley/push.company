@@ -43,7 +43,10 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
           //TODO: Render map
           //renderMap.apply(this, arguments);
           console.log('header render');
-          return React.DOM.header({id: "header-container"}, React.DOM.div({
+          return React.DOM.header({id: "header-container", data: {
+            height: nodeHeight(this.getDOMNode()),
+            width: nodeWidth(this.getDOMNode())
+          }}, React.DOM.div({
             id: "header-inner"
           }, React.DOM.div({
             id: "header"
