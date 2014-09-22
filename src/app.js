@@ -140,7 +140,7 @@ requirejs(['q', 'react'], function(Q, React) {
           ready = function() {
             React.renderComponent(
               container(state),
-              document.getElementById('content'),
+              document.getElementById('app'),
               function() {
                 module.resolve(component);
               }
