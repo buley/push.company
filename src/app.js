@@ -1,5 +1,5 @@
 requirejs.config({
-    baseUrl: '../',
+    baseUrl: '/',
     paths: {
       'q': '/bower_components/q/q',
   		'dash': '/bower_components/dash/lib/dash.dev',
