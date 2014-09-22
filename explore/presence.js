@@ -638,7 +638,6 @@ define(['q',
       installBlips().then(function() {
         installMeta().then(function() {
           module.resolve();
-          summarizeBlips();
         });
       });
     });
@@ -682,7 +681,7 @@ define(['q',
                   })
                 });
               } else {
-                updatePosition(true);
+                updatePosition();
               }
             }
           } else {
