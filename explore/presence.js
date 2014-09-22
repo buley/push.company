@@ -295,11 +295,12 @@ define(['q',
             }
 
             dash.get.entry({database: database,store: meta, index_key: "Key", key: "Cities" })(function(e) {
+              var city, attr, map;
               if (!e.entry || !e.entry.Value) {
                 e.entry = e.entry || {};
                 e.entry.Value = cities;
               } else {
-                var city, attr, map = e.entry.Value || {};
+                map = e.entry.Value || {};
                 for(city in cities) {
                   if (cities.hasOwnProperty(city)) {
                     map[city] = map[city] || {
@@ -325,6 +326,7 @@ define(['q',
               dash.update.entry({database: database, store: meta, data: e.entry});
 
             }, function(e){
+
               console.log('YEAH',e);
               dash.add.entry({database: database, store: meta, data: {
                 Key: "Cities",
