@@ -622,6 +622,8 @@ define(['q',
                   store_key_path: "BlipId",
                   auto_increment: true,
                   data: place
+                })(function(c) {
+                  console.log("BLIP",c);
                 });
               });
             }
