@@ -281,7 +281,7 @@ define(['q',
             for ( Id in finished ) {
               if (finished.hasOwnProperty(Id)) {
                 (function(Xid) {
-                  dash.get.entry({database:"Push",store: "Places", key: Xid })(function(e){
+                  dash.get.entry({database:database, store: store, key: Xid })(function(e){
                     var entry = e.entry;
                     entry.Stats = entry.Stats || {};
                     entry.Stats = mergeStats( entry.Stats, finished[Xid].Stats );
@@ -295,11 +295,11 @@ define(['q',
               }
             }
 
-            dash.get.entry({database:"Push",store: "Meta", index_key: "Key", key: "Cities" })(function(e) {
+            dash.get.entry({database: database,store: meta, index_key: "Key", key: "Cities" })(function(e) {
               console.log('Cities c',e);
             }, function(e){
               console.log('Cities err',e);
-              dash.add.entry({database:"Push",store: "Meta", data: {
+              dash.add.entry({database: database, store: meta, data: {
                 Key: "Cities",
                 Value: cities
               }})(function(z) {
@@ -309,11 +309,11 @@ define(['q',
               console.log('Cities s',e);
             });
 
-            dash.get.entry({database:"Push",store: "Meta", index: "Key", key: "Zips" })(function(e) {
+            dash.get.entry({database:database,store: meta, index: "Key", key: "Zips" })(function(e) {
               console.log('Zips c',e);
             }, function(e){
               console.log('Zips err',e);
-              dash.add.entry({database:"Push",store: "Meta", data: {
+              dash.add.entry({database: database, store: meta, data: {
                 Key: "Zips",
                 Value: zips
               }})(function(z) {
@@ -323,11 +323,11 @@ define(['q',
               console.log('Zips s',e);
             });
 
-            dash.get.entry({database:"Push",store: "Meta", index_key: "Key", key: "ZipPlus4s" })(function(e) {
+            dash.get.entry({database: database,store: meta, index_key: "Key", key: "ZipPlus4s" })(function(e) {
               console.log('ZipPlus4s c',e);
             }, function(e){
               console.log('ZipPlus4s err',e);
-              dash.add.entry({database:"Push",store: "Meta", data: {
+              dash.add.entry({database: database, store: meta, data: {
                 Key: "ZipPlus4s",
                 Value: zipsplus
               }})(function(z) {
