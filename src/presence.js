@@ -291,9 +291,9 @@ define(['q',
                     var entry = e.entry;
                     entry.Stats = entry.Stats || {};
                     entry.Stats = mergeStats( entry.Stats, finished[Xid].Stats );
-                    dash.update.entry({database:"Push",store: "Places", data: entry })(function() {
+                    dash.update.entry({database: database, store: store, data: entry })(function() {
                       for (q = 0, qlen = finished[Xid].BlipIds.length; q < qlen; q += 1) {
-                        dash.remove.entry({database:"Push",store:"Blips",key: finished[Xid].BlipIds[q]});
+                        dash.remove.entry({database: database,store: blips,key: finished[Xid].BlipIds[q]});
                       }
                     });
                   });
