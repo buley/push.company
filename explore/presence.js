@@ -130,7 +130,8 @@ define(['q',
                 delete reduced[el.Id].fresh;
               }
               return reduced;
-            },            map: function(e) {
+            },
+            map: function(e) {
                 var d = XDate(e.ClientDepart);
                 e.ClientYear = d.toString("yyyy");
                 e.ClientMonth = d.toString("MMMM");
@@ -232,41 +233,47 @@ define(['q',
                               finished[Id].Stats[zattr][xval][attr].last = Date.now();
                             }
 
-                            cities[item.City] = cities[item.City] || {
-                              total: 0,
-                              count: 0,
-                              score: 0,
-                              last: 0,
-                              first: Date.now()
-                            };
-                            cities[item.City].total += duration;
-                            cities[item.City].count += 1;
-                            cities[item.City].score += combined;
-                            cities[item.City].last = Date.now();
+                            if (!!item.City) {
+                              cities[item.City] = cities[item.City] || {
+                                total: 0,
+                                count: 0,
+                                score: 0,
+                                last: 0,
+                                first: Date.now()
+                              };
+                              cities[item.City].total += duration;
+                              cities[item.City].count += 1;
+                              cities[item.City].score += combined;
+                              cities[item.City].last = Date.now();
+                            }
 
-                            zips[item.Zip] = zips[item.Zip] || {
-                              total: 0,
-                              count: 0,
-                              score: 0,
-                              last: 0,
-                              first: Date.now()
-                            };
-                            zips[item.Zip].total += duration;
-                            zips[item.Zip].count += 1;
-                            zips[item.Zip].score += combined;
-                            zips[item.Zip].last = Date.now();
+                            if (!!item.Zip) {
+                              zips[item.Zip] = zips[item.Zip] || {
+                                total: 0,
+                                count: 0,
+                                score: 0,
+                                last: 0,
+                                first: Date.now()
+                              };
+                              zips[item.Zip].total += duration;
+                              zips[item.Zip].count += 1;
+                              zips[item.Zip].score += combined;
+                              zips[item.Zip].last = Date.now();
+                            }
 
-                            zipsplus[item.ZipPlus4] = zipsplus[item.ZipPlus4] || {
-                              total: 0,
-                              count: 0,
-                              score: 0,
-                              last: 0,
-                              first: Date.now()
-                            };
-                            zipsplus[item.ZipPlus4].total += duration;
-                            zipsplus[item.ZipPlus4].count += 1;
-                            zipsplus[item.ZipPlus4].score += combined;
-                            zipsplus[item.ZipPlus4].last = Date.now();
+                            if (!!item.ZipPlus4) {
+                              zipsplus[item.ZipPlus4] = zipsplus[item.ZipPlus4] || {
+                                total: 0,
+                                count: 0,
+                                score: 0,
+                                last: 0,
+                                first: Date.now()
+                              };
+                              zipsplus[item.ZipPlus4].total += duration;
+                              zipsplus[item.ZipPlus4].count += 1;
+                              zipsplus[item.ZipPlus4].score += combined;
+                              zipsplus[item.ZipPlus4].last = Date.now();
+                            }
 
                           }
                         }
