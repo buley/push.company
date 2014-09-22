@@ -636,9 +636,7 @@ define(['q',
           }
         }
         tail.then(function() {
-          if(true === nosummary) {
-            summarizeBlips();
-          }
+          summarizeBlips();
         });
         head.resolve();
       };
