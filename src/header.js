@@ -15,7 +15,9 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
             sum += nodeHeight(el.children[x], sum);
           }
         } else {
-          sum += el.offsetHeight;
+          sum += el.get('offsetHeight') +
+           parseFloat(el.getComputedStyle('marginTop')) +
+           parseFloat(el.getComputedStyle('marginBottom'));
         }
         return sum;
       },
@@ -30,7 +32,9 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
             sum += nodeWidth(el.children[x], sum);
           }
         } else {
-          sum += el.offsetWidth;
+          sum += el.get('offsetHeight') +
+           parseFloat(el.getComputedStyle('marginTop')) +
+           parseFloat(el.getComputedStyle('marginBottom'));
         }
         return sum;
       },
