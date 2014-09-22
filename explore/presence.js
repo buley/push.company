@@ -713,7 +713,7 @@ define(['q',
           }
 
         } else {
-          updatePosition();
+          updatePosition(true);
         }
       });
     },
