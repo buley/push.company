@@ -52,7 +52,10 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
           }, React.DOM.div({
             id: "header-inner"
           }, React.DOM.div({
-            id: "header"
+            id: "header",
+            "data-header-height": this.isMounted() ? nodeHeight(this.getDOMNode()) : 0,
+            "data-header-width": this.isMounted() ? nodeWidth(this.getDOMNode()) : 0
+
           })));
         }
       });
