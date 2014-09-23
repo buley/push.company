@@ -22,9 +22,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       },
       interval,
       onResize = function() {
-        if (false !== first) {
-          updateAvailable(true);
-        }
+        updateAvailable(true);
       },
       usable = [],
       first = false,
@@ -189,8 +187,8 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           deferred.notify(context);
         } else {
           context = _.extend({}, state);
-          onResize();
-          
+          updateAvailable();
+
         }
       });
     },
