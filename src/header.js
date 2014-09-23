@@ -73,7 +73,7 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
               height: logo.height,
               width: logo.width
             }
-          }, !!this.props.header.logo && !!this.props.header.logo.text ? this.props.header.logo.text : ""), React.DOM.div({
+          }, !!this.props.header && !!this.props.header.logo && !!this.props.header.logo.text ? this.props.header.logo.text : ""), React.DOM.div({
             id: "header-menu-button",
             onClick: function(e) {
 
