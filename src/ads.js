@@ -18,7 +18,11 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         startCheck();
         updateAvailable();
       },
-      updateAvailable = _.debounce( function(width, height) {
+      updateAvailable = _.debounce( function() {
+        var node = instance.getDOMNode(),
+            width = node.clientWidth,
+            height = node.clientHeight,
+            notify = false;
         console.log("WHAT WORKS?", width, height);
         stopCheck();
       }, 1000 ),
