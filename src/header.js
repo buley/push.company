@@ -63,7 +63,6 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
           }, React.DOM.div({
             id: "header-logo",
             style: {
-              background: '#000',
               height: logo.height,
               width: logo.width
             }
