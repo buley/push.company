@@ -125,6 +125,7 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
           })), React.DOM.div({
             id: "header-drawer-container",
             style: {
+              display: (this.props.header && this.props.header.drawer && ( this.props.header.drawer.showing || true === anim)) ? "block" : "none",
               top: (this.props.header ? this.props.header.height : 0) + "px",
               height: ( this.props.header && this.props.header.drawer && this.props.header.drawer.height ? this.props.header.drawer.height : 0 ) + "px"
             }
