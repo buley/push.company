@@ -230,9 +230,9 @@
       var slot = googletag.defineSlot('/270461283/Banner', [[234, 60], [320, 50], [468, 60], [728, 90], [970, 90]], 'div-gpt-ad-1411489889191-0')
         .addService(googletag.pubads());
       var mapping = googletag.sizeMapping().
-          addSize([1024, 768], [970, 250]).
-          addSize([980, 690], [728, 90]).
-          addSize([640, 480], [120, 60]).
+          addSize([1024, 768], [970, 250], [970, 90]).
+          addSize([980, 690], [728, 90], [468, 60]).
+          addSize([640, 480], [120, 60], [320, 50], [234, 60]).
           addSize([0, 0], [88, 31]). //otherwise
           build();
       slot.defineSizeMapping(mapping);
