@@ -57,12 +57,13 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
               total_width = mounted && this.props.screen ? this.props.screen.width : 0,
               total_height = mounted && this.props.screen ? this.props.screen.height : 0,
               total_width_padding = total_width - width,
-              total_height_padding = total_height - height;
+              total_height_padding = total_height - height,
+              height_base = Math.floor((padding.top + padding.bottom + total_height_padding)/2)
           return React.DOM.section({
             id: "ads-banner-top",
             style: {
               "left": Math.floor(total_width_padding/2) + "px",
-              "top": (this.props.header && this.props.header.height ? this.props.header.height + padding.top: padding.top) + "px"
+              "top": (this.props.header && this.props.header.height ? this.props.header.height + height_base: height_base) + "px"
             }
           }, React.DOM.div({
             id: "div-gpt-ad-1411489889191-0"
