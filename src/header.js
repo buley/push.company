@@ -52,7 +52,13 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
             style: {
               height: this.props.header ? this.props.header.height : 0
             }
-          }), React.DOM.div({
+          }, React.DOM.div({
+            id: "header-logo",
+            style: {
+              background: '#000',
+              height: this.props.header ? this.props.header.height : 0
+            }
+          })), React.DOM.div({
             id: "header-inner",
             style: {
               height: this.props.header ? this.props.header.height : 0
