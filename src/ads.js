@@ -14,9 +14,9 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         right: 20
       },
       interval,
-      updateAvailable = function(width, height) {
+      updateAvailable = _.debounce( function(width, height) {
         console.log("WHAT WORKS?", width, height);
-      },
+      }, 1000 ),
       startCheck = function() {
         if (!interval) {
           interval = window.setInterval(function() {
