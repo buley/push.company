@@ -73,7 +73,12 @@ requirejs.config({
 requirejs(['q', 'react'], function(Q, React) {
 	var module = Q.defer();
     require(['src/header', 'src/presence', 'src/mapper', 'src/location', 'src/urls' ], function() {
-      var state = {},
+      var state = {
+            screen: {
+              width: document.body.clientWidth,
+              height: document.body.clientHeight
+            }
+          },
           previous_state = '',
           deferred = Q.defer(),
           promise = deferred.promise,
@@ -149,6 +154,11 @@ requirejs(['q', 'react'], function(Q, React) {
           interfaces = arguments,
           loaded = 1,
           components = [],
+          onResize = function(e) {
+            state.screen.width = document.body.clientWidth;
+            state.screen.height = document.body.clientHeight;
+            requestStateChange(state);
+          },
           forEachHandler = function(interface) {
             var readyHandler = function(comp) {
                   interface.incoming(promise);
