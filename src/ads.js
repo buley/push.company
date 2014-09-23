@@ -6,7 +6,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       instance,
       prev = {},
       slots = {},
-      getSlotId = function(sizes) {
+      getSlotId = function(sizes, create) {
         var pieces = [],
             x,
             xlen = sizes.length,
@@ -29,7 +29,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         }
         if (pieces.length > 0) {
           key = 'ad-' + pieces.join("_");
-          if (!slots[key]) {
+          if (!slots[key] && false !== create) {
             slots[key] = {
               node: document.createElement('div'),
               sizes: ok
@@ -198,7 +198,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
               "top": (this.props.header && this.props.header.height ? this.props.header.height + height_base: height_base) + "px"
             }
           }, React.DOM.div({
-            id: getSlotId(usable)
+            id: getSlotId(usable, false)
           }) );
         }
       });
