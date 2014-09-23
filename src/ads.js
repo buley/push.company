@@ -27,9 +27,10 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       },
       usable = [],
       expecting,
-      seen = 0,
+      seen,
       updateAvailable = _.debounce( function() {
         expecting = slots.length;
+        seen = 0;
         window.googletag.pubads().refresh(slots);
       }, 1000 ),
       stopCheck = function() {
