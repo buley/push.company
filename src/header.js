@@ -88,7 +88,7 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
                     context = _.extend({}, _.extend({header: { drawer: {
                       showing: this.props.header && this.props.header.drawer && this.props.header.drawer.showing ? false : true,
                       height: this.height
-                    } } }, state));
+                    } } }, context));
                     deferred.notify(context);
                 })
                 .onComplete(function() {
