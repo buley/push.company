@@ -25,7 +25,6 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         if (false !== first) {
           updateAvailable(true);
         }
-        first = true;
       },
       usable = [],
       first = false,
