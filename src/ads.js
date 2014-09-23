@@ -97,7 +97,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
               bottom_height = mounted && bottom_el.offsetHeight ? bottom_el.offsetHeight : 0,
               bottom_width = mounted && bottom_el.offsetWidth ? bottom_el.offsetWidth : 0,
               total_width = mounted && this.props.screen ? this.props.screen.width : 0,
-              total_width_padding = total_width - width,
+              total_width_padding = total_width - top_width,
               top_height_base = Math.floor((padding.top + padding.bottom)/2),
               top_width_base = Math.floor((padding.right + padding.left + total_width_padding)/2),
               bottom_height,
