@@ -78,14 +78,9 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
       interface.then(null, null, function(state) {
         if (!context) {
           context = _.extend({}, _.extend({header: { height: '44px' } }, state));
+          deferred.notify(context);
         } else {
           context = _.extend({}, state);
-        }
-        if (!!state.route && !!state.route.hash && !!state.route.hash.overlay) {
-          overlays = _.unique(state.route.hash.overlay.split(","));
-          map_state.overlays = overlays;
-          delete context.route.hash.overlay;
-          deferred.notify(context);
         }
       });
     },
