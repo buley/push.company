@@ -29,7 +29,7 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
             sum += nodeWidth(el.children[x], 0);
           }
         }
-        sum += el.offsetWidth;
+        sum += el.offsetWidth + (parseFloat(el.style.getPropertyValue('margin-right')) || 0) + (parseFloat(el.style.getPropertyValue('margin-left')) || 0);
         return sum;
       },
       component = React.createClass({
