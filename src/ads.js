@@ -148,6 +148,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
               }
             }
             usable = ok;
+            console.log('aok',ok);
             window.googletag.cmd.push(function() {
               window.googletag.display(getSlotId(usable));
             });
