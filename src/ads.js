@@ -177,10 +177,13 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
 
   googletag.pubads().addEventListener('slotRenderEnded', function(event) {
     console.log('Slot has been rendered', event.slot);
-    slots.push(event.slot);
+    if (!_.contains(slots, event.slot)) {
+      slots.push(event.slot);
+    }
     if (expecting && ++seen >= expecting) {
       console.log('finsihed rendering slots');
     }
+
   });
 
   return {
