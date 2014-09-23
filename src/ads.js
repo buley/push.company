@@ -5,6 +5,13 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       context,
       instance,
       prev = {},
+      banners = [
+        [234, 60],
+        [320, 50],
+        [468, 60],
+        [728, 90],
+        [970, 90]
+      ],
       sizes = {},
       padding = {
         top: 20,
@@ -14,7 +21,6 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       },
       interval,
       onResize = function() {
-        console.log('on resize');
         startCheck();
         updateAvailable();
       },
@@ -22,8 +28,16 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         var node = instance.getDOMNode(),
             width = node.clientWidth,
             height = node.clientHeight,
-            notify = false;
-        console.log("WHAT WORKS?", width, height);
+            notify = false,
+            x,
+            xlen = banners.length,
+            ok = [];
+        for (x = 0; x < xlen; x += 1) {
+          if (banners[x][0] < width && banners[x][1] < height) {
+            ok.push(banners[x]);
+          }
+        }
+        console.log("WHAT WORKS?", banners);
         stopCheck();
       }, 1000 ),
       stopCheck = function() {
