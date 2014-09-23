@@ -132,6 +132,8 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
             id: "header-drawer-header"
           }), React.DOM.div({
             id: "header-drawer-inner"
+          }, React.DOM.div({
+            id: "header-drawer"
           }), React.DOM.div({
             id: "header-drawer-footer"
           })));
