@@ -79,6 +79,9 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         }
       },
       startCheck = function() {
+        if (!context) {
+          return;
+        }
         if (!interval) {
           interval = window.setInterval(function() {
             if (instance && instance.isMounted()) {
