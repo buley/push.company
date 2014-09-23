@@ -137,6 +137,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
   module.resolve(component);
 
   googletag.pubads().addEventListener('slotRenderEnded', function(event) {
+
     if (false === first) {
       if (!_.contains(slots, event.slot)) {
         slots.push(event.slot);
@@ -172,8 +173,6 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       });
 
       deferred.notify(context);
-
-      first = false;
 
     }
 
