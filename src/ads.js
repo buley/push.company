@@ -25,8 +25,8 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         updateAvailable();
       },
       usable = [],
-      expecting,
-      seen,
+      expecting = 2,
+      seen = 0,
       updateAvailable = _.debounce( function() {
         expecting = slots.length;
         seen = 0;
@@ -137,7 +137,6 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
   module.resolve(component);
 
   googletag.pubads().addEventListener('slotRenderEnded', function(event) {
-    console.log('Slot has been rendered', event.slot);
     if (!_.contains(slots, event.slot)) {
       slots.push(event.slot);
     }
@@ -162,6 +161,8 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           deferred.notify(context);
           updateAvailable(width, height);
         }
+        seen = 0;
+        expecting = 0;
       }
     }
 
