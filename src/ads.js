@@ -99,8 +99,8 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
               top_height_base = Math.floor((padding.top + padding.bottom)/2),
               top_width_base = Math.floor((padding.right + padding.left + total_width_padding)/2),
               bottom_width_base = Math.floor((padding.right + padding.left + total_width_padding_bottom)/2),
-              bottom_height,
               bottom_height_base = 20,
+              bottom_height,
               bottom_width;
 
           if (total_width_padding < 0) {
@@ -123,7 +123,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           }) ), React.DOM.section({
             id: "ads-banner-bottom",
             style: {
-              "left": top_width_base + "px",
+              "left": bottom_width_base + "px",
               "top": (this.props.header && this.props.header.height ? this.props.header.height + bottom_width_base + bottom_height: bottom_width_base) + "px",
               "bottom": bottom_height_base + "px"
             }
