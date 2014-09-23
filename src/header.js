@@ -81,12 +81,12 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
           deferred.notify(context);
         } else {
           context = _.extend({}, state);
-          if (!!state.route && !!state.route.hash && !!state.route.hash.overlay) {
-            overlays = _.unique(state.route.hash.overlay.split(","));
-            map_state.overlays = overlays;
-            delete context.route.hash.overlay;
-            deferred.notify(context);
-          }
+        }
+        if (!!state.route && !!state.route.hash && !!state.route.hash.overlay) {
+          overlays = _.unique(state.route.hash.overlay.split(","));
+          map_state.overlays = overlays;
+          delete context.route.hash.overlay;
+          deferred.notify(context);
         }
       });
     },
