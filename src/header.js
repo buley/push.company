@@ -72,7 +72,7 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
               console.log('click', e);
               var tween = new Tween.Tween( { x: 50, y: 0 } )
                 .to( { x: 400 }, 2000 )
-                .easing( TWEEN.Easing.Elastic.InOut )
+                .easing( Tween.Easing.Elastic.InOut )
                 .onUpdate( function () {
                     console.log('Tween',this);
                 } )
