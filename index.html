@@ -202,6 +202,9 @@
       #ads-banner-bottom {
         position: absolute;
       }
+      #ads-box-header {
+        position: absolute;
+      }
   	</style>
     <style type="text/css">
       body, html {
@@ -244,6 +247,8 @@
       slot1.defineSizeMapping(mapping);
       var slot2 = googletag.defineSlot('/270461283/Banner', [], "ads-banner-bottom-ad")
         .addService(googletag.pubads());
+      var header = googletag.defineSlot('/270461283/Box', [[88, 31]], "ads-box-header-ad")
+          .addService(googletag.pubads());
       slot2.defineSizeMapping(mapping);
       googletag.pubads().refresh([slot1, slot2]);
       googletag.enableServices();
