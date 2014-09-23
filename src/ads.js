@@ -187,7 +187,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
               "top": (this.props.header && this.props.header.height ? this.props.header.height + height_base: height_base) + "px"
             }
           }, React.DOM.div({
-            id: "div-gpt-ad-1411489889191-0"
+            id: getSlotId(usable)
           }) );
         }
       });
