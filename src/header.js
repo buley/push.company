@@ -126,7 +126,7 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
             id: "header-drawer",
             style: {
               top: (this.props.header ? this.props.header.height : 0) + "px",
-              height: ( this.props.header && this.props.header.drawer && this.props.header.drawer.showing ? this.props.header.drawer.height : 0 ) + "px"
+              height: ( this.props.header && this.props.header.drawer && this.props.header.drawer.height ? this.props.header.drawer.height : 0 ) + "px"
             }
           }));
         }
