@@ -30,7 +30,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       updateAvailable = _.debounce( function() {
         expecting = slots.length;
         seen = 0;
-        console.log('refreshing');
+        console.log('refreshing', slots);
         window.googletag.pubads().refresh(slots);
       }, 1000 ),
       nodeHeight = function(el, sum) {
@@ -156,13 +156,13 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           sizes["top-banner"].height = height;
         }
         if (true === notify) {
+          seen = 0;
+          expecting = 0;
           context.ads = context.ads || {};
           context.ads.sizes = _.extend((context.ads.sizes || {}), sizes);
           deferred.notify(context);
           updateAvailable(width, height);
         }
-        seen = 0;
-        expecting = 0;
       }
     }
 
