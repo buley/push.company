@@ -84,7 +84,7 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
     incoming: function(interface) {
       interface.then(null, null, function(state) {
         if (!context) {
-          context = _.extend({}, _.extend({header: { height: '44px' } }, state));
+          context = _.extend({}, _.extend({header: { height: 44 } }, state));
           deferred.notify(context);
         } else {
           context = _.extend({}, state);
