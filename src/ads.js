@@ -10,11 +10,17 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         left: 20,
         right: 20
       },
-      interval = window.setInterval(function() {
-        if (instance && instance.isMounted()) {
-          console.log('check ads', instance.getDOMNode());
+      interval,
+      startCheck = function() {
+        if (!interval) {
+          interval = window.setInterval(function() {
+            if (instance && instance.isMounted()) {
+              var node = instance.getDOMNode();
+              console.log('check ads', node.clientHeight);
+            }
+          }, 100);
         }
-      }, 100),
+      },
       nodeHeight = function(el, sum) {
         if (!el) {
           return NaN;
