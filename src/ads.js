@@ -77,8 +77,8 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             }
             usable = ok;
             window.googletag.cmd.push(function() {
-              window.googletag.display("ads-banner-top-ad");
               window.googletag.display("ads-banner-bottom-ad");
+              window.googletag.display("ads-banner-top-ad");
             });
         },
         render: function() {
