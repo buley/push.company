@@ -129,7 +129,11 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
               height: ( this.props.header && this.props.header.drawer && this.props.header.drawer.height ? this.props.header.drawer.height : 0 ) + "px"
             }
           }, React.DOM.div({
-            id: "header-drawer"
+            id: "header-drawer-header"
+          }), React.DOM.div({
+            id: "header-drawer-inner"
+          }), React.DOM.div({
+            id: "header-drawer-footer"
           })));
         }
       });
