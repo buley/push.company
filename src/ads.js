@@ -32,7 +32,8 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
                 sizes["top-banner"].height = height;
               }
               if (true === notify) {
-                context.ads.sizes = _.extend(context.ads.sizes, sizes);
+                context.ads = context.ads || {};
+                context.ads.sizes = _.extend((context.ads.sizes || {}), sizes);
                 deferred.notify(context);
               }
             }
