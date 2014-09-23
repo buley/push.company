@@ -7,6 +7,34 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       padding = {
         top: 20
       },
+      nodeHeight = function(el, sum) {
+        if (!el) {
+          return NaN;
+        }
+        var x, xlen;
+        sum = sum || 0;
+        if (!!el.children && el.children.length > 0) {
+          for (x = 0, xlen = el.children.length; x < xlen; x += 1) {
+            sum += nodeHeight(el.children[x], 0);
+          }
+        }
+        sum += el.offsetHeight;
+        return sum;
+      },
+      nodeWidth = function(el, sum) {
+        if (!el) {
+          return NaN;
+        }
+        var x, xlen;
+        sum = sum || 0;
+        if (!!el.children && el.children.length > 0) {
+          for (x = 0, xlen = el.children.length; x < xlen; x += 1) {
+            sum += nodeWidth(el.children[x], 0);
+          }
+        }
+        sum += el.offsetWidth;
+        return sum;
+      },
       component = React.createClass({
         componentDidMount: function() {
             instance = this;
@@ -22,16 +50,23 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             </script>
           </div>
           */
+          var mounted = this.isMounted(),
+              node = mounted ? this.getDOMNode() : null,
+              height = mounted ? nodeHeight(node) : 0,
+              width = mounted ? nodeWidth(node) : 0,
+              total_width = mounted && this.props.screen ? this.props.screen.width : 0,
+              total_height = mounted && this.props.screen ? this.props.screen.height : 0,
+              total_width_padding = total_width - width,
+              total_height_padding = total_height - height;
           return React.DOM.section({
             id: "ads-banner-top",
             style: {
+              "left": Math.floor(total_width_padding/2) + "px",
               "top": (this.props.header && this.props.header.height ? this.props.header.height + padding.top: padding.top) + "px"
             }
           }, React.DOM.div({
             id: "div-gpt-ad-1411489889191-0"
-          }, React.DOM.script({
-            type: "text/javascript"
-          })) );
+          }) );
         }
       });
 

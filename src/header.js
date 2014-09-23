@@ -12,6 +12,12 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
         }
         Tween.update(time);
       },
+      getLogo = function(width, height) {
+        return {
+          width: 110,
+          height: 68
+        }
+      },
       nodeHeight = function(el, sum) {
         if (!el) {
           return NaN;
@@ -25,12 +31,6 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
         }
         sum += el.offsetHeight;
         return sum;
-      },
-      getLogo = function(width, height) {
-        return {
-          width: 110,
-          height: 68
-        }
       },
       nodeWidth = function(el, sum) {
         if (!el) {
