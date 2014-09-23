@@ -234,7 +234,7 @@
       googletag.pubads().disableInitialLoad();
       googletag.pubads().collapseEmptyDivs();
 
-      var mapping = googletag.sizeMapping().
+      var mapping1 = googletag.sizeMapping().
           addSize([1024, 0/*768*/], [970, 250], [970, 90]).
           addSize([980, 0/*690*/], [728, 90], [468, 60]).
           addSize([640, 0/*480*/], [120, 60], [180, 150], [320, 50], [234, 60]).
@@ -244,12 +244,18 @@
 
       var slot1 = googletag.defineSlot('/270461283/Banner', [], "ads-banner-top-ad")
         .addService(googletag.pubads());
-      slot1.defineSizeMapping(mapping);
+      slot1.defineSizeMapping(mapping1);
       var slot2 = googletag.defineSlot('/270461283/Banner', [], "ads-banner-bottom-ad")
         .addService(googletag.pubads());
+      var mapping2 = googletag.sizeMapping().
+        addSize([1024, 0/*768*/], [970, 250], [970, 90]).
+        addSize([980, 0/*690*/], [728, 90], [468, 60]).
+        addSize([640, 0/*480*/], [120, 60], [180, 150], [320, 50], [234, 60]).
+        addSize([0, 0], [88, 31]). //otherwise
+        build();
+      slot2.defineSizeMapping(mapping2);
       var header = googletag.defineSlot('/270461283/Box', [[88, 31]], "ads-box-header-ad")
           .addService(googletag.pubads());
-      slot2.defineSizeMapping(mapping);
       googletag.pubads().refresh([slot1, slot2, header]);
       googletag.enableServices();
     });
