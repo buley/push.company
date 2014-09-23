@@ -25,10 +25,10 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
               ok.push(banners[y]);
             }
           }
-          pieces.push(sizes[x].join("x"));
+          pieces.push(sizes[x].join(""));
         }
         if (pieces.length > 0) {
-          key = 'ad-' + pieces.join("_");
+          key = 'ad-' + pieces.join("");
           if (!slots[key] && false !== create) {
             slots[key] = {
               node: document.createElement('div'),
