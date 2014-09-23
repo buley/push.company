@@ -55,7 +55,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           */
           var mounted = this.isMounted(),
               node = mounted ? this.getDOMNode() : null,
-              el = node ? node.getElementById("ads-banner-top") : {},
+              el = node ? document.getElementById("ads-banner-top") : {},
               height = mounted && el.offsetHeight ? el.offsetHeight : 0,
               width = mounted && el.offsetWidth ? el.offsetWidth : 0,
               total_width = mounted && this.props.screen ? this.props.screen.width : 0,
