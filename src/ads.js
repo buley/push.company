@@ -146,8 +146,6 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       console.log('slots finished');
       if (instance && instance.isMounted()) {
 
-
-        //change ad size
         var mounted = this.isMounted(),
             top_el = document.getElementById("ads-banner-top") || {},
             top_height = mounted && top_el.offsetHeight ? top_el.offsetHeight : 0,
@@ -173,9 +171,12 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             width: bottom_width
           }
         });
-        deferred.notify(context);
 
+        seen = 0;
+        expecting = 0;
         first = false;
+
+        deferred.notify(context);
 
         /*
         var node = document.getElementById("ads-banner-top-ad"),
