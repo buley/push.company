@@ -5,6 +5,16 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       context,
       instance,
       prev = {},
+      slots = {},
+      getSlotId = function(sizes) {
+        var pieces = [],
+            x,
+            xlen = sizes.length;
+        foreach (x = 0; x < xlen; x += 1) {
+          pieces.push(sizes[x].join("x"));
+        }
+        return pieces.join("");
+      },
       banners = [
         [234, 60],
         [320, 50],
@@ -24,6 +34,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         startCheck();
         updateAvailable();
       },
+      usable = banners,
       updateAvailable = _.debounce( function() {
         var node = instance.getDOMNode(),
             width = node.clientWidth,
@@ -37,6 +48,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             ok.push(banners[x]);
           }
         }
+        usable = ok;
         console.log("WHAT WORKS?", banners);
         stopCheck();
       }, 1000 ),
@@ -104,7 +116,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         componentDidMount: function() {
             instance = this;
             window.googletag.cmd.push(function() {
-              window.googletag.display("div-gpt-ad-1411489889191-0");
+              window.googletag.display(getSlotId(usable));
             });
             startCheck();
         },
