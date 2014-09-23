@@ -159,7 +159,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             }
             usable = ok;
             window.googletag.cmd.push(function() {
-              window.googletag.display(getSlotId(usable));
+              window.googletag.display("ads-banner-top-ad");
             });
             startCheck();
         },
@@ -188,7 +188,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             total_width_padding = total_width;
           }
 
-          var ad_key;
+          var ad_key = "ads-banner-top-ad";
           if (mounted) {
             var node = instance.getDOMNode(),
                 width = node.clientWidth,
@@ -203,7 +203,6 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
               }
             }
             usable = 0 === width && 0 === width ? banners : ok;
-            ad_key = getSlotId(usable);
           }
 
           return React.DOM.section({
