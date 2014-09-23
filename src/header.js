@@ -43,6 +43,7 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
               node = mounted ? this.getDOMNode() : null,
               height = mounted ? nodeHeight(node) : 0,
               width = mounted ? nodeWidth(node) : 0;
+          console.log("PROPS",this.props);
           return React.DOM.header({
             id: "header-container",
             "data-height": height,
