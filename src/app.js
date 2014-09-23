@@ -7,6 +7,7 @@ requirejs.config({
   		'underscore': '/bower_components/underscore/underscore',
   		'jquery': '/bower_components/jquery/dist/jquery',
   		'react': '/bower_components/react/react',
+      'tween': '/bower_components/tween.js/src/Tween',
       'xdate': '/bower_components/xdate/src/xdate',
       'cache': '/bower_components/dash/behaviors/cache.dev',
       'changes': '/bower_components/dash/behaviors/changes.dev',
@@ -66,6 +67,9 @@ requirejs.config({
     },
     'stats': {
       exports: 'dashStats'
+    },
+    'tween': {
+      exports: 'TWEEN'
     }
 	}
 });

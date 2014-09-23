@@ -1,4 +1,4 @@
-define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
+define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _, Tween) {
   var deferred = Q.defer(),
       promise = deferred.promise,
       module = Q.defer(),
@@ -70,6 +70,14 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
             id: "header-menu-button",
             onClick: function(e) {
               console.log('click', e);
+              var tween = new Tween.Tween( { x: 50, y: 0 } )
+                .to( { x: 400 }, 2000 )
+                .easing( TWEEN.Easing.Elastic.InOut )
+                .onUpdate( function () {
+                    console.log('Tween',this);
+                } )
+                .start();
+
             },
             style: {
               background: (this.props.header && this.props.header.drawer && this.props.header.drawer.showing ? "#d0d0d0": "#b2b2b2")
