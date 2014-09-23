@@ -11,7 +11,9 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         right: 20
       },
       interval = window.setInterval(function() {
-        console.log('check ads', instance.isMounted());
+        if (instance && instance.isMounted()) {
+          console.log('check ads', instance.getDOMNode());
+        }
       }, 100),
       nodeHeight = function(el, sum) {
         if (!el) {
