@@ -15,7 +15,7 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
             sum += nodeHeight(el.children[x], 0);
           }
         }
-        sum += el.offsetHeight + (parseFloat(el.style.getPropertyValue('margin-top')) || 0) + (parseFloat(el.style.getPropertyValue('margin-bottom')) || 0);
+        sum += el.offsetHeight;
         return sum;
       },
       nodeWidth = function(el, sum) {
@@ -29,7 +29,7 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
             sum += nodeWidth(el.children[x], 0);
           }
         }
-        sum += el.offsetWidth + (parseFloat(el.style.getPropertyValue('margin-right')) || 0) + (parseFloat(el.style.getPropertyValue('margin-left')) || 0);
+        sum += el.offsetWidth;
         return sum;
       },
       component = React.createClass({
@@ -41,15 +41,12 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
           //renderMap.apply(this, arguments);
           return React.DOM.header({
             id: "header-container",
-            "data-header-container-height": this.isMounted() ? nodeHeight(this.getDOMNode()) : 0,
-            "data-header-container-width": this.isMounted() ? nodeWidth(this.getDOMNode()) : 0
+            "data-header-height": this.isMounted() ? nodeHeight(this.getDOMNode()) : 0,
+            "data-header-width": this.isMounted() ? nodeWidth(this.getDOMNode()) : 0
           }, React.DOM.div({
             id: "header-inner"
           }, React.DOM.div({
-            id: "header",
-            "data-header-height": this.isMounted() ? nodeHeight(this.getDOMNode()) : 0,
-            "data-header-width": this.isMounted() ? nodeWidth(this.getDOMNode()) : 0
-
+            id: "header"
           })));
         }
       });
