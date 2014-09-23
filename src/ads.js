@@ -20,7 +20,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           </div>
           */
           return React.DOM.section({
-            id: "ads-top-banner"
+            id: "ads-banner-top"
           }, React.DOM.div({
             id: "div-gpt-ad-1411489889191-0"
           }, React.DOM.script({
