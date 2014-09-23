@@ -4,6 +4,7 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
       module = Q.defer(),
       context,
       instance,
+      mult = 1.2,
       nodeHeight = function(el, sum) {
         if (!el) {
           return NaN;
@@ -56,8 +57,8 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
             id: "header-logo",
             style: {
               background: '#000',
-              height: (1.618 * ( this.props.header ? this.props.header.height : 0 )) + "px",
-              width: 2 * ((1.618 * ( this.props.header ? this.props.header.height : 0 ) ) *  1.618) + "px"
+              height: (this.props.header ? this.props.header.zoom : 1) * (1.618 * ( this.props.header ? this.props.header.height : 0 )) + "px",
+              width: (this.props.header ? this.props.header.zoom : 1) * 2 * ((1.618 * ( this.props.header ? this.props.header.height : 0 ) ) *  1.618) + "px"
             }
           })), React.DOM.div({
             id: "header-inner",
@@ -84,7 +85,7 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
     incoming: function(interface) {
       interface.then(null, null, function(state) {
         if (!context) {
-          context = _.extend({}, _.extend({header: { height: 44 } }, state));
+          context = _.extend({}, _.extend({header: { height: 44, zoom: mult } }, state));
           deferred.notify(context);
         } else {
           context = _.extend({}, state);
