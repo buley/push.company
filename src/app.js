@@ -155,9 +155,10 @@ requirejs(['q', 'react'], function(Q, React) {
           loaded = 1,
           components = [],
           onResize = function(e) {
-            state.screen.width = document.body.clientWidth;
-            state.screen.height = document.body.clientHeight;
-            requestStateChange(state);
+            requestStateChange(_.extend(state, { screen: {
+              width: document.body.clientWidth,
+              height: document.body.clientHeight
+            }}));
           },
           forEachHandler = function(interface) {
             var readyHandler = function(comp) {
