@@ -233,6 +233,7 @@
 
     <script type='text/javascript'>
     googletag.cmd.push(function() {
+
       googletag.pubads().enableSingleRequest();
       googletag.pubads().disableInitialLoad();
       googletag.pubads().collapseEmptyDivs();
@@ -243,7 +244,6 @@
         addSize([640, 480], [ [120, 60], [180, 150], [320, 50], [234, 60] ]).
         addSize([0, 0], [88, 31]). //otherwise
         build();
-
 
       var slot1 = googletag.defineSlot('/270461283/Banner', [], "ads-banner-top-ad")
         .addService(googletag.pubads());
@@ -257,10 +257,12 @@
         addSize([0, 0], [88, 31]). //otherwise
         build();
       slot2.defineSizeMapping(mapping2);
+
       var header = googletag.defineSlot('/270461283/Box', [[88, 31]], "ads-box-header-ad")
           .addService(googletag.pubads());
+
       googletag.enableServices();
-      googletag.pubads().refresh([ slot2, header]);
+      googletag.pubads().refresh([ slot2, slot1, header]);
     });
     </script>
   </head>
