@@ -152,7 +152,10 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
           }, "People"), " | ", React.DOM.a({
             id: "header-drawer-tabbar-tab-places-link",
             href: "#"
-          }, "Places")))))));
+          }, "Places"), " | ", React.DOM.a({
+            id: "header-drawer-tabbar-tab-classifieds-link",
+            href: "#"
+          }, "Classifieds")))))));
         }
       });
 
