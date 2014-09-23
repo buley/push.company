@@ -10,7 +10,7 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
         if (true === anim) {
           window.requestAnimationFrame( animate );
         }
-        //Tween.update(time);
+        Tween.update(time);
       },
       nodeHeight = function(el, sum) {
         if (!el) {
@@ -82,7 +82,6 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
               }
 
               anim = true;
-              animate();
 
               var tween = new Tween.Tween( { height: instance.props.header && instance.props.header.drawer && instance.props.header.drawer.showing ? 200 : 0 } )
                 .to( { height: instance.props.header && instance.props.header.drawer && instance.props.header.drawer.showing ? 0 : 200 }, instance.props.header && instance.props.header.drawer && instance.props.header.drawer.showing ? 100 : 20 )
