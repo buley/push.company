@@ -4,9 +4,8 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       module = Q.defer(),
       context,
       instance,
-      sizes = {
-
-      },
+      prev = {},
+      sizes = {},
       padding = {
         top: 20,
         bottom: 20,
@@ -14,6 +13,11 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         right: 20
       },
       interval,
+      onResize = function() {
+        console.log('on resize');
+        startCheck();
+        updateAvailable();
+      },
       updateAvailable = _.debounce( function(width, height) {
         console.log("WHAT WORKS?", width, height);
         stopCheck();
@@ -138,6 +142,13 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           deferred.notify(context);
         } else {
           context = _.extend({}, state);
+          if (context.screen) {
+            if (context.screen.width !== prev.width || context.screen.height !== prev.height) {
+              onResize(context.screen.width, context.screen.height, prev.width, prev.height);
+              prev.width = context.screen.width;
+              prev.height = context.screen.height;
+            }
+          }
         }
       });
     },
