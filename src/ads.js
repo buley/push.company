@@ -90,10 +90,10 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           </div>
           */
           var mounted = this.isMounted(),
-              top_el = document.getElementById("ads-banner-top") : {},
+              top_el = document.getElementById("ads-banner-top") || {},
               top_height = mounted && top_el.offsetHeight ? el.offsetHeight : 0,
               top_width = mounted && top_el.offsetWidth ? el.offsetWidth : 0,
-              bottom_el = document.getElementById("ads-banner-bottom") : {},
+              bottom_el = document.getElementById("ads-banner-bottom") || {},
               bottom_height = mounted && bottom_el.offsetHeight ? el.offsetHeight : 0,
               bottom_width = mounted && bottom_el.offsetWidth ? el.offsetWidth : 0,
               total_width = mounted && this.props.screen ? this.props.screen.width : 0,
