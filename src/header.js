@@ -76,6 +76,9 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
             id: "header"
           }, React.DOM.div({
             id: "header-menu-button",
+            onClick: function(e) {
+              console.log('click');
+            },
             style: {
               background: (this.props.header && this.props.header.drawer && this.props.header.drawer.showing ? "#d0d0d0": "#b2b2b2")
             }
