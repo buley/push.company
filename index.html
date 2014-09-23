@@ -238,11 +238,11 @@
       googletag.pubads().collapseEmptyDivs();
 
       var mapping1 = googletag.sizeMapping().
-          addSize([1024, 768], [ [970, 250], [970, 90] ]).
-          addSize([980, 690], [ [728, 90], [468, 60]]).
-          addSize([640, 480], [ [120, 60], [180, 150], [320, 50], [234, 60] ]).
-          addSize([0, 0], [88, 31]). //otherwise
-          build();
+        addSize([1024, 768], [ [970, 250], [970, 90] ]).
+        addSize([980, 690], [ [728, 90], [468, 60]]).
+        addSize([640, 480], [ [120, 60], [180, 150], [320, 50], [234, 60] ]).
+        addSize([0, 0], [88, 31]). //otherwise
+        build();
 
 
       var slot1 = googletag.defineSlot('/270461283/Banner', [], "ads-banner-top-ad")
@@ -251,9 +251,9 @@
       var slot2 = googletag.defineSlot('/270461283/Banner', [], "ads-banner-bottom-ad")
         .addService(googletag.pubads());
       var mapping2 = googletag.sizeMapping().
-          addSize([1024, 768], [ [970, 250], [970, 90] ]).
-          addSize([980, 690], [ [728, 90], [468, 60]]).
-          addSize([640, 480], [ [120, 60], [180, 150], [320, 50], [234, 60] ]).
+        addSize([1024, 768], [ [970, 250], [970, 90] ]).
+        addSize([980, 690], [ [728, 90], [468, 60]]).
+        addSize([640, 480], [ [120, 60], [180, 150], [320, 50], [234, 60] ]).
         addSize([0, 0], [88, 31]). //otherwise
         build();
       slot2.defineSizeMapping(mapping2);
