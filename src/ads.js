@@ -6,43 +6,6 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       instance,
       prev = {},
       slots = {},
-      getSlotId = function(sizes, create) {
-        var pieces = [],
-            x,
-            xlen = sizes.length,
-            key = 'ad-empty-' + Date.now(),
-            x,
-            width,
-            height,
-            size,
-            y,
-            ylen = banners.length,
-            ok = [];
-        for (x = 0; x < xlen; x += 1) {
-          size = sizes[x];
-          for (y = 0; y < ylen; y += 1) {
-            if (banners[y][0] < width && banners[y][1] < height) {
-              ok.push(banners[y]);
-            }
-          }
-          pieces.push(sizes[x].join(""));
-        }
-        if (pieces.length > 0) {
-          key = 'ad-' + pieces.join("");
-          if (ok.length > 0 && !slots[key] && false !== create) {
-            slots[key] = {
-              node: document.createElement('div'),
-              sizes: ok
-            };
-            slots[key].node.id = key;
-            var slot = googletag.defineSlot('/270461283/Banner', ok, key)
-              .addService(googletag.pubads());
-            googletag.pubads().refresh([slot]);
-
-          }
-        }
-        return key;
-      },
       banners = [
         [234, 60],
         [320, 50],
@@ -64,6 +27,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       },
       usable = [],
       updateAvailable = _.debounce( function() {
+        googletag.pubads().refresh([slot]);
         var node = instance.getDOMNode(),
             width = node.clientWidth,
             height = node.clientHeight,
@@ -220,6 +184,11 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       });
 
   module.resolve(component);
+
+  googletag.pubads().addEventListener('slotRenderEnded', function(event) {
+    console.log('Slot has been rendered:');
+    console.log(event.slot);
+  });
 
   return {
     outgoing: function(interface) {
