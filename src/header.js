@@ -66,14 +66,7 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
               height: logo.height,
               width: logo.width
             }
-          })), React.DOM.div({
-            id: "header-inner",
-            style: {
-              height: (this.props.header ? this.props.header.height : 0) + "px"
-            }
-          }, React.DOM.div({
-            id: "header"
-          }, React.DOM.div({
+          }), React.DOM.div({
             id: "header-menu-button",
             onClick: function(e) {
               console.log('click', e);
@@ -84,6 +77,13 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
           }, React.DOM.img({
             src: '/img/tab_white_list.png'
           })))), React.DOM.div({
+            id: "header-inner",
+            style: {
+              height: (this.props.header ? this.props.header.height : 0) + "px"
+            }
+          }, React.DOM.div({
+            id: "header"
+          }), React.DOM.div({
             id: "header-under",
             style: {
               height: ( this.props.header ? this.props.header.height : 0 ) + "px"
