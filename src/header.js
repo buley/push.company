@@ -50,26 +50,26 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
           }, React.DOM.div({
             id: "header-over",
             style: {
-              height: this.props.header ? this.props.header.height : 0
+              height: (this.props.header ? this.props.header.height : 0) + "px"
             }
           }, React.DOM.div({
             id: "header-logo",
             style: {
               background: '#000',
-              height: 1.618 * ( this.props.header ? this.props.header.height : 0 ),
-              width: ( 1.618 * ( this.props.header ? this.props.header.height : 0 ) ) /  1.618
+              height: (1.618 * ( this.props.header ? this.props.header.height : 0 )) + "px",
+              width: (( 1.618 * ( this.props.header ? this.props.header.height : 0 ) ) /  1.618) + "px"
             }
           })), React.DOM.div({
             id: "header-inner",
             style: {
-              height: this.props.header ? this.props.header.height : 0
+              height: (this.props.header ? this.props.header.height : 0) + "px"
             }
           }, React.DOM.div({
             id: "header"
           })), React.DOM.div({
             id: "header-under",
             style: {
-              height: this.props.header ? this.props.header.height : 0
+              height: ( this.props.header ? this.props.header.height : 0 ) + "px"
             }
           }));
         }
