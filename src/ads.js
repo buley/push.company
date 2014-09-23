@@ -136,7 +136,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       component = React.createClass({
         componentDidMount: function() {
             instance = this;
-            console.log('usable is what', this.getDOMNode())
+            console.log('usable is what', this.getDOMNode(), this.getDOMNode().parentNode.offsetWidth, this.getDOMNode().parentNode.offsetHeight)
             window.googletag.cmd.push(function() {
               window.googletag.display(getSlotId(usable));
             });
