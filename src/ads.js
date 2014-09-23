@@ -23,15 +23,15 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       interval,
       onResize = function() {
         if (false !== first) {
-          updateAvailable();
+          updateAvailable(true);
         }
       },
       usable = [],
       first = false,
       expecting = 2,
       seen = 0,
-      updateAvailable = _.debounce( function() {
-        if (expecting > 0 && seen > 0) {
+      updateAvailable = _.debounce( function(force) {
+        if (true === force || ( expecting > 0 && seen > 0 ) ) {
           expecting = slots.length;
           seen = 0;
           window.googletag.pubads().refresh(slots);
