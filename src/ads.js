@@ -137,11 +137,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           }, React.DOM.div({
             id: "ads-banner-bottom-ad"
           }) ), React.DOM.section({
-            id: "ads-box-header",
-            style: {
-              "right": 0,
-              "top": 0
-            }
+            id: "ads-box-header"
           }, React.DOM.div({
             id: "ads-box-header-ad"
           }) ) );
