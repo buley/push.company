@@ -200,8 +200,38 @@
       }
       header, section, footer, aside, nav, article, figure, audio, video, canvas  { display:block; }
     </style>
+    <script type='text/javascript'>
+      var googletag = googletag || {};
+      googletag.cmd = googletag.cmd || [];
+      (function() {
+      var gads = document.createElement('script');
+      gads.async = true;
+      gads.type = 'text/javascript';
+      var useSSL = 'https:' == document.location.protocol;
+      gads.src = (useSSL ? 'https:' : 'http:') +
+      '//www.googletagservices.com/tag/js/gpt.js';
+      var node = document.getElementsByTagName('script')[0];
+      node.parentNode.insertBefore(gads, node);
+      })();
+    </script>
+
+    <script type='text/javascript'>
+    googletag.cmd.push(function() {
+    var slot = googletag.defineSlot('/270461283/Banner', [[234, 60], [320, 50], [468, 60], [728, 90], [970, 90]], 'div-gpt-ad-1411489889191-0').addService(googletag.pubads());
+    googletag.pubads().enableSingleRequest();
+    googletag.pubads().disableInitialLoad();
+    googletag.pubads().refresh([slot]);
+    googletag.enableServices();
+    });
+    </script>
   </head>
   <body>
+    <!-- Banner -->
+    <div id='div-gpt-ad-1411489889191-0'>
+      <script type='text/javascript'>
+      googletag.cmd.push(function() { googletag.display('div-gpt-ad-1411489889191-0'); });
+      </script>
+    </div>
     <div id="app"></div>
   </body>
 </html>
