@@ -150,7 +150,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
     }
     if (expecting > 0 && ++seen >= expecting) {
       console.log('slots finished');
-      updateAvailable();
+      //updateAvailable();
       /*
       if (instance && instance.isMounted()) {
         var node = instance.getDOMNode(),
