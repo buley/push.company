@@ -166,7 +166,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           context.ads.sizes = _.extend((context.ads.sizes || {}), sizes);
           console.log('notify sizes',sizes);
           deferred.notify(context);
-          if (false !== first) {
+          if (false === first) {
             first = true;
           }
         }
