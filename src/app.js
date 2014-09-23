@@ -81,7 +81,7 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
           },
           previous_state = '',
           deferred = Q.defer(),
-          context = {},
+          context = _.extend( {}, state),
           promise = deferred.promise,
           container = React.createClass({
             componentWillMount: function() {
