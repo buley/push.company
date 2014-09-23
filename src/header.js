@@ -73,7 +73,7 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
               height: logo.height,
               width: logo.width
             }
-          }), React.DOM.div({
+          }, !!this.props.header.logo && !!this.props.header.logo.text ? this.props.header.logo.text, ""), React.DOM.div({
             id: "header-menu-button",
             onClick: function(e) {
 
@@ -178,6 +178,8 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
             showing: false,
             height: 0,
             selected: "categories"
+          }, logo: {
+            text: "Daily Sentinel"
           } } }, state));
           deferred.notify(context);
         } else {
