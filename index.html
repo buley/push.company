@@ -223,17 +223,20 @@
     </script>
 
     <script type='text/javascript'>
+    var push = push || {};
+    push.slots = [];
     googletag.cmd.push(function() {
       googletag.pubads().enableSingleRequest();
       googletag.pubads().disableInitialLoad();
       googletag.pubads().collapseEmptyDivs();
       var slot = googletag.defineSlot('/270461283/Banner', [[234, 60], [320, 50], [468, 60], [728, 90], [970, 90]], "ads-banner-top-ad")
         .addService(googletag.pubads());
+      push.slots.push(slot);
       var mapping = googletag.sizeMapping().
           addSize([1024, 768], [970, 250], [970, 90]).
           addSize([980, 690], [728, 90], [468, 60]).
           addSize([640, 480], [120, 60], [320, 50], [234, 60]).
-          //addSize([0, 0], [88, 31]). //otherwise
+          addSize([0, 0], [88, 31]). //otherwise
           build();
       slot.defineSizeMapping(mapping);
       googletag.enableServices();
