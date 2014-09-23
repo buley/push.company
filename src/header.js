@@ -48,7 +48,7 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
             "data-height": height,
             "data-width": width,
           }, React.DOM.div({
-            id: "header-above"
+            id: "header-over"
           }), React.DOM.div({
             id: "header-inner"
           }, React.DOM.div({
@@ -57,7 +57,7 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
               height: '10px'
             }
           }), React.DOM.div({
-            id: "header-below"
+            id: "header-under"
           })));
         }
       });

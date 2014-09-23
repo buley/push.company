@@ -104,13 +104,41 @@
         background: #00FF00;
       }
 
-      #header-inner {
-        position: relative;
+      #header-over {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
         width: 100%;
         background: #FF0000;
+        z-index: 2;
+      }
+
+      #header-under {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        width: 100%;
+        background: #FF0000;
+        z-index: 0;
+      }
+
+      #header-inner {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        width: 100%;
+        background: #FF0000;
+        z-index: 1;
       }
 
       #header {
+        position: relative;
         background: #0000FF;
       }
 
