@@ -57,7 +57,7 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
             style: {
               background: '#000',
               height: (1.618 * ( this.props.header ? this.props.header.height : 0 )) + "px",
-              width: (( 1.618 * ( this.props.header ? this.props.header.height : 0 ) ) /  1.618) + "px"
+              width: ((1.618 * ( this.props.header ? this.props.header.height : 0 ) ) *  1.618) + "px"
             }
           })), React.DOM.div({
             id: "header-inner",
