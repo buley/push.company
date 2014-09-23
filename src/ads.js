@@ -68,18 +68,6 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       component = React.createClass({
         componentDidMount: function() {
             instance = this;
-            var node = this.getDOMNode(),
-                width = node.parentNode.offsetWidth,
-                height = node.parentNode.offsetHeight,
-                x,
-                xlen = banners.length,
-                ok = [];
-            for (x = 0; x < xlen; x += 1) {
-              if (banners[x][0] < width && (0 === height || banners[x][1] < height)) {
-                ok.push(banners[x]);
-              }
-            }
-            usable = ok;
             window.googletag.cmd.push(function() {
               window.googletag.display("ads-banner-top-ad");
             });
