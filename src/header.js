@@ -77,6 +77,10 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
             id: "header-menu-button",
             onClick: function(e) {
 
+              if (true === anim) {
+                return;
+              }
+              
               anim = true;
               animate();
 
