@@ -31,6 +31,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       updateAvailable = _.debounce( function() {
         expecting = slots.length;
         seen = 0;
+        console.log('refreshing');
         window.googletag.pubads().refresh(slots);
       }, 1000 ),
       stopCheck = function() {
