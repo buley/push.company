@@ -10,7 +10,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         var pieces = [],
             x,
             xlen = sizes.length,
-            key = 'div-' + Date.now(),
+            key = 'ad-empty-' + Date.now(),
             x,
             width,
             height,
