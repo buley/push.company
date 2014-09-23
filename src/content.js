@@ -14,41 +14,12 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       onResize = _.debounce(function() {
         console.log('resize content');
       }),
-      nodeHeight = function(el, sum) {
-        if (!el) {
-          return NaN;
-        }
-        var x, xlen;
-        sum = sum || 0;
-        if (!!el.children && el.children.length > 0) {
-          for (x = 0, xlen = el.children.length; x < xlen; x += 1) {
-            sum += nodeHeight(el.children[x], 0);
-          }
-        }
-        sum += el.offsetHeight;
-        return sum;
-      },
-      nodeWidth = function(el, sum) {
-        if (!el) {
-          return NaN;
-        }
-        var x, xlen;
-        sum = sum || 0;
-        if (!!el.children && el.children.length > 0) {
-          for (x = 0, xlen = el.children.length; x < xlen; x += 1) {
-            sum += nodeWidth(el.children[x], 0);
-          }
-        }
-        sum += el.offsetWidth;
-        return sum;
-      },
       component = React.createClass({
         componentDidMount: function() {
             instance = this;
             console.log('content did mount')
         },
         render: function() {
-
           return React.DOM.section({
             id: "content"
           } );
