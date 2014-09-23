@@ -121,7 +121,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
               "top": (this.props.header && this.props.header.height ? this.props.header.height + top_height_base: top_height_base) + "px"
             }
           }, React.DOM.div({
-            id: ad_key
+            id: "ads-banner-top-ad"
           }) ), React.DOM.section({
             id: "ads-banner-bottom",
             "data-height": bottom_height,
@@ -131,7 +131,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
               "top": (this.props.header && this.props.header.height ? this.props.header.height + top_height_base: top_height_base) + "px"
             }
           }, React.DOM.div({
-            id: ad_key
+            id: "ads-banner-bottom-ad"
           }) ) );
         }
       });
