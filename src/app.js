@@ -188,6 +188,7 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
 
       document.body.attachEvent('resize', onResize);
 
+
     });
 	return module.promise;
 });
