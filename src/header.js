@@ -92,7 +92,7 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
                 .onComplete(function() {
                   anim = false;
                   context = _.extend(context, {header: {drawer: {
-                    showing: instance.props.header && instance.props.header.drawer && instance.props.header.drawer.showing ? true : false
+                    showing: instance.props.header && instance.props.header.drawer && instance.props.header.drawer.showing ? true : true
                   }}});
                   deferred.notify(context);
                 })
@@ -136,8 +136,8 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
       interface.then(null, null, function(state) {
         if (!context) {
           context = _.extend({}, _.extend({header: { height: 44, zoom: mult, drawer: {
-            showing: true,
-            height: 200
+            showing: false,
+            height: 0
           } } }, state));
           deferred.notify(context);
         } else {
