@@ -111,6 +111,7 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
       });
 
   module.resolve(component);
+  animate();
 
   return {
     outgoing: function(interface) {
