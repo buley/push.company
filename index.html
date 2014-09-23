@@ -226,8 +226,6 @@
     </script>
 
     <script type='text/javascript'>
-    var push = push || {};
-    push.slots = [];
     googletag.cmd.push(function() {
       googletag.pubads().enableSingleRequest();
       googletag.pubads().disableInitialLoad();
@@ -243,11 +241,9 @@
 
       var slot1 = googletag.defineSlot('/270461283/Banner', [], "ads-banner-top-ad")
         .addService(googletag.pubads());
-      push.slots.push(slot1);
       slot1.defineSizeMapping(mapping);
       var slot2 = googletag.defineSlot('/270461283/Banner', [], "ads-banner-bottom-ad")
         .addService(googletag.pubads());
-      push.slots.push(slot2);
       slot2.defineSizeMapping(mapping);
       googletag.pubads().refresh([slot1, slot2]);
       googletag.enableServices();
