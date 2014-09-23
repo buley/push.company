@@ -172,8 +172,9 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             height: bottom_height,
             width: bottom_width
           }
-        }));
+        });
         deferred.notify(context);
+
         /*
         var node = document.getElementById("ads-banner-top-ad"),
             width = node.clientWidth,
@@ -200,7 +201,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             first = true;
           }
         }*/
-        
+
       }
     }
 
