@@ -10,6 +10,9 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         left: 20,
         right: 20
       },
+      interval = window.setInterval(function() {
+        console.log('check ads', instance.isMounted());
+      }, 100),
       nodeHeight = function(el, sum) {
         if (!el) {
           return NaN;
