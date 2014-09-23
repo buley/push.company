@@ -50,19 +50,19 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
           }, React.DOM.div({
             id: "header-over",
             style: {
-              height: '44px'
+              height: this.props.header.height
             }
           }), React.DOM.div({
             id: "header-inner",
             style: {
-              height: '44px'
+              height: this.props.header.height
             }
           }, React.DOM.div({
             id: "header"
           })), React.DOM.div({
             id: "header-under",
             style: {
-              height: '44px'
+              height: this.props.header.height
             }
           }));
         }
@@ -76,7 +76,11 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
     },
     incoming: function(interface) {
       interface.then(null, null, function(state) {
-        context = _.extend({}, state);
+        if (!context) {
+          context = _.extend({}, _.extend({header: { height: '44px' } }, state));
+        } else {
+          context = _.extend({}, state);
+        }
         if (!!state.route && !!state.route.hash && !!state.route.hash.overlay) {
           overlays = _.unique(state.route.hash.overlay.split(","));
           map_state.overlays = overlays;
