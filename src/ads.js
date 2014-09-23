@@ -7,6 +7,9 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       component = React.createClass({
         componentDidMount: function() {
             instance = this;
+            window.googletag.cmd.push(function() {
+              window.googletag.display("div-gpt-ad-1411489889191-0");
+            });
         },
         render: function() {
           /*
@@ -20,7 +23,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             id: "div-gpt-ad-1411489889191-0"
           }, React.DOM.script({
             type: "text/javascript"
-          }, "googletag.cmd.push(function() { googletag.display(\"div-gpt-ad-1411489889191-0\"); });"));
+          }));
         }
       });
 
