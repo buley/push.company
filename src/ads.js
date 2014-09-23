@@ -36,6 +36,11 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             sizes: ok
           };
           slots[key].node.id = key;
+          var slot = googletag.defineSlot('/270461283/Banner', ok, key)
+            .addService(googletag.pubads());
+          googletag.pubads().refresh([slot]);
+          console.log('defined',slot);
+
         }
         return key;
       },
