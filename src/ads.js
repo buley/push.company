@@ -77,8 +77,10 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             }
             usable = ok;
             window.googletag.cmd.push(function() {
-              //window.googletag.display("ads-banner-bottom-ad");
               window.googletag.display("ads-banner-top-ad");
+            });
+            window.googletag.cmd.push(function() {
+              window.googletag.display("ads-banner-bottom-ad");
             });
         },
         render: function() {
@@ -140,6 +142,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
     if (!_.contains(slots, event.slot)) {
       slots.push(event.slot);
     }
+    console.log('slot rendered',event);
     if (expecting > 0 && ++seen >= expecting) {
       if (instance && instance.isMounted()) {
         var node = instance.getDOMNode(),
