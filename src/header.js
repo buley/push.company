@@ -91,6 +91,7 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
                   anim = false;
                 })
                 .start();
+                Tween.update(Date.now());
 
             },
             style: {
