@@ -246,6 +246,7 @@
         .addService(googletag.pubads());
       slot2.defineSizeMapping(mapping);
       googletag.enableServices();
+      googletag.pubads().refresh([slot1, slot2]);
     });
     </script>
   </head>

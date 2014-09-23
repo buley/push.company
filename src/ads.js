@@ -25,6 +25,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         updateAvailable();
       },
       usable = [],
+      first = false,
       expecting = 2,
       seen = 0,
       updateAvailable = _.debounce( function() {
@@ -139,11 +140,13 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
   module.resolve(component);
 
   googletag.pubads().addEventListener('slotRenderEnded', function(event) {
-    if (!_.contains(slots, event.slot)) {
-      slots.push(event.slot);
-      console.log('ADD',event.slot);
-    } else {
-      console.log('DUPE',event.slot);
+    if (false === first) {
+      if (!_.contains(slots, event.slot)) {
+        slots.push(event.slot);
+        console.log('ADD',event.slot);
+      } else {
+        console.log('DUPE',event.slot);
+      }
     }
     console.log('slot rendered',event);
     if (expecting > 0 && ++seen >= expecting) {
@@ -167,7 +170,11 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           context.ads = context.ads || {};
           context.ads.sizes = _.extend((context.ads.sizes || {}), sizes);
           deferred.notify(context);
-          updateAvailable(width, height);
+          if (false === first) {
+            updateAvailable(width, height);
+          } else {
+            first = true;
+          }
         }
       }
     }
