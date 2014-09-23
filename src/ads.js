@@ -29,11 +29,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       expecting = 2,
       seen = 0,
       updateAds = _.debounce( function(force) {
-        if (true === force || ( expecting > 0 && seen > 0 ) ) {
-          expecting = slots.length;
-          seen = 0;
-          window.googletag.pubads().refresh(slots);
-        }
+        window.googletag.pubads().refresh(slots);
       }, 1000 ),
       nodeHeight = function(el, sum) {
         if (!el) {
