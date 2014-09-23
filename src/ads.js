@@ -49,7 +49,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           }
         }
         usable = ok;
-        console.log("WHAT WORKS?", usable);
+        console.log("WHAT WORKS?", width, height, usable);
         stopCheck();
       }, 1000 ),
       stopCheck = function() {
