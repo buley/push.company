@@ -26,7 +26,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         updateAvailable();
       },
       usable = [],
-      expecting = 0,
+      expecting,
       seen = 0,
       updateAvailable = _.debounce( function() {
         expecting = slots.length;
