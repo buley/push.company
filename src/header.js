@@ -92,7 +92,7 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
                 .onComplete(function() {
                   anim = false;
                   context = _.extend(context, {header: {drawer: {
-                    showing: instance.props.header && instance.props.header.drawer && instance.props.header.drawer.showing ? false : true
+                    showing: instance.props.header && instance.props.header.drawer && instance.props.header.drawer.showing ? true : false
                   }}});
                   deferred.notify(context);
                 })
