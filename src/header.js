@@ -180,7 +180,7 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
             height: 0,
             selected: "categories"
           }, logo: {
-            text: "Daily Sentinel"
+            text: "push.company"
           } } }, state));
           deferred.notify(context);
         } else {
