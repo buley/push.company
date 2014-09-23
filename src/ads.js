@@ -9,11 +9,31 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       getSlotId = function(sizes) {
         var pieces = [],
             x,
-            xlen = sizes.length;
+            xlen = sizes.length,
+            key,
+            x,
+            width,
+            height,
+            size,
+            y,
+            ylen = banners.length,
+            ok = [];
         for (x = 0; x < xlen; x += 1) {
+          size = sizes[x];
+          for (y = 0; y < ylen; y += 1) {
+            if (banners[y][0] < width && banners[y][1] < height) {
+              ok.push(banners[y]);
+            }
+          }
           pieces.push(sizes[x].join("x"));
         }
-        return pieces.join("");
+        if (!slots[key]) {
+          slots[key] = {
+            node: document.createElement('div'),
+            sizes
+          }
+        }
+        return key;
       },
       banners = [
         [234, 60],
