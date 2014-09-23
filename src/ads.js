@@ -10,7 +10,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         var pieces = [],
             x,
             xlen = sizes.length;
-        foreach (x = 0; x < xlen; x += 1) {
+        for (x = 0; x < xlen; x += 1) {
           pieces.push(sizes[x].join("x"));
         }
         return pieces.join("");
@@ -49,7 +49,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           }
         }
         usable = ok;
-        console.log("WHAT WORKS?", banners);
+        console.log("WHAT WORKS?", usable);
         stopCheck();
       }, 1000 ),
       stopCheck = function() {
