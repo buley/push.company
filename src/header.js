@@ -76,7 +76,7 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
             }
           }, React.DOM.img({
             src: '/img/tab_white_list.png'
-          })))), React.DOM.div({
+          }))), React.DOM.div({
             id: "header-inner",
             style: {
               height: (this.props.header ? this.props.header.height : 0) + "px"
@@ -88,7 +88,7 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
             style: {
               height: ( this.props.header ? this.props.header.height : 0 ) + "px"
             }
-          }), React.DOM.div({
+          })), React.DOM.div({
             id: "header-drawer",
             style: {
               top: (this.props.header ? this.props.header.height : 0) + "px",
