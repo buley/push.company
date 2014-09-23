@@ -22,7 +22,9 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       },
       interval,
       onResize = function() {
-        updateAvailable();
+        if (false !== first) {
+          updateAvailable();
+        }
       },
       usable = [],
       first = false,
