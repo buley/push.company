@@ -5,7 +5,8 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       context,
       instance,
       padding = {
-        top: 20
+        top: 20,
+        bottom: 20
       },
       nodeHeight = function(el, sum) {
         if (!el) {
