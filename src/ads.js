@@ -95,8 +95,10 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
               bottom_width = mounted && bottom_el.offsetWidth ? bottom_el.offsetWidth : 0,
               total_width = mounted && this.props.screen ? this.props.screen.width : 0,
               total_width_padding = total_width - top_width,
+              total_width_padding_bottom = total_width - bottom_width,
               top_height_base = Math.floor((padding.top + padding.bottom)/2),
               top_width_base = Math.floor((padding.right + padding.left + total_width_padding)/2),
+              bottom_width_base = Math.floor((padding.right + padding.left + total_width_padding_bottom)/2),
               bottom_height,
               bottom_height_base = 20,
               bottom_width;
@@ -122,7 +124,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             id: "ads-banner-bottom",
             style: {
               "left": top_width_base + "px",
-              "top": (this.props.header && this.props.header.height ? this.props.header.height + top_height_base + top_height: top_height_base) + "px",
+              "top": (this.props.header && this.props.header.height ? this.props.header.height + bottom_width_base + bottom_height: bottom_width_base) + "px",
               "bottom": bottom_height_base + "px"
             }
           }, React.DOM.div({
