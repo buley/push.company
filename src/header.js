@@ -86,7 +86,7 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
                 .onUpdate(function() {
                     console.log('Tween',this.height);
                     context = _.extend(context, {header: {drawer: {
-                      showing: this.props.header && this.props.header.drawer && this.props.header.drawer.showing ? false : true,
+                      showing: instance.props.header && instance.props.header.drawer && instance.props.header.drawer.showing ? false : true,
                       height: this.height
                     }}});
                     deferred.notify(context);
