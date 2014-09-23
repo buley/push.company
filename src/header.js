@@ -2,7 +2,7 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
   var deferred = Q.defer(),
       promise = deferred.promise,
       module = Q.defer(),
-      context = {},
+      context,
       instance,
       nodeHeight = function(el, sum) {
         if (!el) {
