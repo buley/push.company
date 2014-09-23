@@ -27,7 +27,6 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       },
       usable = [],
       updateAvailable = _.debounce( function() {
-        googletag.pubads().refresh([slot]);
         var node = instance.getDOMNode(),
             width = node.clientWidth,
             height = node.clientHeight,
