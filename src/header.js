@@ -76,9 +76,7 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
             id: "header"
           }, React.DOM.div({
             id: "header-menu-button",
-            style: {
-              background: "#FFF"
-            }
+            style: {}
           }, React.DOM.img({
             src: '/img/tab_white_list.png'
           })))), React.DOM.div({
