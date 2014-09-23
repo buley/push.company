@@ -150,10 +150,8 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
     }
     if (expecting > 0 && ++seen >= expecting) {
       console.log('slots finished');
-      //updateAvailable();
-      /*
       if (instance && instance.isMounted()) {
-        var node = instance.getDOMNode(),
+        var node = document.getElementById("ads-banner-top-ad"),
             width = node.clientWidth,
             height = node.clientHeight,
             notify = false;
@@ -171,15 +169,13 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           expecting = 0;
           context.ads = context.ads || {};
           context.ads.sizes = _.extend((context.ads.sizes || {}), sizes);
+          console.log('notify sizes',sizes);
           deferred.notify(context);
-          if (false === first) {
-            updateAvailable(width, height);
-          } else {
+          if (false !== first) {
             first = true;
           }
         }
       }
-      */
     }
 
   });
