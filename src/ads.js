@@ -99,9 +99,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
               top_height_base = Math.floor((padding.top + padding.bottom)/2),
               top_width_base = Math.floor((padding.right + padding.left + total_width_padding)/2),
               bottom_width_base = Math.floor((padding.right + padding.left + total_width_padding_bottom)/2),
-              bottom_height_base = 20,
-              bottom_height,
-              bottom_width;
+              bottom_height_base = 20;
 
           if (total_width_padding < 0) {
             total_width_padding = 0;
