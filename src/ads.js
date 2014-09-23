@@ -80,6 +80,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             </script>
           </div>
           */
+          console.log('render');
           var mounted = this.isMounted(),
               top_el = document.getElementById("ads-banner-top") || {},
               top_height = mounted && top_el.offsetHeight ? top_el.offsetHeight : 0,
