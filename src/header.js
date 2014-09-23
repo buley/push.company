@@ -4,7 +4,7 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
       module = Q.defer(),
       context,
       instance,
-      mult = 0.8,
+      mult = 0.9,
       nodeHeight = function(el, sum) {
         if (!el) {
           return NaN;
