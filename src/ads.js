@@ -5,7 +5,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       context,
       instance,
       prev = {},
-      slots = {},
+      slots = [],
       banners = [
         [234, 60],
         [320, 50],
@@ -26,12 +26,11 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         updateAvailable();
       },
       usable = [],
+      expecting = 0,
+      seen = 0,
       updateAvailable = _.debounce( function() {
-        var node = instance.getDOMNode(),
-            width = node.clientWidth,
-            height = node.clientHeight;
-        console.log("WHAT WORKS?", width, height);
-        stopCheck();
+        expecting = slots.length;
+        window.googletag.pubads().refresh(slots);
       }, 1000 ),
       stopCheck = function() {
         if (interval) {
@@ -175,8 +174,11 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
   module.resolve(component);
 
   googletag.pubads().addEventListener('slotRenderEnded', function(event) {
-    console.log('Slot has been rendered:');
-    console.log(event.slot);
+    console.log('Slot has been rendered', event.slot);
+    slots.push(event.slot);
+    if (expecting && ++seen >= expecting) {
+      console.log('finsihed rendering slots');
+    }
   });
 
   return {
