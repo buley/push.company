@@ -29,18 +29,18 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         }
         if (pieces.length > 0) {
           key = 'ad-' + pieces.join("_");
-        }
-        if (!slots[key]) {
-          slots[key] = {
-            node: document.createElement('div'),
-            sizes: ok
-          };
-          slots[key].node.id = key;
-          var slot = googletag.defineSlot('/270461283/Banner', ok, key)
-            .addService(googletag.pubads());
-          googletag.pubads().refresh([slot]);
-          console.log('defined',slot);
+          if (!slots[key]) {
+            slots[key] = {
+              node: document.createElement('div'),
+              sizes: ok
+            };
+            slots[key].node.id = key;
+            var slot = googletag.defineSlot('/270461283/Banner', ok, key)
+              .addService(googletag.pubads());
+            googletag.pubads().refresh([slot]);
+            console.log('defined',slot);
 
+          }
         }
         return key;
       },
