@@ -232,9 +232,9 @@
       googletag.pubads().collapseEmptyDivs();
 
       var mapping = googletag.sizeMapping().
-          addSize([1024, 768], [970, 250], [970, 90]).
-          addSize([980, 690], [728, 90], [468, 60]).
-          addSize([640, 480], [120, 60], [320, 50], [234, 60]).
+          addSize([1024, 0/*768*/], [970, 250], [970, 90]).
+          addSize([980, 0/*690*/], [728, 90], [468, 60]).
+          addSize([640, 0/*480*/], [120, 60], [320, 50], [234, 60]).
           addSize([0, 0], [88, 31]). //otherwise
           build();
 
