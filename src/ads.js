@@ -29,18 +29,8 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       updateAvailable = _.debounce( function() {
         var node = instance.getDOMNode(),
             width = node.clientWidth,
-            height = node.clientHeight,
-            notify = false,
-            x,
-            xlen = banners.length,
-            ok = [];
-        for (x = 0; x < xlen; x += 1) {
-          if (banners[x][0] < width && banners[x][1] < height) {
-            ok.push(banners[x]);
-          }
-        }
-        usable = 0 === width && 0 === width ? banners : ok;
-        console.log("WHAT WORKS?", width, height, getSlotId(usable));
+            height = node.clientHeight;
+        console.log("WHAT WORKS?", width, height);
         stopCheck();
       }, 1000 ),
       stopCheck = function() {
