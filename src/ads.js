@@ -125,6 +125,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             id: "ads-banner-bottom",
             style: {
               "left": top_width_base + "px",
+              "top": (this.props.header && this.props.header.height ? this.props.header.height + top_height_base + top_height: top_height_base) + "px",
               "bottom": bottom_height_base + "px"
             }
           }, React.DOM.div({
