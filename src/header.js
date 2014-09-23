@@ -21,8 +21,8 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
       },
       getLogo = function(width, height) {
         return {
-          width: 180,
-          height: 60
+          width: 110,
+          height: 68
         }
       },
       nodeWidth = function(el, sum) {
