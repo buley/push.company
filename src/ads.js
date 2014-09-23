@@ -4,6 +4,9 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       module = Q.defer(),
       context,
       instance,
+      sizes = {
+
+      },
       padding = {
         top: 20,
         bottom: 20,
@@ -15,8 +18,23 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         if (!interval) {
           interval = window.setInterval(function() {
             if (instance && instance.isMounted()) {
-              var node = instance.getDOMNode();
-              console.log('check ads', node.clientHeight);
+              var node = instance.getDOMNode(),
+                  width = node.clientWidth,
+                  height = node.clientHeight,
+                  notify = false;
+              sizes["top-banner"] = sizes["top-banner"] || {};
+              if ( sizes["top-banner"].width !== width) {
+                notify = true;
+                sizes["top-banner"].width = width;
+              }
+              if ( sizes["top-banner"].height !== height) {
+                notify = true;
+                sizes["top-banner"].height = height;
+              }
+              if (true === notify) {
+                context.ads.sizes = _.extend(context.ads.sizes, sizes);
+                deferred.notify(context);
+              }
             }
           }, 100);
         }
