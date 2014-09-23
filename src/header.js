@@ -85,14 +85,15 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
                 .easing( Tween.Easing.Elastic.InOut )
                 .onUpdate(function() {
                     context = _.extend(context, {header: {drawer: {
-                      height: this.height
+                      height: this.height,
+                      showing: instance.props.header.drawer.showing
                     }}});
                     deferred.notify(context);
                 })
                 .onComplete(function() {
                   anim = false;
                   context = _.extend(context, {header: {drawer: {
-                    showing: instance.props.header && instance.props.header.drawer && instance.props.header.drawer.showing ? true : true
+                    showing: instance.props.header && instance.props.header.drawer && instance.props.header.drawer.showing ? false : true
                   }}});
                   deferred.notify(context);
                 })
