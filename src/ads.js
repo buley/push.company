@@ -82,7 +82,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             "data-height": height,
             "data-width": width,
             style: {
-              "left": width_base + "px",
+              "left": "0px",
               "top": (this.props.header && this.props.header.height ? this.props.header.height + height_base: height_base) + "px"
             }
           }, React.DOM.div({
