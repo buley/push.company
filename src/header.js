@@ -82,6 +82,7 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
               }
 
               anim = true;
+              animate();
 
               var tween = new Tween.Tween( { height: instance.props.header && instance.props.header.drawer && instance.props.header.drawer.showing ? 200 : 0 } )
                 .to( { height: instance.props.header && instance.props.header.drawer && instance.props.header.drawer.showing ? 0 : 200 }, instance.props.header && instance.props.header.drawer && instance.props.header.drawer.showing ? 30000 : 10000 )
@@ -102,8 +103,6 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
                   deferred.notify(context);
                 })
                 .start();
-
-              Tween.update(Date.now());
 
             },
             style: {
