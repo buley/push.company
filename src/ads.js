@@ -69,7 +69,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             ok.push(banners[x]);
           }
         }
-        usable = ok;
+        usable = 0 === width && 0 === width ? banners : ok;
         console.log("WHAT WORKS?", width, height, usable);
         stopCheck();
       }, 1000 ),
