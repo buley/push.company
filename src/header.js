@@ -40,7 +40,7 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
           //TODO: Render map
           //renderMap.apply(this, arguments);
           var mounted = this.isMounted(),
-              node = this.getDOMNode(),
+              node = mounted ? this.getDOMNode() : null,
               height = mounted ? nodeHeight(node) : 0,
               width = mounted ? nodeWidth(node) : 0;
           return React.DOM.header({
