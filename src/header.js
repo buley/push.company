@@ -177,7 +177,7 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
           context = _.extend({}, _.extend({header: { height: 44, zoom: mult, drawer: {
             showing: false,
             height: 0,
-            selected: categories
+            selected: "categories"
           } } }, state));
           deferred.notify(context);
         } else {
