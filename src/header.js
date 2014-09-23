@@ -77,13 +77,12 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
             id: "header-menu-button",
             onClick: function(e) {
 
+              anim = true;
+              animate();
+
               var tween = new Tween.Tween( { x: instance.props.header && instance.props.header.drawer && instance.props.header.drawer.showing ? 200 : 0 } )
                 .to( { x: instance.props.header && instance.props.header.drawer && instance.props.header.drawer.showing ? 0 : 200 }, 2000 )
                 .easing( Tween.Easing.Elastic.InOut )
-                .onStart(function() {
-                  anim = true;
-                  animate();
-                })
                 .onUpdate(function() {
                     console.log('Tween',this);
                 })
@@ -91,7 +90,6 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
                   anim = false;
                 })
                 .start();
-                Tween.update(Date.now());
 
             },
             style: {
