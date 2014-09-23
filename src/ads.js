@@ -20,7 +20,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             id: "div-gpt-ad-1411489889191-0"
           }, React.DOM.script({
             type: "text/javascript"
-          }, "googletag.cmd.push(function() { googletag.display('div-gpt-ad-1411489889191-0'); });"));
+          }, "googletag.cmd.push(function() { googletag.display(\"div-gpt-ad-1411489889191-0\"); });"));
         }
       });
 
