@@ -157,7 +157,7 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
           loaded = 1,
           components = [],
           onResize = function(e) {
-            requestStateChange(_.extend(state, { screen: {
+            requestStateChange(_.extend(context, { screen: {
               width: document.body.clientWidth,
               height: document.body.clientHeight
             }}));
