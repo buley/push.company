@@ -104,12 +104,6 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
                 })
                 .start();
 
-                context.header.drawer = _.extend(context.header.drawer, {
-                  height: instance.props.header && instance.props.header.drawer && instance.props.header.drawer.showing ? 200 : 0,
-                  showing: instance.props.header.drawer.showing
-                });
-                deferred.notify(context);
-
             },
             style: {
               background: (this.props.header && this.props.header.drawer && ( this.props.header.drawer.showing || true === anim) ? "#d0d0d0": "#b2b2b2")
