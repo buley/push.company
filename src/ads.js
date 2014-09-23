@@ -19,11 +19,13 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             </script>
           </div>
           */
-          return React.DOM.div({
+          return React.DOM.section({
+            id: "ads-top-banner"
+          }, React.DOM.div({
             id: "div-gpt-ad-1411489889191-0"
           }, React.DOM.script({
             type: "text/javascript"
-          }));
+          })) );
         }
       });
 
