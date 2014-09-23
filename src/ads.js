@@ -34,41 +34,6 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         console.log('refreshing');
         window.googletag.pubads().refresh(slots);
       }, 1000 ),
-      stopCheck = function() {
-        if (interval) {
-          window.clearInterval(interval);
-        }
-      },
-      startCheck = function() {
-        if (!context) {
-          return;
-        }
-        if (!interval) {
-          interval = window.setInterval(function() {
-            if (instance && instance.isMounted()) {
-              var node = instance.getDOMNode(),
-                  width = node.clientWidth,
-                  height = node.clientHeight,
-                  notify = false;
-              sizes["top-banner"] = sizes["top-banner"] || {};
-              if ( sizes["top-banner"].width !== width) {
-                notify = true;
-                sizes["top-banner"].width = width;
-              }
-              if ( sizes["top-banner"].height !== height) {
-                notify = true;
-                sizes["top-banner"].height = height;
-              }
-              if (true === notify) {
-                context.ads = context.ads || {};
-                context.ads.sizes = _.extend((context.ads.sizes || {}), sizes);
-                deferred.notify(context);
-                updateAvailable(width, height);
-              }
-            }
-          }, 100);
-        }
-      },
       nodeHeight = function(el, sum) {
         if (!el) {
           return NaN;
@@ -181,7 +146,27 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       slots.push(event.slot);
     }
     if (expecting && ++seen >= expecting) {
-      console.log('finsihed rendering slots');
+      if (instance && instance.isMounted()) {
+        var node = instance.getDOMNode(),
+            width = node.clientWidth,
+            height = node.clientHeight,
+            notify = false;
+        sizes["top-banner"] = sizes["top-banner"] || {};
+        if ( sizes["top-banner"].width !== width) {
+          notify = true;
+          sizes["top-banner"].width = width;
+        }
+        if ( sizes["top-banner"].height !== height) {
+          notify = true;
+          sizes["top-banner"].height = height;
+        }
+        if (true === notify) {
+          context.ads = context.ads || {};
+          context.ads.sizes = _.extend((context.ads.sizes || {}), sizes);
+          deferred.notify(context);
+          updateAvailable(width, height);
+        }
+      }
     }
 
   });
