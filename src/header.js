@@ -75,7 +75,10 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
           }, React.DOM.div({
             id: "header"
           }, React.DOM.div({
-            id: "header-menu-button"
+            id: "header-menu-button",
+            style: {
+              background: (this.props.header && this.props.header.drawer  && this.props.header.drawer.showing ? "#b2b2b2": "#d0d0d0")
+            }
           }, React.DOM.img({
             src: '/img/tab_white_list.png'
           })))), React.DOM.div({
@@ -96,7 +99,9 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
     incoming: function(interface) {
       interface.then(null, null, function(state) {
         if (!context) {
-          context = _.extend({}, _.extend({header: { height: 44, zoom: mult } }, state));
+          context = _.extend({}, _.extend({header: { height: 44, zoom: mult, drawer: {
+            showing: false
+          } } }, state));
           deferred.notify(context);
         } else {
           context = _.extend({}, state);
