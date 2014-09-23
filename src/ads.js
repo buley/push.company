@@ -90,14 +90,18 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           </div>
           */
           var mounted = this.isMounted(),
-              node = mounted ? this.getDOMNode() : null,
-              el = node ? document.getElementById("ads-banner-top") : {},
-              height = mounted && el.offsetHeight ? el.offsetHeight : 0,
-              width = mounted && el.offsetWidth ? el.offsetWidth : 0,
+              top_el = node ? document.getElementById("ads-banner-top") : {},
+              top_height = mounted && top_el.offsetHeight ? el.offsetHeight : 0,
+              top_width = mounted && top_el.offsetWidth ? el.offsetWidth : 0,
+              bottom_el = node ? document.getElementById("ads-banner-bottom") : {},
+              bottom_height = mounted && bottom_el.offsetHeight ? el.offsetHeight : 0,
+              bottom_width = mounted && bottom_el.offsetWidth ? el.offsetWidth : 0,
               total_width = mounted && this.props.screen ? this.props.screen.width : 0,
               total_width_padding = total_width - width,
-              height_base = Math.floor((padding.top + padding.bottom)/2),
-              width_base = Math.floor((padding.right + padding.left + total_width_padding)/2);
+              top_height_base = Math.floor((padding.top + padding.bottom)/2),
+              top_width_base = Math.floor((padding.right + padding.left + total_width_padding)/2),
+              bottom_height,
+              bottom_width;
 
           if (total_width_padding < 0) {
             total_width_padding = 0;
@@ -107,33 +111,28 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           }
 
           var ad_key = "ads-banner-top-ad";
-          if (mounted) {
-            var node = instance.getDOMNode(),
-                width = node.clientWidth,
-                height = node.clientHeight,
-                notify = false,
-                x,
-                xlen = banners.length,
-                ok = [];
-            for (x = 0; x < xlen; x += 1) {
-              if (banners[x][0] < width && banners[x][1] < height) {
-                ok.push(banners[x]);
-              }
-            }
-            usable = 0 === width && 0 === width ? banners : ok;
-          }
 
           return React.DOM.section({
-            id: "ads-banner-top",
-            "data-height": height,
-            "data-width": width,
+            id: "ads"
+          }, React.DOM.section({
+            id: "ads-banner-top"
             style: {
-              "left": width_base + "px",
-              "top": (this.props.header && this.props.header.height ? this.props.header.height + height_base: height_base) + "px"
+              "left": top_width_base + "px",
+              "top": (this.props.header && this.props.header.height ? this.props.header.height + top_height_base: top_height_base) + "px"
             }
           }, React.DOM.div({
             id: ad_key
-          }) );
+          }) ), React.DOM.section({
+            id: "ads-banner-bottom",
+            "data-height": bottom_height,
+            "data-width": bottom_width,
+            style: {
+              "left": top_width_base + "px",
+              "top": (this.props.header && this.props.header.height ? this.props.header.height + top_height_base: top_height_base) + "px"
+            }
+          }, React.DOM.div({
+            id: ad_key
+          }) ) );
         }
       });
 
