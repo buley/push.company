@@ -159,9 +159,9 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
             id: "header-drawer-tabbar-tab-classifieds-link",
             href: "#"
           }, "Classifieds"), " | ", React.DOM.a({
-            id: "header-drawer-tabbar-tab-reccommended-link",
+            id: "header-drawer-tabbar-tab-recommended-link",
             href: "#"
-          }, "Reccommended")))))));
+          }, "Recommended")))))));
         }
       });
 
