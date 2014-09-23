@@ -81,7 +81,7 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
           },
           previous_state = '',
           deferred = Q.defer(),
-          context,
+          context = {},
           promise = deferred.promise,
           container = React.createClass({
             componentWillMount: function() {
@@ -184,7 +184,7 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
 
       Array.prototype.forEach.call(interfaces, forEachHandler);
 
-      requestStateChange({ init: Date.now() });
+      requestStateChange(_.extend(context, { init: Date.now() }));
 
     });
 	return module.promise;
