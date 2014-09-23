@@ -30,8 +30,9 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         if (!slots[key]) {
           slots[key] = {
             node: document.createElement('div'),
-            sizes
+            sizes: ok
           }
+          console.log('adding slot', slots[key]);
         }
         return key;
       },
