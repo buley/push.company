@@ -100,7 +100,7 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
       interface.then(null, null, function(state) {
         if (!context) {
           context = _.extend({}, _.extend({header: { height: 44, zoom: mult, drawer: {
-            showing: false
+            showing: true
           } } }, state));
           deferred.notify(context);
         } else {
