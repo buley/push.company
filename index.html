@@ -244,10 +244,11 @@
       var slot1 = googletag.defineSlot('/270461283/Banner', [[234, 60], [320, 50], [468, 60], [728, 90], [970, 90]], "ads-banner-top-ad")
         .addService(googletag.pubads());
       push.slots.push(slot1);
+      slot1.defineSizeMapping(mapping);
       var slot2 = googletag.defineSlot('/270461283/Banner', [[234, 60], [320, 50], [468, 60], [728, 90], [970, 90]], "ads-banner-bottom-ad")
         .addService(googletag.pubads());
       push.slots.push(slot2);
-      slot.defineSizeMapping(mapping);
+      slot2.defineSizeMapping(mapping);
       googletag.pubads().refresh([slot1, slot2]);
       googletag.enableServices();
     });
