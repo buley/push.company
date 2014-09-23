@@ -86,6 +86,9 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             window.googletag.cmd.push(function() {
               window.googletag.display("ads-banner-bottom-ad");
             });
+            window.googletag.cmd.push(function() {
+              window.googletag.display("ads-box-header-ad");
+            });
         },
         render: function() {
           /*
