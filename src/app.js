@@ -70,7 +70,7 @@ requirejs.config({
 	}
 });
 
-requirejs(['q', 'react'], function(Q, React) {
+requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
 	var module = Q.defer();
     require(['src/header', 'src/presence', 'src/mapper', 'src/location', 'src/urls' ], function() {
       var state = {
@@ -81,6 +81,7 @@ requirejs(['q', 'react'], function(Q, React) {
           },
           previous_state = '',
           deferred = Q.defer(),
+          context,
           promise = deferred.promise,
           container = React.createClass({
             componentWillMount: function() {
@@ -120,6 +121,7 @@ requirejs(['q', 'react'], function(Q, React) {
               }
               if (JSON.stringify(next_state) !== previous_state) {
                 previous_state = JSON.stringify(next_state);
+                context = _.extend({}, ctx);
                 deferred.notify(ctx);
               }
               if (0 === state_queue.length) {
