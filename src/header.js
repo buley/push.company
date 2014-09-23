@@ -80,12 +80,12 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
               if (true === anim) {
                 return;
               }
-              
+
               anim = true;
               animate();
 
               var tween = new Tween.Tween( { height: instance.props.header && instance.props.header.drawer && instance.props.header.drawer.showing ? 200 : 0 } )
-                .to( { height: instance.props.header && instance.props.header.drawer && instance.props.header.drawer.showing ? 0 : 200 }, 2000 )
+                .to( { height: instance.props.header && instance.props.header.drawer && instance.props.header.drawer.showing ? 0 : 200 }, 300 )
                 .easing( Tween.Easing.Elastic.InOut )
                 .onUpdate(function() {
                     context.header.drawer = _.extend(context.header.drawer, {
@@ -96,7 +96,8 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
                 })
                 .onComplete(function() {
                   anim = false;
-                  context.header.drawer =  _.extend(context.header.drawer, {
+                  context.header.drawer = _.extend(context.header.drawer, {
+                    height: instance.props.header.drawer.height,
                     showing: instance.props.header && instance.props.header.drawer && instance.props.header.drawer.showing ? false : true
                   });
                   deferred.notify(context);
