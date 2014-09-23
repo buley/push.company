@@ -36,7 +36,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
     incoming: function(interface) {
       interface.then(null, null, function(state) {
         if (!context) {
-          context = _.extend({}, _.extend({ content: { loaded: false }}, state));
+          context = _.extend({}, _.extend(state, { content: { loaded: true }}));
           deferred.notify(context);
         } else {
           context = _.extend({}, state);
