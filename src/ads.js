@@ -29,7 +29,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         }
         if (pieces.length > 0) {
           key = 'ad-' + pieces.join("");
-          if (!slots[key] && false !== create) {
+          if (ok.length > 0 && !slots[key] && false !== create) {
             slots[key] = {
               node: document.createElement('div'),
               sizes: ok
@@ -38,7 +38,6 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             var slot = googletag.defineSlot('/270461283/Banner', ok, key)
               .addService(googletag.pubads());
             googletag.pubads().refresh([slot]);
-            console.log('defined',slot);
 
           }
         }
