@@ -19,6 +19,12 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
         sum += el.offsetHeight;
         return sum;
       },
+      getLogo = function(width, height) {
+        return {
+          width: 180,
+          height: 60
+        }
+      },
       nodeWidth = function(el, sum) {
         if (!el) {
           return NaN;
@@ -43,7 +49,8 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
           var mounted = this.isMounted(),
               node = mounted ? this.getDOMNode() : null,
               height = mounted ? nodeHeight(node) : 0,
-              width = mounted ? nodeWidth(node) : 0;
+              width = mounted ? nodeWidth(node) : 0,
+              logo = getLogo(height, width);
           return React.DOM.header({
             id: "header-container",
             "data-height": height,
@@ -57,8 +64,8 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
             id: "header-logo",
             style: {
               background: '#000',
-              height: (this.props.header ? this.props.header.zoom : 1) * (1.618 * ( this.props.header ? this.props.header.height : 0 )) + "px",
-              width: (this.props.header ? this.props.header.zoom : 1) * 2 * ((1.618 * ( this.props.header ? this.props.header.height : 0 ) ) *  1.618) + "px"
+              height: logo.height,
+              width: logo.width
             }
           })), React.DOM.div({
             id: "header-inner",
