@@ -186,7 +186,7 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
 
       requestStateChange(_.extend(context, { init: Date.now() }));
 
-      document.body.attachEvent('resize', onResize);
+      document.body.addEventListener('resize', onResize);
 
 
     });
