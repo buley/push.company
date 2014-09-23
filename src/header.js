@@ -50,19 +50,19 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
           }, React.DOM.div({
             id: "header-over",
             style: {
-              height: this.props.header.height
+              height: this.props.header ? this.props.header.height : 0
             }
           }), React.DOM.div({
             id: "header-inner",
             style: {
-              height: this.props.header.height
+              height: this.props.header ? this.props.header.height : 0
             }
           }, React.DOM.div({
             id: "header"
           })), React.DOM.div({
             id: "header-under",
             style: {
-              height: this.props.header.height
+              height: this.props.header ? this.props.header.height : 0
             }
           }));
         }
