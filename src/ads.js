@@ -138,6 +138,8 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       }
     }
 
+    console.log('slotted',event);
+
     if (instance && instance.isMounted()) {
 
       var mounted = this.isMounted(),
