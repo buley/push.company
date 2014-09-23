@@ -55,7 +55,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         startCheck();
         updateAvailable();
       },
-      usable,
+      usable = [],
       updateAvailable = _.debounce( function() {
         var node = instance.getDOMNode(),
             width = node.clientWidth,
