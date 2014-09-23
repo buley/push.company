@@ -34,7 +34,6 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         if (expecting > 0 && seen > 0) {
           expecting = slots.length;
           seen = 0;
-          console.log('refreshing', slots);
           window.googletag.pubads().refresh(slots);
         }
       }, 1000 ),
@@ -152,7 +151,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         console.log('DUPE',event.slot);
       }
     }
-    console.log('slot rendered',event);
+    console.log('slot rendered',seen + 1, expecting);
     if (expecting > 0 && ++seen >= expecting) {
       if (instance && instance.isMounted()) {
         var node = instance.getDOMNode(),
