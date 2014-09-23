@@ -32,7 +32,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             node: document.createElement('div'),
             sizes: ok
           };
-          console.log('adding slot', slots[key]);
+          slots[key].node.id = key;
         }
         return key;
       },
@@ -148,7 +148,6 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
               }
             }
             usable = ok;
-            console.log('aok',ok);
             window.googletag.cmd.push(function() {
               window.googletag.display(getSlotId(usable));
             });
