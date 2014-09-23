@@ -147,7 +147,6 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
           } } }, state));
           deferred.notify(context);
         } else {
-          Tween.update(Date.now());
           context = _.extend({}, state);
         }
       });
