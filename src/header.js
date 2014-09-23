@@ -148,7 +148,7 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
           }, React.DOM.a({
             id: "header-drawer-tabbar-tab-categories-link",
             href: "#",
-            class: ( this.props.header && this.props.header.drawer && "categories" === this.props.header.drawer.selected) ? "selected" : ""
+            className: ( this.props.header && this.props.header.drawer && "categories" === this.props.header.drawer.selected) ? "selected" : ""
           }, "Categories"), " | ", React.DOM.a({
             id: "header-drawer-tabbar-tab-people-link",
             href: "#"
