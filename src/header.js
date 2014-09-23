@@ -74,8 +74,8 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
             id: "header-menu-button",
             onClick: function(e) {
               console.log('click', e);
-              var tween = new Tween.Tween( { x: 50, y: 0 } )
-                .to( { x: 400 }, 2000 )
+              var tween = new Tween.Tween( { x: this.props.header && this.props.header.drawer && this.props.header.drawer.showing ? 200 : 0 } )
+                .to( { x: this.props.header && this.props.header.drawer && this.props.header.drawer.showing ? 0 : 200 }, 2000 )
                 .easing( Tween.Easing.Elastic.InOut )
                 .onUpdate( function () {
                     console.log('Tween',this);
