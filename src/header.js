@@ -5,8 +5,11 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
       context,
       instance,
       mult = 0.9,
+      anim = false;
       animate = function (time) {
-        window.requestAnimationFrame( animate );
+        if (true === anim) {
+          window.requestAnimationFrame( animate );
+        }
         Tween.update(time);
       },
       nodeHeight = function(el, sum) {
@@ -74,12 +77,24 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
             id: "header-menu-button",
             onClick: function(e) {
               console.log('click', e);
+              if ( ) {
+                //show
+
+              } else {
+
+              }
+              anim = true;
+              animate();
+
               var tween = new Tween.Tween( { x: this.props.header && this.props.header.drawer && this.props.header.drawer.showing ? 200 : 0 } )
                 .to( { x: this.props.header && this.props.header.drawer && this.props.header.drawer.showing ? 0 : 200 }, 2000 )
                 .easing( Tween.Easing.Elastic.InOut )
-                .onUpdate( function () {
+                .onUpdate(function() {
                     console.log('Tween',this);
-                } )
+                })
+                .onComplete(function() {
+                  anim = false;
+                })
                 .start();
 
             },
@@ -111,7 +126,6 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
       });
 
   module.resolve(component);
-  animate();
 
   return {
     outgoing: function(interface) {
