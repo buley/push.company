@@ -92,9 +92,9 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
                 })
                 .onComplete(function() {
                   anim = false;
-                  context = _.extend(context, {header: {drawer: {
+                  context.header.drawer =  _.extend(context.header.drawer, {
                     showing: instance.props.header && instance.props.header.drawer && instance.props.header.drawer.showing ? false : true
-                  }}});
+                  });
                   deferred.notify(context);
                 })
                 .start();
