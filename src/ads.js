@@ -35,13 +35,13 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
               sizes: ok
             };
             slots[key].node.id = key;
-            var slot = googletag.defineSlot('/270461283/Banner', ok, "ads-banner-top")
+            var slot = googletag.defineSlot('/270461283/Banner', ok, key)
               .addService(googletag.pubads());
             googletag.pubads().refresh([slot]);
 
           }
         }
-        return "ads-banner-top";
+        return key;
       },
       banners = [
         [234, 60],
@@ -188,6 +188,24 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             total_width_padding = total_width;
           }
 
+          var ad_key;
+          if (mounted) {
+            var node = instance.getDOMNode(),
+                width = node.clientWidth,
+                height = node.clientHeight,
+                notify = false,
+                x,
+                xlen = banners.length,
+                ok = [];
+            for (x = 0; x < xlen; x += 1) {
+              if (banners[x][0] < width && banners[x][1] < height) {
+                ok.push(banners[x]);
+              }
+            }
+            usable = 0 === width && 0 === width ? banners : ok;
+            ad_key = getSlotId(usable);
+          }
+
           return React.DOM.section({
             id: "ads-banner-top",
             "data-height": height,
@@ -197,7 +215,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
               "top": (this.props.header && this.props.header.height ? this.props.header.height + height_base: height_base) + "px"
             }
           }, React.DOM.div({
-            id: getSlotId(usable, false)
+            id: ad_key
           }) );
         }
       });
