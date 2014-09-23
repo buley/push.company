@@ -64,7 +64,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
               total_height_padding = total_height - height,
               height_base = Math.floor((padding.top + padding.bottom + total_height_padding)/2),
               width_base = Math.floor((padding.right + padding.left + total_width_padding)/2);
-
+          console.log("TOTAL",total_width,"WIDTH",width, "REMAIN", total_width_padding);
           if (total_width_padding < 0) {
             total_width_padding = 0;
           }
