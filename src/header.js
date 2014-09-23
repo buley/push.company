@@ -84,10 +84,10 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
                 .to( { height: instance.props.header && instance.props.header.drawer && instance.props.header.drawer.showing ? 0 : 200 }, 2000 )
                 .easing( Tween.Easing.Elastic.InOut )
                 .onUpdate(function() {
-                    context = _.extend(context, {header: {drawer: {
+                    context.header.drawer = _.extend(context.header.drawer, {
                       height: Math.round(this.height),
                       showing: instance.props.header.drawer.showing
-                    }}});
+                    });
                     deferred.notify(context);
                 })
                 .onComplete(function() {
