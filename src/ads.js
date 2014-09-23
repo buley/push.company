@@ -6,7 +6,9 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       instance,
       padding = {
         top: 20,
-        bottom: 20
+        bottom: 20,
+        left: 20,
+        right: 20
       },
       nodeHeight = function(el, sum) {
         if (!el) {
@@ -60,7 +62,9 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
               total_height = mounted && this.props.screen ? this.props.screen.height : 0,
               total_width_padding = total_width - width,
               total_height_padding = total_height - height,
-              height_base = Math.floor((padding.top + padding.bottom + total_height_padding)/2);
+              height_base = Math.floor((padding.top + padding.bottom + total_height_padding)/2),
+              width_base = Math.floor((padding.right + padding.left + total_width_padding)/2);
+
           if (total_width_padding < 0) {
             total_width_padding = 0;
           }
@@ -78,7 +82,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             "data-height": height,
             "data-width": width,
             style: {
-              "left": Math.floor(total_width_padding/2) + "px",
+              "left": width_base + "px",
               "top": (this.props.header && this.props.header.height ? this.props.header.height + height_base: height_base) + "px"
             }
           }, React.DOM.div({
