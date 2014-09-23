@@ -88,6 +88,7 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
                 .to( { height: instance.props.header && instance.props.header.drawer && instance.props.header.drawer.showing ? 0 : 200 }, instance.props.header && instance.props.header.drawer && instance.props.header.drawer.showing ? 300 : 300 )
                 .easing( instance.props.header && instance.props.header.drawer && instance.props.header.drawer.showing ? Tween.Easing.Quadratic.InOut : Tween.Easing.Elastic.InOut )
                 .onUpdate(function() {
+                    context.header = context.header || {};
                     context.header.drawer = _.extend(context.header.drawer, {
                       height: Math.round(this.height),
                       selected: instance.props.header.drawer.selected,
