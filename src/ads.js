@@ -146,13 +146,10 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
     if (false === first) {
       if (!_.contains(slots, event.slot)) {
         slots.push(event.slot);
-        console.log('ADD',event.slot);
-      } else {
-        console.log('DUPE',event.slot);
       }
     }
-    console.log('slot rendered',seen + 1, expecting);
     if (expecting > 0 && ++seen >= expecting) {
+      console.log('slots finished');
       if (instance && instance.isMounted()) {
         var node = instance.getDOMNode(),
             width = node.clientWidth,
