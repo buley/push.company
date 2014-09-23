@@ -85,7 +85,7 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
                 .easing( Tween.Easing.Elastic.InOut )
                 .onUpdate(function() {
                     context = _.extend(context, {header: {drawer: {
-                      height: this.height,
+                      height: Math.round(this.height),
                       showing: instance.props.header.drawer.showing
                     }}});
                     deferred.notify(context);
