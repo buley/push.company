@@ -14,6 +14,9 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         right: 20
       },
       interval,
+      updateAvailable = function(width, height) {
+        console.log("WHAT WORKS?", width, height);
+      },
       startCheck = function() {
         if (!interval) {
           interval = window.setInterval(function() {
@@ -35,6 +38,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
                 context.ads = context.ads || {};
                 context.ads.sizes = _.extend((context.ads.sizes || {}), sizes);
                 deferred.notify(context);
+                updateAvailable(width, height);
               }
             }
           }, 100);
