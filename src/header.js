@@ -84,7 +84,6 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
                 .to( { height: instance.props.header && instance.props.header.drawer && instance.props.header.drawer.showing ? 0 : 200 }, 2000 )
                 .easing( Tween.Easing.Elastic.InOut )
                 .onUpdate(function() {
-                    console.log('Tween',this.height);
                     context = _.extend(context, {header: {drawer: {
                       height: this.height
                     }}});
