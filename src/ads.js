@@ -22,13 +22,13 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       },
       interval,
       onResize = function() {
-        updateAvailable(true);
+        updateAds(true);
       },
       usable = [],
       first = false,
       expecting = 2,
       seen = 0,
-      updateAvailable = _.debounce( function(force) {
+      updateAds = _.debounce( function(force) {
         if (true === force || ( expecting > 0 && seen > 0 ) ) {
           expecting = slots.length;
           seen = 0;
@@ -187,7 +187,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           deferred.notify(context);
         } else {
           context = _.extend({}, state);
-          updateAvailable();
+          updateAds();
 
         }
       });
