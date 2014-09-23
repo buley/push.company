@@ -10,7 +10,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         var pieces = [],
             x,
             xlen = sizes.length,
-            key,
+            key = 'div-' + Date.now(),
             x,
             width,
             height,
@@ -26,6 +26,9 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             }
           }
           pieces.push(sizes[x].join("x"));
+        }
+        if (pieces.length > 0) {
+          key = 'div-' + Date.now() + '-' pieces.join("");
         }
         if (!slots[key]) {
           slots[key] = {
