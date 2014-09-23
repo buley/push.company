@@ -90,7 +90,7 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
             id: "header-drawer",
             style: {
               top: (this.props.header ? this.props.header.height : 0) + "px",
-              height: ( this.props.header ? this.props.header.height : 0 ) + "px"
+              height: '200px'
             }
           }));
         }
