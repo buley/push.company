@@ -28,7 +28,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           pieces.push(sizes[x].join("x"));
         }
         if (pieces.length > 0) {
-          key = 'div-' + Date.now() + '-' + pieces.join("");
+          key = 'ad-' + pieces.join("_");
         }
         if (!slots[key]) {
           slots[key] = {
