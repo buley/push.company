@@ -62,14 +62,14 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           if (total_width_padding < 0) {
             total_width_padding = 0;
           }
-          if (total_width_padding > (total_width/2)) {
-            total_width_padding = total_width/2;
+          if (total_width_padding > total_width) {
+            total_width_padding = total_width;
           }
           if (total_height_padding > 0) {
             total_height_padding = 0;
           }
-          if (total_height_padding > (total_height/2)) {
-            total_height_padding = total_height/2;
+          if (total_height_padding > total_height) {
+            total_height_padding = total_height;
           }
           return React.DOM.section({
             id: "ads-banner-top",
