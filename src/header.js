@@ -84,8 +84,9 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
                 .to( { height: instance.props.header && instance.props.header.drawer && instance.props.header.drawer.showing ? 0 : 200 }, 2000 )
                 .easing( Tween.Easing.Elastic.InOut )
                 .onUpdate(function() {
+                    console.log('Tween',this.height);
                     context = _.extend({}, _.extend({header: { drawer: {
-                      showing: true,
+                      showing: this.props.header && this.props.header.drawer && this.props.header.drawer.showing ? false : true,
                       height: this.height
                     } } }, state));
                     deferred.notify(context);
