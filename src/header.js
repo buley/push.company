@@ -84,6 +84,7 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
           })))), React.DOM.div({
             id: "header-under",
             style: {
+              top: (this.props.header ? this.props.header.height : 0) + "px",
               height: ( this.props.header ? this.props.header.height : 0 ) + "px"
             }
           }), React.DOM.div({
