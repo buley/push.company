@@ -130,7 +130,7 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
             }
           }, React.DOM.div({
             id: "header-drawer"
-          }));
+          })));
         }
       });
 
