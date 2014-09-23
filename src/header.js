@@ -90,6 +90,7 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
                 .onUpdate(function() {
                     context.header.drawer = _.extend(context.header.drawer, {
                       height: Math.round(this.height),
+                      selected: instance.props.header.drawer.selected,
                       showing: instance.props.header.drawer.showing
                     });
                     deferred.notify(context);
@@ -98,6 +99,7 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
                   anim = false;
                   context.header.drawer = _.extend(context.header.drawer, {
                     height: instance.props.header.drawer.height,
+                    selected: instance.props.header.drawer.selected,
                     showing: instance.props.header && instance.props.header.drawer && instance.props.header.drawer.showing ? false : true
                   });
                   deferred.notify(context);
@@ -145,7 +147,8 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
             id: "header-drawer-tabbar-tab-categories"
           }, React.DOM.a({
             id: "header-drawer-tabbar-tab-categories-link",
-            href: "#"
+            href: "#",
+            class: ( this.props.header && this.props.header.drawer && "categories" === this.props.header.drawer.selected) ? "selected" : ""
           }, "Categories"), " | ", React.DOM.a({
             id: "header-drawer-tabbar-tab-people-link",
             href: "#"
@@ -173,7 +176,8 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
         if (!context) {
           context = _.extend({}, _.extend({header: { height: 44, zoom: mult, drawer: {
             showing: false,
-            height: 0
+            height: 0,
+            selected: categories
           } } }, state));
           deferred.notify(context);
         } else {
