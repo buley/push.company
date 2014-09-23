@@ -55,6 +55,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             window.googletag.cmd.push(function() {
               window.googletag.display("div-gpt-ad-1411489889191-0");
             });
+            startCheck();
         },
         render: function() {
           /*
