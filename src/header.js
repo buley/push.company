@@ -136,7 +136,9 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
             id: "header-drawer"
           }), React.DOM.div({
             id: "header-drawer-footer"
-          })));
+          }, React.DOM.div({
+            id: "header-drawer-tabbar"
+          }))));
         }
       });
 
