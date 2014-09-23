@@ -80,11 +80,15 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
               anim = true;
               animate();
 
-              var tween = new Tween.Tween( { x: instance.props.header && instance.props.header.drawer && instance.props.header.drawer.showing ? 200 : 0 } )
-                .to( { x: instance.props.header && instance.props.header.drawer && instance.props.header.drawer.showing ? 0 : 200 }, 2000 )
+              var tween = new Tween.Tween( { height: instance.props.header && instance.props.header.drawer && instance.props.header.drawer.showing ? 200 : 0 } )
+                .to( { height: instance.props.header && instance.props.header.drawer && instance.props.header.drawer.showing ? 0 : 200 }, 2000 )
                 .easing( Tween.Easing.Elastic.InOut )
                 .onUpdate(function() {
-                    console.log('Tween',this);
+                    context = _.extend({}, _.extend({header: { drawer: {
+                      showing: true,
+                      height: this.height
+                    } } }, state));
+                    deferred.notify(context);
                 })
                 .onComplete(function() {
                   anim = false;
