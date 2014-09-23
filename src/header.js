@@ -10,7 +10,7 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
         if (true === anim) {
           window.requestAnimationFrame( animate );
         }
-        Tween.update(time);
+        //Tween.update(time);
       },
       nodeHeight = function(el, sum) {
         if (!el) {
@@ -104,6 +104,8 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
                 })
                 .start();
 
+              Tween.update(Date.now());
+
             },
             style: {
               background: (this.props.header && this.props.header.drawer && ( this.props.header.drawer.showing || true === anim) ? "#d0d0d0": "#b2b2b2")
@@ -147,6 +149,7 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
           } } }, state));
           deferred.notify(context);
         } else {
+          Tween.update(Date.now());
           context = _.extend({}, state);
         }
       });
