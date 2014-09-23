@@ -85,7 +85,7 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
               animate();
 
               var tween = new Tween.Tween( { height: instance.props.header && instance.props.header.drawer && instance.props.header.drawer.showing ? 200 : 0 } )
-                .to( { height: instance.props.header && instance.props.header.drawer && instance.props.header.drawer.showing ? 0 : 200 }, instance.props.header && instance.props.header.drawer && instance.props.header.drawer.showing ? 100 : 300 )
+                .to( { height: instance.props.header && instance.props.header.drawer && instance.props.header.drawer.showing ? 0 : 200 }, instance.props.header && instance.props.header.drawer && instance.props.header.drawer.showing ? 100 : 40 )
                 .easing( instance.props.header && instance.props.header.drawer && instance.props.header.drawer.showing ? Tween.Easing.Quadratic.In : Tween.Easing.Quadratic.Out )
                 .onUpdate(function() {
                     context.header.drawer = _.extend(context.header.drawer, {
