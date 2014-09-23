@@ -141,6 +141,9 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
   googletag.pubads().addEventListener('slotRenderEnded', function(event) {
     if (!_.contains(slots, event.slot)) {
       slots.push(event.slot);
+      console.log('ADD',event.slot);
+    } else {
+      console.log('DUPE',event.slot);
     }
     console.log('slot rendered',event);
     if (expecting > 0 && ++seen >= expecting) {
