@@ -35,13 +35,13 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
               sizes: ok
             };
             slots[key].node.id = key;
-            var slot = googletag.defineSlot('/270461283/Banner', ok, key)
+            var slot = googletag.defineSlot('/270461283/Banner', ok, "ads-banner-top")
               .addService(googletag.pubads());
             googletag.pubads().refresh([slot]);
 
           }
         }
-        return key;
+        return "ads-banner-top";
       },
       banners = [
         [234, 60],
