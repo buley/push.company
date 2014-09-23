@@ -39,10 +39,14 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
         render: function() {
           //TODO: Render map
           //renderMap.apply(this, arguments);
+          var mounted = this.isMounted(),
+              node = this.getDOMNode(),
+              height = mounted ? nodeHeight(node) : 0,
+              width = mounted ? nodeWidth(node) : 0;
           return React.DOM.header({
             id: "header-container",
-            "data-header-height": this.isMounted() ? nodeHeight(this.getDOMNode()) : 0,
-            "data-header-width": this.isMounted() ? nodeWidth(this.getDOMNode()) : 0
+            "data-height": height,
+            "data-width": width,
           }, React.DOM.div({
             id: "header-inner"
           }, React.DOM.div({
