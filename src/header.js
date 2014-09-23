@@ -146,7 +146,13 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
           }, React.DOM.a({
             id: "header-drawer-tabbar-tab-categories-link",
             href: "#"
-          }, "Categories")))))));
+          }, "Categories"), React.DOM.a({
+            id: "header-drawer-tabbar-tab-people-link",
+            href: "#"
+          }, "People"), React.DOM.a({
+            id: "header-drawer-tabbar-tab-places-link",
+            href: "#"
+          }, "Places")))))));
         }
       });
 
