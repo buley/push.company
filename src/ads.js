@@ -4,6 +4,9 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       module = Q.defer(),
       context,
       instance,
+      padding = {
+        top: 20
+      },
       component = React.createClass({
         componentDidMount: function() {
             instance = this;
@@ -20,7 +23,10 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           </div>
           */
           return React.DOM.section({
-            id: "ads-banner-top"
+            id: "ads-banner-top",
+            style: {
+              "top": (this.props.header && this.props.header.height ? this.props.header.height + padding.top: padding.top) + "px"
+            }
           }, React.DOM.div({
             id: "div-gpt-ad-1411489889191-0"
           }, React.DOM.script({
