@@ -146,10 +146,10 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
           }, React.DOM.a({
             id: "header-drawer-tabbar-tab-categories-link",
             href: "#"
-          }, "Categories"), "&nbsp;|&nbsp;", React.DOM.a({
+          }, "Categories"), " | ", React.DOM.a({
             id: "header-drawer-tabbar-tab-people-link",
             href: "#"
-          }, "People"), "&nbsp;|&nbsp;", React.DOM.a({
+          }, "People"), " | ", React.DOM.a({
             id: "header-drawer-tabbar-tab-places-link",
             href: "#"
           }, "Places")))))));
