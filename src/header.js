@@ -5,6 +5,10 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
       context,
       instance,
       mult = 0.9,
+      animate = function (time) {
+        window.requestAnimationFrame( animate );
+        Tween.update(time);
+      },
       nodeHeight = function(el, sum) {
         if (!el) {
           return NaN;
