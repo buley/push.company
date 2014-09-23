@@ -90,7 +90,7 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
             id: "header-drawer",
             style: {
               top: (this.props.header ? this.props.header.height : 0) + "px",
-              height: '200px'
+              height: ( this.props.header && this.props.header.drawer ? this.props.header.drawer.height : 0 ) + "px"
             }
           }));
         }
@@ -106,7 +106,8 @@ define(['q', 'react', 'mapbox', 'underscore'], function(Q, React, L, _) {
       interface.then(null, null, function(state) {
         if (!context) {
           context = _.extend({}, _.extend({header: { height: 44, zoom: mult, drawer: {
-            showing: true
+            showing: true,
+            height: 200
           } } }, state));
           deferred.notify(context);
         } else {
