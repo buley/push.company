@@ -77,7 +77,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           }
         }
         usable = 0 === width && 0 === width ? banners : ok;
-        console.log("WHAT WORKS?", width, height, usable);
+        console.log("WHAT WORKS?", width, height, getSlotId(usable));
         stopCheck();
       }, 1000 ),
       stopCheck = function() {
