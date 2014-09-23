@@ -16,7 +16,13 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       interval,
       updateAvailable = _.debounce( function(width, height) {
         console.log("WHAT WORKS?", width, height);
+        stopCheck();
       }, 1000 ),
+      stopCheck = function() {
+        if (interval) {
+          window.clearInterval(interval);
+        }
+      },
       startCheck = function() {
         if (!interval) {
           interval = window.setInterval(function() {
