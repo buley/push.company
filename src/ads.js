@@ -58,7 +58,19 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
               total_height = mounted && this.props.screen ? this.props.screen.height : 0,
               total_width_padding = total_width - width,
               total_height_padding = total_height - height,
-              height_base = Math.floor((padding.top + padding.bottom + total_height_padding)/2)
+              height_base = Math.floor((padding.top + padding.bottom + total_height_padding)/2);
+          if (total_width_padding < 0) {
+            total_width_padding = 0;
+          }
+          if (total_width_padding > (total_width/2)) {
+            total_width_padding = total_width/2;
+          }
+          if (total_height_padding > 0) {
+            total_height_padding = 0;
+          }
+          if (total_height_padding > (total_height/2)) {
+            total_height_padding = total_height/2;
+          }
           return React.DOM.section({
             id: "ads-banner-top",
             style: {
