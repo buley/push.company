@@ -175,6 +175,8 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         });
         deferred.notify(context);
 
+        first = false;
+
         /*
         var node = document.getElementById("ads-banner-top-ad"),
             width = node.clientWidth,
