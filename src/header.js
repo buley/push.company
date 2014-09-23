@@ -143,7 +143,10 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
             id: "header-drawer-tabbar-tabs"
           }, React.DOM.section({
             id: "header-drawer-tabbar-tab-categories"
-          }, "Categories"))))));
+          }, React.DOM.a({
+            id: "header-drawer-tabbar-tab-categories-link",
+            url: "#"
+          }, "Categories")))))));
         }
       });
 
