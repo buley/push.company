@@ -122,6 +122,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           */
           var mounted = this.isMounted(),
               box_ad_padding = 20,
+              y,
               box_top = (this.props.header && this.props.header.height && this.props.ads && this.props.ads.sizes && this.props.ads.sizes['banner-top'] ? this.props.header.height + this.props.ads.sizes['banner-top'].height + box_ad_padding: 0),
               top_el = document.getElementById("ads-banner-top") || {},
               top_height = mounted && top_el.offsetHeight ? top_el.offsetHeight : 0,
@@ -143,11 +144,10 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             total_width_padding = total_width;
           }
 
-          var y = this.props.scroll && this.props.scroll.y ? this.props.scroll.y : 0;
+          y = this.props.scroll && this.props.scroll.y ? this.props.scroll.y : 0;
           if (this.props.header && y > ( box_top - box_ad_padding ) ) {
             box_top = y + box_ad_padding;
           }
-          
 
           return React.DOM.section({
             id: "ads"
