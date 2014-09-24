@@ -57,7 +57,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       },
       usable = [],
       first = false,
-      expecting = 2,
+      expecting = 3,
       seen = 0,
       updateAds = _.debounce( function(force) {
         expect = slots.length;
