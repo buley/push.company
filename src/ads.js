@@ -318,7 +318,8 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
     incoming: function(interface) {
       interface.then(null, null, function(state) {
         if (!context) {
-          context = _.extend({}, _.extend({ ads: { loaded: false }}, state));
+          context = _.extend({}, state);
+          adjustAds();
           deferred.notify(context);
         } else {
           context = _.extend({}, state);
@@ -327,11 +328,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
               onResizeWindow(context.screen.width, context.screen.height, prev.width, prev.height);
               prev.width = context.screen.width;
               prev.height = context.screen.height;
-            } else {
-              adjustAds();
             }
-          } else {
-            adjustAds();
           }
 
         }
