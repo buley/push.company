@@ -14,8 +14,8 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       onResize = _.debounce(function() {
         var node = document.getElementById("footer-container") || {};
         context.footer = _.extend((context.footer || {}), {
-          height: node.clientHeight || 0,
-          width: node.clientWidth || 0
+          height: node ? node.clientHeight : 0,
+          width: node ? node.clientWidth : 0
         });
         deferred.notify(context);
       }),
@@ -25,10 +25,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         },
         render: function() {
           return React.DOM.section({
-            id: "footer-container",
-            style: {
-              top: "1000px" // this.props.header && this.props.header.height && this.props.ads && this.props.ads.sizes && this.props.ads.sizes['banner-top'] ? this.props.header.height + this.props.content.height + this.props.ads.sizes['banner-bottom'].height + this.props.ads.sizes['banner-top'].height: 0
-            }
+            id: "footer-container"
           }, React.DOM.section({
             id: "footer"
           } ) );
