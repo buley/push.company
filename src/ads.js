@@ -327,8 +327,13 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
               onResizeWindow(context.screen.width, context.screen.height, prev.width, prev.height);
               prev.width = context.screen.width;
               prev.height = context.screen.height;
+            } else {
+              adjustAds();
             }
+          } else {
+            adjustAds();
           }
+
         }
       });
     },
