@@ -141,7 +141,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
     }
 
     console.log('slotted',event);
-    if (++seen >= expecting) {
+    if (expecting > 0 && ++seen >= expecting) {
       console.log("LIMIT");
       seen = 0;
       expecting = 0;
