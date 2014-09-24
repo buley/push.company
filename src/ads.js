@@ -21,6 +21,34 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         right: 20
       },
       interval,
+      onUpdatedProps = function() {
+        var mounted = this.isMounted(),
+            top_el = document.getElementById("ads-banner-top") || {},
+            top_height = mounted && top_el.offsetHeight ? top_el.offsetHeight : 0,
+            top_width = mounted && top_el.offsetWidth ? top_el.offsetWidth : 0,
+            bottom_el = document.getElementById("ads-banner-bottom") || {},
+            bottom_height = mounted && bottom_el.offsetHeight ? bottom_el.offsetHeight : 0,
+            bottom_width = mounted && bottom_el.offsetWidth ? bottom_el.offsetWidth : 0,
+            total_width = mounted && this.props.screen ? this.props.screen.width : 0,
+            total_width_padding = total_width - top_width,
+            total_width_padding_bottom = total_width - bottom_width,
+            top_height_base = Math.floor((padding.top + padding.bottom)/2),
+            top_width_base = Math.floor((padding.right + padding.left + total_width_padding)/2),
+            bottom_width_base = Math.floor((padding.right + padding.left + total_width_padding_bottom)/2),
+            bottom_height_base = 20;
+
+        context.ads.sizes = _.extend((context.ads.sizes || {}), {
+          "banner-top": {
+            height: top_height,
+            width: top_width
+          },
+          "banner-bottom": {
+            height: bottom_height,
+            width: bottom_width
+          }
+        });
+        deferred.notify(context);
+      },
       onFinishedAds = function() {
 
       },
@@ -151,32 +179,6 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       seen = 0;
       expecting = 0;
 
-      var mounted = this.isMounted(),
-          top_el = document.getElementById("ads-banner-top") || {},
-          top_height = mounted && top_el.offsetHeight ? top_el.offsetHeight : 0,
-          top_width = mounted && top_el.offsetWidth ? top_el.offsetWidth : 0,
-          bottom_el = document.getElementById("ads-banner-bottom") || {},
-          bottom_height = mounted && bottom_el.offsetHeight ? bottom_el.offsetHeight : 0,
-          bottom_width = mounted && bottom_el.offsetWidth ? bottom_el.offsetWidth : 0,
-          total_width = mounted && this.props.screen ? this.props.screen.width : 0,
-          total_width_padding = total_width - top_width,
-          total_width_padding_bottom = total_width - bottom_width,
-          top_height_base = Math.floor((padding.top + padding.bottom)/2),
-          top_width_base = Math.floor((padding.right + padding.left + total_width_padding)/2),
-          bottom_width_base = Math.floor((padding.right + padding.left + total_width_padding_bottom)/2),
-          bottom_height_base = 20;
-
-      context.ads.sizes = _.extend((context.ads.sizes || {}), {
-        "banner-top": {
-          height: top_height,
-          width: top_width
-        },
-        "banner-bottom": {
-          height: bottom_height,
-          width: bottom_width
-        }
-      });
-      deferred.notify(context);
     }
   });
 
@@ -191,7 +193,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           deferred.notify(context);
         } else {
           context = _.extend({}, state);
-          onResizedWindow();
+          onUpdatedProps();
 
         }
       });
