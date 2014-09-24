@@ -34,7 +34,12 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       },
       interval,
       adjustAds = function(props) {
-        var top_el = document.getElementById("ads-banner-top") || {},
+        var y,
+            box_top = (props.header && props.header.height && props.ads && props.ads.sizes && props.ads.sizes['banner-top'] ? props.header.height + props.ads.sizes['banner-top'].height + box_ad_padding: 0),
+            bottom_box_top,
+            orig,
+            box_ad_padding = 20,
+            top_el = document.getElementById("ads-banner-top") || {},
             top_height = top_el.offsetHeight ? top_el.offsetHeight : 0,
             top_width = top_el.offsetWidth ? top_el.offsetWidth : 0,
             header_el = document.getElementById("ads-box-header") || {},
@@ -55,25 +60,49 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             box_top_height = box_top_el.offsetHeight ? box_top_el.offsetHeight : 0,
             box_top_width = box_top_el.offsetWidth ? box_top_el.offsetWidth : 0,
             sidebar_height_base = props.header && props.header.height && props.ads && props.ads.sizes && props.ads.sizes['banner-top'] ? props.header.height + props.ads.sizes['banner-top'].height + padding.top: 0;
-            bottom_height_base = props.header && props.header.height && props.ads && props.ads.sizes && props.ads.sizes['banner-top'] && props.content ? props.header.height + props.ads.sizes['banner-top'].height + props.content.height + padding.top: 0;
+            bottom_height_base = this.props.header && this.props.header.height && this.props.ads && this.props.ads.sizes && this.props.ads.sizes['banner-top'] && this.props.content ? this.props.header.height + this.props.ads.sizes['banner-top'].height + this.props.content.height + padding.top: 0;
+
+
+        y = props.scroll && props.scroll.y ? props.scroll.y : 0;
+        if (props.header && ((y + props.header.height) > ( box_top - box_ad_padding ))) {
+          orig = box_top;
+          box_top = y + box_ad_padding + props.header.height;
+          if (y > (sidebar_height_base + (props.sidebar ? props.sidebar.height : 0))) {
+            box_top = (sidebar_height_base + (props.sidebar ? props.sidebar.height : 0)) - ( props.ads && props.ads.sizes ? props.ads.sizes['box-top'].height : 0 );
+          }
+        }
+
+        bottom_box_top = box_top + box_top_height + (2 * box_ad_padding );
 
         context.ads = context.ads || {};
         context.ads.sizes = _.extend((context.ads.sizes || {}), {
           "banner-top": {
             height: top_height + padding.top + padding.bottom,
-            width: top_width + padding.left + padding.right
+            width: top_width + padding.left + padding.right,
+            top: (this.props.header && this.props.header.height ? this.props.header.height + padding.top: padding.top),
+            left: top_width_base,
+            right: null
           },
           "banner-bottom": {
             height: bottom_height + padding.top + padding.bottom,
-            width: bottom_width + padding.left + padding.right
+            width: bottom_width + padding.left + padding.right,
+            top: bottom_height_base,
+            left: bottom_width_base,
+            right: null
           },
           "box-top": {
             height: box_bottom_height,
-            width: box_bottom_width
+            width: box_bottom_width,
+            top: box_top,
+            left: null,
+            right: box_ad_padding
           },
           "box-bottom": {
             height: box_bottom_height,
-            width: box_bottom_width
+            width: box_bottom_width,
+            top: bottom_box_top,
+            left: null,
+            right: box_ad_padding
           }
         });
         deferred.notify(context);
@@ -140,6 +169,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
               box_ad_padding = 20,
               y,
               orig,
+              bottom_box_top,
               box_top = (this.props.header && this.props.header.height && this.props.ads && this.props.ads.sizes && this.props.ads.sizes['banner-top'] ? this.props.header.height + this.props.ads.sizes['banner-top'].height + box_ad_padding: 0),
               top_el = document.getElementById("ads-banner-top") || {},
               top_height = mounted && top_el.offsetHeight ? top_el.offsetHeight : 0,
@@ -171,6 +201,8 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             }
           }
 
+          bottom_box_top = box_top + box_top_height + (2 * box_ad_padding );
+
           return React.DOM.section({
             id: "ads"
           }, React.DOM.section({
@@ -198,13 +230,6 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           }, React.DOM.div({
             id: "ads-box-header-ad"
           }) ), React.DOM.section({
-            id: "ads-box-bottom",
-            style: {
-              "top": bottom_height_base + "px"
-            }
-          }, React.DOM.div({
-            id: "ads-box-bottom-ad"
-          }) ), React.DOM.section({
             id: "ads-box-top",
             style: {
               top: box_top + "px",
@@ -212,6 +237,14 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             }
           }, React.DOM.div({
             id: "ads-box-top-ad"
+          }) ), React.DOM.section({
+            id: "ads-box-bottom",
+            style: {
+              "top": bottom_box_top + "px",
+              right: box_ad_padding + "px"
+            }
+          }, React.DOM.div({
+            id: "ads-box-bottom-ad"
           }) ) );
         }
       });
