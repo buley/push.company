@@ -39,32 +39,30 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           return;
         }
 
-        var y,
-            box_top = (props.header && props.header.height && props.ads && props.ads['banner-top'] ? props.header.height + props.ads['banner-top'].height + box_ad_padding: 0),
-            bottom_box_top,
+        var box_ad_padding = 20,
+            y,
             orig,
-            box_ad_padding = 20,
+            bottom_box_top,
+            box_top = (props.header && props.header.height && props.ads && props.ads['banner-top'] ? props.header.height + props.ads['banner-top'].height + box_ad_padding: 0),
             top_el = document.getElementById("ads-banner-top") || {},
-            top_height = top_el.offsetHeight ? top_el.offsetHeight : 0,
-            top_width = top_el.offsetWidth ? top_el.offsetWidth : 0,
-            header_el = document.getElementById("ads-box-header") || {},
+            top_height = mounted && top_el.offsetHeight ? top_el.offsetHeight : 0,
+            top_width = mounted && top_el.offsetWidth ? top_el.offsetWidth : 0,
             bottom_el = document.getElementById("ads-banner-bottom") || {},
-            bottom_height = bottom_el.offsetHeight ? bottom_el.offsetHeight : 0,
-            bottom_width = bottom_el.offsetWidth ? bottom_el.offsetWidth : 0,
-            total_width = props.screen ? props.screen.width : 0,
+            bottom_height = mounted && bottom_el.offsetHeight ? bottom_el.offsetHeight : 0,
+            bottom_width = mounted && bottom_el.offsetWidth ? bottom_el.offsetWidth : 0,
+            total_width = mounted && props.screen ? props.screen.width : 0,
             total_width_padding = total_width - top_width,
             total_width_padding_bottom = total_width - bottom_width,
-            top_height_base = Math.floor((padding.top + padding.bottom)/2),
-            top_width_base = Math.floor((padding.right + padding.left + total_width_padding)/2),
-            bottom_width_base = Math.floor((padding.right + padding.left + total_width_padding_bottom)/2),
+            top_width_base = Math.floor(total_width_padding/2),
+            bottom_width_base = Math.floor(total_width_padding_bottom/2),
+            sidebar_height_base = props.header && props.header.height && props.ads && props.ads['banner-top'] ? props.header.height + props.ads['banner-top'].height + padding.top: 0;
+            bottom_height_base = props.header && props.header.height && props.ads && props.ads['banner-top'] && props.content ? props.header.height + props.ads['banner-top'].height + props.content.height + padding.top: 0,
             box_bottom_el = document.getElementById("ads-box-bottom") || {},
             box_bottom_height = box_bottom_el.offsetHeight ? box_bottom_el.offsetHeight : 0,
             box_bottom_width = box_bottom_el.offsetWidth ? box_bottom_el.offsetWidth : 0,
             box_top_el = document.getElementById("ads-box-top") || {},
             box_top_height = box_top_el.offsetHeight ? box_top_el.offsetHeight : 0,
-            box_top_width = box_top_el.offsetWidth ? box_top_el.offsetWidth : 0,
-            sidebar_height_base = props.header && props.header.height && props.ads && props.ads['banner-top'] ? props.header.height + props.ads['banner-top'].height + padding.top: 0,
-            bottom_height_base = props.header && props.header.height && props.ads && props.ads['banner-top'] && props.content ? props.header.height + props.ads['banner-top'].height + props.content.height + padding.top: 0;
+            box_top_width = box_top_el.offsetWidth ? box_top_el.offsetWidth : 0;
 
         y = props.scroll && props.scroll.y ? props.scroll.y : 0;
         if (props.header && ((y + props.header.height) > ( box_top - box_ad_padding ))) {
@@ -163,59 +161,6 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             });
         },
         render: function() {
-          /*
-          <div id='div-gpt-ad-1411489889191-0'>
-            <script type='text/javascript'>
-            googletag.cmd.push(function() { googletag.display('div-gpt-ad-1411489889191-0'); });
-            </script>
-          </div>
-          */
-          var mounted = this.isMounted();
-          /*
-          var mounted = this.isMounted(),
-              box_ad_padding = 20,
-              y,
-              orig,
-              bottom_box_top,
-              box_top = (this.props.header && this.props.header.height && this.props.ads && this.props.ads['banner-top'] ? this.props.header.height + this.props.ads['banner-top'].height + box_ad_padding: 0),
-              top_el = document.getElementById("ads-banner-top") || {},
-              top_height = mounted && top_el.offsetHeight ? top_el.offsetHeight : 0,
-              top_width = mounted && top_el.offsetWidth ? top_el.offsetWidth : 0,
-              bottom_el = document.getElementById("ads-banner-bottom") || {},
-              bottom_height = mounted && bottom_el.offsetHeight ? bottom_el.offsetHeight : 0,
-              bottom_width = mounted && bottom_el.offsetWidth ? bottom_el.offsetWidth : 0,
-              total_width = mounted && this.props.screen ? this.props.screen.width : 0,
-              total_width_padding = total_width - top_width,
-              total_width_padding_bottom = total_width - bottom_width,
-              top_width_base = Math.floor(total_width_padding/2),
-              bottom_width_base = Math.floor(total_width_padding_bottom/2),
-              sidebar_height_base = this.props.header && this.props.header.height && this.props.ads && this.props.ads['banner-top'] ? this.props.header.height + this.props.ads['banner-top'].height + padding.top: 0;
-              bottom_height_base = this.props.header && this.props.header.height && this.props.ads && this.props.ads['banner-top'] && this.props.content ? this.props.header.height + this.props.ads['banner-top'].height + this.props.content.height + padding.top: 0,
-              box_bottom_el = document.getElementById("ads-box-bottom") || {},
-              box_bottom_height = box_bottom_el.offsetHeight ? box_bottom_el.offsetHeight : 0,
-              box_bottom_width = box_bottom_el.offsetWidth ? box_bottom_el.offsetWidth : 0,
-              box_top_el = document.getElementById("ads-box-top") || {},
-              box_top_height = box_top_el.offsetHeight ? box_top_el.offsetHeight : 0,
-              box_top_width = box_top_el.offsetWidth ? box_top_el.offsetWidth : 0;
-
-          if (total_width_padding < 0) {
-            total_width_padding = 0;
-          }
-          if (total_width_padding > total_width) {
-            total_width_padding = total_width;
-          }
-
-          y = this.props.scroll && this.props.scroll.y ? this.props.scroll.y : 0;
-          if (this.props.header && ((y + this.props.header.height) > ( box_top - box_ad_padding ))) {
-            orig = box_top;
-            box_top = y + box_ad_padding + this.props.header.height;
-            if (y > (sidebar_height_base + (this.props.sidebar ? this.props.sidebar.height : 0))) {
-              box_top = (sidebar_height_base + (this.props.sidebar ? this.props.sidebar.height : 0)) - ( this.props.ads ? this.props.ads['box-top'].height : 0 );
-            }
-          }
-
-          bottom_box_top = box_top + box_top_height + (2 * box_ad_padding );
-          */
 
           return React.DOM.section({
             id: "ads"
