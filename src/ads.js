@@ -170,6 +170,8 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       seen = 0;
       expecting = 0;
       adjustAds();
+    } else {
+      console.log(seen, expecting);
     }
 
   });
