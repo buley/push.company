@@ -140,12 +140,13 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       }
     }
 
-    console.log('slotted',event);
+    console.log('slotted',event, seen, expecting);
     if (expecting > 0 && ++seen >= expecting) {
+
       console.log("LIMIT");
       seen = 0;
       expecting = 0;
-  
+
       var mounted = this.isMounted(),
           top_el = document.getElementById("ads-banner-top") || {},
           top_height = mounted && top_el.offsetHeight ? top_el.offsetHeight : 0,
