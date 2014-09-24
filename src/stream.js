@@ -13,8 +13,8 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       },
       onResize = _.debounce(function() {
         if (context) {
-          var node = document.getElementById("sidebar-container");
-          context.sidebar = _.extend((context.sidebar || {}), {
+          var node = document.getElementById("stream-container");
+          context.stream = _.extend((context.stream || {}), {
             height: node ? node.clientHeight : 0,
             width: node ? node.clientWidth : 0
           });
@@ -26,14 +26,36 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             instance = this;
         },
         render: function() {
+
+          var y,
+              orig,
+              box_top = (this.props.header && this.props.header.height && this.props.ads && this.props.ads.sizes && this.props.ads.sizes['banner-top'] ? this.props.header.height + this.props.ads.sizes['banner-top'].height + padding.top: 0),
+              padding = {
+                top: 20,
+                bottom: 20,
+                left: 20,
+                right: 20
+              },
+              box_ad_padding = 20,
+              sidebar_height_base = this.props.header && this.props.header.height && this.props.ads && this.props.ads.sizes && this.props.ads.sizes['banner-top'] ? this.props.header.height + this.props.ads.sizes['banner-top'].height + padding.top: 0;
+
+          y = this.props.scroll && this.props.scroll.y ? this.props.scroll.y : 0;
+          if (this.props.header && ((y + props.header.height) > ( box_top - padding.bottom ))) {
+            orig = box_top;
+            box_top = y + box_ad_padding + this.props.header.height;
+            if (y > (sidebar_height_base + (this.props.sidebar ? this.props.sidebar.height : 0))) {
+              box_top = (sidebar_height_base + (this.props.sidebar ? this.props.sidebar.height : 0)) - ( this.props.ads && this.props.ads.sizes ? this.props.ads.sizes['box-top'].height : 0 );
+            }
+          }
+
           return React.DOM.section({
-            id: "sidebar-container",
+            id: "stream-container",
             style: {
-              top: this.props.header && this.props.header.height && this.props.ads && this.props.ads.sizes && this.props.ads.sizes['banner-top'] ? this.props.header.height + this.props.ads.sizes['banner-top'].height: 0,
-              height: this.props.content ? this.props.content.height : 0
+              top: (box_top + this.props.ads.sizes['box-top'].height + padding.bottom) + "px",
+              height: "200px"
             }
           }, React.DOM.section({
-            id: "sidebar"
+            id: "stream"
           } ) );
         }
       });
