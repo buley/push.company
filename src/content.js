@@ -21,7 +21,10 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         },
         render: function() {
           return React.DOM.section({
-            id: "content"
+            id: "content",
+            style: {
+              top: "200px"
+            }
           } );
         }
       });
