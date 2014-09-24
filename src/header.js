@@ -197,7 +197,7 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
           deferred.notify(state);
 
         } else {
-          context = _.extend(state, context);
+          context = _.extend(_.extend(state, { header: context.header}), context);
         }
       });
     },

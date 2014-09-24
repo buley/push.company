@@ -276,7 +276,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           context = _.extend({}, state);
           adjustAds(context);
         } else {
-          context = _.extend(state, context);
+          context = _.extend(_.extend(state, { ads: context.ads}), context);
           if (context.screen) {
             if (context.screen.width !== prev.width) {
               onResize();
