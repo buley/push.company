@@ -126,15 +126,8 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
               }
               if (JSON.stringify(next_state) !== previous_state) {
                 previous_state = JSON.stringify(next_state);
-                if (false === isReady) {
-                  context = _.extend(context, ctx);
-                  console.log('prestate',context);
-                  deferred.notify(context);                  
-                } else {
                   context = _.extend({}, ctx);
-                  console.log('state',ctx);
                   deferred.notify(ctx);
-                }
               }
               component.replaceProps(ctx);
               if (0 !== state_queue.length) {

@@ -278,10 +278,13 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         } else {
           context = _.extend(_.extend(state, { ads: context.ads}), context);
           if (context.screen) {
-            if (context.screen.width !== prev.width) {
+            if (context.screen.width !== prev.width || (context.scroll && context.scroll.y !== prev.y)) {
               onResize();
               prev.width = context.screen.width;
               prev.height = context.screen.height;
+              prev.y = context.scroll.y;
+              prev.x = context.scroll.x;
+
             }
           }
 
