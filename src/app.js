@@ -163,10 +163,11 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
           loaded = 1,
           components = [],
           onResize = function(e) {
-            requestStateChange(_.extend(context, { screen: {
+            context.screen = {
               width: document.body.clientWidth,
               height: document.body.clientHeight
-            }}));
+            };
+            requestStateChange(context);
           },
           onScroll = function(e) {
             context.scroll = {
