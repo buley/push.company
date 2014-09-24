@@ -130,7 +130,6 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
               }
               if (0 === state_queue.length) {
                 component.replaceProps(ctx);
-                ready();
               } else {
                 doStateChange();
               }
