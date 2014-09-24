@@ -167,7 +167,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             orig = box_top;
             box_top = y + box_ad_padding + this.props.header.height;
             if (y > (sidebar_height_base + (this.props.sidebar ? this.props.sidebar.height : 0))) {
-              box_top = (sidebar_height_base + (this.props.sidebar ? this.props.sidebar.height : 0)) - ( this.props.ads ? this.props.ads.sizes['box-top'].height : 0 );
+              box_top = (sidebar_height_base + (this.props.sidebar ? this.props.sidebar.height : 0)) - ( this.props.ads && this.props.ads.sizes ? this.props.ads.sizes['box-top'].height : 0 );
             }
           }
 
