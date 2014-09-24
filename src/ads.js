@@ -54,6 +54,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         expect = slots.length;
         seen = 0;
         window.googletag.pubads().refresh(slots);
+        adjustAds();
       }, 3000 ),
       usable = [],
       first = false,
