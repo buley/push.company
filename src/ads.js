@@ -65,7 +65,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             box_top_width = box_top_el.offsetWidth ? box_top_el.offsetWidth : 0;
 
         y = props.scroll && props.scroll.y ? props.scroll.y : 0;
-        if (props.header && ((y + props.header.height) > ( box_top - box_ad_padding ))) {
+        if (props.header && ((y + props.header.height) >= ( box_top - box_ad_padding ))) {
           orig = box_top;
           box_top = y + box_ad_padding + props.header.height;
           //if (y > (sidebar_height_base + (props.sidebar ? props.sidebar.height : 0))) {
@@ -74,7 +74,6 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         }
 
         bottom_box_top = box_top + box_top_height + ((props.stream && props.stream.height > 20 ? 2 : 1) * box_ad_padding );
-
 
         props.ads = props.ads || {};
         props.ads = props.ads || {};
