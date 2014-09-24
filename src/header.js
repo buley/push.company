@@ -58,6 +58,7 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
               height = mounted ? nodeHeight(node) : 0,
               width = mounted ? nodeWidth(node) : 0,
               logo = getLogo(height, width);
+
           return React.DOM.header({
             id: "header-container",
             "data-height": height,

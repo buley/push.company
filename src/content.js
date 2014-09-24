@@ -19,6 +19,11 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             instance = this;
         },
         render: function() {
+          var mounted = this.isMounted(),
+              node = mounted ? this.getDOMNode() : null,
+              height = mounted ? nodeHeight(node) : 0,
+              width = mounted ? nodeWidth(node) : 0;
+          console.log('MOUNTED',height,width);
           return React.DOM.section({
             id: "content-container",
             style: {
