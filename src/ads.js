@@ -282,8 +282,10 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
               onResize();
               prev.width = context.screen.width;
               prev.height = context.screen.height;
-              prev.y = context.scroll.y;
-              prev.x = context.scroll.x;
+              if (context.scroll) {
+                prev.y = context.scroll.y;
+                prev.x = context.scroll.x;
+              }
 
             }
           }
