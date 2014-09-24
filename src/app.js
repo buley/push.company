@@ -127,7 +127,7 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
               if (JSON.stringify(next_state) !== previous_state) {
                 previous_state = JSON.stringify(next_state);
                   context = _.extend({}, ctx);
-                  console.log('notify', previous_state);
+                  console.log('notify', ctx.screen ? ctx.screen.width : 0);
                   deferred.notify(ctx);
               }
               component.replaceProps(ctx);
