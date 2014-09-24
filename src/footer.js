@@ -49,7 +49,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           context = _.extend({}, state);
           onResize();
         } else {
-          context = _.extend(_.extend(state, { footer: context.footer}), context);
+          context = _.extend({}, _.extend(state, { footer: context.footer}));
           if (context.screen) {
             if (context.screen.width !== prev.width) {
               onResize();
