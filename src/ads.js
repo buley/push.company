@@ -219,16 +219,16 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           }, React.DOM.section({
             id: "ads-banner-top",
             style: {
-              "left": top_width_base + "px",
-              "top": (this.props.header && this.props.header.height ? this.props.header.height + padding.top: padding.top) + "px"
+              "left": (this.props.ads ? this.props.ads['banner-top'].left : 0) + "px",
+              "top": (this.props.ads ? this.props.ads['banner-top'].top : 0)
             }
           }, React.DOM.div({
             id: "ads-banner-top-ad"
           }) ), React.DOM.section({
             id: "ads-banner-bottom",
             style: {
-              "left": bottom_width_base + "px",
-              "top": bottom_height_base + "px"
+              "left": (this.props.ads ? this.props.ads['banner-bottom'].left : 0) + "px",
+              "top": (this.props.ads ? this.props.ads['banner-bottom'].top : 0)
             }
           }, React.DOM.div({
             id: "ads-banner-bottom-ad"
@@ -243,16 +243,16 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           }) ), React.DOM.section({
             id: "ads-box-top",
             style: {
-              top: box_top + "px",
-              right: box_ad_padding + "px"
+              "right": (this.props.ads ? this.props.ads['box-top'].right : 0) + "px",
+              "top": (this.props.ads ? this.props.ads['box-top'].top : 0)
             }
           }, React.DOM.div({
             id: "ads-box-top-ad"
           }) ), React.DOM.section({
             id: "ads-box-bottom",
             style: {
-              "top": bottom_box_top + "px",
-              right: box_ad_padding + "px"
+              "right": (this.props.ads ? this.props.ads['box-bottom'].right : 0) + "px",
+              "top": (this.props.ads ? this.props.ads['box-bottom'].top : 0)
             }
           }, React.DOM.div({
             id: "ads-box-bottom-ad"
