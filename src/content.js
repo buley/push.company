@@ -12,11 +12,12 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         right: 20
       },
       onResize = _.debounce(function() {
-        console.log('resize content');
         var node = document.getElementById("content-container");
-        console.log('MOUNTED', node, node.clientHeight);
-
-
+        context.content = _.extend((context.content || {}), {
+          height: node.clientHeight,
+          width: node.clientWidth
+        });
+        deferred.notify(context);
       }),
       component = React.createClass({
         componentDidMount: function() {
