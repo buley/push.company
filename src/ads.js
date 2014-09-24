@@ -71,7 +71,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           }
         }
 
-        bottom_box_top = box_top + box_top_height + (( ? 2 : 1) * box_ad_padding );
+        bottom_box_top = box_top + box_top_height + ((props.stream && props.stream.height > 20 ? 2 : 1) * box_ad_padding );
 
         context.ads = context.ads || {};
         context.ads.sizes = _.extend((context.ads.sizes || {}), {
