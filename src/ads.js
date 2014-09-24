@@ -65,7 +65,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         if (expecting > 0) {
           window.googletag.pubads().refresh(slots);
         }
-      }, 100),
+      }, 750),
       usable = [],
       first = false,
       nodeHeight = function(el, sum) {
