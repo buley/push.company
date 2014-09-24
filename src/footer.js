@@ -25,12 +25,12 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         },
         render: function() {
           return React.DOM.section({
-            id: "content-container",
+            id: "footer-container",
             style: {
               top: this.props.header && this.props.header.height && this.props.ads && this.props.ads.sizes && this.props.ads.sizes['banner-top'] ? this.props.header.height + this.props.content.height + this.props.ads.sizes['banner-bottom'].height + this.props.ads.sizes['banner-top'].height: 0
             }
           }, React.DOM.section({
-            id: "content"
+            id: "footer"
           } ) );
         }
       });
