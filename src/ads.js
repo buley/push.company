@@ -129,7 +129,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
               total_width_padding_bottom = total_width - bottom_width,
               top_width_base = Math.floor(total_width_padding/2),
               bottom_width_base = Math.floor(total_width_padding_bottom/2),
-              bottom_height_base = 20;
+              bottom_height_base = this.props.header && this.props.header.height && this.props.ads && this.props.ads.sizes && this.props.ads.sizes['banner-top'] && this.props.content ? this.props.header.height + this.props.ads.sizes['banner-top'].height + this.props.content.height: 0;
 
           if (total_width_padding < 0) {
             total_width_padding = 0;
@@ -152,7 +152,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             id: "ads-banner-bottom",
             style: {
               "left": bottom_width_base + "px",
-              "bottom": bottom_height_base + "px"
+              "top": bottom_height_base + "px"
             }
           }, React.DOM.div({
             id: "ads-banner-bottom-ad"
