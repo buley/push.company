@@ -194,10 +194,10 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
     googletag.pubads().collapseEmptyDivs();
 
     top_banner = googletag.defineSlot('/270461283/Banner', [], "ads-banner-top-ad")
-      .addService(googletag.pubads()) );
+      .addService(googletag.pubads());
     slots.push( top_banner );
     bottom_banner =googletag.defineSlot('/270461283/Banner', [], "ads-banner-bottom-ad")
-      .addService(googletag.pubads()) );
+      .addService(googletag.pubads());
     slots.push( bottom_banner );
 
     top_banner.defineSizeMapping(mapping);
