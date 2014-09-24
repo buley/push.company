@@ -14,7 +14,7 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
       },
       getLogo = function(width, height) {
         return {
-          width: 110,
+          width: 220,
           height: 68
         }
       },

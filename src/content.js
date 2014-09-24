@@ -17,10 +17,8 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       component = React.createClass({
         componentDidMount: function() {
             instance = this;
-            console.log('content did mount')
         },
         render: function() {
-          console.log('ADS',this.props.ads);
           return React.DOM.section({
             id: "content-container",
             style: {
