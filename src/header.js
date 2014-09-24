@@ -196,6 +196,7 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
           }, logo: {
             text: "Lipsum Daily"
           } } );
+
           deferred.notify(context);
 
         } else {
