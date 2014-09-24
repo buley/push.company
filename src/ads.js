@@ -28,7 +28,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             bottom_el = document.getElementById("ads-banner-bottom") || {},
             bottom_height = bottom_el.offsetHeight ? bottom_el.offsetHeight : 0,
             bottom_width = bottom_el.offsetWidth ? bottom_el.offsetWidth : 0,
-            total_width = props.screen ? props.screen.width : 0,
+            total_width = instance.props.screen ? instance.props.screen.width : 0,
             total_width_padding = total_width - top_width,
             total_width_padding_bottom = total_width - bottom_width,
             top_height_base = Math.floor((padding.top + padding.bottom)/2),
@@ -172,7 +172,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
     if (expecting > 0 && ++seen >= expecting) {
       seen = 0;
       expecting = 0;
-      adjustAds(instance.props);
+      adjustAds();
     }
 
   });
