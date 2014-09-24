@@ -22,6 +22,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       },
       interval,
       adjustAds = function(props) {
+        console.log('adjust ads');
         var top_el = document.getElementById("ads-banner-top") || {},
             top_height = top_el.offsetHeight ? top_el.offsetHeight : 0,
             top_width = top_el.offsetWidth ? top_el.offsetWidth : 0,
