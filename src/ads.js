@@ -5,12 +5,15 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       context,
       instance,
       mapping = [
-        [ [1010, 1], [ [970, 250], [970, 90] ] ],
-        [ [768, 1], [ [728, 90] ] ],
-        [ [508, 1], [ [468, 60] ] ],
+        [ [1010, 1], [ [970, 250], [970, 90], [728, 90], [468, 60], [120, 60], [180, 150], [320, 50], [234, 60] ] ],
+        [ [768, 1], [ [728, 90], [468, 60], [120, 60], [180, 150], [320, 50], [234, 60] ] ],
+        [ [508, 1], [ [468, 60], [120, 60], [180, 150], [320, 50], [234, 60] ] ],
         [ [0, 0], [ [120, 60], [180, 150], [320, 50], [234, 60] ] ]
       ],
-
+      boxmapping = [
+        [ [768, 1], [ [300, 250], [300, 600], [120, 60], [180, 150], [320, 50], [234, 60] ] ],
+        [ [0, 0], [] ]
+      ],
       expecting = 0,
       seen = 0,
       prev = {},
@@ -164,6 +167,20 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             }
           }, React.DOM.div({
             id: "ads-box-header-ad"
+          }) ), React.DOM.section({
+            id: "ads-box-bottom",
+            style: {
+              "top": bottom_height_base + "px"
+            }
+          }, React.DOM.div({
+            id: "ads-box-bottom-ad"
+          }) ), React.DOM.section({
+            id: "ads-box-top",
+            style: {
+              "top": bottom_height_base + "px"
+            }
+          }, React.DOM.div({
+            id: "ads-box-top-ad"
           }) ) );
         }
       });
@@ -177,12 +194,9 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
     }
 
     if (expecting > 0 && ++seen >= expecting) {
-      console.log('finsihed');
       seen = 0;
       expecting = 0;
       adjustAds();
-    } else {
-      console.log(seen, expecting);
     }
 
   });
@@ -206,6 +220,12 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
     bottom_banner.defineSizeMapping(mapping);
 
     slots.push( googletag.defineSlot('/270461283/Box', [[88, 31]], "ads-box-header-ad")
+        .addService(googletag.pubads()) );
+
+    slots.push( googletag.defineSlot('/270461283/Box', [[88, 31]], "ads-box-top-ad")
+        .addService(googletag.pubads()) );
+
+    slots.push( googletag.defineSlot('/270461283/Box', [[88, 31]], "ads-box-bottom-ad")
         .addService(googletag.pubads()) );
 
     expecting = slots.length;
