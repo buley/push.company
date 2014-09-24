@@ -29,6 +29,8 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       expecting = 2,
       seen = 0,
       updateAds = _.debounce( function(force) {
+        expect = slots.length;
+        seen = 0;
         window.googletag.pubads().refresh(slots);
       }, 1000 ),
       nodeHeight = function(el, sum) {
@@ -139,6 +141,11 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
     }
 
     console.log('slotted',event);
+    if (++seen >= expecting) {
+      console.log("LIMIT");
+      seen = 0;
+      expecting = 0;
+    }
 
     var mounted = this.isMounted(),
         top_el = document.getElementById("ads-banner-top") || {},
