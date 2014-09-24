@@ -112,13 +112,13 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         deferred.notify(context);
 
       },
-      onResizeWindow = _.debounce(function() {
+      onResize = function() {
         expecting = slots.length;
         seen = 0;
         if (expecting > 0) {
           window.googletag.pubads().refresh(slots);
         }
-      }, 750),
+      },
       usable = [],
       first = false,
       nodeHeight = function(el, sum) {
@@ -333,7 +333,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           context = _.extend({}, state);
           if (context.screen) {
             if (context.screen.width !== prev.width) {
-              onResizeWindow(context.screen.width, context.screen.height, prev.width, prev.height);
+              onResize();
               prev.width = context.screen.width;
               prev.height = context.screen.height;
             }
