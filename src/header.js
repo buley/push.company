@@ -188,16 +188,13 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
         if (!context) {
           context = _.extend({}, state);
 
-          context.header = context.header || {};
-          context.header = _.extend(context.header, { height: 44, zoom: mult, drawer: {
+          deferred.notify(_.extend((state.header || {}), { height: 44, zoom: mult, drawer: {
             showing: false,
             height: 0,
             selected: "categories"
           }, logo: {
             text: "Lipsum Daily"
-          } } );
-
-          deferred.notify(context);
+          } } ) );
 
         } else {
           context = _.extend({}, state);
