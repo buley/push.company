@@ -70,6 +70,9 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
             id: "header-container",
             "data-height": height,
             "data-width": width,
+            style: {
+              top: this.props.scroll.y || 0
+            }
           }, React.DOM.div({
             id: "header-over",
             style: {
