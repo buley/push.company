@@ -11,6 +11,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         [ [640, 480], [ [120, 60], [180, 150], [320, 50], [234, 60] ] ],
         [ [0, 0], [ [970, 90], [728, 90], [970, 250], [468, 60], [120, 60], [180, 150], [320, 50], [234, 60] ] ]
       ],
+
       expecting = 0,
       seen = 0,
       prev = {},
@@ -186,14 +187,18 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
 
   googletag.cmd.push(function() {
 
+    var top_banner,
+        bottom_banner;
     googletag.pubads().enableSingleRequest();
     googletag.pubads().disableInitialLoad();
     googletag.pubads().collapseEmptyDivs();
 
-    slots.push( googletag.defineSlot('/270461283/Banner', [], "ads-banner-top-ad")
+    top_banner = googletag.defineSlot('/270461283/Banner', [], "ads-banner-top-ad")
       .addService(googletag.pubads()) );
-    slots.push( googletag.defineSlot('/270461283/Banner', [], "ads-banner-bottom-ad")
+    slots.push( top_banner );
+    bottom_banner =googletag.defineSlot('/270461283/Banner', [], "ads-banner-bottom-ad")
       .addService(googletag.pubads()) );
+    slots.push( bottom_banner );
 
     top_banner.defineSizeMapping(mapping);
     bottom_banner.defineSizeMapping(mapping);
