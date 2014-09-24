@@ -285,7 +285,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         bottom_banner,
         top_box,
         bottom_box;
-        
+
     googletag.pubads().enableSingleRequest();
     googletag.pubads().disableInitialLoad();
     googletag.pubads().collapseEmptyDivs();
