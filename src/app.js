@@ -166,6 +166,12 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
               height: document.body.clientHeight
             }}));
           },
+          onScroll = function(e) {
+            requestStateChange(_.extend(context, { scroll: {
+              x: window.scrollX,
+              y: window.scrollY
+            }}));
+          },
           forEachHandler = function(interface) {
             var readyHandler = function(comp) {
                   interface.incoming(promise);
@@ -191,6 +197,7 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
       requestStateChange(_.extend(context, { init: Date.now() }));
 
       window.addEventListener("resize", _.debounce(onResize) );
+      window.addEventListener("scroll", _.debounce(onScroll) );
 
     });
 	return module.promise;
