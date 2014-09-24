@@ -49,12 +49,12 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         context.ads = context.ads || {};
         context.ads.sizes = _.extend((context.ads.sizes || {}), {
           "banner-top": {
-            height: top_height,
-            width: top_width
+            height: top_height + padding.top + padding.bottom,
+            width: top_width + padding.left + padding.right
           },
           "banner-bottom": {
-            height: bottom_height,
-            width: bottom_width
+            height: bottom_height + padding.top + padding.bottom,
+            width: bottom_width + padding.left + padding.right
           }
         });
         deferred.notify(context);
