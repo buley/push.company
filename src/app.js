@@ -76,7 +76,7 @@ requirejs.config({
 
 requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
 	var module = Q.defer();
-    require([ 'src/content', 'src/header', 'src/sidebar', 'src/footer' ], function() {
+    require([ 'src/content', 'src/ads', 'src/header', 'src/sidebar', 'src/footer' ], function() {
       var state = {
             screen: {
               width: document.body.clientWidth,
@@ -126,6 +126,7 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
               if (JSON.stringify(next_state) !== previous_state) {
                 previous_state = JSON.stringify(next_state);
                 context = _.extend({}, ctx);
+                console.log('state',ctx);
                 deferred.notify(ctx);
               }
               component.replaceProps(ctx);
