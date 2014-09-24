@@ -12,12 +12,14 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         right: 20
       },
       onResize = _.debounce(function() {
-        var node = document.getElementById("sidebar-container");
-        context.sidebar = _.extend((context.sidebar || {}), {
-          height: node ? node.clientHeight : 0,
-          width: node ? node.clientWidth : 0
-        });
-        deferred.notify(context);
+        if (context) {
+          var node = document.getElementById("sidebar-container");
+          context.sidebar = _.extend((context.sidebar || {}), {
+            height: node ? node.clientHeight : 0,
+            width: node ? node.clientWidth : 0
+          });
+          deferred.notify(context);
+        }
       }),
       component = React.createClass({
         componentDidMount: function() {
