@@ -76,7 +76,7 @@ requirejs.config({
 
 requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
 	var module = Q.defer();
-    require([ 'src/ads', 'src/header', 'src/content' ], function() {
+    require([ 'src/header', 'src/content' ], function() {
       var state = {
             screen: {
               width: document.body.clientWidth,
