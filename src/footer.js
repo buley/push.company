@@ -15,8 +15,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         var node = document.getElementById("footer-container") || {};
         context.footer = context.footer || {};
         context.footer = _.extend(context.footer, {
-          height: node ? node.clientHeight : 0,
-          width: node ? node.clientWidth : 0
+          height: node ? node.clientHeight : 0
         });
         deferred.notify(context);
       },
