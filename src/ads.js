@@ -51,9 +51,9 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       onFinishedAds = function() {
 
       },
-      onResizedWindow = function() {
+      onResizeWindow = function() {
         //updateAds(true);
-
+        console.log('resized window');
       },
       usable = [],
       first = false,
@@ -191,6 +191,13 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           deferred.notify(context);
         } else {
           context = _.extend({}, state);
+          if (context.screen) {
+            if (context.screen.width !== prev.width || context.screen.height !== prev.height) {
+              onResizeWindow(context.screen.width, context.screen.height, prev.width, prev.height);
+              prev.width = context.screen.width;
+              prev.height = context.screen.height;
+            }
+          }
         }
       });
     },
