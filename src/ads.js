@@ -224,7 +224,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         } else {
           context = _.extend({}, state);
           if (context.screen) {
-            if (context.screen.width !== prev.width || context.screen.height !== prev.height) {
+            if (context.screen.width !== prev.width) {
               onResizeWindow(context.screen.width, context.screen.height, prev.width, prev.height);
               prev.width = context.screen.width;
               prev.height = context.screen.height;
