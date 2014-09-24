@@ -14,8 +14,8 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       onResize = _.debounce(function() {
         var node = document.getElementById("content-container");
         context.content = _.extend((context.content || {}), {
-          height: node.clientHeight,
-          width: node.clientWidth
+          height: node ? node.clientHeight : 0,
+          width: node ? node.clientWidth : 0
         });
         deferred.notify(context);
       }),
