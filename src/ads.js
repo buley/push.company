@@ -144,8 +144,8 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           }
 
           var y = this.props.scroll && this.props.scroll.y ? this.props.scroll.y : 0;
-          if (y > ( box_top - box_ad_padding ) ) {
-            box_top = this.props.header ? this.props.header.height + y + box_ad_padding : y + box_ad_padding;
+          if (this.props.header && y > ( box_top - box_ad_padding ) ) {
+            box_top = this.props.header.height + y + box_ad_padding : 0;
           }
 
           return React.DOM.section({
