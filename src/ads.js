@@ -192,8 +192,6 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           deferred.notify(context);
         } else {
           context = _.extend({}, state);
-          onUpdatedProps(instance.props);
-
         }
       });
     },
