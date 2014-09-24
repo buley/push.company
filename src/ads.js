@@ -136,6 +136,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
               total_width_padding_bottom = total_width - bottom_width,
               top_width_base = Math.floor(total_width_padding/2),
               bottom_width_base = Math.floor(total_width_padding_bottom/2),
+              sidebar_height_base = this.props.header && this.props.header.height && this.props.ads && this.props.ads.sizes && this.props.ads.sizes['banner-top'] && this.props.content ? this.props.header.height + this.props.ads.sizes['banner-top'].height + padding.top: 0;
               bottom_height_base = this.props.header && this.props.header.height && this.props.ads && this.props.ads.sizes && this.props.ads.sizes['banner-top'] && this.props.content ? this.props.header.height + this.props.ads.sizes['banner-top'].height + this.props.content.height + padding.top: 0;
 
           if (total_width_padding < 0) {
@@ -149,8 +150,8 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           if (this.props.header && ((y + this.props.header.height) > ( box_top - box_ad_padding ))) {
             orig = box_top;
             box_top = y + box_ad_padding + this.props.header.height;
-            if (y > (bottom_height_base + (this.props.sidebar ? this.props.sidebar.height : 0))) {
-              box_top = (bottom_height_base + (this.props.sidebar ? this.props.sidebar.height : 0)) - 250;
+            if (y > (sidebar_height_base + (this.props.sidebar ? this.props.sidebar.height : 0))) {
+              box_top = (sidebar_height_base + (this.props.sidebar ? this.props.sidebar.height : 0)) - 250;
             }
           }
 
