@@ -186,15 +186,17 @@ define(['q', 'react', 'underscore', 'tween'], function(Q, React, _, Tween) {
     incoming: function(interface) {
       interface.then(null, null, function(state) {
         if (!context) {
+
           context = _.extend({}, state);
-          state.header = _.extend((state.header || {}), { height: 44, zoom: mult, drawer: {
+          context.header = _.extend((state.header || {}), { height: 44, zoom: mult, drawer: {
             showing: false,
             height: 0,
             selected: "categories"
           }, logo: {
             text: "Lipsum Daily"
           } } );
-          deferred.notify(state);
+          
+          deferred.notify(context);
 
         } else {
           context = _.extend({}, _.extend(state, { header: context.header}));
