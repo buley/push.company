@@ -193,7 +193,7 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
             selected: "categories"
           }, logo: {
             text: "Lipsum Daily"
-          } } )
+          } } );
           deferred.notify(state);
 
         } else {
