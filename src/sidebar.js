@@ -37,7 +37,6 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
 
   module.resolve(component);
 
-
   return {
     outgoing: function(interface) {
       interface(promise);
