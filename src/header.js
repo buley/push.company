@@ -1,4 +1,4 @@
-define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _, Tween) {
+define(['q', 'react', 'underscore', 'tween'], function(Q, React, _, Tween) {
   var deferred = Q.defer(),
       promise = deferred.promise,
       module = Q.defer(),
