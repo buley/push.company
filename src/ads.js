@@ -320,7 +320,6 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         if (!context) {
           context = _.extend({}, state);
           adjustAds();
-          deferred.notify(context);
         } else {
           context = _.extend({}, state);
           if (context.screen) {
