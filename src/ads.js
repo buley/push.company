@@ -118,36 +118,6 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           window.googletag.pubads().refresh(slots);
         }
       },
-      usable = [],
-      first = false,
-      nodeHeight = function(el, sum) {
-        if (!el) {
-          return NaN;
-        }
-        var x, xlen;
-        sum = sum || 0;
-        if (!!el.children && el.children.length > 0) {
-          for (x = 0, xlen = el.children.length; x < xlen; x += 1) {
-            sum += nodeHeight(el.children[x], 0);
-          }
-        }
-        sum += el.offsetHeight;
-        return sum;
-      },
-      nodeWidth = function(el, sum) {
-        if (!el) {
-          return NaN;
-        }
-        var x, xlen;
-        sum = sum || 0;
-        if (!!el.children && el.children.length > 0) {
-          for (x = 0, xlen = el.children.length; x < xlen; x += 1) {
-            sum += nodeWidth(el.children[x], 0);
-          }
-        }
-        sum += el.offsetWidth;
-        return sum;
-      },
       component = React.createClass({
         componentDidMount: function() {
             instance = this;
@@ -274,6 +244,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       interface.then(null, null, function(state) {
         if (!context) {
           context = _.extend({}, state);
+          adjustAds(context);
         } else {
           var refresh = false,
               adjust = false;
