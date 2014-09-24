@@ -147,6 +147,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           if (this.props.header && y > ( box_top - box_ad_padding ) ) {
             box_top = y + box_ad_padding;
           }
+          
 
           return React.DOM.section({
             id: "ads"
