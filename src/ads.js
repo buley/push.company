@@ -121,6 +121,8 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           </div>
           */
           var mounted = this.isMounted(),
+              box_ad_padding = 20,
+              box_top = (this.props.header && this.props.header.height && this.props.ads && this.props.ads.sizes && this.props.ads.sizes['banner-top'] ? this.props.header.height + this.props.ads.sizes['banner-top'].height + box_ad_padding: 0),
               top_el = document.getElementById("ads-banner-top") || {},
               top_height = mounted && top_el.offsetHeight ? top_el.offsetHeight : 0,
               top_width = mounted && top_el.offsetWidth ? top_el.offsetWidth : 0,
@@ -139,6 +141,11 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           }
           if (total_width_padding > total_width) {
             total_width_padding = total_width;
+          }
+
+          var y = this.props.scroll && this.props.scroll.y && ? this.props.scroll.y : 0;
+          if (y > box_top) {
+            box_top = box_top + y;
           }
 
           return React.DOM.section({
@@ -177,8 +184,8 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           }) ), React.DOM.section({
             id: "ads-box-top",
             style: {
-              top: (this.props.header && this.props.header.height && this.props.ads && this.props.ads.sizes && this.props.ads.sizes['banner-top'] ? this.props.header.height + this.props.ads.sizes['banner-top'].height + 20: 0) + "px",
-              right: "20px"
+              top: box_top + "px",
+              right: box_ad_padding + "px"
             }
           }, React.DOM.div({
             id: "ads-box-top-ad"
