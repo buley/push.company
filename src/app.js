@@ -128,9 +128,8 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
                 context = _.extend({}, ctx);
                 deferred.notify(ctx);
               }
-              if (0 === state_queue.length) {
-                component.replaceProps(ctx);
-              } else {
+              component.replaceProps(ctx);
+              if (0 !== state_queue.length) {
                 doStateChange();
               }
             } else {
