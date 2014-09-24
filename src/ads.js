@@ -268,7 +268,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
     if (expecting > 0 && ++seen >= expecting) {
       seen = 0;
       expecting = 0;
-      adjustAds();
+      adjustAds(context);
     }
 
   });
@@ -319,7 +319,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       interface.then(null, null, function(state) {
         if (!context) {
           context = _.extend({}, state);
-          adjustAds();
+          adjustAds(context);
         } else {
           context = _.extend({}, state);
           if (context.screen) {
