@@ -25,6 +25,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         var top_el = document.getElementById("ads-banner-top") || {},
             top_height = top_el.offsetHeight ? top_el.offsetHeight : 0,
             top_width = top_el.offsetWidth ? top_el.offsetWidth : 0,
+            header_el = document.getElementById("ads-box-header") || {},
             bottom_el = document.getElementById("ads-banner-bottom") || {},
             bottom_height = bottom_el.offsetHeight ? bottom_el.offsetHeight : 0,
             bottom_width = bottom_el.offsetWidth ? bottom_el.offsetWidth : 0,
@@ -36,6 +37,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             bottom_width_base = Math.floor((padding.right + padding.left + total_width_padding_bottom)/2),
             bottom_height_base = 20;
 
+        context.ads = context.ads || {};
         context.ads.sizes = _.extend((context.ads.sizes || {}), {
           "banner-top": {
             height: top_height,
@@ -168,7 +170,6 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       }
     }
 
-    console.log('slotted',event, seen, expecting);
     if (expecting > 0 && ++seen >= expecting) {
       seen = 0;
       expecting = 0;
