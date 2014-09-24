@@ -21,8 +21,12 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         right: 20
       },
       interval,
-      onResize = function() {
+      onFinishedAds = function() {
+
+      },
+      onResizedWindow = function() {
         //updateAds(true);
+
       },
       usable = [],
       first = false,
@@ -172,13 +176,8 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           width: bottom_width
         }
       });
-
       deferred.notify(context);
-
-
     }
-
-
   });
 
   return {
@@ -192,7 +191,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           deferred.notify(context);
         } else {
           context = _.extend({}, state);
-          updateAds();
+          onResizedWindow();
 
         }
       });
