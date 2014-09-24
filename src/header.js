@@ -64,12 +64,15 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
               node = mounted ? this.getDOMNode() : null,
               height = mounted ? nodeHeight(node) : 0,
               width = mounted ? nodeWidth(node) : 0,
-              logo = getLogo(height, width);
+              logo = getLogo(height, width, this.props.scroll ? this.props.scroll.y : 0);
 
           return React.DOM.header({
             id: "header-container",
             "data-height": height,
             "data-width": width,
+            style: {
+              top: this.props.scroll ? this.props.scroll.y : 0
+            }
           }, React.DOM.div({
             id: "header-over",
             style: {
