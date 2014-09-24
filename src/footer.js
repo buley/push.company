@@ -12,10 +12,10 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         right: 20
       },
       onResize = _.debounce(function() {
-        var node = document.getElementById("footer-container");
+        var node = document.getElementById("footer-container") || {};
         context.content = _.extend((context.content || {}), {
-          height: node.clientHeight,
-          width: node.clientWidth
+          height: node.clientHeight || 0,
+          width: node.clientWidth || 0
         });
         deferred.notify(context);
       }),
@@ -50,7 +50,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         } else {
           context = _.extend({}, state);
           if (context.screen) {
-            if (context.screen.width !== prev.width || context.screen.height !== prev.height) {
+            if (context.screen.width !== prev.width) {
               onResize(context.screen.width, context.screen.height, prev.width, prev.height);
               prev.width = context.screen.width;
               prev.height = context.screen.height;
