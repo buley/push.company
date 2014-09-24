@@ -143,7 +143,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             total_width_padding = total_width;
           }
 
-          var y = this.props.scroll && this.props.scroll.y && ? this.props.scroll.y : 0;
+          var y = this.props.scroll && this.props.scroll.y ? this.props.scroll.y : 0;
           if (y > box_top) {
             box_top = box_top + y;
           }
