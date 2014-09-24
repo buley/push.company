@@ -34,9 +34,11 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       },
       interval,
       adjustAds = function(props) {
+
         if (!props) {
           return;
         }
+
         var y,
             box_top = (props.header && props.header.height && props.ads && props.ads['banner-top'] ? props.header.height + props.ads['banner-top'].height + box_ad_padding: 0),
             bottom_box_top,
@@ -108,6 +110,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           }
         });
         deferred.notify(context);
+
       },
       onResizeWindow = _.debounce(function() {
         expecting = slots.length;
