@@ -20,6 +20,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             console.log('content did mount')
         },
         render: function() {
+          console.log('ADS',this.props.ads);
           return React.DOM.section({
             id: "content-container",
             style: {
