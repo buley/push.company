@@ -168,10 +168,11 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
             }}));
           },
           onScroll = function(e) {
-            requestStateChange(_.extend(context, { scroll: {
+            context.scroll = {
               x: window.scrollX,
               y: window.scrollY
-            }}));
+            };
+            requestStateChange(context);
           },
           forEachHandler = function(interface) {
             var readyHandler = function(comp) {
