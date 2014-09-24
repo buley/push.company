@@ -186,14 +186,18 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
     incoming: function(interface) {
       interface.then(null, null, function(state) {
         if (!context) {
-          context = _.extend({}, _.extend({header: { height: 44, zoom: mult, drawer: {
+          context = _.extend({}, state);
+
+          context.header = context.header || {};
+          context.header = _.extend(context.header, {header: { height: 44, zoom: mult, drawer: {
             showing: false,
             height: 0,
             selected: "categories"
           }, logo: {
-            text: ""
-          } } }, state));
+            text: "Lipsum Daily"
+          } } } );
           deferred.notify(context);
+
         } else {
           context = _.extend({}, state);
         }
