@@ -197,7 +197,7 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
       requestStateChange(_.extend(context, { init: Date.now() }));
 
       window.addEventListener("resize", _.debounce(onResize) );
-      window.addEventListener("scroll", _.debounce(onScroll) );
+      window.addEventListener("scroll", onScroll);
 
     });
 	return module.promise;
