@@ -128,8 +128,8 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
               total_width_padding = total_width - top_width,
               total_width_padding_bottom = total_width - bottom_width,
               top_height_base = Math.floor((padding.top + padding.bottom)/2),
-              top_width_base = Math.floor((padding.right + padding.left + total_width_padding)/2),
-              bottom_width_base = Math.floor((padding.right + padding.left + total_width_padding_bottom)/2),
+              top_width_base = padding.left + Math.floor(total_width_padding/2),
+              bottom_width_base = padding.left + Math.floor(total_width_padding_bottom/2),
               bottom_height_base = 20;
 
           if (total_width_padding < 0) {
