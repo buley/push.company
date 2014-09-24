@@ -13,17 +13,16 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       },
       onResize = _.debounce(function() {
         console.log('resize content');
+        var node = document.getElementById("content-container");
+        console.log('MOUNTED', node, node.clientHeight);
+
+
       }),
       component = React.createClass({
         componentDidMount: function() {
             instance = this;
         },
         render: function() {
-          var mounted = this.isMounted(),
-              node = mounted ? this.getDOMNode() : null,
-              height = mounted ? nodeHeight(node) : 0,
-              width = mounted ? nodeWidth(node) : 0;
-          console.log('MOUNTED',height,width);
           return React.DOM.section({
             id: "content-container",
             style: {
