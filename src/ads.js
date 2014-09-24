@@ -274,6 +274,10 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
     if (expecting > 0 && ++seen >= expecting) {
       seen = 0;
       expecting = 0;
+      console.log("Finished processing");
+      adjustAds(context);
+    } else {
+      console.log("Processing");
       adjustAds(context);
     }
 
