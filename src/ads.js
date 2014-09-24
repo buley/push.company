@@ -55,7 +55,6 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         expect = slots.length;
         seen = 0;
         window.googletag.pubads().refresh(slots);
-        adjustAds();
       },
       usable = [],
       first = false,
@@ -169,6 +168,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
     }
 
     if (expecting > 0 && ++seen >= expecting) {
+      console.log('finsihed');
       seen = 0;
       expecting = 0;
       adjustAds();
