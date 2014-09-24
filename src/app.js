@@ -170,8 +170,8 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
           },
           onScroll = function(e) {
             context.scroll = {
-              x: window.scrollX,
-              y: window.scrollY
+              x: window.scrollX < 0 ? 0 :  window.scrollX,
+              y: window.scrollY < 0 ? 0 : window.scrollY
             };
             requestStateChange(context);
           },
