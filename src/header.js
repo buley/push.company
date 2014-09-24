@@ -12,11 +12,18 @@ define(['q', 'react', 'mapbox', 'underscore', 'tween'], function(Q, React, L, _,
         }
         Tween.update(time);
       },
-      getLogo = function(width, height) {
-        return {
+      getLogo = function(width, height, x, y) {
+        var large = {
           width: 220,
           height: 68
+        }, small = {
+          width: 142,
+          height: 44
+        };
+        if (y > 0) {
+          return small;
         }
+        return large;
       },
       nodeHeight = function(el, sum) {
         if (!el) {
