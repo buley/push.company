@@ -222,11 +222,16 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
     slots.push( googletag.defineSlot('/270461283/Box', [[88, 31]], "ads-box-header-ad")
         .addService(googletag.pubads()) );
 
-    slots.push( googletag.defineSlot('/270461283/Box', [[88, 31]], "ads-box-top-ad")
-        .addService(googletag.pubads()) );
+    top_box = googletag.defineSlot('/270461283/Box', [[88, 31]], "ads-box-top-ad")
+        .addService(googletag.pubads());
+    slots.push(top_box);
 
-    slots.push( googletag.defineSlot('/270461283/Box', [[88, 31]], "ads-box-bottom-ad")
-        .addService(googletag.pubads()) );
+    bottom_box = googletag.defineSlot('/270461283/Box', [[88, 31]], "ads-box-bottom-ad")
+        .addService(googletag.pubads());
+    slots.push(bottom_box);
+
+    top_box.defineSizeMapping(boxmapping);
+    bottom_box.defineSizeMapping(boxmapping);
 
     expecting = slots.length;
 
