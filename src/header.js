@@ -195,7 +195,7 @@ define(['q', 'react', 'underscore', 'tween'], function(Q, React, _, Tween) {
           }, logo: {
             text: "Lipsum Daily"
           } } );
-          
+
           deferred.notify(context);
 
         } else {

@@ -276,20 +276,33 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           context = _.extend({}, state);
           adjustAds(context);
         } else {
+          var refresh = false,
+              adjust = false;
+
           context = _.extend({}, _.extend(state, { ads: context.ads}));
+
           if (context.screen) {
-            if (context.screen.width !== prev.width || (context.scroll && context.scroll.y !== prev.y)) {
-              onResize();
+            if (context.screen.width !== prev.width) {
+              refresh = true;
+              adjust = true;
               prev.width = context.screen.width;
               prev.height = context.screen.height;
-              if (context.scroll) {
-                prev.y = context.scroll.y;
-                prev.x = context.scroll.x;
-              }
-
             }
           }
 
+          if (context.scroll) {
+            if (context.scroll.y !== prev.y) {
+              adjust = true;
+              prev.y = context.scroll.y;
+              prev.x = context.scroll.x;
+            }
+          }
+
+          if (false === refresh && true === adjust) {
+            adjustAds(context);
+          } else if (true === refresh && true === adjust) {
+            onResize();
+          }
         }
       });
     },
