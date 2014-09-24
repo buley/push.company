@@ -12,10 +12,10 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         right: 20
       },
       onResize = _.debounce(function() {
-        var node = document.getElementById("content-container");
-        context.content = _.extend((context.content || {}), {
-          height: node.clientHeight,
-          width: node.clientWidth
+        var node = document.getElementById("footer-container") || {};
+        context.footer = _.extend((context.footer || {}), {
+          height: node.clientHeight || 0,
+          width: node.clientWidth || 0
         });
         deferred.notify(context);
       }),
@@ -25,12 +25,12 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         },
         render: function() {
           return React.DOM.section({
-            id: "content-container",
+            id: "footer-container",
             style: {
-              top: this.props.header && this.props.header.height && this.props.ads && this.props.ads.sizes && this.props.ads.sizes['banner-top'] ? this.props.header.height + this.props.ads.sizes['banner-top'].height: 0
+              top: "1000px" // this.props.header && this.props.header.height && this.props.ads && this.props.ads.sizes && this.props.ads.sizes['banner-top'] ? this.props.header.height + this.props.content.height + this.props.ads.sizes['banner-bottom'].height + this.props.ads.sizes['banner-top'].height: 0
             }
           }, React.DOM.section({
-            id: "content"
+            id: "footer"
           } ) );
         }
       });
@@ -50,7 +50,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         } else {
           context = _.extend({}, state);
           if (context.screen) {
-            if (context.screen.width !== prev.width || context.screen.height !== prev.height) {
+            if (context.screen.width !== prev.width) {
               onResize(context.screen.width, context.screen.height, prev.width, prev.height);
               prev.width = context.screen.width;
               prev.height = context.screen.height;
