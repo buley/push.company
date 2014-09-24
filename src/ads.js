@@ -54,8 +54,8 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             box_top_el = document.getElementById("ads-box-top") || {},
             box_top_height = box_top_el.offsetHeight ? box_top_el.offsetHeight : 0,
             box_top_width = box_top_el.offsetWidth ? box_top_el.offsetWidth : 0,
-            sidebar_height_base = this.props.header && this.props.header.height && this.props.ads && this.props.ads.sizes && this.props.ads.sizes['banner-top'] ? this.props.header.height + this.props.ads.sizes['banner-top'].height + padding.top: 0;
-            bottom_height_base = this.props.header && this.props.header.height && this.props.ads && this.props.ads.sizes && this.props.ads.sizes['banner-top'] && this.props.content ? this.props.header.height + this.props.ads.sizes['banner-top'].height + this.props.content.height + padding.top: 0;
+            sidebar_height_base = props.header && props.header.height && props.ads && props.ads.sizes && props.ads.sizes['banner-top'] ? props.header.height + props.ads.sizes['banner-top'].height + padding.top: 0;
+            bottom_height_base = props.header && props.header.height && props.ads && props.ads.sizes && props.ads.sizes['banner-top'] && props.content ? props.header.height + props.ads.sizes['banner-top'].height + props.content.height + padding.top: 0;
 
         context.ads = context.ads || {};
         context.ads.sizes = _.extend((context.ads.sizes || {}), {
