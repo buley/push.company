@@ -176,6 +176,39 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
 
   });
 
+  googletag.cmd.push(function() {
+
+    googletag.pubads().enableSingleRequest();
+    googletag.pubads().disableInitialLoad();
+    googletag.pubads().collapseEmptyDivs();
+
+    var mapping1 = [
+      [ [970, 1], [ [970, 250], [970, 90] ] ],
+      [ [728, 1], [ [728, 90] ] ],
+      [ [468, 1], [ [468, 60] ] ],
+      [ [640, 480], [ [120, 60], [180, 150], [320, 50], [234, 60] ] ],
+      [ [0, 0], [ [970, 90], [728, 90], [970, 250], [468, 60], [120, 60], [180, 150], [320, 50], [234, 60] ] ]
+    ];
+    var slot1 = googletag.defineSlot('/270461283/Banner', [], "ads-banner-top-ad")
+      .addService(googletag.pubads());
+    slot1.defineSizeMapping(mapping1);
+    var slot2 = googletag.defineSlot('/270461283/Banner', [], "ads-banner-bottom-ad")
+      .addService(googletag.pubads());
+    var mapping2 =  [
+      [ [970, 1], [ [970, 250], [970, 90] ] ],
+      [ [728, 1], [ [728, 90] ] ],
+      [ [468, 1], [ [468, 60] ] ],
+      [ [0, 0], [ [970, 90], [728, 90], [970, 250], [468, 60], [120, 60], [180, 150], [320, 50], [234, 60] ] ]
+    ];
+    slot2.defineSizeMapping(mapping2);
+
+    var header = googletag.defineSlot('/270461283/Box', [[88, 31]], "ads-box-header-ad")
+        .addService(googletag.pubads());
+
+    googletag.enableServices();
+    googletag.pubads().refresh([ slot2, slot1, header]);
+  });
+
   return {
     outgoing: function(interface) {
       interface(promise);
