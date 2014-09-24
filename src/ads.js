@@ -177,7 +177,8 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           }) ), React.DOM.section({
             id: "ads-box-top",
             style: {
-              "top": bottom_height_base + "px"
+              top: (this.props.header && this.props.header.height && this.props.ads && this.props.ads.sizes && this.props.ads.sizes['banner-top'] ? this.props.header.height + this.props.ads.sizes['banner-top'].height + 20: 0) + "px",
+              right: "20px"
             }
           }, React.DOM.div({
             id: "ads-box-top-ad"
