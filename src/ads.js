@@ -81,7 +81,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           "banner-top": {
             height: top_height + padding.top + padding.bottom,
             width: top_width + padding.left + padding.right,
-            top: (this.props.header && this.props.header.height ? this.props.header.height + padding.top: padding.top),
+            top: (props.header && props.header.height ? props.header.height + padding.top: padding.top),
             left: top_width_base,
             right: null
           },
