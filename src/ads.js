@@ -145,7 +145,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           }
 
           y = this.props.scroll && this.props.scroll.y ? this.props.scroll.y : 0;
-          if (this.props.header && y > ( box_top - box_ad_padding ) ) {
+          if (this.props.header && ((y + this.props.header.height) > ( box_top - box_ad_padding ))) {
             box_top = y + box_ad_padding;
           }
 
