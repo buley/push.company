@@ -127,9 +127,8 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
               total_width = mounted && this.props.screen ? this.props.screen.width : 0,
               total_width_padding = total_width - top_width,
               total_width_padding_bottom = total_width - bottom_width,
-              top_height_base = Math.floor((padding.top + padding.bottom)/2),
-              top_width_base = padding.left + Math.floor(total_width_padding/2),
-              bottom_width_base = padding.left + Math.floor(total_width_padding_bottom/2),
+              top_width_base = Math.floor(total_width_padding/2),
+              bottom_width_base = Math.floor(total_width_padding_bottom/2),
               bottom_height_base = 20;
 
           if (total_width_padding < 0) {
@@ -145,7 +144,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             id: "ads-banner-top",
             style: {
               "left": top_width_base + "px",
-              "top": (this.props.header && this.props.header.height ? this.props.header.height + top_height_base: top_height_base) + "px"
+              "top": (this.props.header && this.props.header.height ? this.props.header.height + padding.top: padding.top) + "px"
             }
           }, React.DOM.div({
             id: "ads-banner-top-ad"
