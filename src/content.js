@@ -21,11 +21,13 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         },
         render: function() {
           return React.DOM.section({
-            id: "content",
+            id: "content-container",
             style: {
               top: "200px"
             }
-          } );
+          }, React.DOM.section({
+            id: "content"
+          } ) );
         }
       });
 
