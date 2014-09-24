@@ -13,7 +13,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       },
       onResize = _.debounce(function() {
         var node = document.getElementById("footer-container") || {};
-        context.content = _.extend((context.content || {}), {
+        context.footer = _.extend((context.footer || {}), {
           height: node.clientHeight || 0,
           width: node.clientWidth || 0
         });
