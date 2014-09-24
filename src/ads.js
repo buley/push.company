@@ -282,7 +282,10 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
   googletag.cmd.push(function() {
 
     var top_banner,
-        bottom_banner;
+        bottom_banner,
+        top_box,
+        bottom_box;
+        
     googletag.pubads().enableSingleRequest();
     googletag.pubads().disableInitialLoad();
     googletag.pubads().collapseEmptyDivs();
