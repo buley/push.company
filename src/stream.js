@@ -71,7 +71,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           context = _.extend({}, state);
           onResize();
         } else {
-          context = _.extend({}, state);
+          context = _.extend(state, context);
           if (context.screen) {
             if (context.screen.width !== prev.width || context.screen.height !== prev.height) {
               onResize();
