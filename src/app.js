@@ -85,6 +85,7 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
           },
           previous_state = '',
           deferred = Q.defer(),
+          isReady = false,
           context = _.extend( {}, state),
           promise = deferred.promise,
           container = React.createClass({
@@ -125,9 +126,15 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
               }
               if (JSON.stringify(next_state) !== previous_state) {
                 previous_state = JSON.stringify(next_state);
-                context = _.extend({}, ctx);
-                console.log('state',ctx);
-                deferred.notify(ctx);
+                if (false === isReady) {
+                  context = _.extend(context, ctx);
+                  console.log('prestate',context);
+                  deferred.notify(context);                  
+                } else {
+                  context = _.extend({}, ctx);
+                  console.log('state',ctx);
+                  deferred.notify(ctx);
+                }
               }
               component.replaceProps(ctx);
               if (0 !== state_queue.length) {
@@ -149,6 +156,7 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
             });
           },
           ready = function() {
+            isReady = true;
             React.renderComponent(
               container(state),
               document.getElementById('app'),
