@@ -11,7 +11,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         left: 20,
         right: 20
       },
-      onResize = _.debounce(function() {
+      onResize = function() {
         var node = document.getElementById("footer-container") || {};
         context.footer = context.footer || {};
         context.footer = _.extend(context.footer, {
@@ -19,7 +19,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           width: node ? node.clientWidth : 0
         });
         deferred.notify(context);
-      }),
+      },
       component = React.createClass({
         componentDidMount: function() {
             instance = this;
@@ -47,6 +47,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       interface.then(null, null, function(state) {
         if (!context) {
           context = _.extend({}, state);
+          onResize();
         } else {
           context = _.extend({}, state);
           if (context.screen) {
