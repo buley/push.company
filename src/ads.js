@@ -75,9 +75,9 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
 
         bottom_box_top = box_top + box_top_height + ((props.stream && props.stream.height > 20 ? 2 : 1) * box_ad_padding );
 
-        context.ads = context.ads || {};
-        context.ads = context.ads || {};
-        context.ads = _.extend(context.ads, {
+        props.ads = props.ads || {};
+        props.ads = props.ads || {};
+        props.ads = _.extend(props.ads, {
           "banner-top": {
             height: top_height + padding.top + padding.bottom,
             width: top_width + padding.left + padding.right,
@@ -107,7 +107,8 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             right: box_ad_padding
           }
         });
-        deferred.notify(context);
+
+        deferred.notify(props);
 
       },
       onResize = function() {
