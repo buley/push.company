@@ -68,12 +68,13 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         if (props.header && ((y + props.header.height) > ( box_top - box_ad_padding ))) {
           orig = box_top;
           box_top = y + box_ad_padding + props.header.height;
-          if (y > (sidebar_height_base + (props.sidebar ? props.sidebar.height : 0))) {
-            box_top = (sidebar_height_base + (props.sidebar ? props.sidebar.height : 0)) - ( props.ads ? props.ads['box-top'].height : 0 );
-          }
+          //if (y > (sidebar_height_base + (props.sidebar ? props.sidebar.height : 0))) {
+          //  box_top = (sidebar_height_base + (props.sidebar ? props.sidebar.height : 0)) - ( props.ads ? props.ads['box-top'].height : 0 );
+          //}
         }
 
         bottom_box_top = box_top + box_top_height + ((props.stream && props.stream.height > 20 ? 2 : 1) * box_ad_padding );
+
 
         props.ads = props.ads || {};
         props.ads = props.ads || {};
