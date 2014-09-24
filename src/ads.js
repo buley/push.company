@@ -157,7 +157,11 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           }, React.DOM.div({
             id: "ads-banner-bottom-ad"
           }) ), React.DOM.section({
-            id: "ads-box-header"
+            id: "ads-box-header",
+            style: {
+              right: "50px",
+              top: ( this.props.scroll ? this.props.scroll.y + 5 : 5 ) + "px"
+            }
           }, React.DOM.div({
             id: "ads-box-header-ad"
           }) ) );
