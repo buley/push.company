@@ -50,10 +50,10 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         });
         deferred.notify(context);
       },
-      onResizeWindow = function() {
+      onResizeWindow = _.throttle( function() {
         //updateAds(true);
         console.log('resized window');
-      },
+      }, 1000 ),
       usable = [],
       first = false,
       expecting = 3,
