@@ -22,7 +22,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           return React.DOM.section({
             id: "footer-container",
             style: {
-              top: (this.props.ads && this.props.ads['banner-bottom'] ? this.props.ads['banner-bottom'].top + this.props.ads['banner-bottom'].height : 0 )
+              top: (this.props.ads && this.props.ads['banner-bottom'] ? ( this.props.ads['banner-bottom'].top - 20 ) + this.props.ads['banner-bottom'].height : 0 )
             }
           }, React.DOM.section({
             id: "footer"
