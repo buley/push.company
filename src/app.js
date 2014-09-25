@@ -184,6 +184,8 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
       window.addEventListener("resize", onResize);
       window.addEventListener("scroll", onScroll);
 
+      requestStateChange(state);
+
     });
 	return module.promise;
 });
