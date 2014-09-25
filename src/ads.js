@@ -144,6 +144,12 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         },
         render: function() {
 
+          var y = window.scrollY;
+          if (y > document.body.offsetHeight) {
+            y = document.body.offsetHeight;
+          } else if (y < 0) {
+            y = 0;
+          }
           return React.DOM.section({
             id: "ads"
           }, React.DOM.section({
@@ -166,7 +172,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             id: "ads-box-header",
             style: {
               right: "50px",
-              top: ( window.scrollY + 5 ) + "px"
+              top: ( y + 5 ) + "px"
             }
           }, React.DOM.div({
             id: "ads-box-header-ad"
