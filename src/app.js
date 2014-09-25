@@ -127,7 +127,6 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
               if (JSON.stringify(next_state) !== previous_state) {
                 previous_state = JSON.stringify(next_state);
                   context = _.extend({}, ctx);
-                  console.log('notify', ctx);
                   deferred.notify(ctx);
               }
               component.replaceProps(ctx);
@@ -199,7 +198,7 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
       requestStateChange(_.extend(context, { init: Date.now() }));
 
       window.addEventListener("resize", onResize);
-      window.addEventListener("scroll", onScroll);
+      //window.addEventListener("scroll", onScroll);
 
     });
 	return module.promise;
