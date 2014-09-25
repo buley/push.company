@@ -203,6 +203,7 @@ define(['q', 'react', 'underscore', 'tween'], function(Q, React, _, Tween) {
     },
     incoming: function(interface) {
       interface.then(null, null, function(state) {
+        context = state;
         if (first) {
           first = false;
           state.header = header;
