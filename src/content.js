@@ -4,6 +4,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       module = Q.defer(),
       context,
       instance,
+      content,
       prev = {},
       padding = {
         top: 20,
@@ -13,9 +14,10 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       },
       onResize = function(ctx) {
         var node = document.getElementById("content-container");
-        ctx.content = _.extend((ctx.content || {}), {
+        content = {
           height: node ? node.clientHeight : 0
-        });
+        };
+        ctx.content = content;
         deferred.notify(ctx);
       },
       component = React.createClass({
@@ -49,8 +51,10 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         if (!context) {
           onResize(state);
         } else {
-          state = _.extend(state, { content: context.content} ) );
-          if (state.screen) {
+          if (!state.content) {
+            state.content = content;
+            deferred.notify(ctx);
+          } else if (state.screen) {
             if (state.screen.updated !== prev.updated) {
               onResize(state);
               prev.updated = context.screen.updated;

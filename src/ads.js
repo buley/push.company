@@ -3,6 +3,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       promise = deferred.promise,
       module = Q.defer(),
       context,
+      ads,
       instance,
       mapping = [
         [ [1010, 1], [ [970, 250], [970, 90], [728, 90], [468, 60], [120, 60], [180, 150], [320, 50], [234, 60] ] ],
@@ -67,8 +68,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
 
         bottom_box_top = box_top + box_top_height + ((props.stream && props.stream.height > 20 ? 2 : 1) * box_ad_padding );
 
-        props.ads = props.ads || {};
-        props.ads = _.extend(props.ads, {
+        ads = {
           "banner-top": {
             height: top_height + padding.top + padding.bottom,
             width: top_width + padding.left + padding.right,
@@ -97,7 +97,9 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             left: null,
             right: box_ad_padding
           }
-        });
+        };
+
+        props.ads = ads;
 
         deferred.notify(props);
 
@@ -239,28 +241,33 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           var refresh = false,
               adjust = false;
 
-          context = _.extend({}, _.extend(state, { ads: context.ads}));
+          if (!state.ads) {
+            state.ads = ads;
 
-          if (context.screen) {
-            if (context.screen.updated !== prev.xupdated) {
-              refresh = true;
-              adjust = true;
-              prev.xupdated = context.screen.updated;
+          } else {
+
+            if (state.screen) {
+              if (state.screen.updated !== state.xupdated) {
+                refresh = true;
+                adjust = true;
+                prev.xupdated = state.screen.updated;
+              }
+            }
+
+            if (state.scroll) {
+              if (state.scroll.updated !== prev.yupdated) {
+                adjust = true;
+                prev.yupdated = state.scroll.updated;
+              }
+            }
+
+            if (false === refresh && true === adjust) {
+              adjustAds(state);
+            } else if (true === refresh && true === adjust) {
+              onResize();
             }
           }
 
-          if (context.scroll) {
-            if (context.scroll.updated !== prev.yupdated) {
-              adjust = true;
-              prev.yupdated = context.scroll.updated;
-            }
-          }
-
-          if (false === refresh && true === adjust) {
-            adjustAds(context);
-          } else if (true === refresh && true === adjust) {
-            onResize();
-          }
         }
       });
     },

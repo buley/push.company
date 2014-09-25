@@ -5,6 +5,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       context,
       instance,
       prev = {},
+      sidebar,
       padding = {
         top: 20,
         bottom: 20,
@@ -13,10 +14,10 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       },
       onResize = function(ctx) {
         var node = document.getElementById("sidebar-container");
-        ctx.sidebar = _.extend((ctx.sidebar || {}), {
+        ctx.sidebar = {
           height: node ? node.clientHeight : 0,
           width: node ? node.clientWidth : 0
-        });
+        };
         deferred.notify(ctx);
       },
       component = React.createClass({
@@ -47,8 +48,10 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         if (!context) {
           onResize(state);
         } else {
-          state = _.extend(state, { sidebar: context.sidebar });
-          if (state.screen) {
+          if (!state.sidebar) {
+            state.sidebar = sidebar;
+            deferred.notify(state);
+          } else if (state.screen) {
             if (state.screen.updated !== prev.updated) {
               onResize(state);
               prev.updated = state.screen.updated;
