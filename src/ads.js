@@ -129,7 +129,10 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         render: function() {
 
           var y = window.scrollY,
-              total = (this.props.header ? this.props.header.height : 0) + (this.props.ads ? this.props.ads['banner-top'].height + this.props.ads['banner-bottom'].height : 0) + (this.props.content ? this.props.content.height : 0) + (this.props.footer ? this.props.footer.height : 0)
+              total = (this.props.header ? this.props.header.height : 0) + (this.props.ads ? this.props.ads['banner-top'].height + this.props.ads['banner-bottom'].height : 0) + (this.props.content ? this.props.content.height : 0) + (this.props.footer ? this.props.footer.height : 0),
+              top_el = document.getElementById("ads-banner-top") || {},
+              top_height = top_el.offsetHeight ? top_el.offsetHeight : 0,
+              top_width = top_el.offsetWidth ? top_el.offsetWidth : 0;
 
           if (y > total) {
             y = total;
