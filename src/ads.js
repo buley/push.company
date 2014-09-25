@@ -105,7 +105,8 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         deferred.notify(props);
 
       },
-      onResize = function() {
+      onResize = function(ctx) {
+        context = ctx;
         expecting = slots.length;
         seen = 0;
         if (expecting > 0) {
@@ -273,13 +274,9 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             }
 
             if (false === refresh && true === adjust) {
-              adjust = false;
               adjustAds(state);
             } else if (true === refresh && true === adjust) {
-              context = state;
-              adjust = false;
-              refresh = false;
-              onResize();
+              onResize(context);
             }
           }
 
