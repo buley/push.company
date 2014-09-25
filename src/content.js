@@ -20,8 +20,8 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           sidebar_height = min;
         }
         content = {
-          height: sidebar_height,
-          top:  ( ctx.header && ctx.header.height ? ctx.header.height : 0) + (ctx.ads && ctx.ads['banner-top'] ? ctx.ads['banner-top'].height : 0)
+          height: sidebar_height + "px",
+          top:  ( ctx.header && ctx.header.height ? ctx.header.height : 0) + (ctx.ads && ctx.ads['banner-top'] ? ctx.ads['banner-top'].height : 0) + "px"
         };
         ctx.content = content;
         deferred.notify(ctx);
