@@ -64,14 +64,23 @@ define(['q', 'react', 'underscore', 'tween'], function(Q, React, _, Tween) {
               node = mounted ? this.getDOMNode() : null,
               height = mounted ? nodeHeight(node) : 0,
               width = mounted ? nodeWidth(node) : 0,
-              logo = getLogo(height, width, this.props.scroll ? this.props.scroll.y : 0);
+              logo,
+              y = window.scrollY;
+
+          if (y > document.body.offsetHeight) {
+            y = document.body.offsetHeight;
+          } else if (y < 0) {
+            y = 0;
+          }
+
+          logo = getLogo(height, width, y);
 
           return React.DOM.header({
             id: "header-container",
             "data-height": height,
             "data-width": width,
             style: {
-              top: this.props.scroll ? this.props.scroll.y : 0
+              top: y
             }
           }, React.DOM.div({
             id: "header-over",
