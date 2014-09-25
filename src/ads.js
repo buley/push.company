@@ -277,9 +277,9 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
               adjust = false;
             } else if (true === refresh && true === adjust) {
               context = state;
-              onResize();
               adjust = false;
               refresh = false;
+              onResize();
             }
           }
 
