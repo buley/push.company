@@ -259,7 +259,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           } else {
 
             if (state.screen) {
-              if (state.screen.updated !== state.xupdated) {
+              if (state.screen.updated !== prev.xupdated) {
                 refresh = true;
                 adjust = true;
                 prev.xupdated = state.screen.updated;
