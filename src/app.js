@@ -113,12 +113,6 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
           }),
           component,
           state_queue = [],
-          doStateChange = function() {
-            if (0 === state_queue.length) {
-              return;
-            }
-            executeStateChange();
-          },
           executeStateChange = function(ctx) {
               var ctx;
               try {
@@ -135,14 +129,9 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
                 console.log('updated',ctx);
                 doRender(ctx);
               }
-              if (0 !== state_queue.length) {
-                doStateChange();
-              }
-
           },
           requestStateChange = function(change) {
-            state_queue.push(change);
-            doStateChange();
+            executeStateChange(change);
           },
           incoming = function(interface) {
             interface.then(null, null, function(change) {
