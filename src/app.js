@@ -138,7 +138,7 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
               doRender(ctx);
           },
           requestStateChange = function(change) {
-            console.log('changing',change);
+            console.log('changing',JSON.stringify(change));
             executeStateChange(change);
           },
           incoming = function(interface) {
