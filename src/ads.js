@@ -184,15 +184,15 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           }) ), React.DOM.section({
             id: "ads-box-top",
             style: {
-              "right": (this.props.ads ? this.props.ads['box-top'].right : 0) + "px",
-              "top": (this.props.ads ? this.props.ads['box-top'].top : 0)
+              "right": padding.right + "px",
+              "top": (header_height + padding.top + top_height + padding.bottom + padding-top) + "px"
             }
           }, React.DOM.div({
             id: "ads-box-top-ad"
           }) ), React.DOM.section({
             id: "ads-box-bottom",
             style: {
-              "right": (this.props.ads ? this.props.ads['box-bottom'].right : 0) + "px",
+              "right": padding.right + "px",
               "top": (this.props.ads ? this.props.ads['box-bottom'].top : 0)
             }
           }, React.DOM.div({
