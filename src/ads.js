@@ -230,7 +230,6 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
     bottom_box.defineSizeMapping(boxmapping);
 
     expecting = slots.length;
-    googletag.pubads().refresh(slots);
 
     googletag.enableServices();
 
