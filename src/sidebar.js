@@ -26,15 +26,14 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             instance = this;
         },
         render: function() {
-          var content_height = this.props.ads ? (this.props.ads['banner-bottom'].top + this.props.ads['banner-bottom'].height + 20) - (this.props.ads['banner-top'].top - 20) : 0;
-          if (min > sidebar_height) {
-            sidebar_height = min;
-          }
+          var min = this.props.content ? this.props.content.height : 0,
+            sidebar_height = this.props.ads ? (this.props.ads['box-bottom'].top + this.props.ads['box-bottom'].height ) - (this.props.ads['box-top'].top - 20) : 0;
+
           return React.DOM.section({
             id: "sidebar-container",
             style: {
               top: this.props.header && this.props.header.height && this.props.ads && this.props.ads['banner-top'] ? this.props.header.height + this.props.ads['banner-top'].height: 0,
-              height: this.props.content ? this.props.content.height : 0
+              height: Math.max(min, sidebar_height)
             }
           }, React.DOM.section({
             id: "sidebar"
