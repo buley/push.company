@@ -11,16 +11,14 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         left: 20,
         right: 20
       },
-      onResize = _.debounce(function() {
-        if (context) {
-          var node = document.getElementById("sidebar-container");
-          context.sidebar = _.extend((context.sidebar || {}), {
-            height: node ? node.clientHeight : 0,
-            width: node ? node.clientWidth : 0
-          });
-          deferred.notify(context);
-        }
-      }),
+      onResize = function(ctx) {
+        var node = document.getElementById("sidebar-container");
+        ctx.sidebar = _.extend((ctx.sidebar || {}), {
+          height: node ? node.clientHeight : 0,
+          width: node ? node.clientWidth : 0
+        });
+        deferred.notify(ctx);
+      },
       component = React.createClass({
         componentDidMount: function() {
             instance = this;
@@ -47,15 +45,13 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
     incoming: function(interface) {
       interface.then(null, null, function(state) {
         if (!context) {
-          context = _.extend({}, state);
-            onResize();
+          onResize(state);
         } else {
-          context = _.extend({}, _.extend(state, { sidebar: context.sidebar}));
-
-          if (context.screen) {
-            if (context.screen.updated !== prev.updated) {
-              onResize();
-              prev.updated = context.screen.updated;
+          state = _.extend(state, { sidebar: context.sidebar });
+          if (state.screen) {
+            if (state.screen.updated !== prev.updated) {
+              onResize(state);
+              prev.updated = state.screen.updated;
             }
           }
         }

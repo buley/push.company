@@ -11,12 +11,12 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         left: 20,
         right: 20
       },
-      onResize = function() {
+      onResize = function(ctx) {
         var node = document.getElementById("content-container");
-        context.content = _.extend((context.content || {}), {
+        ctx.content = _.extend((ctx.content || {}), {
           height: node ? node.clientHeight : 0
         });
-        deferred.notify(context);
+        deferred.notify(ctx);
       },
       component = React.createClass({
         componentDidMount: function() {
@@ -26,7 +26,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           return React.DOM.section({
             id: "content-container",
             style: {
-              top: this.props.header && this.props.header.height && this.props.ads && this.props.ads['banner-top'] ? this.props.header.height + this.props.ads['banner-top'].height: 0
+              top: this.props.header && this.props.header.height && this.props.ads && this.props.ads['banner-top'] ? this.props.header.height + this.props.ads['banner-top'].height : 0
             }
           }, React.DOM.section({
             id: "content",
@@ -47,13 +47,12 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
     incoming: function(interface) {
       interface.then(null, null, function(state) {
         if (!context) {
-          context = _.extend({}, state);
-          onResize();
+          onResize(state);
         } else {
-          context = _.extend({}, _.extend(state, { content: context.content}));
-          if (context.screen) {
-            if (context.screen.updated !== prev.updated) {
-              onResize();
+          state = _.extend(state, { content: context.content} ) );
+          if (state.screen) {
+            if (state.screen.updated !== prev.updated) {
+              onResize(state);
               prev.updated = context.screen.updated;
             }
           }

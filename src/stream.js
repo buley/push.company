@@ -11,14 +11,13 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         left: 20,
         right: 20
       },
-      onResize = function() {
+      onResize = function(ctx) {
           var node = document.getElementById("stream-container");
-          context.stream = context.stream || {};
-          context.stream = _.extend(context.stream, {
+          ctx.stream = _.extend((ctx.stream || {}), {
             height: node ? node.clientHeight : 0,
             width: node ? node.clientWidth : 0
           });
-          deferred.notify(context);
+          deferred.notify(ctx);
       },
       component = React.createClass({
         componentDidMount: function() {
@@ -47,13 +46,12 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
     incoming: function(interface) {
       interface.then(null, null, function(state) {
         if (!context) {
-          context = _.extend({}, state);
-          onResize();
+          onResize(state);
         } else {
-          context = _.extend({}, _.extend(state, { stream: context.stream}));
-          if (context.screen) {
-            if (context.screen.updated !== prev.updated) {
-              onResize();
+          state = _.extend(state, { stream: context.stream});
+          if (state.screen) {
+            if (state.screen.updated !== prev.updated) {
+              onResize(state);
               prev.updated = context.screen.updated;
             }
           }
