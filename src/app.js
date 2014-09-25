@@ -128,6 +128,7 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
                 previous_state = JSON.stringify(next_state);
                 context = _.extend({}, ctx);
                 deferred.notify(ctx);
+                console.log('updated',ctx);
                 component.replaceProps(ctx);
               }
               if (0 !== state_queue.length) {
@@ -175,17 +176,17 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
           },
           forEachHandler = function(interface) {
             var readyHandler = function(comp) {
-                  interface.incoming(promise);
-                  interface.outgoing(incoming);
-                  if (!!comp) {
-                    components.push(comp);
-                  }
-                  if (loaded === interfaces.length) {
-                    ready();
-                  } else {
-                    loaded = loaded + 1;
-                  }
-                };
+                interface.incoming(promise);
+                interface.outgoing(incoming);
+                if (!!comp) {
+                  components.push(comp);
+                }
+                if (loaded === interfaces.length) {
+                  ready();
+                } else {
+                  loaded = loaded + 1;
+                }
+              };
             if (!!interface && !!interface.ready) {
               interface.ready(readyHandler);
             } else {
