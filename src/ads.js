@@ -43,7 +43,6 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             y,
             orig,
             bottom_box_top,
-            box_top = (props.header && props.header.height ? props.header.height + ( props.ads && props.ads['banner-top'] ? props.ads['banner-top'].height : 0 ) + box_ad_padding: 0),
             top_el = document.getElementById("ads-banner-top") || {},
             top_height = top_el.offsetHeight ? top_el.offsetHeight : 0,
             top_width = top_el.offsetWidth ? top_el.offsetWidth : 0,
@@ -55,8 +54,9 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             total_width_padding_bottom = total_width - bottom_width,
             top_width_base = Math.floor(total_width_padding/2),
             bottom_width_base = Math.floor(total_width_padding_bottom/2),
-            sidebar_height_base = props.header && props.header.height ? props.header.height + (props.ads && props.ads['banner-top'] ? props.ads['banner-top'].height : 0) + padding.top: 0;
-            bottom_height_base = props.header && props.header.height ? props.header.height + ( props.ads && props.ads['banner-top'] ? props.ads['banner-top'].height : 0) + ( props.content ? props.content.height : 0 ) + padding.top: 0,
+            box_top = (props.header && props.header.height ? props.header.height + top_height + padding.top + padding.bottom + box_ad_padding: 0),
+            sidebar_height_base = props.header && props.header.height ? props.header.height + top_height + padding.top + padding.bottom + padding.top: 0;
+            bottom_height_base = props.header && props.header.height ? props.header.height + top_height + padding.top + padding.bottom + ( props.content ? props.content.height : 0 ) + padding.top: 0,
             box_bottom_el = document.getElementById("ads-box-bottom") || {},
             box_bottom_height = box_bottom_el.offsetHeight ? box_bottom_el.offsetHeight : 0,
             box_bottom_width = box_bottom_el.offsetWidth ? box_bottom_el.offsetWidth : 0,
@@ -106,7 +106,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           "box-top": {
             height: box_bottom_height,
             width: box_bottom_width,
-            top: bottom_height_base + bottom_height + padding.top + padding.bottom, //box_top,
+            top: box_top,
             left: null,
             right: box_ad_padding
           },
