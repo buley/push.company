@@ -65,26 +65,6 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             box_top_width = box_top_el.offsetWidth ? box_top_el.offsetWidth : 0,
             total = (props.header ? props.header.height : 0) + (props.ads ? props.ads['banner-top'].height + props.ads['banner-bottom'].height : 0) + (props.content ? props.content.height : 0) + (props.footer ? props.footer.height : 0);
 
-        if (y > total) {
-          y = total;
-        } else if (y < 0) {
-          y = 0;
-        };
-
-        /*
-        if (props.header && ((y + props.header.height) >= ( box_top + box_ad_padding ))) {
-          //orig = box_top;
-          if ( props.content && (y + box_ad_padding + props.header.height + box_top_height) > ((props.header && props.header.height && props.ads && props.ads['banner-top'] ? props.header.height + props.ads['banner-top'].height + box_ad_padding: 0) + props.content.height)) {
-            console.log('too far');
-          } else {
-            box_top = y + box_ad_padding + props.header.height;
-          }
-          //if (y > (sidebar_height_base + (props.sidebar ? props.sidebar.height : 0))) {
-          //  box_top = (sidebar_height_base + (props.sidebar ? props.sidebar.height : 0)) - ( props.ads ? props.ads['box-top'].height : 0 );
-          //}
-        }
-
-        */
         bottom_box_top = box_top + box_top_height + ((props.stream && props.stream.height > 20 ? 2 : 1) * box_ad_padding );
 
         props.ads = props.ads || {};
@@ -144,13 +124,6 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         },
         render: function() {
 
-          var y = window.scrollY,
-              total = (this.props.header ? this.props.header.height : 0) + (this.props.ads ? this.props.ads['banner-top'].height + this.props.ads['banner-bottom'].height : 0) + (this.props.content ? this.props.content.height : 0) + (this.props.footer ? this.props.footer.height : 0);
-          if (y > total) {
-            y = total;
-          } else if (y < 0) {
-            y = 0;
-          }
           return React.DOM.section({
             id: "ads"
           }, React.DOM.section({
@@ -173,7 +146,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             id: "ads-box-header",
             style: {
               right: "50px",
-              top: ( y + 5 ) + "px"
+              top: ( window.scrollY + 5 ) + "px"
             }
           }, React.DOM.div({
             id: "ads-box-header-ad"
