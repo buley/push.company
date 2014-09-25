@@ -53,7 +53,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           return React.DOM.section({
             id: "content-container",
             style: {
-              top: content_top + "px"
+              top: (padding.top + content_top + padding.bottom)  "px"
             }
           }, React.DOM.section({
             id: "content",
