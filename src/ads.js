@@ -140,11 +140,18 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
               bottom_el = document.getElementById("ads-banner-bottom") || {},
               bottom_height = bottom_el.offsetHeight ? bottom_el.offsetHeight : 0,
               bottom_width = bottom_el.offsetWidth ? bottom_el.offsetWidth : 0,
+              box_bottom_el = document.getElementById("ads-box-bottom") || {},
+              box_bottom_height = box_bottom_el.offsetHeight ? box_bottom_el.offsetHeight : 0,
+              box_bottom_width = box_bottom_el.offsetWidth ? box_bottom_el.offsetWidth : 0,
+              box_top_el = document.getElementById("ads-box-top") || {},
+              box_top_height = box_top_el.offsetHeight ? box_top_el.offsetHeight : 0,
+              box_top_width = box_top_el.offsetWidth ? box_top_el.offsetWidth : 0,
               total_width = document.body.offsetWidth || 0,
               total_width_padding = total_width - top_width,
               total_width_padding_bottom = total_width - bottom_width,
               bottom_width_base = Math.floor(total_width_padding_bottom/2),
               top_width_base = Math.floor(total_width_padding/2),
+              box_top = (header_height + padding.top + top_height + padding.bottom + padding.top),
               total = header_height + (this.props.ads ? this.props.ads['banner-top'].height + this.props.ads['banner-bottom'].height : 0) + (this.props.content ? this.props.content.height : 0) + (this.props.footer ? this.props.footer.height : 0);
 
           if (sidebar > height) {
@@ -185,7 +192,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             id: "ads-box-top",
             style: {
               "right": padding.right + "px",
-              "top": (header_height + padding.top + top_height + padding.bottom + padding.top) + "px"
+              "top": box_top + "px"
             }
           }, React.DOM.div({
             id: "ads-box-top-ad"
@@ -193,7 +200,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             id: "ads-box-bottom",
             style: {
               "right": padding.right + "px",
-              "top": (this.props.ads ? this.props.ads['box-bottom'].top : 0)
+              "top": (box_top + box_top_height + padding.bottom + padding.top)
             }
           }, React.DOM.div({
             id: "ads-box-bottom-ad"
