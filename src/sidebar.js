@@ -14,7 +14,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         right: 20
       },
       onResize = function(ctx) {
-        var min = ctx.content ? ctx.content.height : 0,
+        var min = ctx.content ? ctx.content.height : 800,
           sidebar_height = ctx.ads ? (ctx.ads['box-bottom'].top + ctx.ads['box-bottom'].height + 20 ) - (ctx.ads['box-top'].top - 20) : 0;
         ctx.sidebar = {
           height:  Math.max(min, sidebar_height),
@@ -43,7 +43,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
 
   return {
     outgoing: function(interface) {
-      interface(promise);
+      interface(promise);ss
     },
     incoming: function(interface) {
       interface.then(null, null, function(state) {
