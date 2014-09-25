@@ -144,7 +144,8 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         },
         render: function() {
 
-          var y = window.scrollY;
+          var y = window.scrollY,
+              total = (ctx.header ? ctx.header.height : 0) + (ctx.ads ? ctx.ads['banner-top'].height + ctx.ads['banner-bottom'].height : 0) + (ctx.content ? ctx.content.height : 0) + (ctx.footer ? ctx.footer.height : 0);
           if (y > document.body.offsetHeight) {
             y = document.body.offsetHeight;
           } else if (y < 0) {
@@ -252,14 +253,6 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
     googletag.enableServices();
 
   });
-
-
-  //window.addEventListener("resize", onResize);
-  window.addEventListener("scroll", function() {
-    console.log('adjust ads');
-    //adjustAds(context);
-  });
-
 
   return {
     outgoing: function(interface) {
