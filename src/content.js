@@ -15,7 +15,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         right: 20
       },
       onResize = function(ctx) {
-        var sidebar_height = ctx.ads ? (ctx.ads['box-bottom'].top + ctx.ads['box-bottom'].height + 20 ) - (ctx.ads['box-top'].top - 20) : 0;
+        var sidebar_height = ctx.sidebar ? ctx.sidebar.height : 0;
         if (min > sidebar_height) {
           sidebar_height = min;
         }
