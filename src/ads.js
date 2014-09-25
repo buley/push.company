@@ -189,6 +189,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
     if (!_.contains(slots, event.slot)) {
       slots.push(event.slot);
     }
+    console.log('ads',expecting, seen + 1);
 
     if (expecting > 0 && ++seen >= expecting) {
       seen = 0;
