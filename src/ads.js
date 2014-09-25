@@ -236,7 +236,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
     incoming: function(interface) {
       interface.then(null, null, function(state) {
         if (!context) {
-          context = _.extend({}, state);
+          adjustAds(state);
         } else {
           var refresh = false,
               adjust = false;
