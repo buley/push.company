@@ -259,16 +259,20 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           } else {
 
             if (state.screen) {
-              if (state.screen.updated !== prev.xupdated) {
+              if (prev.xupdated && state.screen.updated !== prev.xupdated) {
                 refresh = true;
                 adjust = true;
+                prev.xupdated = state.screen.updated;
+              } else if (!prev.xupdated) {
                 prev.xupdated = state.screen.updated;
               }
             }
 
             if (state.scroll) {
-              if (state.scroll.updated !== prev.yupdated) {
+              if (prev.yupdated && state.scroll.updated !== prev.yupdated) {
                 adjust = true;
+                prev.yupdated = state.scroll.updated;
+              } else if (!prev.yupdated) {
                 prev.yupdated = state.scroll.updated;
               }
             }
