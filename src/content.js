@@ -15,7 +15,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         right: 20
       },
       onResize = function(ctx) {
-        var node = document.getElementById("content-container");
+        var node = document.getElementById("content");
         content = {
           height: node ? node.clientHeight : 0
         };
