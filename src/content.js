@@ -21,7 +21,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         }
         content = {
           height: sidebar_height,
-          top:  ( ctx.header && ctx.header.height ? ctx.header.height : 0) + (ctx.ads && ctx.ads['banner-top'] ? ctx.ads['banner-top'].height : 0)
+          top:  ( ctx.header && ctx.header.height ? ctx.header.height : 0) + (ctx.ads && ctx.ads['banner-top'] ? ctx.ads['banner-top'].height + padding.bottom : 0)
         };
         ctx.content = content;
         deferred.notify(ctx);
@@ -66,9 +66,6 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
               prev.updated = state.screen.updated;
               onResize(state);
             }
-          } else if ((ctx.ads && ctx.ads['banner-top'] ? ctx.ads['banner-top'].height : 0) !== prev.ad) {
-            prev.ad = ctx.ads['banner-top'].height;
-            onResize(state);
           }
         }
       });
