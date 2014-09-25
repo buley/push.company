@@ -65,6 +65,9 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             if (state.screen.updated !== prev.updated) {
               prev.updated = state.screen.updated;
               onResize(state);
+            } else if (state.scroll.updated !== prev.xupdated) {
+              prev.xupdated = state.scroll.updated;
+              onResize(state);
             }
           }
         }
