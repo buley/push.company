@@ -189,7 +189,6 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
     if (!_.contains(slots, event.slot)) {
       slots.push(event.slot);
     }
-    console.log('ads',expecting, seen + 1);
 
     if (expecting > 0 && ++seen >= expecting) {
       seen = 0;
@@ -233,7 +232,6 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
     slots.push(bottom_box);
     bottom_box.defineSizeMapping(boxmapping);
 
-
     expecting = slots.length;
 
     googletag.enableServices();
@@ -248,7 +246,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       interface.then(null, null, function(state) {
         if (first) {
           first = false;
-          adjustAds(state);
+          onResize(state);
         } else {
           var refresh = false,
               adjust = false;
