@@ -249,7 +249,6 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
               adjust = false;
 
           if (!state.ads) {
-            state.ads = ads;
             adjustAds(state);
 
           } else {
