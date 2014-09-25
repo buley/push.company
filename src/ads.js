@@ -129,16 +129,23 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         render: function() {
 
           var y = window.scrollY,
-              total = (this.props.header ? this.props.header.height : 0) + (this.props.ads ? this.props.ads['banner-top'].height + this.props.ads['banner-bottom'].height : 0) + (this.props.content ? this.props.content.height : 0) + (this.props.footer ? this.props.footer.height : 0),
+              header = document.getElementById("header"),
+              header_height = header ? header.offsetHeight : 0,
               top_el = document.getElementById("ads-banner-top") || {},
               top_height = top_el.offsetHeight ? top_el.offsetHeight : 0,
               top_width = top_el.offsetWidth ? top_el.offsetWidth : 0,
               height = 800,
-              content_top = ( this.props.header && this.props.header.height ? this.props.header.height : 0) + (this.props.ads && this.props.ads['banner-top'] ? this.props.ads['banner-top'].height : 0),
+              content_top = header_height + (this.props.ads && this.props.ads['banner-top'] ? this.props.ads['banner-top'].height : 0),
               sidebar = (this.props.ads && this.props.ads['box-top'] && this.props.ads['box-bottom'] ? this.props.ads['box-top'].height + this.props.ads['box-bottom'].height : 0),
               bottom_el = document.getElementById("ads-banner-bottom") || {},
               bottom_height = bottom_el.offsetHeight ? bottom_el.offsetHeight : 0,
-              bottom_width = bottom_el.offsetWidth ? bottom_el.offsetWidth : 0;
+              bottom_width = bottom_el.offsetWidth ? bottom_el.offsetWidth : 0,
+              total_width = document.body.offsetWidth || 0,
+              total_width_padding = total_width - top_width,
+              total_width_padding_bottom = total_width - bottom_width,
+              bottom_width_base = Math.floor(total_width_padding_bottom/2),
+              top_width_base = Math.floor(total_width_padding/2),
+              total = header_height + (this.props.ads ? this.props.ads['banner-top'].height + this.props.ads['banner-bottom'].height : 0) + (this.props.content ? this.props.content.height : 0) + (this.props.footer ? this.props.footer.height : 0),
 
           if (sidebar > height) {
             height = sidebar;
@@ -153,16 +160,16 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           }, React.DOM.section({
             id: "ads-banner-top",
             style: {
-              "left": (this.props.ads ? this.props.ads['banner-top'].left : 0) + "px",
-              "top": (this.props.ads ? this.props.ads['banner-top'].top : 0)
+              "left": top_width_base + "px",
+              "top": (header_height + padding.top) + "px"
             }
           }, React.DOM.div({
             id: "ads-banner-top-ad"
           }) ), React.DOM.section({
             id: "ads-banner-bottom",
             style: {
-              "top": content_top + height + 20 + "px",
-              "left": (this.props.ads ? this.props.ads['banner-bottom'].left : 0) + "px",
+              "top": (content_top + height + padding.top) + "px",
+              "left": bottom_width_base + "px",
             }
           }, React.DOM.div({
             id: "ads-banner-bottom-ad"
