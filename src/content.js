@@ -36,7 +36,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           }, React.DOM.section({
             id: "content",
             style: {
-              height: "800px" //(this.props.content ? this.props.content.height : 0) + "px"
+              height: "800px"
             }
           } ) );
         }
