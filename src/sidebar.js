@@ -27,11 +27,14 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             instance = this;
         },
         render: function() {
+          var min = this.props.content ? this.props.content.height : 800,
+            sidebar_height = this.props.ads ? (this.props.ads['box-bottom'].top + this.props.ads['box-bottom'].height + 20 ) - (this.props.ads['box-top'].top - 20) : 0;
+
           return React.DOM.section({
             id: "sidebar-container",
             style: {
-              top: this.props.sidebar ? this.props.sidebar.top : 0,
-              height: this.props.sidebar ? this.props.sidebar.height : 0
+              top: (this.props.header && this.props.header.height ? this.props.header.height : 0) + ( this.props.ads && this.props.ads['banner-top'] ? this.props.ads['banner-top'].height : 0 ),//this.props.sidebar ? this.props.sidebar.top : 0,
+              height: (this.props.header && this.props.header.height ? this.props.header.height : 0) + ( this.props.ads && this.props.ads['banner-top'] ? this.props.ads['banner-top'].height : 0 )//this.props.sidebar ? this.props.sidebar.height : 0
             }
           }, React.DOM.section({
             id: "sidebar"
