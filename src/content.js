@@ -30,7 +30,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         render: function() {
           var height = 800,
               header = document.getElementById("header"),
-              header_height = header.offsetHeight,
+              header_height = header ? header.offsetHeight : 0,
               box_bottom_el = document.getElementById("ads-box-bottom") || {},
               box_bottom_height = box_bottom_el.offsetHeight ? box_bottom_el.offsetHeight : 0,
               box_bottom_width = box_bottom_el.offsetWidth ? box_bottom_el.offsetWidth : 0,
