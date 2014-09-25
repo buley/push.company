@@ -153,6 +153,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       context.ads = context.ads || {};
       context.ads.updated = Date.now();
       deferred.notify(context);
+      console.log('updated ads',context.ads.updated);
     }
   });
 
