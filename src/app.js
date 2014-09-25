@@ -143,6 +143,8 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
             if (last !== current) {
               last = current;
               executeStateChange(change);
+            } else {
+              console.log('redundant', current);
             }
           },
           incoming = function(interface) {
