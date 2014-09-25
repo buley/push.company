@@ -30,8 +30,8 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           return React.DOM.section({
             id: "sidebar-container",
             style: {
-              top: this.props.sidebar.top,
-              height: this.props.sidebar.height
+              top: this.props.sidebar ? this.props.sidebar.top : 0,
+              height: this.props.sidebar ? this.props.sidebar.height : 0
             }
           }, React.DOM.section({
             id: "sidebar"
