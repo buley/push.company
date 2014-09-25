@@ -127,6 +127,14 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         },
         render: function() {
 
+          var y = window.scrollY,
+              total = window.outerHeight;
+
+          if (y > total) {
+            y = total;
+          } else if (y < 0) {
+            y = 0;
+          }
           return React.DOM.section({
             id: "ads"
           }, React.DOM.section({
@@ -149,7 +157,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             id: "ads-box-header",
             style: {
               right: "50px",
-              top: ( window.scrollY + 5 ) + "px"
+              top: ( y + 5 ) + "px"
             }
           }, React.DOM.div({
             id: "ads-box-header-ad"
@@ -250,7 +258,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           } else {
 
             if (state.screen) {
-              if (state.screen.updated !== prev.xupdated) {
+              if (state.screen.updated !== state.xupdated) {
                 refresh = true;
                 adjust = true;
                 prev.xupdated = state.screen.updated;
