@@ -185,17 +185,14 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
   module.resolve(component);
 
   googletag.pubads().addEventListener('slotRenderEnded', function(event) {
-
     if (!_.contains(slots, event.slot)) {
       slots.push(event.slot);
     }
-
     if (expecting > 0 && ++seen >= expecting) {
       seen = 0;
       expecting = 0;
       adjustAds(context);
     }
-
   });
 
   googletag.cmd.push(function() {
@@ -233,6 +230,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
     bottom_box.defineSizeMapping(boxmapping);
 
     expecting = slots.length;
+    googletag.pubads().refresh(slots);
 
     googletag.enableServices();
 
