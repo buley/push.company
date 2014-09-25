@@ -31,7 +31,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           return React.DOM.section({
             id: "content-container",
             style: {
-              top: ( ctx.header && ctx.header.height ? ctx.header.height : 0) + (ctx.ads && ctx.ads['banner-top'] ? ctx.ads['banner-top'].height : 0) + "px"
+              top: ( this.props.header && this.props.header.height ? this.props.header.height : 0) + (this.props.ads && this.props.ads['banner-top'] ? this.props.ads['banner-top'].height : 0) + "px"
             }
           }, React.DOM.section({
             id: "content",
