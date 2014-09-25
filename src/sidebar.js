@@ -34,7 +34,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             id: "sidebar-container",
             style: {
               top: (this.props.header && this.props.header.height ? this.props.header.height : 0) + ( this.props.ads && this.props.ads['banner-top'] ? this.props.ads['banner-top'].height : 0 ),//this.props.sidebar ? this.props.sidebar.top : 0,
-              height: (this.props.header && this.props.header.height ? this.props.header.height : 0) + ( this.props.ads && this.props.ads['banner-top'] ? this.props.ads['banner-top'].height : 0 )//this.props.sidebar ? this.props.sidebar.height : 0
+              height: (this.props.header && this.props.header.height ? this.props.header.height : 0) + ( this.props.ads && this.props.ads['banner-top'] ? (this.props.ads['banner-bottom'].top + this.props.ads['banner-bottom'].height) - this.props.ads['banner-top'].top : 0 )//this.props.sidebar ? this.props.sidebar.height : 0
             }
           }, React.DOM.section({
             id: "sidebar"
