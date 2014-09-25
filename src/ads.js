@@ -43,7 +43,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             y,
             orig,
             bottom_box_top,
-            box_top = (props.header && props.header.height && props.ads && props.ads['banner-top'] ? props.header.height + props.ads['banner-top'].height + box_ad_padding: 0),
+            box_top = (props.header && props.header.height ? props.header.height + ( props.ads && props.ads['banner-top'] ? props.ads['banner-top'].height : 0 ) + box_ad_padding: 0),
             top_el = document.getElementById("ads-banner-top") || {},
             top_height = top_el.offsetHeight ? top_el.offsetHeight : 0,
             top_width = top_el.offsetWidth ? top_el.offsetWidth : 0,
@@ -70,6 +70,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         } else if (y < 0) {
           y = 0;
         }
+
         /*
         if (props.header && ((y + props.header.height) >= ( box_top + box_ad_padding ))) {
           //orig = box_top;
