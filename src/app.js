@@ -85,6 +85,9 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
           previous_state = '',
           deferred = Q.defer(),
           isReady = false,
+          doRender = _.throttle(function(ctx) {
+            component.replaceProps(ctx);
+          }, 100),
           context = _.extend( {}, state),
           promise = deferred.promise,
           container = React.createClass({
@@ -128,7 +131,7 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
                 context = _.extend({}, ctx);
                 deferred.notify(ctx);
                 console.log('updated',ctx);
-                component.replaceProps(ctx);
+                doRender(ctx);
               }
               if (0 !== state_queue.length) {
                 doStateChange();
