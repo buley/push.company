@@ -256,6 +256,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
 
   //window.addEventListener("resize", onResize);
   window.addEventListener("scroll", function() {
+    console.log('adjust ads');
     //adjustAds(context);
   });
 
