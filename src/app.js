@@ -162,9 +162,10 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
           loaded = 1,
           components = [],
           onResize = function(e) {
-            context.screen = {
+            /*context.screen = {
               updated: Date.now()
-            };
+            };*/
+            console.log('resize');
             requestStateChange(context);
           },
           onScroll = function(e) {
