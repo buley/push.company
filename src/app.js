@@ -165,14 +165,12 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
             context.screen = {
               updated: new Date().toString()
             };
-            console.log('resize', context.screen.updated);
             requestStateChange(context);
           },
           onScroll = function(e) {
             context.scroll = {
               updated: new Date().toString()
             };
-            console.log('scroll', context.screen.updated);
             requestStateChange(context);
           },
           forEachHandler = function(interface) {

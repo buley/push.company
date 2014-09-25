@@ -291,7 +291,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           }
 
           if (false === refresh && true === adjust) {
-            //adjustAds(context);
+            adjustAds(context);
           } else if (true === refresh && true === adjust) {
             onResize();
           }
