@@ -114,20 +114,16 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
           component,
           state_queue = [],
           executeStateChange = function(ctx) {
-              var ctx;
               try {
-                if ('function' === typeof next_state) {
-                  ctx = next_state(previous_state);
+                if ('function' === typeof ctx) {
+                  ctx = ctx(JSON.parse(previous_state));
                 }
               } catch(e) {
                 ctx = {};
               }
-              if (JSON.stringify(ctx) !== previous_state) {
-                previous_state = JSON.stringify(ctx);
-                context = ctx;
-                deferred.notify(ctx);
-                doRender(ctx);
-              }
+              context = ctx;
+              deferred.notify(ctx);
+              doRender(ctx);
           },
           requestStateChange = function(change) {
             executeStateChange(change);
