@@ -171,7 +171,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
     top_banner = googletag.defineSlot('/270461283/Banner', [], "ads-banner-top-ad")
       .addService(googletag.pubads());
     slots.push( top_banner );
-    bottom_banner =googletag.defineSlot('/270461283/Banner', [], "ads-banner-bottom-ad")
+    bottom_banner = googletag.defineSlot('/270461283/Banner', [], "ads-banner-bottom-ad")
       .addService(googletag.pubads());
     slots.push( bottom_banner );
 
