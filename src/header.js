@@ -65,10 +65,11 @@ define(['q', 'react', 'underscore', 'tween'], function(Q, React, _, Tween) {
               height = mounted ? nodeHeight(node) : 0,
               width = mounted ? nodeWidth(node) : 0,
               logo,
-              y = window.scrollY;
+              y = window.scrollY,
+              total = (ctx.header ? ctx.header.height : 0) + (ctx.ads ? ctx.ads['banner-top'].height + ctx.ads['banner-bottom'].height : 0) + (ctx.content ? ctx.content.height : 0) + (ctx.footer ? ctx.footer.height : 0);
 
-          if (y > document.body.offsetHeight) {
-            y = document.body.offsetHeight;
+          if (y > total) {
+            y = total;
           } else if (y < 0) {
             y = 0;
           }
