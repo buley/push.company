@@ -26,6 +26,10 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             instance = this;
         },
         render: function() {
+          var content_height = this.props.ads ? (this.props.ads['banner-bottom'].top + this.props.ads['banner-bottom'].height + 20) - (this.props.ads['banner-top'].top - 20) : 0;
+          if (min > sidebar_height) {
+            sidebar_height = min;
+          }
           return React.DOM.section({
             id: "sidebar-container",
             style: {
