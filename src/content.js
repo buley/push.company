@@ -58,8 +58,8 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             deferred.notify(ctx);
           } else if (state.screen) {
             if (state.screen.updated !== prev.updated) {
+              prev.updated = state.screen.updated;
               onResize(state);
-              prev.updated = context.screen.updated;
             }
           }
         }
