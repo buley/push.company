@@ -67,6 +67,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
               onResize(state);
             }
           } else if ((ctx.ads && ctx.ads['banner-top'] ? ctx.ads['banner-top'].height : 0) !== prev.ad) {
+            prev.ad = ctx.ads['banner-top'].height;
             onResize(state);
           }
         }
