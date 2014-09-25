@@ -23,8 +23,10 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           height: sidebar_height,
           top: ctx.header && ctx.header.height && ctx.ads && ctx.ads['banner-top'] ? ctx.header.height + ctx.ads['banner-top'].height : 0
         };
-        ctx.content = content;
-        deferred.notify(ctx);
+        if (JSON.stringify(ctx) !== JSON.stringify(ctx.content)) {
+          ctx.content = content;
+          deferred.notify(ctx);          
+        }
       },
       component = React.createClass({
         componentDidMount: function() {
@@ -66,6 +68,8 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
               prev.updated = state.screen.updated;
               onResize(state);
             }
+          } else {
+            onResize(state);
           }
         }
       });
