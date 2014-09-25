@@ -126,7 +126,6 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
                 previous_state = JSON.stringify(ctx);
                 context = ctx;
                 deferred.notify(ctx);
-                console.log('updated',ctx);
                 doRender(ctx);
               }
           },
@@ -152,14 +151,12 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
           loaded = 1,
           components = [],
           onResize = function(e) {
-            console.log('resize',e);
             context.screen = {
               updated: new Date().getTime().toString()
             };
             requestStateChange(context);
           },
           onScroll = function(e) {
-            console.log('scroll',e);
             context.scroll = {
               updated: new Date().getTime().toString()
             };
