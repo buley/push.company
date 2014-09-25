@@ -85,9 +85,9 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
           previous_state = '',
           deferred = Q.defer(),
           isReady = false,
-          doRender = _.debounce(function(ctx) {
+          doRender = function(ctx) {
             component.replaceProps(ctx);
-          }, 100),
+          },
           context = _.extend( {}, state),
           promise = deferred.promise,
           container = React.createClass({
