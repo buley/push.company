@@ -172,7 +172,7 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
             /*context.scroll = {
               updated: Date.now()
             };*/
-            console.log('scroll');
+            console.log('scroll', window.scrollY);
             requestStateChange(context);
           },
           forEachHandler = function(interface) {
