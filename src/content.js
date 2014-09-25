@@ -15,9 +15,13 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         right: 20
       },
       onResize = function(ctx) {
-        var node = document.getElementById("content");
+        var sidebar_height = this.props.ads ? (this.props.ads['box-bottom'].top + this.props.ads['box-bottom'].height + 20 ) - (this.props.ads['box-top'].top - 20) : 0;
+        if (min > sidebar_height) {
+          sidebar_height = min;
+        }
         content = {
-          height: node ? node.clientHeight : 0
+          height: sidebar_height,
+          top: ctx.header && ctx.header.height && ctx.ads && ctx.ads['banner-top'] ? ctx.header.height + ctx.ads['banner-top'].height : 0
         };
         ctx.content = content;
         deferred.notify(ctx);
@@ -27,19 +31,16 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             instance = this;
         },
         render: function() {
-          var sidebar_height = this.props.ads ? (this.props.ads['box-bottom'].top + this.props.ads['box-bottom'].height + 20 ) - (this.props.ads['box-top'].top - 20) : 0;
-          if (min > sidebar_height) {
-            sidebar_height = min;
-          }
+
           return React.DOM.section({
             id: "content-container",
             style: {
-              top: this.props.header && this.props.header.height && this.props.ads && this.props.ads['banner-top'] ? this.props.header.height + this.props.ads['banner-top'].height : 0
+              top: this.props.content.top
             }
           }, React.DOM.section({
             id: "content",
             style: {
-              height: sidebar_height + "px"
+              height: this.props.content.height + "px"
             }
           } ) );
         }
