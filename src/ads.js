@@ -200,7 +200,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             id: "ads-box-bottom",
             style: {
               "right": padding.right + "px",
-              "top": (box_top + box_top_height + padding.bottom + padding.top)
+              "top": (box_top + box_top_height + padding.bottom + padding.top) + "px" //stream TK
             }
           }, React.DOM.div({
             id: "ads-box-bottom-ad"
