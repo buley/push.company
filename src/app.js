@@ -169,9 +169,9 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
             requestStateChange(context);
           },
           onScroll = function(e) {
-            /*context.scroll = {
+            context.scroll = {
               updated: Date.now()
-            };*/
+            };
             requestStateChange(context);
           },
           forEachHandler = function(interface) {
