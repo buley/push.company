@@ -83,6 +83,7 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
               updated: Date.now()
             }
           },
+          last = '',
           previous_state = '',
           deferred = Q.defer(),
           isReady = false,
@@ -138,8 +139,11 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
               doRender(ctx);
           },
           requestStateChange = function(change) {
-            console.log('changing',JSON.stringify(change));
-            executeStateChange(change);
+            var current JSON.stringify(change);
+            if (last !== current) {
+              last = current;
+              executeStateChange(change);
+            }
           },
           incoming = function(interface) {
             interface.then(null, null, function(change) {
