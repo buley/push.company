@@ -14,11 +14,11 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         right: 20
       },
       onResize = function(ctx) {
-        var min = ctx.content ? ctx.content.height : 800,
-          sidebar_height = ctx.ads ? (ctx.ads['box-bottom'].top + ctx.ads['box-bottom'].height + 20 ) - (ctx.ads['box-top'].top - 20) : 0;
+        var el = document.getElementById("sidebar-container"),
+            style = window.getComputedStyle(el);
         ctx.sidebar = {
-          height:  Math.max(min, sidebar_height),
-          top: (ctx.header && ctx.header.height ? ctx.header.height : 0) + ( ctx.ads && ctx.ads['banner-top'] ? ctx.ads['banner-top'].height : 0 )
+          height: el.height,
+          top: el.top
         };
         deferred.notify(ctx);
       },
