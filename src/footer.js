@@ -4,6 +4,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       module = Q.defer(),
       context,
       instance,
+      footer,
       prev = {},
       padding = {
         top: 20,
@@ -13,9 +14,10 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       },
       onResize = function(ctx) {
         var node = document.getElementById("footer-container") || {};
-        ctx.footer = _.extend((ctx.footer || {}), {
+        footer = {
           height: node ? node.clientHeight : 0
-        });
+        };
+        ctx.footer = footer;
         deferred.notify(ctx);
       },
       component = React.createClass({
@@ -46,7 +48,10 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         if (!context) {
           onResize(state);
         } else {
-          if (state.screen) {
+          if (!state.footer) {
+            state.footer = footer;
+            deferred.notify(footer);
+          } else if (state.screen) {
             if (state.screen.width !== prev.width) {
               onResize(state);
               prev.width = state.screen.width;
