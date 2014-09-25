@@ -80,7 +80,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           "banner-bottom": {
             height: bottom_height + padding.top + padding.bottom,
             width: bottom_width + padding.left + padding.right,
-            top: bottom_height_base,
+            top: bottom_height_base + padding.top,
             left: bottom_width_base,
             right: null
           },
