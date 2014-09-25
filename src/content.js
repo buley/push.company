@@ -15,7 +15,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         right: 20
       },
       onResize = function(ctx) {
-        var node = document.getElementById("content-container");
+        var node = document.getElementById("content");
         content = {
           height: node ? node.clientHeight : 0
         };
@@ -27,7 +27,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             instance = this;
         },
         render: function() {
-          var sidebar_height = this.props.ads ? (this.props.ads['box-bottom'].top + this.props.ads['box-bottom'].height ) - (this.props.ads['box-top'].top - 20) : 0;
+          var sidebar_height = this.props.ads ? (this.props.ads['box-bottom'].top + this.props.ads['box-bottom'].height + 20 ) - (this.props.ads['box-top'].top - 20) : 0;
           if (min > sidebar_height) {
             sidebar_height = min;
           }
