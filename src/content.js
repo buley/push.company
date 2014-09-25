@@ -15,13 +15,10 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         right: 20
       },
       onResize = function(ctx) {
-        var sidebar_height = ctx.sidebar ? ctx.sidebar.height : 0;
-        if (min > sidebar_height) {
-          sidebar_height = min;
-        }
+        var el = document.getElementById("content");
         content = {
-          height: sidebar_height,
-          top:  ( ctx.header && ctx.header.height ? ctx.header.height : 0) + (ctx.ads && ctx.ads['banner-top'] ? ctx.ads['banner-top'].height : 0)
+          height: el.offsetHeight,
+          width: el.offsetWidth
         };
         ctx.content = content;
         deferred.notify(ctx);
@@ -34,12 +31,12 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           return React.DOM.section({
             id: "content-container",
             style: {
-              top: (this.props.content ? this.props.content.top : 0) + "px"
+              top: ( ctx.header && ctx.header.height ? ctx.header.height : 0) + (ctx.ads && ctx.ads['banner-top'] ? ctx.ads['banner-top'].height : 0) + "px"
             }
           }, React.DOM.section({
             id: "content",
             style: {
-              height: (this.props.content ? this.props.content.height : 0) + "px"
+              height: "800px" //(this.props.content ? this.props.content.height : 0) + "px"
             }
           } ) );
         }
