@@ -68,6 +68,7 @@ define(['q', 'react', 'underscore', 'tween'], function(Q, React, _, Tween) {
               y = window.scrollY,
               total = (this.props.header ? this.props.header.height : 0) + (this.props.ads ? this.props.ads['banner-top'].height + this.props.ads['banner-bottom'].height : 0) + (this.props.content ? this.props.content.height : 0) + (this.props.footer ? this.props.footer.height : 0);
 
+
           if (y > total) {
             y = total;
           } else if (y < 0) {
