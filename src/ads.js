@@ -65,10 +65,13 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             box_top_width = box_top_el.offsetWidth ? box_top_el.offsetWidth : 0;
 
         y = window.scrollY;
-        if (props.header && ((y + props.header.height) >= ( box_top - box_ad_padding ))) {
+        if (props.header && ((y + props.header.height) >= ( box_top + box_ad_padding ))) {
           //orig = box_top;
-          console.log('too far');
-          //box_top = y + box_ad_padding + props.header.height;
+          if ( props.content && (y + box_ad_padding + props.header.height + box_top_height) > ((props.header && props.header.height && props.ads && props.ads['banner-top'] ? props.header.height + props.ads['banner-top'].height + box_ad_padding: 0) + props.content.height)) {
+            console.log('too far');
+          } else {
+            box_top = y + box_ad_padding + props.header.height;
+          }
           //if (y > (sidebar_height_base + (props.sidebar ? props.sidebar.height : 0))) {
           //  box_top = (sidebar_height_base + (props.sidebar ? props.sidebar.height : 0)) - ( props.ads ? props.ads['box-top'].height : 0 );
           //}
