@@ -208,7 +208,7 @@ define(['q', 'react', 'underscore', 'tween'], function(Q, React, _, Tween) {
           deferred.notify(context);
 
         } else {
-          context = _.extend({}, _.extend(state, { header: context.header}));
+          context = _.extend({}, _.extend(state, { header: context.header } ));
         }
       });
     },

@@ -49,10 +49,9 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         } else {
           context = _.extend({}, _.extend(state, { content: context.content}));
           if (context.screen) {
-            if (context.screen.width !== prev.width || context.screen.height !== prev.height) {
+            if (context.screen.updated !== prev.updated) {
               onResize();
-              prev.width = context.screen.width;
-              prev.height = context.screen.height;
+              prev.updated = context.screen.updated;
             }
           }
         }
