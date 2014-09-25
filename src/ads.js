@@ -64,7 +64,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             box_top_height = box_top_el.offsetHeight ? box_top_el.offsetHeight : 0,
             box_top_width = box_top_el.offsetWidth ? box_top_el.offsetWidth : 0;
 
-        y = window.scrollY;
+        y = window.scrollY < 0 ? 0 : window.scrollY;
         if (props.header && ((y + props.header.height) >= ( box_top + box_ad_padding ))) {
           //orig = box_top;
           if ( props.content && (y + box_ad_padding + props.header.height + box_top_height) > ((props.header && props.header.height && props.ads && props.ads['banner-top'] ? props.header.height + props.ads['banner-top'].height + box_ad_padding: 0) + props.content.height)) {
