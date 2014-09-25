@@ -171,6 +171,7 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
             requestStateChange(context);
           },
           onScroll = function(e) {
+            console.log('scroll',e);
             context.scroll = {
               updated: new Date().getTime().toString()
             };
