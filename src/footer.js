@@ -19,10 +19,15 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             instance = this;
         },
         render: function() {
+          var height = 800,
+              sidebar = (this.props.ads && this.props.ads['box-top'] && this.props.ads['box-bottom'] ? this.props.ads['box-top'].height + this.props.ads['box-top'].height : 0);
+          if (sidebar > height) {
+            height = sidebar;
+          }
           return React.DOM.section({
             id: "footer-container",
             style: {
-              "top": ((this.props.content ? this.props.content.top + this.props.content.height : 0) + (this.props.ads && this.props.ads['banner-bottom'] ? this.props.ads['banner-bottom'].height : 0 ) ) + "px",
+              "top": (sidebar + (this.props.ads && this.props.ads['banner-bottom'] ? this.props.ads['banner-bottom'].height : 0 ) ) + "px",
             }
           }, React.DOM.section({
             id: "footer"
