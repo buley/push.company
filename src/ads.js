@@ -40,7 +40,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         }
 
         var box_ad_padding = 20,
-            y,
+            y = y = window.scrollY,
             orig,
             bottom_box_top,
             top_el = document.getElementById("ads-banner-top") || {},
@@ -62,14 +62,14 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             box_bottom_width = box_bottom_el.offsetWidth ? box_bottom_el.offsetWidth : 0,
             box_top_el = document.getElementById("ads-box-top") || {},
             box_top_height = box_top_el.offsetHeight ? box_top_el.offsetHeight : 0,
-            box_top_width = box_top_el.offsetWidth ? box_top_el.offsetWidth : 0;
+            box_top_width = box_top_el.offsetWidth ? box_top_el.offsetWidth : 0,
+            total = (this.props.header ? this.props.header.height : 0) + (this.props.ads ? this.props.ads['banner-top'].height + this.props.ads['banner-bottom'].height : 0) + (this.props.content ? this.props.content.height : 0) + (this.props.footer ? this.props.footer.height : 0);
 
-        y = window.scrollY;
-        if (y > document.body.offsetHeight) {
-          y = document.body.offsetHeight;
+        if (y > total) {
+          y = total;
         } else if (y < 0) {
           y = 0;
-        }
+        };
 
         /*
         if (props.header && ((y + props.header.height) >= ( box_top + box_ad_padding ))) {
