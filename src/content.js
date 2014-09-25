@@ -31,18 +31,15 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             instance = this;
         },
         render: function() {
-          if (!this.props.content) {
-            this.props.content = content;
-          }
           return React.DOM.section({
             id: "content-container",
             style: {
-              top: this.props.content.top
+              top: (this.props.content ? this.props.content.top : 0) + "px"
             }
           }, React.DOM.section({
             id: "content",
             style: {
-              height: this.props.content.height + "px"
+              height: (this.props.content ? this.props.content.height : 0) + "px"
             }
           } ) );
         }
