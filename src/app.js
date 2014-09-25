@@ -163,7 +163,7 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
           components = [],
           onResize = function(timestamp) {
             context.screen = {
-              updated: Date.now()
+              updated: 'test'
             };
             console.log('resize', context.screen.updated);
             requestStateChange(context);
