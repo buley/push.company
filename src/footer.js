@@ -2,9 +2,9 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
   var deferred = Q.defer(),
       promise = deferred.promise,
       module = Q.defer(),
-      context,
       instance,
       footer,
+      first = true,
       prev = {},
       padding = {
         top: 20,
@@ -45,7 +45,8 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
     },
     incoming: function(interface) {
       interface.then(null, null, function(state) {
-        if (!context) {
+        if (first) {
+          first = false;
           onResize(state);
         } else {
           if (!state.footer) {

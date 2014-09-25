@@ -3,6 +3,7 @@ define(['q', 'react', 'underscore', 'tween'], function(Q, React, _, Tween) {
       promise = deferred.promise,
       module = Q.defer(),
       context,
+      first = true,
       instance,
       header = { height: 44, zoom: mult, drawer: {
         showing: false,
@@ -202,7 +203,8 @@ define(['q', 'react', 'underscore', 'tween'], function(Q, React, _, Tween) {
     },
     incoming: function(interface) {
       interface.then(null, null, function(state) {
-        if (!context) {
+        if (first) {
+          first = false;
           state.header = header;
           deferred.notify(state);
         } else {

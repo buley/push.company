@@ -4,6 +4,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       module = Q.defer(),
       context,
       instance,
+      first = true,
       prev = {},
       padding = {
         top: 20,
@@ -44,7 +45,8 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
     },
     incoming: function(interface) {
       interface.then(null, null, function(state) {
-        if (!context) {
+        if (first) {
+          first = false;
           onResize(state);
         } else {
           state = _.extend(state, { stream: context.stream});

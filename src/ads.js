@@ -4,6 +4,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       module = Q.defer(),
       context,
       ads,
+      first = true,
       instance,
       mapping = [
         [ [1010, 1], [ [970, 250], [970, 90], [728, 90], [468, 60], [120, 60], [180, 150], [320, 50], [234, 60] ] ],
@@ -235,7 +236,8 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
     },
     incoming: function(interface) {
       interface.then(null, null, function(state) {
-        if (!context) {
+        if (first) {
+          first = false;
           adjustAds(state);
         } else {
           var refresh = false,

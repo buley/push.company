@@ -3,6 +3,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       promise = deferred.promise,
       module = Q.defer(),
       context,
+      first = true,
       instance,
       content,
       prev = {},
@@ -48,7 +49,8 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
     },
     incoming: function(interface) {
       interface.then(null, null, function(state) {
-        if (!context) {
+        if (first) {
+          first = false;
           onResize(state);
         } else {
           if (!state.content) {
