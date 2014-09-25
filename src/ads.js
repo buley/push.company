@@ -35,76 +35,6 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         right: 20
       },
       interval,
-      adjustAds = function(props) {
-
-        if (!props) {
-          return;
-        }
-
-        var box_ad_padding = 20,
-            y = y = window.scrollY,
-            orig,
-            bottom_box_top,
-            top_el = document.getElementById("ads-banner-top") || {},
-            top_height = top_el.offsetHeight ? top_el.offsetHeight : 0,
-            top_width = top_el.offsetWidth ? top_el.offsetWidth : 0,
-            bottom_el = document.getElementById("ads-banner-bottom") || {},
-            bottom_height = bottom_el.offsetHeight ? bottom_el.offsetHeight : 0,
-            bottom_width = bottom_el.offsetWidth ? bottom_el.offsetWidth : 0,
-            total_width = document.body.offsetWidth || 0,
-            total_width_padding = total_width - top_width,
-            total_width_padding_bottom = total_width - bottom_width,
-            top_width_base = Math.floor(total_width_padding/2),
-            bottom_width_base = Math.floor(total_width_padding_bottom/2),
-            box_top = (props.header && props.header.height ? props.header.height + top_height + padding.top + padding.bottom + box_ad_padding: 0),
-            sidebar_height_base = props.header && props.header.height ? props.header.height + top_height + padding.top + padding.bottom + padding.top: 0;
-            bottom_height_base = (props.header && props.header.height ? props.header.height : 0) + top_height + padding.top + padding.bottom + ( props.content ? props.content.height : 0 ),
-            box_bottom_el = document.getElementById("ads-box-bottom") || {},
-            box_bottom_height = box_bottom_el.offsetHeight ? box_bottom_el.offsetHeight : 0,
-            box_bottom_width = box_bottom_el.offsetWidth ? box_bottom_el.offsetWidth : 0,
-            box_top_el = document.getElementById("ads-box-top") || {},
-            box_top_height = box_top_el.offsetHeight ? box_top_el.offsetHeight : 0,
-            box_top_width = box_top_el.offsetWidth ? box_top_el.offsetWidth : 0;
-            //total = (props.header ? props.header.height : 0) + (props.ads ? props.ads['banner-top'].height + props.ads['banner-bottom'].height : 0) + (props.content ? props.content.height : 0) + (props.footer ? props.footer.height : 0);
-
-        bottom_box_top = box_top + box_top_height + ((props.stream && props.stream.height > 20 ? 2 : 1) * box_ad_padding );
-
-        ads = {
-          "banner-top": {
-            height: top_height + padding.top + padding.bottom,
-            width: top_width + padding.left + padding.right,
-            top: (props.header && props.header.height ? props.header.height + padding.top: padding.top),
-            left: top_width_base,
-            right: null
-          },
-          "banner-bottom": {
-            height: bottom_height + padding.top + padding.bottom,
-            width: bottom_width + padding.left + padding.right,
-            top: bottom_height_base + padding.top,
-            left: bottom_width_base,
-            right: null
-          },
-          "box-top": {
-            height: box_bottom_height,
-            width: box_bottom_width,
-            top: box_top,
-            left: null,
-            right: box_ad_padding
-          },
-          "box-bottom": {
-            height: box_bottom_height,
-            width: box_bottom_width,
-            top: bottom_box_top,
-            left: null,
-            right: box_ad_padding
-          }
-        };
-
-        props.ads = ads;
-
-        deferred.notify(props);
-
-      },
       onResize = function(ctx) {
         context = ctx;
         expecting = slots.length;
@@ -131,6 +61,8 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           var y = window.scrollY,
               header = document.getElementById("header"),
               header_height = header ? header.offsetHeight : 0,
+              footer = document.getElementById("footer-container"),
+              footer_height = footer ? footer.offsetHeight : 0,
               top_el = document.getElementById("ads-banner-top") || {},
               top_height = top_el.offsetHeight ? top_el.offsetHeight : 0,
               top_width = top_el.offsetWidth ? top_el.offsetWidth : 0,
@@ -152,7 +84,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
               bottom_width_base = Math.floor(total_width_padding_bottom/2),
               top_width_base = Math.floor(total_width_padding/2),
               box_top = (header_height + padding.top + top_height + padding.bottom + padding.top),
-              total = header_height + (this.props.ads ? this.props.ads['banner-top'].height + this.props.ads['banner-bottom'].height : 0) + (this.props.content ? this.props.content.height : 0) + (this.props.footer ? this.props.footer.height : 0);
+              total = header_height + padding.top + top_height + padding.bottom + height + padding.top + bottom_height + padding.bottom + footer_height;
 
           if (sidebar > height) {
             height = sidebar;
@@ -217,7 +149,9 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
     if (expecting > 0 && ++seen >= expecting) {
       seen = 0;
       expecting = 0;
-      adjustAds(context);
+      context.ads = context.ads || {};
+      context.ads.updated = Date.now();
+      deferred.notify(context);
     }
   });
 
@@ -274,10 +208,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           var refresh = false,
               adjust = false;
 
-          if (!state.ads) {
-            adjustAds(state);
-
-          } else {
+          if (state.ads) {
 
             if (state.screen) {
               if (prev.xupdated && state.screen.updated !== prev.xupdated) {
@@ -298,9 +229,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
               }
             }
 
-            if (false === refresh && true === adjust) {
-              adjustAds(state);
-            } else if (true === refresh && true === adjust) {
+            if (true === refresh && true === adjust) {
               onResize(state);
             }
           }
