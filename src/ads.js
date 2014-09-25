@@ -63,7 +63,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             box_top_el = document.getElementById("ads-box-top") || {},
             box_top_height = box_top_el.offsetHeight ? box_top_el.offsetHeight : 0,
             box_top_width = box_top_el.offsetWidth ? box_top_el.offsetWidth : 0,
-            total = (this.props.header ? this.props.header.height : 0) + (this.props.ads ? this.props.ads['banner-top'].height + this.props.ads['banner-bottom'].height : 0) + (this.props.content ? this.props.content.height : 0) + (this.props.footer ? this.props.footer.height : 0);
+            total = (props.header ? props.header.height : 0) + (props.ads ? props.ads['banner-top'].height + props.ads['banner-bottom'].height : 0) + (props.content ? props.content.height : 0) + (props.footer ? props.footer.height : 0);
 
         if (y > total) {
           y = total;
