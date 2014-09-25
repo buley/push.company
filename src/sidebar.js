@@ -43,7 +43,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
 
   return {
     outgoing: function(interface) {
-      interface(promise);ss
+      interface(promise);
     },
     incoming: function(interface) {
       interface.then(null, null, function(state) {
