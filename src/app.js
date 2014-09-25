@@ -78,6 +78,7 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
 	var module = Q.defer();
     require([ 'src/content', 'src/header', 'src/sidebar', 'src/footer', 'src/ads' ], function() {
       var state = {
+            init: Date.now(),
             screen: {
               updated: Date.now()
             }
