@@ -254,7 +254,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
 
           if (!state.ads) {
             state.ads = ads;
-            deferred.notify(state);
+            adjustAds(state);
 
           } else {
 
