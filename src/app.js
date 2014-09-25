@@ -85,7 +85,7 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
           previous_state = '',
           deferred = Q.defer(),
           isReady = false,
-          doRender = _.throttle(function(ctx) {
+          doRender = _.debounce(function(ctx) {
             component.replaceProps(ctx);
           }, 100),
           context = _.extend( {}, state),
