@@ -6,7 +6,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       first = true,
       instance,
       prev = {},
-      right,
+      left,
       padding = {
         top: 20,
         bottom: 20,
@@ -14,9 +14,9 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         right: 20
       },
       onResize = function(ctx) {
-        var el = document.getElementById("right-container"),
+        var el = document.getElementById("left-container"),
             style = window.getComputedStyle(el);
-        ctx.right = {
+        ctx.left = {
           height: parseFloat(el.height.replace(/px$/, ''),10),
           top: parseFloat(el.top.replace(/px$/, ''),10)
         };
@@ -28,13 +28,13 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         },
         render: function() {
           return React.DOM.section({
-            id: "right-container",
+            id: "left-container",
             style: {
-              top: (this.props.header && this.props.header.height ? this.props.header.height : 0) + ( this.props.ads && this.props.ads['banner-top'] ? this.props.ads['banner-top'].height : 0 ) + "px",//this.props.right ? this.props.right.top : 0,
-              height: ( this.props.ads && this.props.ads['banner-top'] ? (this.props.ads['banner-bottom'].top + this.props.ads['banner-bottom'].height) - this.props.ads['banner-top'].top : 0 ) + "px"//this.props.right ? this.props.right.height : 0
+              top: (this.props.header && this.props.header.height ? this.props.header.height : 0) + ( this.props.ads && this.props.ads['banner-top'] ? this.props.ads['banner-top'].height : 0 ) + "px",//this.props.left ? this.props.left.top : 0,
+              height: ( this.props.ads && this.props.ads['banner-top'] ? (this.props.ads['banner-bottom'].top + this.props.ads['banner-bottom'].height) - this.props.ads['banner-top'].top : 0 ) + "px"//this.props.left ? this.props.left.height : 0
             }
           }, React.DOM.section({
-            id: "right"
+            id: "left"
           } ) );
         }
       });
@@ -55,8 +55,8 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           }
           onResize(state);
         } else {
-          if (!state.right) {
-            state.right = right;
+          if (!state.left) {
+            state.left = left;
             deferred.notify(state);
           } else if (state.screen) {
             if (state.screen.updated !== prev.updated) {
