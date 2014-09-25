@@ -21,7 +21,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         render: function() {
           var height = 800,
               content_top = ( this.props.header && this.props.header.height ? this.props.header.height : 0) + (this.props.ads && this.props.ads['banner-top'] ? this.props.ads['banner-top'].height : 0),
-              sidebar = (this.props.ads && this.props.ads['box-top'] && this.props.ads['box-bottom'] ? this.props.ads['box-top'].height + this.props.ads['box-top'].height : 0),
+              sidebar = (this.props.ads && this.props.ads['box-top'] && this.props.ads['box-bottom'] ? this.props.ads['box-top'].height + this.props.ads['box-bottom'].height : 0),
               bottom_el = document.getElementById("ads-banner-bottom") || {},
               bottom_height = bottom_el.offsetHeight ? bottom_el.offsetHeight : 0,
               bottom_width = bottom_el.offsetWidth ? bottom_el.offsetWidth : 0;
