@@ -86,7 +86,18 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
           previous_state = '',
           deferred = Q.defer(),
           isReady = false,
+          isRendered = false,
           doRender = function(ctx) {
+            if (!isRendered) {
+              React.renderComponent(
+                container(state),
+                document.getElementById('app'),
+                function() {
+                  module.resolve(component);
+                }
+              );
+              isRendered = true;
+            }
             if (!!component && !!component.isMounted && component.isMounted()) {
               component.replaceProps(ctx);
             } else {
@@ -136,13 +147,7 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
           },
           ready = function() {
             isReady = true;
-            React.renderComponent(
-              container(state),
-              document.getElementById('app'),
-              function() {
-                module.resolve(component);
-              }
-            );
+            requestStateChange(state);
           },
           interfaces = arguments,
           loaded = 1,
@@ -184,7 +189,6 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
       window.addEventListener("resize", onResize);
       window.addEventListener("scroll", onScroll);
 
-      requestStateChange(state);
 
     });
 	return module.promise;
