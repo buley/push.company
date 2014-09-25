@@ -79,8 +79,7 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
     require([ 'src/content', 'src/header', 'src/sidebar', 'src/footer', 'src/ads' ], function() {
       var state = {
             screen: {
-              width: document.body.clientWidth,
-              height: document.body.clientHeight
+              updated: Date.now()
             }
           },
           previous_state = '',
