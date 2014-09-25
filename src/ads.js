@@ -253,6 +253,13 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
 
   });
 
+
+  //window.addEventListener("resize", onResize);
+  window.addEventListener("scroll", function() {
+    adjustAds(context);
+  });
+
+
   return {
     outgoing: function(interface) {
       interface(promise);
