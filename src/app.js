@@ -167,12 +167,12 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
             };
             requestStateChange(context);
           }, 1000),
-          onScroll = _.debounce(function(e) {
+          onScroll = function(e) {
             context.scroll = {
               updated: new Date().toString()
             };
             requestStateChange(context);
-          }, 1000),
+          },
           forEachHandler = function(interface) {
             var readyHandler = function(comp) {
                 interface.incoming(promise);
