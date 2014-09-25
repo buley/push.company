@@ -17,8 +17,8 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       onResize = function(ctx) {
         var el = document.getElementById("content");
         content = {
-          height: el.offsetHeight,
-          width: el.offsetWidth
+          height: el ? el.offsetHeight : 0,
+          width: el ? el.offsetWidth : 0
         };
         ctx.content = content;
         deferred.notify(ctx);
