@@ -199,7 +199,7 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
       requestStateChange(_.extend(context, { init: Date.now() }));
 
       window.addEventListener("resize", onResize);
-      document.body.addEventListener("scroll", onScroll);
+      window.addEventListener("scroll", onScroll);
 
     });
 	return module.promise;
