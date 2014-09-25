@@ -180,7 +180,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             id: "ads-box-bottom",
             style: {
               "right": (this.props.ads ? this.props.ads['box-bottom'].right : 0) + "px",
-              "top": (this.props.ads ? this.props.ads['box-bottom'].top : 0)
+              "top": 0//(this.props.ads ? this.props.ads['box-bottom'].top : 0)
             }
           }, React.DOM.div({
             id: "ads-box-bottom-ad"
