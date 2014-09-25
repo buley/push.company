@@ -140,6 +140,9 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
               bottom_height = bottom_el.offsetHeight ? bottom_el.offsetHeight : 0,
               bottom_width = bottom_el.offsetWidth ? bottom_el.offsetWidth : 0;
 
+          if (sidebar > height) {
+            height = sidebar;
+          }
           if (y > total) {
             y = total;
           } else if (y < 0) {
