@@ -64,8 +64,8 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             box_bottom_width = box_bottom_el.offsetWidth ? box_bottom_el.offsetWidth : 0,
             box_top_el = document.getElementById("ads-box-top") || {},
             box_top_height = box_top_el.offsetHeight ? box_top_el.offsetHeight : 0,
-            box_top_width = box_top_el.offsetWidth ? box_top_el.offsetWidth : 0,
-            total = (props.header ? props.header.height : 0) + (props.ads ? props.ads['banner-top'].height + props.ads['banner-bottom'].height : 0) + (props.content ? props.content.height : 0) + (props.footer ? props.footer.height : 0);
+            box_top_width = box_top_el.offsetWidth ? box_top_el.offsetWidth : 0;
+            //total = (props.header ? props.header.height : 0) + (props.ads ? props.ads['banner-top'].height + props.ads['banner-bottom'].height : 0) + (props.content ? props.content.height : 0) + (props.footer ? props.footer.height : 0);
 
         bottom_box_top = box_top + box_top_height + ((props.stream && props.stream.height > 20 ? 2 : 1) * box_ad_padding );
 
