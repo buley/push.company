@@ -165,6 +165,7 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
           loaded = 1,
           components = [],
           onResize = function() {
+            console.log('resize',e);
             context.screen = {
               updated: new Date().getTime().toString()
             };
@@ -172,7 +173,6 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
           },
           onScroll = function(e) {
             console.log('scroll',e);
-            if ()
             context.scroll = {
               updated: new Date().getTime().toString()
             };
