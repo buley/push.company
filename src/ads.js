@@ -145,7 +145,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
               total_width_padding_bottom = total_width - bottom_width,
               bottom_width_base = Math.floor(total_width_padding_bottom/2),
               top_width_base = Math.floor(total_width_padding/2),
-              total = header_height + (this.props.ads ? this.props.ads['banner-top'].height + this.props.ads['banner-bottom'].height : 0) + (this.props.content ? this.props.content.height : 0) + (this.props.footer ? this.props.footer.height : 0),
+              total = header_height + (this.props.ads ? this.props.ads['banner-top'].height + this.props.ads['banner-bottom'].height : 0) + (this.props.content ? this.props.content.height : 0) + (this.props.footer ? this.props.footer.height : 0);
 
           if (sidebar > height) {
             height = sidebar;
