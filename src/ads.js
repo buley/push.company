@@ -82,9 +82,8 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           //}
         }
 
-        bottom_box_top = box_top + box_top_height + ((props.stream && props.stream.height > 20 ? 2 : 1) * box_ad_padding );
+        bottom_box_top = 0;// box_top + box_top_height + ((props.stream && props.stream.height > 20 ? 2 : 1) * box_ad_padding );
 
-        props.ads = props.ads || {};
         props.ads = props.ads || {};
         props.ads = _.extend(props.ads, {
           "banner-top": {
