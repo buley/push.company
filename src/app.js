@@ -161,18 +161,18 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
           interfaces = arguments,
           loaded = 1,
           components = [],
-          onResize = function(timestamp) {
+          onResize = _.throttle(function(timestamp) {
             context.screen = {
               updated: new Date().toString()
             };
             requestStateChange(context);
-          },
-          onScroll = function(e) {
+          }, 1000),
+          onScroll = _.throttle(function(e) {
             context.scroll = {
               updated: new Date().toString()
             };
             requestStateChange(context);
-          },
+          }, 1000),
           forEachHandler = function(interface) {
             var readyHandler = function(comp) {
                 interface.incoming(promise);
