@@ -18,7 +18,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           sidebar_height = ctx.ads ? (ctx.ads['box-bottom'].top + ctx.ads['box-bottom'].height + 20 ) - (ctx.ads['box-top'].top - 20) : 0;
         ctx.sidebar = {
           height:  Math.max(min, sidebar_height),
-          top: (ctx.header && ctx.header.height ? ctx.header.height : 0) + ( ctx.ads && ctx.ads['banner-top'] ? ctx.ads['banner-top'].height : 0 ) : 0
+          top: (ctx.header && ctx.header.height ? ctx.header.height : 0) + ( ctx.ads && ctx.ads['banner-top'] ? ctx.ads['banner-top'].height : 0 )
         };
         deferred.notify(ctx);
       },
