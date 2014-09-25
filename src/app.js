@@ -164,7 +164,7 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
           interfaces = arguments,
           loaded = 1,
           components = [],
-          onResize = function() {
+          onResize = function(e) {
             console.log('resize',e);
             context.screen = {
               updated: new Date().getTime().toString()
