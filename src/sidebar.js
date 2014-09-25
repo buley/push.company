@@ -47,6 +47,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
     },
     incoming: function(interface) {
       interface.then(null, null, function(state) {
+        var json;
         if (first) {
           first = false;
           if (state.screen) {
@@ -60,6 +61,12 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           } else if (state.screen) {
             if (state.screen.updated !== prev.updated) {
               prev.updated = state.screen.updated;
+              onResize(state);
+            }
+          } else {
+            json = JSON.stringify(state.ads);
+            if (json !== prev.json) {
+              prev.json = json;
               onResize(state);
             }
           }
