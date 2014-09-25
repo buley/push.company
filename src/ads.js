@@ -58,7 +58,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             bottom_width_base = Math.floor(total_width_padding_bottom/2),
             box_top = (props.header && props.header.height ? props.header.height + top_height + padding.top + padding.bottom + box_ad_padding: 0),
             sidebar_height_base = props.header && props.header.height ? props.header.height + top_height + padding.top + padding.bottom + padding.top: 0;
-            bottom_height_base = props.header && props.header.height ? props.header.height + top_height + padding.top + padding.bottom + ( props.content ? props.content.height : 0 ) + padding.top: 0,
+            bottom_height_base = props.header && props.header.height ? props.header.height + top_height + padding.top + padding.bottom + ( props.content ? props.content.height : 0 ) : 0,
             box_bottom_el = document.getElementById("ads-box-bottom") || {},
             box_bottom_height = box_bottom_el.offsetHeight ? box_bottom_el.offsetHeight : 0,
             box_bottom_width = box_bottom_el.offsetWidth ? box_bottom_el.offsetWidth : 0,
