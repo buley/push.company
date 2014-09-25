@@ -139,7 +139,7 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
               doRender(ctx);
           },
           requestStateChange = function(change) {
-            var current JSON.stringify(change);
+            var current = JSON.stringify(change);
             if (last !== current) {
               last = current;
               executeStateChange(change);
