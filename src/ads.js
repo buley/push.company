@@ -71,16 +71,16 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
 
         ads = {
           "banner-top": {
-            height: top_height,
-            width: top_width,
+            height: top_height + padding.top + padding.bottom,
+            width: top_width + padding.left + padding.right,
             top: (props.header && props.header.height ? props.header.height + padding.top: padding.top),
             left: top_width_base,
             right: null
           },
           "banner-bottom": {
-            height: bottom_height,
-            width: bottom_width,
-            top: bottom_height_base + padding.top,
+            height: bottom_height + padding.top + padding.bottom,
+            width: bottom_width + padding.left + padding.right,
+            top: bottom_height_base,
             left: bottom_width_base,
             right: null
           },
