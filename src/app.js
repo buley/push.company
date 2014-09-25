@@ -172,6 +172,7 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
           },
           onScroll = function(e) {
             console.log('scroll',e);
+            if ()
             context.scroll = {
               updated: new Date().getTime().toString()
             };
@@ -201,7 +202,7 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
 
       requestStateChange(_.extend(context, { init: Date.now() }));
 
-      //window.addEventListener("resize", onResize);
+      window.addEventListener("resize", onResize);
       window.addEventListener("scroll", onScroll);
 
     });
