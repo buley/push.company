@@ -31,15 +31,23 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             instance = this;
         },
         render: function() {
+          var sidebar_height = ctx.sidebar ? ctx.sidebar.height : 0;
+          if (isNaN(sidebar_height) || min > sidebar_height) {
+            sidebar_height = min;
+          }
+          content = {
+            height: sidebar_height,
+            top:  ( ctx.header && ctx.header.height ? ctx.header.height : 0) + (ctx.ads && ctx.ads['banner-top'] ? ctx.ads['banner-top'].height : 0)
+          };
           return React.DOM.section({
             id: "content-container",
             style: {
-              top: (this.props.content ? this.props.content.top : 0) + "px"
+              top: (content ? content.top : 0) + "px"
             }
           }, React.DOM.section({
             id: "content",
             style: {
-              height: (this.props.content ? this.props.content.height : 0) + "px"
+              height: (content ? content.height : 0) + "px"
             }
           } ) );
         }
