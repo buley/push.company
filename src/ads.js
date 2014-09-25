@@ -94,6 +94,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           } else if (y < 0) {
             y = 0;
           }
+
           return React.DOM.section({
             id: "ads"
           }, React.DOM.section({
@@ -107,7 +108,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           }) ), React.DOM.section({
             id: "ads-banner-bottom",
             style: {
-              "top": (content_top + height + 80) + "px",
+              "top": (content_top + height + padding.bottom) + "px",
               "left": bottom_width_base + "px",
             }
           }, React.DOM.div({
