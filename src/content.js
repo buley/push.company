@@ -28,6 +28,11 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             instance = this;
         },
         render: function() {
+          var height = 800,
+              sidebar = (this.props.ads && this.props.ads['box-top'] && this.props.ads['box-bottom'] ? this.props.ads['box-top'].height + this.props.ads['box-top'].height + ( padding.top * 2 ) + ( padding.bottom * 2 ): 0);
+          if (sidebar > height) {
+            height = sidebar + padding.top + padding.bottom;
+          }
           return React.DOM.section({
             id: "content-container",
             style: {
@@ -36,7 +41,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           }, React.DOM.section({
             id: "content",
             style: {
-              height: "800px"
+              height: height + "px"
             }
           } ) );
         }
