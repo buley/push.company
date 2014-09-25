@@ -104,9 +104,9 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             right: null
           },
           "box-top": {
-            height: bottom_height_base + bottom_height + padding.top + padding.bottom,//box_bottom_height,
+            height: box_bottom_height,
             width: box_bottom_width,
-            top: box_top,
+            top: bottom_height_base + bottom_height + padding.top + padding.bottom, //box_top,
             left: null,
             right: box_ad_padding
           },
