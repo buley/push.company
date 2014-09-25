@@ -3,6 +3,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       promise = deferred.promise,
       module = Q.defer(),
       context,
+      min = 800,
       first = true,
       instance,
       content,
@@ -27,6 +28,9 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         },
         render: function() {
           var sidebar_height = this.props.ads ? (this.props.ads['box-top'].top - 20) - (this.props.ads['box-bottom'].top + this.props.ads['box-bottom'].height + 20) : 0;
+          if (sidebar_height > min) {
+            min = sidebar_height;
+          }
           return React.DOM.section({
             id: "content-container",
             style: {
@@ -35,7 +39,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           }, React.DOM.section({
             id: "content",
             style: {
-              height: "800px"
+              height: sidebar_height + "px"
             }
           } ) );
         }
