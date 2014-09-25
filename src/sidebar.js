@@ -56,8 +56,8 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             deferred.notify(state);
           } else if (state.screen) {
             if (state.screen.updated !== prev.updated) {
-              onResize(state);
               prev.updated = state.screen.updated;
+              onResize(state);
             }
           }
         }
