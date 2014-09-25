@@ -26,11 +26,13 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           return React.DOM.section({
             id: "content-container",
             style: {
-              top: this.props.header && this.props.header.height && this.props.ads && this.props.ads['banner-top'] ? this.props.header.height + this.props.ads['banner-top'].height: 0,
-              height: "1200px"
+              top: this.props.header && this.props.header.height && this.props.ads && this.props.ads['banner-top'] ? this.props.header.height + this.props.ads['banner-top'].height: 0
             }
           }, React.DOM.section({
-            id: "content"
+            id: "content",
+            style: {
+              height: "800px"
+            }
           } ) );
         }
       });
