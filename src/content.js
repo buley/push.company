@@ -25,7 +25,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         };
         if (JSON.stringify(ctx) !== JSON.stringify(ctx.content)) {
           ctx.content = content;
-          deferred.notify(ctx);          
+          deferred.notify(ctx);
         }
       },
       component = React.createClass({
@@ -67,9 +67,9 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             if (state.screen.updated !== prev.updated) {
               prev.updated = state.screen.updated;
               onResize(state);
+            } else {
+              onResize(state);
             }
-          } else {
-            onResize(state);
           }
         }
       });
