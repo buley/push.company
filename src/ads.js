@@ -145,7 +145,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         render: function() {
 
           var y = window.scrollY,
-              total = (ctx.header ? ctx.header.height : 0) + (ctx.ads ? ctx.ads['banner-top'].height + ctx.ads['banner-bottom'].height : 0) + (ctx.content ? ctx.content.height : 0) + (ctx.footer ? ctx.footer.height : 0);
+              total = (this.props.header ? this.props.header.height : 0) + (this.props.ads ? this.props.ads['banner-top'].height + this.props.ads['banner-bottom'].height : 0) + (this.props.content ? this.props.content.height : 0) + (this.props.footer ? this.props.footer.height : 0);
           if (y > total) {
             y = total;
           } else if (y < 0) {
