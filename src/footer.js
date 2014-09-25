@@ -41,7 +41,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
               bottom_height = bottom_el.offsetHeight ? bottom_el.offsetHeight : 0,
               bottom_width = bottom_el.offsetWidth ? bottom_el.offsetWidth : 0,
               height = 800,
-              sidebar = padding.top + box_top_height + padding.bottom + padding.top + box_bottom_height + padding.bottom;
+              sidebar = padding.top + box_top_height + padding.bottom + padding.top + box_bottom_height + padding.bottom,
               content_top = header_height + top_height;
 
           if (sidebar > height) {
