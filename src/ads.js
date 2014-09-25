@@ -185,7 +185,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             id: "ads-box-top",
             style: {
               "right": padding.right + "px",
-              "top": (header_height + padding.top + top_height + padding.bottom + padding-top) + "px"
+              "top": (header_height + padding.top + top_height + padding.bottom + padding.top) + "px"
             }
           }, React.DOM.div({
             id: "ads-box-top-ad"
