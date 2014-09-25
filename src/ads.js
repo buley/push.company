@@ -252,19 +252,17 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           context = _.extend({}, _.extend(state, { ads: context.ads}));
 
           if (context.screen) {
-            if (context.screen.width !== prev.width) {
+            if (context.screen.updated !== prev.xupdated) {
               refresh = true;
               adjust = true;
-              prev.width = context.screen.width;
-              prev.height = context.screen.height;
+              prev.xupdated = context.screen.updated;
             }
           }
 
           if (context.scroll) {
-            if (context.scroll.y !== prev.y) {
+            if (context.scroll.updated !== prev.yupdated) {
               adjust = true;
-              prev.y = context.scroll.y;
-              prev.x = context.scroll.x;
+              prev.yupdated = context.scroll.updated;
             }
           }
 
