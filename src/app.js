@@ -161,18 +161,18 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
           interfaces = arguments,
           loaded = 1,
           components = [],
-          onResize = _.throttle(function(e) {
-            /*context.screen = {
+          onResize = function(timestamp) {
+            context.screen = {
               updated: Date.now()
-            };*/
-            console.log('resize');
-            requestStateChange(_.extend(context, { screen: { updated: Date.now() }}));
-          }, 1000),
+            };
+            console.log('resize', context.screen.updated);
+            requestStateChange(context);
+          },
           onScroll = function(e) {
             /*context.scroll = {
               updated: Date.now()
             };*/
-            console.log('scroll', window.scrollY);
+            console.log('scroll', context.screen.updated);
             requestStateChange(context);
           },
           forEachHandler = function(interface) {
