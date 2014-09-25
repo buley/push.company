@@ -60,7 +60,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         } else {
           if (!state.content) {
             state.content = content;
-            deferred.notify(ctx);
+            deferred.notify(state);
           } else if (state.screen) {
             if (state.screen.updated !== prev.updated) {
               prev.updated = state.screen.updated;
