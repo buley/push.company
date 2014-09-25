@@ -16,7 +16,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       },
       onResize = function(ctx) {
         var sidebar_height = ctx.sidebar ? ctx.sidebar.height : 0;
-        if (min > sidebar_height) {
+        if (isNaN(sidebar_height) || min > sidebar_height) {
           sidebar_height = min;
         }
         content = {
