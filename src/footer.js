@@ -32,7 +32,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           return React.DOM.section({
             id: "footer-container",
             style: {
-              "top": (content_top + height + bottom_height + 20) + "px",
+              "top": (content_top + height + bottom_height + 40) + "px",
             }
           }, React.DOM.section({
             id: "footer"
