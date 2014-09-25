@@ -67,7 +67,6 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
               top_height = top_el.offsetHeight ? top_el.offsetHeight : 0,
               top_width = top_el.offsetWidth ? top_el.offsetWidth : 0,
               height = 800,
-              content_top = header_height + (this.props.ads && this.props.ads['banner-top'] ? this.props.ads['banner-top'].height : 0),
               bottom_el = document.getElementById("ads-banner-bottom") || {},
               bottom_height = bottom_el.offsetHeight ? bottom_el.offsetHeight : 0,
               bottom_width = bottom_el.offsetWidth ? bottom_el.offsetWidth : 0,
@@ -84,6 +83,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
               top_width_base = Math.floor(total_width_padding/2),
               box_top = (header_height + padding.top + top_height + padding.bottom + padding.top),
               sidebar = padding.top + box_top_height + padding.bottom + padding.top + box_bottom_height + padding.bottom,
+              content_top = header_height + padding.top + top_height + padding.bottom,
               total = header_height + padding.top + top_height + padding.bottom + height + padding.top + bottom_height + padding.bottom + footer_height;
 
           if (sidebar > height) {
