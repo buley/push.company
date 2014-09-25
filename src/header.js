@@ -4,6 +4,13 @@ define(['q', 'react', 'underscore', 'tween'], function(Q, React, _, Tween) {
       module = Q.defer(),
       context,
       instance,
+      header = { height: 44, zoom: mult, drawer: {
+        showing: false,
+        height: 0,
+        selected: "categories"
+      }, logo: {
+        text: "Lipsum Daily"
+      } },
       mult = 0.9,
       anim = false;
       animate = function (time) {
@@ -196,20 +203,13 @@ define(['q', 'react', 'underscore', 'tween'], function(Q, React, _, Tween) {
     incoming: function(interface) {
       interface.then(null, null, function(state) {
         if (!context) {
-
-          context = _.extend({}, state);
-          context.header = _.extend((state.header || {}), { height: 44, zoom: mult, drawer: {
-            showing: false,
-            height: 0,
-            selected: "categories"
-          }, logo: {
-            text: "Lipsum Daily"
-          } } );
-
-          deferred.notify(context);
-
+          state.header = header;
+          deferred.notify(state);
         } else {
-          context = _.extend({}, _.extend(state, { header: context.header } ));
+          if (!state.header) {
+            state.header = header;
+            deferred.notify(state);
+          }
         }
       });
     },
