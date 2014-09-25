@@ -6,12 +6,6 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       footer,
       first = true,
       prev = {},
-      padding = {
-        top: 20,
-        bottom: 20,
-        left: 20,
-        right: 20
-      },
       onResize = function(ctx) {
         var node = document.getElementById("footer-container") || {};
         footer = {
