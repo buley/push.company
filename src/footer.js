@@ -19,14 +19,10 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             instance = this;
         },
         render: function() {
-          var top_el = document.getElementById("ads-banner-top") || {},
-              top_height = top_el.offsetHeight ? top_el.offsetHeight : 0,
-              top_width = top_el.offsetWidth ? top_el.offsetWidth : 0;
-
           return React.DOM.section({
             id: "footer-container",
             style: {
-              "top": ((this.props.header && this.props.header.height ? this.props.header.height : 0) + top_height + padding.top + padding.bottom + ( this.props.content ? this.props.content.height : 0 ) + padding.bottom + (this.props.ads && this.props.ads['banner-bottom'] ? this.props.ads['banner-bottom'].height : 0 ) ) + "px",
+              "top": ((this.props.header && this.props.header.height ? this.props.header.height : 0) + padding.top + padding.bottom + ( this.props.content ? this.props.content.height : 0 ) + padding.bottom + (this.props.ads && this.props.ads['banner-top'] && this.props.ads['banner-bottom'] ? this.props.ads['banner-top'].height + this.props.ads['banner-bottom'].height : 0 ) ) + "px",
             }
           }, React.DOM.section({
             id: "footer"
