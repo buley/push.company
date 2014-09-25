@@ -26,7 +26,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
             instance = this;
         },
         render: function() {
-          console.log(this.props.ads ? this.props.ads['box-top'].top - (this.props.ads['box-bottom'].top + this.props.ads['box-bottom'].height) )
+          console.log(this.props.ads ? this.props.ads['box-top'].top - (this.props.ads['box-bottom'].top + this.props.ads['box-bottom'].height) : 'xxx');
           return React.DOM.section({
             id: "content-container",
             style: {
