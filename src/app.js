@@ -180,8 +180,6 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
 
       Array.prototype.forEach.call(interfaces, forEachHandler);
 
-      requestStateChange(_.extend(context, { init: Date.now() }));
-
       window.addEventListener("resize", onResize);
       window.addEventListener("scroll", onScroll);
 
