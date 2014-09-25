@@ -233,10 +233,10 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
     top_box.defineSizeMapping(boxmapping);
     slots.push(top_box);
 
-    /*bottom_box = googletag.defineSlot('/270461283/Box', [[88, 31]], "ads-box-bottom-ad")
+    bottom_box = googletag.defineSlot('/270461283/Box', [[88, 31]], "ads-box-bottom-ad")
         .addService(googletag.pubads());
     slots.push(bottom_box);
-    bottom_box.defineSizeMapping(boxmapping);*/
+    bottom_box.defineSizeMapping(boxmapping);
 
 
     expecting = slots.length;
