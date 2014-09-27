@@ -10,7 +10,7 @@ define(['q', 'react', 'underscore', 'src/layout'], function(Q, React, _, layout)
             style: {
               top: (current.box_top - padding.top ) + "px",
               height: current.left_sidebar + "px",
-              display: current.has_left ? 'inline' : 'none'
+              display: current.has_left ? "inline" : "none"
             }
           }, React.DOM.section({
             id: "left"
