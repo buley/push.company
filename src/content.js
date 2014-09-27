@@ -29,7 +29,8 @@ define(['q', 'react', 'underscore', 'src/layout'], function(Q, React, _, layout)
         },
         render: function() {
           var current = layout.current(),
-              right = current.right;
+              right = current.right,
+              height = current.height;
           if (right > height) {
             height = right;
           }
