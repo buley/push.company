@@ -100,7 +100,7 @@ define(['q', 'react', 'underscore', 'src/layout' ], function(Q, React, _, layout
             }
           }, React.DOM.div({
             id: "ads-box-bottom-ad"
-          }), React.DOM.section({
+          }) ), React.DOM.section({
             id: "ads-box-top-left",
             style: {
               "left": padding.left + "px",
@@ -116,7 +116,7 @@ define(['q', 'react', 'underscore', 'src/layout' ], function(Q, React, _, layout
             }
           }, React.DOM.div({
             id: "ads-box-bottom-ad-left"
-          }) ) ) );
+          }) ) );
         }
       });
 
