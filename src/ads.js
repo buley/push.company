@@ -42,20 +42,18 @@ define(['q', 'react', 'underscore', 'src/layout' ], function(Q, React, _, layout
       },
       interval,
       onResize = function(ctx) {
-        var refreshing,
-            current;
+        var refreshing = slots.slice(0),
+            current = layout.current();
+        if (!current.has_left) {
+          refreshing = _.without(refreshing, top_box_left, bottom_box_left);
+        }
+        if (!current.has_right) {
+          refreshing = _.without(refreshing, top_box, bottom_box);
+        }
         context = ctx;
-        expecting = slots.length;
+        expecting = refreshing.length;
         seen = 0;
         if (expecting > 0) {
-          refreshing = slots.slice(0);
-          current = layout.current();
-          if (!current.has_left) {
-            refreshing = _.without(refreshing, top_box_left, bottom_box_left);
-          }
-          if (!current.has_right) {
-            refreshing = _.without(refreshing, top_box, bottom_box);
-          }
           window.googletag.pubads().refresh(refreshing);
         }
       },
