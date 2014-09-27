@@ -52,11 +52,15 @@ define([], function() {
           top_width_base = Math.floor(total_width_padding/2),
           box_top = (header_height + padding.top + top_height + padding.bottom + padding.top),
           sidebar = padding.top + box_top_height + padding.bottom + padding.top + box_bottom_height + padding.bottom,
+          left_sidebar = padding.top + left_box_top_height + padding.bottom + padding.top + left_box_bottom_height + padding.bottom,
           content_top = header_height + padding.top + top_height + padding.bottom,
           total = header_height + padding.top + top_height + padding.bottom + height + padding.top + bottom_height + padding.bottom + footer_height;
 
       if (sidebar > height) {
         height = sidebar;
+      }
+      if (left_sidebar > height) {
+        height = left_sidebar;
       }
       if (y > total) {
         y = total;
@@ -97,6 +101,7 @@ define([], function() {
         top_width_base: top_width_base,
         box_top: box_top,
         sidebar: sidebar,
+        left_sidebar: left_sidebar,
         content_top: content_top,
         total: total,
         getLogo: getLogo
