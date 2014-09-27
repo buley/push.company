@@ -157,8 +157,6 @@ define(['q', 'react', 'underscore', 'src/layout' ], function(Q, React, _, layout
 
   googletag.cmd.push(function() {
 
-    var ;
-
     googletag.pubads().enableSingleRequest();
     googletag.pubads().disableInitialLoad();
     googletag.pubads().collapseEmptyDivs();
