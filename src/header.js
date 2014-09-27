@@ -91,7 +91,10 @@ define(['q', 'react', 'underscore', 'tween', 'src/layout'], function(Q, React, _
               height: current.header_height + "px"
             }
           }, React.DOM.div({
-            id: "header"
+            id: "header",
+            style: {
+              height: current.fixed_header_height + "px"
+            }
           }), React.DOM.div({
             id: "header-under",
             style: {
