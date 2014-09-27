@@ -63,21 +63,34 @@ define(['q', 'react', 'underscore', 'src/layout' ], function(Q, React, _, layout
       component = React.createClass({
         componentDidMount: function() {
             instance = this;
-            window.googletag.cmd.push(function() {
-              window.googletag.display("ads-banner-top-ad");
-            });
-            window.googletag.cmd.push(function() {
-              window.googletag.display("ads-banner-bottom-ad");
-            });
-            window.googletag.cmd.push(function() {
-              window.googletag.display("ads-box-header-ad");
-            });
-            window.googletag.cmd.push(function() {
-              window.googletag.display("ads-box-top-ad-left");
-            });
-            window.googletag.cmd.push(function() {
-              window.googletag.display("ads-box-bottom-ad-left");
-            });
+            var current = layout.current();
+            if (current.has_ads) {
+              window.googletag.cmd.push(function() {
+                window.googletag.display("ads-banner-top-ad");
+              });
+              window.googletag.cmd.push(function() {
+                window.googletag.display("ads-banner-bottom-ad");
+              });
+              window.googletag.cmd.push(function() {
+                window.googletag.display("ads-box-header-ad");
+              });
+              if (current.has_left) {
+                window.googletag.cmd.push(function() {
+                  window.googletag.display("ads-box-top-ad-left");
+                });
+                window.googletag.cmd.push(function() {
+                  window.googletag.display("ads-box-bottom-ad-left");
+                });
+              }
+              if (current.has_right) {
+                window.googletag.cmd.push(function() {
+                  window.googletag.display("ads-box-top-ad");
+                });
+                window.googletag.cmd.push(function() {
+                  window.googletag.display("ads-box-bottom-ad");
+                });
+              }
+            }
         },
         render: function() {
           var current = layout.current();
@@ -156,7 +169,6 @@ define(['q', 'react', 'underscore', 'src/layout' ], function(Q, React, _, layout
       context.ads = context.ads || {};
       context.ads.updated = Date.now();
       deferred.notify(context);
-      console.log('updated ads',context.ads.updated);
     }
   });
 
