@@ -2,16 +2,7 @@ define(['q', 'react', 'underscore', 'src/layout'], function(Q, React, _, layout)
   var deferred = Q.defer(),
       promise = deferred.promise,
       module = Q.defer(),
-      context,
-      min = 0,
-      first = true,
-      instance,
-      content,
-      prev = {},
       component = React.createClass({
-        componentDidMount: function() {
-            instance = this;
-        },
         render: function() {
           var current = layout.current();
           return React.DOM.section({
@@ -29,7 +20,6 @@ define(['q', 'react', 'underscore', 'src/layout'], function(Q, React, _, layout)
       });
 
   module.resolve(component);
-
 
   return {
     outgoing: function(interface) {
