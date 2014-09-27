@@ -62,6 +62,12 @@ define([], function() {
       if (left_sidebar > height) {
         height = left_sidebar;
       }
+      if (height > left_sidebar) {
+        left_sidebar = height;
+      }
+      if (height > sidebar) {
+        sidebar = height;
+      }      
       if (y > total) {
         y = total;
       } else if (y < 0) {
