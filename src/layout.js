@@ -1,7 +1,13 @@
 define([], function() {
   return {
     current: function() {
-      var y = window.scrollY,
+      var padding = {
+            top: 20,
+            bottom: 20,
+            left: 20,
+            right: 20
+          },
+          y = window.scrollY,
           header = document.getElementById("header"),
           header_height = header ? header.offsetHeight : 0,
           footer = document.getElementById("footer-container"),
