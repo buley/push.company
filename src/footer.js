@@ -29,7 +29,7 @@ define(['q', 'react', 'underscore', 'src/layout'], function(Q, React, _, layout)
           return React.DOM.section({
             id: "footer-container",
             style: {
-              "top": (current.content_top + current.height + current.bottom_height + (2 * padding.top) + (2 * padding.bottom)) + "px",
+              "top": (current.content_top + current.height + current.bottom_height + padding.top + padding.bottom) + "px",
             }
           }, React.DOM.section({
             id: "footer"
