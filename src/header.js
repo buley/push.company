@@ -40,7 +40,7 @@ define(['q', 'react', 'underscore', 'tween', 'src/layout'], function(Q, React, _
           }, React.DOM.div({
             id: "header-over",
             style: {
-              height: (this.props.header ? this.props.header.height : 0) + "px"
+              height: current.header_height + "px"
             }
           }, React.DOM.div({
             id: "header-logo",
@@ -91,20 +91,20 @@ define(['q', 'react', 'underscore', 'tween', 'src/layout'], function(Q, React, _
           }))), React.DOM.div({
             id: "header-inner",
             style: {
-              height: (this.props.header ? this.props.header.height : 0) + "px"
+              height: current.header_height + "px"
             }
           }, React.DOM.div({
             id: "header"
           }), React.DOM.div({
             id: "header-under",
             style: {
-              height: ( this.props.header ? this.props.header.height : 0 ) + "px"
+              height: current.header_height + "px"
             }
           })), React.DOM.div({
             id: "header-drawer-container",
             style: {
               display: (this.props.header && this.props.header.drawer && ( this.props.header.drawer.showing || true === anim)) ? "block" : "none",
-              top: (this.props.header ? this.props.header.height : 0) + "px",
+              top: current.header_height + "px",
               height: ( this.props.header && this.props.header.drawer && this.props.header.drawer.height ? this.props.header.drawer.height : 0 ) + "px"
             }
           }, React.DOM.div({
