@@ -32,8 +32,8 @@ define(['q', 'react', 'underscore', 'src/layout'], function(Q, React, _, layout)
           return React.DOM.section({
             id: "left-container",
             style: {
-              top: current.box_top - padding.top,
-              height: (current.left_box_top_height + current.left_box_bottom_height + (2 * padding.top) + (2 * padding.bottom))
+              top: (current.box_top - padding.top ) + "px",
+              height: current.left_sidebar + "px"
             }
           }, React.DOM.section({
             id: "left"
