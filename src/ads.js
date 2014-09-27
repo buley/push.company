@@ -94,8 +94,8 @@ define(['q', 'react', 'underscore', 'src/layout' ], function(Q, React, _, layout
           }) ), React.DOM.section({
             id: "ads-banner-bottom",
             style: {
-              "top": (current.content_top + current.height + (current.height > 0 ? padding.bottom : 0) + "px",
-              "left": current.bottom_width_base + "px",
+              "top": (current.content_top + current.height + (current.height > 0 ? padding.bottom : 0)) + "px",
+              "left": current.bottom_width_base + "px"
             }
           }, React.DOM.div({
             id: "ads-banner-bottom-ad"
