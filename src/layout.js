@@ -24,7 +24,7 @@ define([], function() {
           total_width = document.body.offsetWidth || 0,
           has_ads = true,
           has_left = total_width > 1200 ? true : false,
-          has_right = total_width > 800 ? true : false,
+          has_right = total_width > 600 ? true : false,
           fixed_header_height = 44,
           header = document.getElementById("header"),
           header_height = header ? header.offsetHeight : 0,
