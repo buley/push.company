@@ -11,9 +11,10 @@ define(['q', 'react', 'underscore', 'src/layout'], function(Q, React, _, layout)
         top: 20,
         bottom: 20,
         left: 20,
-        right: 20
+        left: 20
       },
       onResize = function(ctx) {
+        return;
         var el = document.getElementById("left-container"),
             style = window.getComputedStyle(el);
         ctx.left = {
