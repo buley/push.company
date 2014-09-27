@@ -174,17 +174,21 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
           },
           forEachHandler = function(interface) {
             var readyHandler = function(comp) {
+              if (interface.incoming) {
                 interface.incoming(promise);
+              }
+              if (interface.outgoing) {
                 interface.outgoing(incoming);
-                if (!!comp) {
-                  components.push(comp);
-                }
-                if (loaded === interfaces.length) {
-                  ready();
-                } else {
-                  loaded = loaded + 1;
-                }
-              };
+              }
+              if (!!comp) {
+                components.push(comp);
+              }
+              if (loaded === interfaces.length) {
+                ready();
+              } else {
+                loaded = loaded + 1;
+              }
+            };
             if (!!interface && !!interface.ready) {
               interface.ready(readyHandler);
             } else {
