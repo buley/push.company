@@ -21,6 +21,8 @@ define([], function() {
             return large;
           },
           y = window.scrollY,
+          has_left = false,
+          has_right = false,
           header = document.getElementById("header"),
           header_height = header ? header.offsetHeight : 0,
           footer = document.getElementById("footer-container"),
@@ -76,6 +78,8 @@ define([], function() {
 
       return {
         y: y,
+        has_left: has_left,
+        has_right: has_right,
         header: header,
         header_height: header_height,
         footer: footer,

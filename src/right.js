@@ -33,7 +33,8 @@ define(['q', 'react', 'underscore', 'src/layout'], function(Q, React, _, layout)
             id: "right-container",
             style: {
               top: current.box_top - padding.top,
-              height: current.sidebar
+              height: current.sidebar,
+              display: current.has_left ? 'inline' : 'none'
             }
           }, React.DOM.section({
             id: "right"
