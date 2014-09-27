@@ -29,10 +29,8 @@ define(['q', 'react', 'underscore', 'tween', 'src/layout'], function(Q, React, _
 
           var current = layout.current(),
               logo = current.getLogo(current.y),
-              y = window.scrollY,
-              total = window.outerHeight;
-
-          logo = ;
+              y = current.y,
+              total = current.total;
 
           return React.DOM.header({
             id: "header-container",
