@@ -1,4 +1,4 @@
-define(['q', 'react', 'underscore', 'tween', 'layout'], function(Q, React, _, Tween, layout) {
+define(['q', 'react', 'underscore', 'tween', 'src/layout'], function(Q, React, _, Tween, layout) {
   var deferred = Q.defer(),
       promise = deferred.promise,
       module = Q.defer(),

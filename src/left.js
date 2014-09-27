@@ -1,4 +1,4 @@
-define(['q', 'react', 'underscore', 'layout'], function(Q, React, _, layout) {
+define(['q', 'react', 'underscore', 'src/layout'], function(Q, React, _, layout) {
   var deferred = Q.defer(),
       promise = deferred.promise,
       module = Q.defer(),
@@ -27,11 +27,12 @@ define(['q', 'react', 'underscore', 'layout'], function(Q, React, _, layout) {
             instance = this;
         },
         render: function() {
+          var current = layout.current();
           return React.DOM.section({
             id: "left-container",
             style: {
-              top: (this.props.header && this.props.header.height ? this.props.header.height : 0) + ( this.props.ads && this.props.ads['banner-top'] ? this.props.ads['banner-top'].height : 0 ) + "px",//this.props.left ? this.props.left.top : 0,
-              height: ( this.props.ads && this.props.ads['banner-top'] ? (this.props.ads['banner-bottom'].top + this.props.ads['banner-bottom'].height) - this.props.ads['banner-top'].top : 0 ) + "px"//this.props.left ? this.props.left.height : 0
+              top: current.box_top - padding.top,
+              height: (current.box_top_height + current.box_bottom_height + (2 * padding.top) + (2 * padding.bottom))
             }
           }, React.DOM.section({
             id: "left"

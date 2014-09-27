@@ -1,4 +1,4 @@
-define(['q', 'react', 'underscore', 'layout'], function(Q, React, _, layout) {
+define(['q', 'react', 'underscore', 'src/layout'], function(Q, React, _, layout) {
   var deferred = Q.defer(),
       promise = deferred.promise,
       module = Q.defer(),
@@ -25,10 +25,11 @@ define(['q', 'react', 'underscore', 'layout'], function(Q, React, _, layout) {
             instance = this;
         },
         render: function() {
+          var current = layout.current();
           return React.DOM.section({
             id: "stream-container",
             style: {
-              top: (this.props.ads['box-top'].top + padding.bottom) + "px",
+              top: (current.box_top + current.box_top_height + padding.bottom) + "px",
               height: "200px"
             }
           }, React.DOM.section({
