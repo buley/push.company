@@ -14,6 +14,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
         right: 20
       },
       onResize = function(ctx) {
+        return;
         var el = document.getElementById("right-container"),
             style = window.getComputedStyle(el);
         ctx.right = {
