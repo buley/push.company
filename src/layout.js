@@ -21,6 +21,7 @@ define([], function() {
             return large;
           },
           y = window.scrollY,
+          has_ads = false,
           has_left = false,
           has_right = false,
           header = document.getElementById("header"),
@@ -78,6 +79,7 @@ define([], function() {
 
       return {
         y: y,
+        has_ads: has_ads,
         has_left: has_left,
         has_right: has_right,
         header: header,

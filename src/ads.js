@@ -50,6 +50,9 @@ define(['q', 'react', 'underscore', 'src/layout' ], function(Q, React, _, layout
         if (!current.has_right) {
           refreshing = _.without(refreshing, top_box, bottom_box);
         }
+        if (!current.has_ads) {
+          refreshing = [];
+        }
         context = ctx;
         expecting = refreshing.length;
         seen = 0;
