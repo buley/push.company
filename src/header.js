@@ -10,7 +10,7 @@ define(['q', 'react', 'underscore', 'tween', 'src/layout'], function(Q, React, _
         height: 0,
         selected: "categories"
       }, logo: {
-        text: "Lipsum Daily"
+        text: ""
       } },
       mult = 0.9,
       anim = false;
