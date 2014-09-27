@@ -70,7 +70,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
           return React.DOM.section({
             id: "right-container",
             style: {
-              top: box_top,
+              top: box_top - padding.top,
               height: (box_top_height + box_bottom_height + (2 * padding.top) + (2 * padding.bottom))
             }
           }, React.DOM.section({
