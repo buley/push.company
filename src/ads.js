@@ -120,6 +120,7 @@ define(['q', 'react', 'underscore', 'src/layout' ], function(Q, React, _, layout
         }
       });
 
+
   module.resolve(component);
 
   googletag.pubads().addEventListener('slotRenderEnded', function(event) {
