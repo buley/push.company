@@ -3,7 +3,7 @@ define(['q', 'react', 'underscore'], function(Q, React, _) {
       promise = deferred.promise,
       module = Q.defer(),
       context,
-      min = 800,
+      min = 0,
       first = true,
       instance,
       content,
