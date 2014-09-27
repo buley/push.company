@@ -5,7 +5,7 @@ define(['q', 'react', 'underscore', 'tween', 'src/layout'], function(Q, React, _
       context,
       first = true,
       instance,
-      header = { height: 44, zoom: mult, drawer: {
+      header = { zoom: mult, drawer: {
         showing: false,
         height: 0,
         selected: "categories"
@@ -20,18 +20,15 @@ define(['q', 'react', 'underscore', 'tween', 'src/layout'], function(Q, React, _
         }
         Tween.update(time);
       },
-
       component = React.createClass({
         componentDidMount: function() {
             instance = this;
         },
         render: function() {
-
           var current = layout.current(),
               logo = current.getLogo(current.y),
               y = current.y,
               total = current.total;
-
           return React.DOM.header({
             id: "header-container",
             style: {
