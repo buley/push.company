@@ -21,7 +21,7 @@ define([], function() {
             return large;
           },
           y = window.scrollY,
-          has_ads = false,
+          has_ads = true,
           has_left = false,
           has_right = false,
           fixed_header_height = 44,
