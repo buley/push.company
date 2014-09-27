@@ -112,7 +112,7 @@ define(['q', 'react', 'underscore', 'src/layout' ], function(Q, React, _, layout
             id: "ads-box-bottom-left",
             style: {
               "left": padding.left + "px",
-              "top": (current.box_top + current.box_top_height + padding.bottom + padding.top) + "px" //stream TK
+              "top": (current.box_top + current.left_box_top_height + padding.bottom + padding.top) + "px" //stream TK
             }
           }, React.DOM.div({
             id: "ads-box-bottom-ad-left"
