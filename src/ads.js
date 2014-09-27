@@ -16,6 +16,12 @@ define(['q', 'react', 'underscore', 'src/layout' ], function(Q, React, _, layout
         [ [768, 1], [ [300, 250], [300, 600], [120, 60], [180, 150], [320, 50], [234, 60] ] ],
         [ [0, 0], [] ]
       ],
+      top_banner,
+      bottom_banner,
+      top_box,
+      bottom_box,
+      top_box_left,
+      bottom_box_left,
       expecting = 0,
       seen = 0,
       prev = {},
@@ -36,10 +42,22 @@ define(['q', 'react', 'underscore', 'src/layout' ], function(Q, React, _, layout
       },
       interval,
       onResize = function(ctx) {
+        var refreshing,
+            current;
         context = ctx;
         expecting = slots.length;
         seen = 0;
         if (expecting > 0) {
+          refreshing = slots.slice(0);
+          current = layout.current();
+          if (!current.has_left) {
+            refreshing = _.without(refreshing, top_box_left);
+            refreshing = _.without(refreshing, bottom_box_left);
+          }
+          if (!current.has_right) {
+            refreshing = _.without(refreshing, top_box;
+            refreshing = _.without(refreshing, bottom_box);
+          }
           window.googletag.pubads().refresh(slots);
         }
       },
@@ -139,12 +157,7 @@ define(['q', 'react', 'underscore', 'src/layout' ], function(Q, React, _, layout
 
   googletag.cmd.push(function() {
 
-    var top_banner,
-        bottom_banner,
-        top_box,
-        bottom_box,
-        top_box_left,
-        bottom_box_left;
+    var ;
 
     googletag.pubads().enableSingleRequest();
     googletag.pubads().disableInitialLoad();
