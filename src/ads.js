@@ -73,6 +73,12 @@ define(['q', 'react', 'underscore', 'src/layout' ], function(Q, React, _, layout
             window.googletag.cmd.push(function() {
               window.googletag.display("ads-box-header-ad");
             });
+            window.googletag.cmd.push(function() {
+              window.googletag.display("ads-box-top-ad-left");
+            });
+            window.googletag.cmd.push(function() {
+              window.googletag.display("ads-box-bottom-ad-left");
+            });
         },
         render: function() {
           var current = layout.current();
