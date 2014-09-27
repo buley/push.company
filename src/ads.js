@@ -55,7 +55,7 @@ define(['q', 'react', 'underscore', 'src/layout' ], function(Q, React, _, layout
             refreshing = _.without(refreshing, bottom_box_left);
           }
           if (!current.has_right) {
-            refreshing = _.without(refreshing, top_box;
+            refreshing = _.without(refreshing, top_box);
             refreshing = _.without(refreshing, bottom_box);
           }
           window.googletag.pubads().refresh(slots);
