@@ -94,7 +94,7 @@ define(['q', 'react', 'underscore', 'src/layout' ], function(Q, React, _, layout
           }) ), React.DOM.section({
             id: "ads-banner-bottom",
             style: {
-              "top": (current.content_top + current.height + padding.bottom) + "px",
+              "top": (current.content_top + current.height + (current.height > 0 ? padding.bottom : 0) + "px",
               "left": current.bottom_width_base + "px",
             }
           }, React.DOM.div({
@@ -119,7 +119,7 @@ define(['q', 'react', 'underscore', 'src/layout' ], function(Q, React, _, layout
             id: "ads-box-bottom",
             style: {
               "right": padding.right + "px",
-              "top": (current.box_top + current.box_top_height + padding.bottom + padding.top) + "px" //stream TK
+              "top": (current.box_top + current.box_top_height + (current.box_top_height > 0 ? padding.bottom : 0) + (current.box_top_height > 0 ? padding.top : 0)) + "px" //stream TK
             }
           }, React.DOM.div({
             id: "ads-box-bottom-ad"
@@ -135,7 +135,7 @@ define(['q', 'react', 'underscore', 'src/layout' ], function(Q, React, _, layout
             id: "ads-box-bottom-left",
             style: {
               "left": padding.left + "px",
-              "top": (current.box_top + current.left_box_top_height + padding.bottom + padding.top) + "px" //stream TK
+              "top": (current.box_top + current.left_box_top_height + (current.left_box_top_height > 0 ? padding.bottom : 0) + (current.left_box_top_height > 0 ? padding.top : 0)) + "px" //stream TK
             }
           }, React.DOM.div({
             id: "ads-box-bottom-ad-left"
