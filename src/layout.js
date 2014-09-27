@@ -53,10 +53,10 @@ define([], function() {
           total_width_padding_bottom = total_width - bottom_width,
           bottom_width_base = Math.floor(total_width_padding_bottom/2),
           top_width_base = Math.floor(total_width_padding/2),
-          box_top = (header_height + padding.top + top_height + padding.bottom + padding.top),
+          box_top = (header_height + padding.top + (top_height > 0 ? padding.top + top_height + padding.bottom : 0 ) ),
           sidebar = padding.top + box_top_height + padding.bottom + padding.top + box_bottom_height + padding.bottom,
           left_sidebar = padding.top + left_box_top_height + padding.bottom + padding.top + left_box_bottom_height + padding.bottom,
-          content_top = header_height + padding.top + top_height + padding.bottom,
+          content_top = header_height + (top_height > 0 ? padding.top + top_height + padding.bottom : 0),
           total = header_height + padding.top + top_height + padding.bottom + height + padding.top + bottom_height + padding.bottom + footer_height;
 
       if (sidebar > height) {
