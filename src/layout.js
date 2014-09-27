@@ -21,6 +21,7 @@ define([], function() {
             return large;
           },
           y = window.scrollY,
+          total_width = document.body.offsetWidth || 0,
           has_ads = true,
           has_left = total_width > 960 ? true : false,
           has_right = total_width > 580 ? true : false,
@@ -49,7 +50,6 @@ define([], function() {
           left_box_top_el = document.getElementById("ads-box-top-left") || {},
           left_box_top_height = left_box_top_el.offsetHeight ? left_box_top_el.offsetHeight : 0,
           left_box_top_width = left_box_top_el.offsetWidth ? left_box_top_el.offsetWidth : 0,
-          total_width = document.body.offsetWidth || 0,
           total_width_padding = total_width - top_width,
           total_width_padding_bottom = total_width - bottom_width,
           bottom_width_base = Math.floor(total_width_padding_bottom/2),
