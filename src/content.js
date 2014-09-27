@@ -37,7 +37,7 @@ define(['q', 'react', 'underscore', 'src/layout'], function(Q, React, _, layout)
           return React.DOM.section({
             id: "content-container",
             style: {
-              top: (padding.top + current.content_top + padding.bottom) + "px"
+              top: (current.content_top) + "px"
             }
           }, React.DOM.section({
             id: "content",
