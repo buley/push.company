@@ -181,7 +181,7 @@ define(['q', 'react', 'underscore', 'src/layout' ], function(Q, React, _, layout
     bottom_box_left = googletag.defineSlot('/270461283/Box', [[88, 31]], "ads-box-bottom-ad-left")
         .addService(googletag.pubads());
     slots.push(bottom_box_left);
-    bottom_box.defineSizeMapping(boxmapping);
+    bottom_box_left.defineSizeMapping(boxmapping);
 
     expecting = slots.length;
     googletag.enableServices();
