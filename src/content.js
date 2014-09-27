@@ -8,32 +8,12 @@ define(['q', 'react', 'underscore', 'src/layout'], function(Q, React, _, layout)
       instance,
       content,
       prev = {},
-      padding = {
-        top: 20,
-        bottom: 20,
-        left: 20,
-        right: 20
-      },
-      onResize = function(ctx) {
-        var el = document.getElementById("content");
-        content = {
-          height: el ? el.offsetHeight : 0,
-          width: el ? el.offsetWidth : 0
-        };
-        ctx.content = content;
-        deferred.notify(ctx);
-      },
       component = React.createClass({
         componentDidMount: function() {
             instance = this;
         },
         render: function() {
-          var current = layout.current(),
-              right = current.right,
-              height = current.height;
-          if (right > height) {
-            height = right;
-          }
+          var current = layout.current();
           return React.DOM.section({
             id: "content-container",
             style: {
@@ -42,7 +22,7 @@ define(['q', 'react', 'underscore', 'src/layout'], function(Q, React, _, layout)
           }, React.DOM.section({
             id: "content",
             style: {
-              height: height + "px"
+              height: current.height + "px"
             }
           } ) );
         }
@@ -54,31 +34,6 @@ define(['q', 'react', 'underscore', 'src/layout'], function(Q, React, _, layout)
   return {
     outgoing: function(interface) {
       interface(promise);
-    },
-    incoming: function(interface) {
-      interface.then(null, null, function(state) {
-        var json;
-        if (first) {
-          first = false;
-          onResize(state);
-        } else {
-          if (!state.content) {
-            state.content = content;
-            deferred.notify(state);
-          } else if (state.screen) {
-            if (state.screen.updated !== prev.updated) {
-              prev.updated = state.screen.updated;
-              onResize(state);
-            }
-          } else {
-            json = ads.json;
-            if (json !== prev.json) {
-              prev.json = json;
-              onResize(state);
-            }
-          }
-        }
-      });
     },
     ready: module.promise.then.bind(module.promise)
   };
