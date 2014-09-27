@@ -116,7 +116,7 @@ define(['q', 'react', 'underscore', 'src/layout' ], function(Q, React, _, layout
             }
           }, React.DOM.div({
             id: "ads-box-bottom-ad-left"
-          }) ) );
+          }) ) ) );
         }
       });
 
