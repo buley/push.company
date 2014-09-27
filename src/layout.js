@@ -7,6 +7,19 @@ define([], function() {
             left: 20,
             right: 20
           },
+          getLogo = function(y) {
+            var large = {
+              width: 220,
+              height: 68
+            }, small = {
+              width: 142,
+              height: 44
+            };
+            if (y > 0) {
+              return small;
+            }
+            return large;
+          },
           y = window.scrollY,
           header = document.getElementById("header"),
           header_height = header ? header.offsetHeight : 0,
@@ -73,7 +86,8 @@ define([], function() {
         box_top: box_top,
         sidebar: sidebar,
         content_top: content_top,
-        total: total
+        total: total,
+        getLogo: getLogo
       };
     }
   }
