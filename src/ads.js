@@ -184,7 +184,6 @@ define(['q', 'react', 'underscore', 'src/layout' ], function(Q, React, _, layout
     bottom_box.defineSizeMapping(boxmapping);
 
     expecting = slots.length;
-
     googletag.enableServices();
 
   });
