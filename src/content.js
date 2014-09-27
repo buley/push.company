@@ -29,8 +29,8 @@ define(['q', 'react', 'underscore', 'src/layout'], function(Q, React, _, layout)
         },
         render: function() {
           var current = layout.current();
-          if (right > height) {
-            height = right;
+          if (current.right > height) {
+            height = current.right;
           }
           return React.DOM.section({
             id: "content-container",
