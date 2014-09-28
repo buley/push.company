@@ -35,6 +35,7 @@ define([], function() {
           top_width = top_el.offsetWidth ? top_el.offsetWidth : 0,
           content = document.getElementById("content-container"),
           height = content ? content.offsetHeight : 0,
+          width,
           bottom_el = document.getElementById("ads-banner-bottom") || {},
           bottom_height = bottom_el.offsetHeight ? bottom_el.offsetHeight : 0,
           bottom_width = bottom_el.offsetWidth ? bottom_el.offsetWidth : 0,
@@ -78,6 +79,8 @@ define([], function() {
         y = 0;
       }
 
+      width = 960;
+
       return {
         y: y,
         has_ads: has_ads,
@@ -93,6 +96,7 @@ define([], function() {
         top_width: top_width,
         content: content,
         height: height,
+        width: width,
         bottom_el: bottom_el,
         bottom_height: bottom_height,
         bottom_width: bottom_width,
