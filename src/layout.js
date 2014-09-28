@@ -51,6 +51,12 @@ define([], function() {
           left_box_top_el = document.getElementById("ads-box-top-left") || {},
           left_box_top_height = left_box_top_el.offsetHeight ? left_box_top_el.offsetHeight : 0,
           left_box_top_width = left_box_top_el.offsetWidth ? left_box_top_el.offsetWidth : 0,
+          left_el = document.getElementById("left-container") || {},
+          left_height = left_el.offsetHeight ? left_el.offsetHeight : 0,
+          left_width = left_el.offsetWidth ? left_el.offsetWidth : 0,
+          right_el = document.getElementById("right-container") || {},
+          right_height = right_el.offsetHeight ? right_el.offsetHeight : 0,
+          right_width = right_el.offsetWidth ? right_el.offsetWidth : 0,
           total_width_padding = total_width - top_width,
           total_width_padding_bottom = total_width - bottom_width,
           bottom_width_base = Math.floor(total_width_padding_bottom/2),
@@ -80,6 +86,8 @@ define([], function() {
       }
 
       width = 960;
+
+      if (width + )
 
       return {
         y: y,
