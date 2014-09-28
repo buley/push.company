@@ -87,7 +87,9 @@ define([], function() {
 
       width = 960;
 
-      if (width + )
+      if ((width + right_width + left_width) > total_width) {
+        width = total_width - right_width - left_width;
+      }
 
       return {
         y: y,
