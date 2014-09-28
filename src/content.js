@@ -16,7 +16,7 @@ define(['q', 'react', 'underscore', 'src/layout'], function(Q, React, _, layout)
             id: "content",
             style: {
               height: current.height + "px",
-              width: current.width + "px"
+              "max-width": current.width + "px"
             }
           } ) );
         }
