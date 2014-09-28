@@ -8,7 +8,9 @@ define(['q', 'react', 'underscore', 'src/layout'], function(Q, React, _, layout)
           return React.DOM.section({
             id: "content-container",
             style: {
-              top: (current.content_top) + "px"
+              top: (current.content_top) + "px",
+              right: current.right_width + "px",
+              left: current.left_width + "px"
             }
           }, React.DOM.section({
             id: "content",

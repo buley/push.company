@@ -132,7 +132,11 @@ define([], function() {
         left_sidebar: left_sidebar,
         content_top: content_top,
         total: total,
-        getLogo: getLogo
+        getLogo: getLogo,
+        right_height: right_height,
+        left_width: left_width,
+        right_width: right_width,
+        left_height: left_height
       };
     }
   }
