@@ -137,6 +137,8 @@ define([], function() {
       }
       console.log("BOTTOM LEFT HEIGHT", bottom_left_height);
       console.log("LEFT SIDEBAR", left_sidebar);
+      left_sidebar += bottom_left_height;
+      console.log("LEFT SIDEBAR COm", left_sidebar);
 
       if (bottom_right_height < min_bottom_right) {
         bottom_right_height = 0 + min_bottom_right;
