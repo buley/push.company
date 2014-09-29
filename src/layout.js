@@ -7,19 +7,6 @@ define([], function() {
             left: 20,
             right: 20
           },
-          getLogo = function(y) {
-            var large = {
-              width: 220,
-              height: 68
-            }, small = {
-              width: 142,
-              height: 44
-            };
-            if (y > box_top) {
-              return small;
-            }
-            return large;
-          },
           y = window.scrollY,
           total_width = document.body.offsetWidth || 0,
           has_ads = true,

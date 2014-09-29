@@ -5,6 +5,33 @@ define(['q', 'react', 'underscore', 'tween', 'src/layout'], function(Q, React, _
       context,
       first = true,
       instance,
+      isBig = true,
+      startLogoShrink = function() {
+        console.log('startLogoShrink');
+      },
+      startLogoGrow = function() {
+        console.log('startLogoGrow');
+      },
+      checkLogo = function(y, pt) {
+        var large = {
+          width: 220,
+          height: 68
+        }, small = {
+          width: 142,
+          height: 44
+        };
+        if (y >= pt) {
+          if (isBig) {
+            isBig = false;
+            startLogoShrink();
+          }
+          return small;
+        } else if (!isBig) {
+          isBig = true;
+          startLogoGrow();
+        }
+        return large;
+      },
       header = { zoom: mult, drawer: {
         showing: false,
         height: 0,
@@ -26,9 +53,10 @@ define(['q', 'react', 'underscore', 'tween', 'src/layout'], function(Q, React, _
         },
         render: function() {
           var current = layout.current(),
-              logo = current.getLogo(current.y),
+              logo = getLogo(current.y, current.box_top),
               y = current.y,
               total = current.total;
+
           return React.DOM.header({
             id: "header-container",
             style: {
