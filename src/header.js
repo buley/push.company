@@ -127,8 +127,8 @@ define(['q', 'react', 'underscore', 'tween', 'src/layout'], function(Q, React, _
               height: logo.height,
               width: logo.width
             }
-          }, !!this.props.header && !!this.props.header.logo && !!this.props.header.logo.text ? this.props.header.logo.text : ""), React.DOM.div({id:"header-navigation-button", style: {
-            right: (50 + current.header_ad_width + 20) + "px"
+          }, !!this.props.header && !!this.props.header.logo && !!this.props.header.logo.text ? this.props.header.logo.text : ""), React.DOM.div({ id:"header-navigation-button", style: {
+            right: (70 + current.header_ad_width) + "px"
           }}, React.DOM.img({src:"/img/tab_white_navigation@2x.png"})), React.DOM.div({
             id: "header-menu-button",
             onClick: function(e) {
