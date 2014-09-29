@@ -130,14 +130,11 @@ define([], function() {
 
       /* Bottom */
 
-      bottom_left_top = (left_box_bottom_height + left_box_top + left_box_top_height + (left_sidebar - 100 - left_box_top_height - left_box_bottom_height - top_left_height) + 40 + (left_box_top_height > 0 ? padding.bottom : 0) + (left_box_top_height > 0 ? padding.top : 0)) + padding.bottom;
 
       if (bottom_left_height < min_bottom_left) {
         bottom_left_height = 0 + min_bottom_left;
       }
       left_sidebar += bottom_left_height;
-
-      bottom_right_top = (box_bottom_height + box_top + box_top_height + (sidebar - 100 - box_top_height - box_bottom_height - top_left_height) + 40 + (box_top_height > 0 ? padding.bottom : 0) + (box_top_height > 0 ? padding.top : 0)) + padding.bottom;
 
       if (bottom_right_height < min_bottom_right) {
         bottom_right_height = 0 + min_bottom_right;
@@ -146,7 +143,7 @@ define([], function() {
       /* Middle */
 
       middle_right = sidebar - 100 - box_top_height - box_bottom_height - top_right_height;
-      middle_left = left_sidebar - bottom_left_height - 160 - left_box_top_height - left_box_bottom_height - top_left_height;
+      middle_left = left_sidebar - 120 - bottom_left_height - left_box_top_height - left_box_bottom_height - top_left_height;
 
       min_diff_r = 0;
       min_diff_l = 0;
