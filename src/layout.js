@@ -107,6 +107,8 @@ define([], function() {
         y = 0;
       }
 
+      /* Width */
+
       width = 0 + min_width;
 
       if ((width + right_width + left_width) > total_width) {
@@ -115,6 +117,7 @@ define([], function() {
 
       image_width = 0 + width - padding.left - padding.right;
 
+      /* Height */
 
       if (bottom_left_height < min_bottom_left) {
         bottom_left_height = 0 + min_bottom_left;
