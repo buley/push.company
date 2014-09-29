@@ -151,7 +151,7 @@ define([], function() {
 
       /* Bottom */
 
-      bottom_left_top = left_box_top + left_box_top_height + middle_left + 60;
+      bottom_left_top = left_box_top + left_box_top_height + 20 + middle_left + 20 + left_box_bottom_height + 20;
 
       //(left_box_bottom_height + left_box_top + left_box_top_height + (left_sidebar - 100 - left_box_top_height - left_box_bottom_height - top_left_height) + 40 + (left_box_top_height > 0 ? padding.bottom : 0) + (left_box_top_height > 0 ? padding.top : 0)) + padding.bottom;
 
