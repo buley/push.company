@@ -85,17 +85,18 @@ define([], function() {
           total = header_height + padding.top + top_height + padding.bottom + height + padding.top + bottom_height + padding.bottom + footer_height;
 
       if (sidebar > height) {
-        height = sidebar;
+        height = 0 + sidebar;
       }
       if (left_sidebar > height) {
-        height = left_sidebar;
+        height = 0 + left_sidebar;
       }
 
       if (height > left_sidebar) {
-        left_sidebar = height;
+        left_sidebar = 0 + height;
       }
+
       if (height > sidebar) {
-        sidebar = height;
+        sidebar = 0 + height;
       }
 
       if (y > total) {
@@ -145,7 +146,6 @@ define([], function() {
       middle_left = left_sidebar - 100 - left_box_top_height - left_box_bottom_height - top_left_height;
 
       left_sidebar += bottom_left_height;
-
 
       min_diff_r = 0;
       min_diff_l = 0;
