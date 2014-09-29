@@ -80,8 +80,8 @@ define([], function() {
         width = total_width - right_width - left_width;
       }
 
-      middle_right = sidebar - 40 - box_top_height - box_bottom_height;
-      middle_left = left_sidebar - 40 - left_box_top_height - left_box_bottom_height;
+      middle_right = sidebar - 80 - box_top_height - box_bottom_height;
+      middle_left = left_sidebar - 80 - left_box_top_height - left_box_bottom_height;
 
       return {
         y: y,
