@@ -10,8 +10,8 @@ define([], function() {
           middle_left,
           middle_right,
           min_middle = 200,
-          min_diff_r,
-          min_diff_l,
+          min_diff_r = 0,
+          min_diff_l = 0,
           y = window.scrollY,
           total_width = document.body.offsetWidth || 0,
           has_ads = true,
@@ -92,7 +92,20 @@ define([], function() {
       if (middle_left < min_middle) {
         min_diff_l = min_middle - middle_left;
       }
-      console.log('mindiff',min_diff_l, min_diff_r);
+
+      middle_right += min_diff_r;
+      sidebar += min_diff_r;
+
+      middle_left += min_diff_l;
+      left_sidebar += min_diff_l;
+
+      if (sidebar > height) {
+        height = sidebar;
+      }
+      if (left_sidebar > height) {
+        height = left_sidebar;
+      }
+
       return {
         y: y,
         has_ads: has_ads,
