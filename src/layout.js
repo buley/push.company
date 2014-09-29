@@ -119,11 +119,8 @@ define([], function() {
       top_right_height += min_diff_r;
       top_left_height += min_diff_l;
 
-      //left_box_top = box_top + top_left_height;
-      //box_top += top_right_height;
-
-      //sidebar += top_right_height;
-      //left_sidebar += top_left_height;
+      left_box_top = box_top + top_left_height;
+      box_top += top_right_height;
 
       /* Middle */
 
