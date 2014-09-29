@@ -159,11 +159,11 @@ define([], function() {
       bottom_right_height += min_diff_r;
       bottom_left_height += min_diff_l;
 
-      if (sidebar > height) {
-        height = sidebar;
+      if ((sidebar + bottom_right_height + top_right_height) > height) {
+        height = sidebar + bottom_right_height + top_right_height;
       }
-      if (left_sidebar > height) {
-        height = left_sidebar;
+      if ((left_sidebar + bottom_left_height + top_left_height) > height) {
+        height = left_sidebar + bottom_left_height + top_left_height;
       }
 
       return {
