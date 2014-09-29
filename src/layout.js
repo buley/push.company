@@ -149,13 +149,19 @@ define([], function() {
 
       /* Bottom */
 
-      if (bottom_right_height < min_bottom) {
-        bottom_right_height = min_bottom;
+      min_diff_r = 0;
+      min_diff_l = 0;
+
+      if (top_right_height < min_bottom) {
+        min_diff_r = min_bottom - bottom_right_height;
       }
 
-      if (bottom_left_height < min_bottom) {
-        bottom_left_height = min_bottom;
+      if (top_left_height < min_bottom) {
+        min_diff_l = min_bottom - bottom_left_height;
       }
+
+      bottom_right_height += min_diff_r;
+      bottom_left_height += min_diff_l;
 
       if (sidebar > height) {
         height = sidebar;
