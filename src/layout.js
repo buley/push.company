@@ -78,6 +78,7 @@ define([], function() {
         width = total_width - right_width - left_width;
       }
 
+      console.log('middle',sidebar - box_top_height - box_bottom_height);
       return {
         y: y,
         has_ads: has_ads,
