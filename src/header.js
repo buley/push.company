@@ -57,7 +57,7 @@ define(['q', 'react', 'underscore', 'tween', 'src/layout'], function(Q, React, _
           .onUpdate(function() {
               logo.width = this.width;
               logo.height = this.height;
-              console.log('growing',this.width);
+              console.log('growing',JSON.stringify(this));
               context.header = context.header || {};
               context.header.logo = _.extend((context.header.logo || {}), {
                 height: Math.round(this.height),
