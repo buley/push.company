@@ -120,6 +120,10 @@ define([], function() {
       left_box_top = box_top + top_left_height;
       box_top += top_right_height;
 
+      sidebar += min_diff_r;
+      left_sidebar += min_diff_l;
+
+
       /* Middle */
 
       middle_right = sidebar - 120 - box_top_height - box_bottom_height;
@@ -127,7 +131,7 @@ define([], function() {
 
       min_diff_r = 0;
       min_diff_l = 0;
-      
+
       if (middle_right < min_middle) {
         min_diff_r = min_middle - middle_right;
       }
