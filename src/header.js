@@ -51,15 +51,12 @@ define(['q', 'react', 'underscore', 'tween', 'src/layout'], function(Q, React, _
       startLogoGrow = function() {
         anim = true;
         animate();
-        console.log("FROM",JSON.stringify(logoSmall));
-        console.log("TO",JSON.stringify(logoBig));
-        var tx = new Tween.Tween( _.extend({}, logoSmall) )
+        var tween = new Tween.Tween( _.extend({}, logoSmall) )
           .to(  _.extend({}, logoBig) )
           .easing( Tween.Easing.Elastic.In )
           .onUpdate(function() {
               logo.width = this.width;
               logo.height = this.height;
-              console.log('growing',JSON.stringify(this));
               context.header = context.header || {};
               context.header.logo = _.extend((context.header.logo || {}), {
                 height: Math.round(this.height),
@@ -70,7 +67,6 @@ define(['q', 'react', 'underscore', 'tween', 'src/layout'], function(Q, React, _
           .onComplete(function() {
             anim = false;
             isBig = true;
-            console.log('grew');
             logo.width = this.width;
             logo.height = this.height;
             context.header = context.header || {};
@@ -84,10 +80,8 @@ define(['q', 'react', 'underscore', 'tween', 'src/layout'], function(Q, React, _
       },
       checkLogo = function(y, pt) {
         if (y >= pt && isBig && !anim) {
-          console.log('shrink');
           startLogoShrink();
         } else if (y <= pt && !isBig && !anim) {
-          console.log('grow');
           startLogoGrow();
         }
       },
