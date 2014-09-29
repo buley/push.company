@@ -38,6 +38,7 @@ define(['q', 'react', 'underscore', 'tween', 'src/layout'], function(Q, React, _
             anim = false;
             logo.width = this.width;
             logo.height = this.height;
+            context.header = context.header || {};
             context.header.logo = _.extend(context.header.logo, {
               height: Math.round(this.height),
               width: Math.round(this.width)
@@ -65,8 +66,10 @@ define(['q', 'react', 'underscore', 'tween', 'src/layout'], function(Q, React, _
           })
           .onComplete(function() {
             anim = false;
+            console.log('shrank');
             logo.width = this.width;
             logo.height = this.height;
+            context.header = context.header || {};
             context.header.logo = _.extend(context.header.logo, {
               height: Math.round(this.height),
               width: Math.round(this.width)
