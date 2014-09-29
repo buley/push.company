@@ -91,6 +91,7 @@ define([], function() {
       if (height > sidebar) {
         sidebar = height;
       }
+
       if (y > total) {
         y = total;
       } else if (y < 0) {
@@ -102,6 +103,26 @@ define([], function() {
       if ((width + right_width + left_width) > total_width) {
         width = total_width - right_width - left_width;
       }
+
+
+      /* Top */
+
+      min_diff_r = 0;
+      min_diff_l = 0;
+
+      if (top_right_height < min_top) {
+        min_diff_r = min_top - top_right_height;
+      }
+
+      if (top_left_height < min_top) {
+        min_diff_l = min_top - top_left_height;
+      }
+
+      top_right_height += min_diff_r;
+      top_left_height += min_diff_l;
+
+      left_box_top = box_top + top_left_height;
+      box_top += top_right_height;
 
       /* Middle */
 
@@ -124,32 +145,12 @@ define([], function() {
       middle_left += min_diff_l;
       left_sidebar += min_diff_l;
 
-
-      /* Top */
-
-      min_diff_r = 0;
-      min_diff_l = 0;
-
-      if (top_right_height < min_top) {
-        min_diff_r = min_top - top_right_height;
-      }
-
-      if (top_left_height < min_top) {
-        min_diff_l = min_top - top_left_height;
-      }
-
-      top_right_height += min_diff_r;
-      top_left_height += min_diff_l;
-
-      left_box_top = box_top + top_left_height;
-      box_top += top_right_height;
-
       if (sidebar > height) {
         height = sidebar;
       }
 
-      if ((left_sidebar + top_left_height) > height) {
-        height = left_sidebar + top_left_height;
+      if (left_sidebar > height) {
+        height = left_sidebar;
       }
 
 
