@@ -134,6 +134,7 @@ define([], function() {
       if (bottom_left_height < min_bottom_left) {
         bottom_left_height = min_bottom_left;
       }
+      left_sidebar += bottom_left_height;
 
       if (bottom_right_height < min_bottom_right) {
         bottom_right_height = min_bottom_right;
