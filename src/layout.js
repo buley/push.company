@@ -146,7 +146,7 @@ define([], function() {
       middle_left += min_diff_l;
       left_sidebar += min_diff_l;
 
-      bottom_left_top = (current.left_box_bottom_height + current.left_box_top + current.left_box_top_height + current.middle_left + 40 + (current.left_box_top_height > 0 ? padding.bottom : 0) + (current.left_box_top_height > 0 ? padding.top : 0)) + "px";
+      bottom_left_top = (left_box_bottom_height + left_box_top + left_box_top_height + middle_left + 40 + (left_box_top_height > 0 ? padding.bottom : 0) + (left_box_top_height > 0 ? padding.top : 0)) + "px";
 
       if (sidebar > height) {
         height = sidebar;
