@@ -109,7 +109,7 @@ define(['q', 'react', 'underscore', 'tween', 'src/layout'], function(Q, React, _
               y = current.y,
               total = current.total;
 
-          checkLogo(current.y, current.box_top);
+          checkLogo(current.y, current.content_top);
 
           return React.DOM.header({
             id: "header-container",
