@@ -203,10 +203,10 @@ define([], function() {
         top_left_height: top_left_height,
         top_right_width: top_right_width,
         top_left_width: top_left_width,
-        bottom_right_height: top_right_height,
-        bottom_left_height: top_left_height,
-        bottom_right_width: top_right_width,
-        bottom_left_width: top_left_width
+        bottom_right_height: bottom_right_height,
+        bottom_left_height: bottom_left_height,
+        bottom_right_width: bottom_right_width,
+        bottom_left_width: bottom_left_width
       };
     }
   }
