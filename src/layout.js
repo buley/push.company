@@ -115,6 +115,10 @@ define([], function() {
         width = 0 + total_width - right_width - left_width;
       }
 
+      if (width > min_width) {
+        console.log("BIG ENOUGH",width,total_width, right_width, left_width);
+      }
+
       image_width = 0 + width - padding.left - padding.right;
 
       /* Height */
