@@ -22,7 +22,7 @@ define(['q', 'react', 'underscore', 'tween', 'src/layout'], function(Q, React, _
         anim = true;
         animate();
         var tween = new Tween.Tween( logoBig )
-          .to( logoSmall )
+          .to( logoSmall, 3000 )
           .easing( Tween.Easing.Elastic.InOut )
           .onUpdate(function() {
               logo.width = this.width;
@@ -52,7 +52,7 @@ define(['q', 'react', 'underscore', 'tween', 'src/layout'], function(Q, React, _
         anim = true;
         animate();
         var tween = new Tween.Tween( logoSmall )
-          .to( logoBig )
+          .to( logoBig, 3000 )
           .easing( Tween.Easing.Elastic.InOut )
           .onUpdate(function() {
               logo.width = this.width;
