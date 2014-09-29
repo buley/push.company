@@ -168,8 +168,8 @@ define([], function() {
         height = 0 + sidebar;
       }
 
-      if ((left_sidebar + bottom_left_height) > height) {
-        height = 0 + left_sidebar + bottom_left_height;
+      if (left_sidebar > height) {
+        height = 0 + left_sidebar;
       }
 
       return {
