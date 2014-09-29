@@ -75,8 +75,8 @@ define([], function() {
           top_width_base = Math.floor(total_width_padding/2),
           box_top = (header_height + padding.top + (top_height > 0 ? padding.top + top_height + padding.bottom : 0 ) ),
           left_box_top = (header_height + padding.top + (top_height > 0 ? padding.top + top_height + padding.bottom : 0 ) ),
-          sidebar = padding.top + box_top_height + padding.bottom + box_bottom_height,
-          left_sidebar = padding.top + left_box_top_height + padding.bottom + left_box_bottom_height,
+          sidebar = padding.top + box_top_height + box_bottom_height,
+          left_sidebar = padding.top + left_box_top_height + left_box_bottom_height,
           content_top = header_height + (top_height > 0 ? padding.top + top_height + padding.bottom : 0),
           total = header_height + padding.top + top_height + padding.bottom + height + padding.top + bottom_height + padding.bottom + footer_height;
 
