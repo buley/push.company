@@ -36,6 +36,7 @@ define(['q', 'react', 'underscore', 'tween', 'src/layout'], function(Q, React, _
           })
           .onComplete(function() {
             anim = false;
+            isBig = false;
             logo.width = this.width;
             logo.height = this.height;
             context.header = context.header || {};
@@ -43,7 +44,6 @@ define(['q', 'react', 'underscore', 'tween', 'src/layout'], function(Q, React, _
               height: Math.round(this.height),
               width: Math.round(this.width)
             });
-            isBig = false;
             deferred.notify(context);
           })
           .start();
@@ -67,6 +67,7 @@ define(['q', 'react', 'underscore', 'tween', 'src/layout'], function(Q, React, _
           })
           .onComplete(function() {
             anim = false;
+            isBig = true;
             logo.width = this.width;
             logo.height = this.height;
             context.header = context.header || {};
@@ -74,7 +75,6 @@ define(['q', 'react', 'underscore', 'tween', 'src/layout'], function(Q, React, _
               height: Math.round(this.height),
               width: Math.round(this.width)
             });
-            isBig = true;
             deferred.notify(context);
           })
           .start();
