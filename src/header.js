@@ -89,7 +89,7 @@ define(['q', 'react', 'underscore', 'tween', 'src/layout'], function(Q, React, _
             startLogoShrink();
           }
           return logoSmall;
-        } else if (!isBig) {
+        } else if (y < pt) {
           isBig = true;
           startLogoGrow();
         }
