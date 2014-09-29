@@ -109,12 +109,12 @@ define([], function() {
       if (top_right_height < min_top) {
         top_right_height = min_top;
       }
-      box_top += top_right_height + 20;
+      box_top += top_right_height;
 
       if (top_left_height < min_top) {
         top_left_height = min_top;
       }
-      left_box_top += top_left_height + 20;
+      left_box_top += top_left_height;
 
       /* Middle */
 
