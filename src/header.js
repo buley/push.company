@@ -9,32 +9,90 @@ define(['q', 'react', 'underscore', 'tween', 'src/layout'], function(Q, React, _
         width: 220,
         height: 68
       },
+      logoBig = {
+        width: 220,
+        height: 68
+      },
+      logoSmall = {
+        width: 142,
+        height: 44
+      },
       isBig = true,
       startLogoShrink = function() {
         console.log('startLogoShrink');
+
+        anim = true;
+        animate();
+
+        var tween = new Tween.Tween( logoBig )
+          .to( logoSmall )
+          .easing( Tween.Easing.Elastic.InOut )
+          .onUpdate(function() {
+              logo.width = this.width;
+              logo.height = this.height;
+              context.header = context.header || {};
+              context.header.logo = _.extend(context.header.logo, {
+                height: Math.round(this.height),
+                width: Math.round(this.width)
+              });
+              deferred.notify(context);
+          })
+          .onComplete(function() {
+            anim = false;
+            logo.width = this.width;
+            logo.height = this.height;
+            context.header.logo = _.extend(context.header.logo, {
+              height: Math.round(this.height),
+              width: Math.round(this.width)
+            });
+            deferred.notify(context);
+          })
+          .start();
+
       },
       startLogoGrow = function() {
         console.log('startLogoGrow');
+        anim = true;
+        animate();
+
+        var tween = new Tween.Tween( logoSmall )
+          .to( logoBig )
+          .easing( Tween.Easing.Elastic.InOut )
+          .onUpdate(function() {
+              context.header = context.header || {};
+              logo.width = this.width;
+              logo.height = this.height;
+              context.header.logo = _.extend(context.header.logo, {
+                height: Math.round(this.height),
+                width: Math.round(this.width)
+              });
+              deferred.notify(context);
+          })
+          .onComplete(function() {
+            anim = false;
+            logo.width = this.width;
+            logo.height = this.height;
+            context.header.logo = _.extend(context.header.logo, {
+              height: Math.round(this.height),
+              width: Math.round(this.width)
+            });
+            deferred.notify(context);
+          })
+          .start();
+
       },
       checkLogo = function(y, pt) {
-        var large = {
-          width: 220,
-          height: 68
-        }, small = {
-          width: 142,
-          height: 44
-        };
         if (y >= pt) {
           if (isBig) {
             isBig = false;
             startLogoShrink();
           }
-          return small;
+          return logoSmall;
         } else if (!isBig) {
           isBig = true;
           startLogoGrow();
         }
-        return large;
+        return logoBig;
       },
       header = { zoom: mult, drawer: {
         showing: false,
