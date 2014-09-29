@@ -22,7 +22,7 @@ define(['q', 'react', 'underscore', 'src/layout'], function(Q, React, _, layout)
           }, React.DOM.section({ id: "content-header"},
             React.DOM.div({id: "content-header-title"}, React.DOM.h1({}, "Biltong tail spare ribs turkey prosciutto hamburger pig sausage")),
             React.DOM.div({id: "content-header-description"}, React.DOM.div({}, "Bacon ipsum dolor sit amet capicola shoulder meatball, bacon tenderloin salami ham short loin frankfurter rump.")),
-            React.DOM.div({id: "content-header-pubdate"}),
+            React.DOM.div({id: "content-header-pubdate"}, React.DOM.div({}, "August 20, 2014")),
             React.DOM.div({id: "content-header-byline"}, React.DOM.div({}, "Andouille Meatloaf"))
           ) ) );
         }
