@@ -85,12 +85,10 @@ define(['q', 'react', 'underscore', 'tween', 'src/layout'], function(Q, React, _
       checkLogo = function(y, pt) {
         if (y >= pt) {
           if (isBig) {
-            isBig = false;
             startLogoShrink();
           }
           return logoSmall;
         } else if (y < pt) {
-          isBig = true;
           startLogoGrow();
         }
         return logoBig;
