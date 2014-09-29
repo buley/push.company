@@ -19,7 +19,6 @@ define(['q', 'react', 'underscore', 'tween', 'src/layout'], function(Q, React, _
       },
       isBig = true,
       startLogoShrink = function() {
-        console.log('startLogoShrink');
 
         anim = true;
         animate();
@@ -52,7 +51,7 @@ define(['q', 'react', 'underscore', 'tween', 'src/layout'], function(Q, React, _
 
       },
       startLogoGrow = function() {
-        console.log('startLogoGrow');
+
         anim = true;
         animate();
 
