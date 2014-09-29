@@ -124,6 +124,9 @@ define([], function() {
       left_box_top = box_top + top_left_height;
       box_top += top_right_height;
 
+      sidebar += top_right_height;
+      left_sidebar += top_left_height;
+
       /* Middle */
 
       middle_right = sidebar - 120 - box_top_height - box_bottom_height - top_left_height;
