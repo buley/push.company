@@ -28,7 +28,7 @@ define(['q', 'react', 'underscore', 'tween', 'src/layout'], function(Q, React, _
               logo.width = this.width;
               logo.height = this.height;
               context.header = context.header || {};
-              context.header.logo = _.extend(context.header.logo, {
+              context.header.logo = _.extend((context.header.logo || {}), {
                 height: Math.round(this.height),
                 width: Math.round(this.width)
               });
@@ -40,7 +40,7 @@ define(['q', 'react', 'underscore', 'tween', 'src/layout'], function(Q, React, _
             logo.width = this.width;
             logo.height = this.height;
             context.header = context.header || {};
-            context.header.logo = _.extend(context.header.logo, {
+            context.header.logo = _.extend((context.header.logo || {}), {
               height: Math.round(this.height),
               width: Math.round(this.width)
             });
@@ -59,7 +59,7 @@ define(['q', 'react', 'underscore', 'tween', 'src/layout'], function(Q, React, _
               logo.height = this.height;
               console.log('growing',this.width);
               context.header = context.header || {};
-              context.header.logo = _.extend(context.header.logo, {
+              context.header.logo = _.extend((context.header.logo || {}), {
                 height: Math.round(this.height),
                 width: Math.round(this.width)
               });
@@ -71,7 +71,7 @@ define(['q', 'react', 'underscore', 'tween', 'src/layout'], function(Q, React, _
             logo.width = this.width;
             logo.height = this.height;
             context.header = context.header || {};
-            context.header.logo = _.extend(context.header.logo, {
+            context.header.logo = _.extend((context.header.logo || {}), {
               height: Math.round(this.height),
               width: Math.round(this.width)
             });
