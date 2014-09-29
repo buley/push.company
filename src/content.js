@@ -17,7 +17,7 @@ define(['q', 'react', 'underscore', 'src/layout'], function(Q, React, _, layout)
             id: "content",
             style: {
               "max-width": current.width + "px",
-              "min-height": current.height + "px"
+              "height": current.height + "px"
             }
           }, React.DOM.section({ id: "content-header"},
             React.DOM.div({id: "content-header-pubdate"}, React.DOM.span({}, "August 20, 2014")),
