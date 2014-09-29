@@ -21,7 +21,7 @@ define(['q', 'react', 'underscore', 'src/layout'], function(Q, React, _, layout)
             }
           }, React.DOM.section({ id: "content-header"},
             React.DOM.div({id: "content-header-pubdate"}, React.DOM.span({}, "August 20, 2014"), React.DOM.span({style: {float: "right"}},
-              React.DOM.span({style: {float: "right"}}, React.DOM.img({src:"/img/img/tab_black_location@2x.png"})))
+              React.DOM.span({style: {float: "right"}}, React.DOM.img({src:"/img/img/tab_black_location@2x.png"})
             )),
             React.DOM.div({id: "content-header-title"}, React.DOM.h1({}, "Biltong tail spare ribs turkey prosciutto hamburger pig sausage")),
             React.DOM.div({id: "content-header-description"}, React.DOM.span({}, "Bacon ipsum dolor sit amet capicola shoulder meatball, bacon tenderloin salami ham short loin frankfurter rump.")),
