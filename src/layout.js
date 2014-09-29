@@ -225,7 +225,8 @@ define([], function() {
         bottom_left_height: bottom_left_height,
         bottom_right_width: bottom_right_width,
         bottom_left_width: bottom_left_width,
-        bottom_left_top: bottom_left_top
+        bottom_left_top: bottom_left_top,
+        bottom_right_top: bottom_right_top
       };
     }
   }
