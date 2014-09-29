@@ -27,7 +27,7 @@ define(['q', 'react', 'underscore', 'src/layout'], function(Q, React, _, layout)
                 React.DOM.div({id: "content-header-tools-print", style: {float: "right"}}, React.DOM.img({src:"/img/tab_white_printer@2x.png"})),
                 React.DOM.div({id: "content-header-tools-respond", style: {float: "right"}},
                   React.DOM.img({src:"/img/tab_white_share@2x.png"}),
-                  React.DOM.span({}, "27 responses")
+                  React.DOM.div({}, "27 responses")
                 )
               )
             ),
