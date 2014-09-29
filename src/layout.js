@@ -150,14 +150,14 @@ define([], function() {
 
       bottom_left_top = (left_box_bottom_height + left_box_top + left_box_top_height + middle_left + 40 + (left_box_top_height > 0 ? padding.bottom : 0) + (left_box_top_height > 0 ? padding.top : 0)) + padding.bottom;
 
-      if (bottom_left_height < min_left_height) {
-        bottom_left_height = min_left_height;
+      if (bottom_left_height < min_bottom_left) {
+        bottom_left_height = min_bottom_left;
       }
 
       left_sidebar += bottom_left_height;
 
-      if (bottom_right_height < min_right_height) {
-        bottom_right_height = min_left_height;
+      if (bottom_right_height < min_bottom_right) {
+        bottom_right_height = min_bottom_right;
       }
 
       if (sidebar > height) {
