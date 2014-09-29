@@ -15,7 +15,9 @@ define(['q', 'react', 'underscore', 'src/layout'], function(Q, React, _, layout)
             }
           }, React.DOM.section({
             id: "top-left",
-            "min-height": current.top_left_height + "px"
+            style: {
+              "min-height": current.top_left_height + "px"
+            }
           } ) );
         }
       });
