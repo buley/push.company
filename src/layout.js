@@ -168,8 +168,8 @@ define([], function() {
         height = 0 + sidebar;
       }
 
-      if (left_sidebar > height) {
-        height = 0 + left_sidebar;
+      if ((left_sidebar + bottom_left_height) > height) {
+        height = 0 + left_sidebar + bottom_left_height;
       }
 
       return {
@@ -212,8 +212,8 @@ define([], function() {
         box_top: box_top,
         left_box_top: left_box_top,
         content_top: content_top,
-        sidebar: sidebar + bottom_right_height,
-        left_sidebar: left_sidebar + bottom_left_height,
+        sidebar: sidebar,
+        left_sidebar: left_sidebar,
         total: total,
         right_height: right_height,
         left_width: left_width,
