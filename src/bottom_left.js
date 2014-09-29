@@ -8,7 +8,7 @@ define(['q', 'react', 'underscore', 'src/layout'], function(Q, React, _, layout)
           return React.DOM.section({
             id: "bottom-left-container",
             style: {
-              bottom: (current.content_bottom) + "px",
+              top: (current.bottom_left_top) + "px",
               "max-height": current.bottom_left_height,
               left: current.padding.left,
               display: current.has_left ? "inline" : "none"
@@ -16,7 +16,7 @@ define(['q', 'react', 'underscore', 'src/layout'], function(Q, React, _, layout)
           }, React.DOM.section({
             id: "bottom-left",
             style: {
-              "min-height": current.bottom_left_top + "px"
+              "min-height": current.bottom_left_height + "px"
             }
           } ) );
         }
