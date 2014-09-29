@@ -105,7 +105,7 @@ define([], function() {
         y = 0;
       }
 
-      width = min_width;
+      width = 0 + min_width;
 
       if ((width + right_width + left_width) > total_width) {
         width = 0 + total_width - right_width - left_width;
