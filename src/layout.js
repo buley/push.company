@@ -103,25 +103,6 @@ define([], function() {
         width = total_width - right_width - left_width;
       }
 
-      /* Top */
-
-      min_diff_r = 0;
-      min_diff_l = 0;
-
-      if (top_right_height < min_top) {
-        min_diff_r = min_top - top_right_height;
-      }
-
-      if (top_left_height < min_top) {
-        min_diff_l = min_top - top_left_height;
-      }
-
-      top_right_height += min_diff_r;
-      top_left_height += min_diff_l;
-
-      left_box_top = box_top + top_left_height;
-      box_top += top_right_height;
-
       /* Middle */
 
       middle_right = sidebar - 120 - box_top_height - box_bottom_height;
@@ -142,6 +123,29 @@ define([], function() {
 
       middle_left += min_diff_l;
       left_sidebar += min_diff_l;
+
+
+      /* Top */
+
+      min_diff_r = 0;
+      min_diff_l = 0;
+
+      if (top_right_height < min_top) {
+        min_diff_r = min_top - top_right_height;
+      }
+
+      if (top_left_height < min_top) {
+        min_diff_l = min_top - top_left_height;
+      }
+
+      top_right_height += min_diff_r;
+      top_left_height += min_diff_l;
+
+      left_box_top = box_top + top_left_height;
+      box_top += top_right_height;
+
+      sidebar += top_right_height;
+      left_sidebar += top_left_height;
 
       if (sidebar > height) {
         height = sidebar;
