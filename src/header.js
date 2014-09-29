@@ -21,8 +21,8 @@ define(['q', 'react', 'underscore', 'tween', 'src/layout'], function(Q, React, _
       startLogoShrink = function() {
         anim = true;
         animate();
-        var tween = new Tween.Tween( logoBig )
-          .to( logoSmall )
+        var tween = new Tween.Tween( _.extend({}, logoBig) )
+          .to(  _.extend({}, logoSmall) )
           .easing( Tween.Easing.Elastic.Out )
           .onUpdate(function() {
               logo.width = this.width;
@@ -53,8 +53,8 @@ define(['q', 'react', 'underscore', 'tween', 'src/layout'], function(Q, React, _
         animate();
         console.log("FROM",JSON.stringify(logoSmall));
         console.log("TO",JSON.stringify(logoBig));
-        var tx = new Tween.Tween( logoSmall )
-          .to( logoBig )
+        var tx = new Tween.Tween( _.extend({}, logoSmall) )
+          .to(  _.extend({}, logoBig) )
           .easing( Tween.Easing.Elastic.In )
           .onUpdate(function() {
               logo.width = this.width;
