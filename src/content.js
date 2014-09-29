@@ -10,12 +10,12 @@ define(['q', 'react', 'underscore', 'src/layout'], function(Q, React, _, layout)
             style: {
               top: (current.content_top) + "px",
               right: current.right_width + "px",
-              left: current.left_width + "px"
+              left: current.left_width + "px",
+              "max-height": current.height + "px"
             }
           }, React.DOM.section({
             id: "content",
             style: {
-              height: current.height + "px",
               "max-width": current.width + "px"
             }
           } ) );
