@@ -127,25 +127,10 @@ define([], function() {
       left_box_top += top_left_height;
       box_top += top_right_height;
 
-      /* Bottom */
-
-
-      bottom_left_top = (left_box_bottom_height + left_box_top + left_box_top_height + middle_left + 40 + (left_box_top_height > 0 ? padding.bottom : 0) + (left_box_top_height > 0 ? padding.top : 0)) + padding.bottom;
-
-      if (bottom_left_height < min_bottom_left) {
-        bottom_left_height = min_bottom_left;
-      }
-
-      left_sidebar += bottom_left_height;
-
-      if (bottom_right_height < min_bottom_right) {
-        bottom_right_height = min_bottom_right;
-      }
-      
       /* Middle */
 
       middle_right = sidebar - 100 - box_top_height - box_bottom_height - top_right_height;
-      middle_left = left_sidebar - 100 - left_box_top_height - left_box_bottom_height - top_left_height - bottom_left_height;
+      middle_left = left_sidebar - 100 - left_box_top_height - left_box_bottom_height - top_left_height;
 
       min_diff_r = 0;
       min_diff_l = 0;
@@ -162,6 +147,16 @@ define([], function() {
 
       middle_left += min_diff_l;
       left_sidebar += min_diff_l;
+
+      bottom_left_top = (left_box_bottom_height + left_box_top + left_box_top_height + middle_left + 40 + (left_box_top_height > 0 ? padding.bottom : 0) + (left_box_top_height > 0 ? padding.top : 0)) + padding.bottom;
+
+      if (bottom_left_height < min_bottom_left) {
+        bottom_left_height = min_bottom_left;
+      }
+
+      if (bottom_right_height < min_bottom_right) {
+        bottom_right_height = min_bottom_right;
+      }
 
 
       if (sidebar > height) {
