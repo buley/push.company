@@ -144,7 +144,7 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
               last = current;
               executeStateChange(change);
             } else {
-              console.log('redundant', current);
+              //console.log('redundant', current);
               //executeStateChange(change);
             }
           },
