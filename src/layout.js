@@ -2,6 +2,7 @@ define([], function() {
   return {
     current: function() {
       var image_aspect = 1.618,
+          image_width,
           padding = {
             top: 20,
             bottom: 20,
@@ -112,6 +113,9 @@ define([], function() {
         width = 0 + total_width - right_width - left_width;
       }
 
+      image_width = 0 + width - padding.left - padding.right;
+
+
       if (bottom_left_height < min_bottom_left) {
         bottom_left_height = 0 + min_bottom_left;
       }
@@ -185,8 +189,8 @@ define([], function() {
         height: height,
         width: width,
         image_aspect: image_aspect,
-        image_width: 0 + width - padding.left - padding.right,
-        image_height: Math.floor(width/image_aspect),
+        image_width: image_width,
+        image_height: Math.floor(image_width/image_aspect),
         bottom_el: bottom_el,
         bottom_height: bottom_height,
         bottom_width: bottom_width,
