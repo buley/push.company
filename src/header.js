@@ -53,7 +53,7 @@ define(['q', 'react', 'underscore', 'tween', 'src/layout'], function(Q, React, _
         animate();
         var tween = new Tween.Tween( logoSmall )
           .to( logoBig, 3000 )
-          .easing( Tween.Easing.Elastic.InOut )
+          .easing( Tween.Easing.Elastic.OutIn )
           .onUpdate(function() {
               logo.width = this.width;
               logo.height = this.height;
