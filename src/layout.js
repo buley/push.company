@@ -86,6 +86,7 @@ define([], function() {
       if (left_sidebar > height) {
         height = left_sidebar;
       }
+
       if (height > left_sidebar) {
         left_sidebar = height;
       }
@@ -124,8 +125,8 @@ define([], function() {
 
       /* Middle */
 
-      middle_right = sidebar - 120 - box_top_height - box_bottom_height - top_right_height;
-      middle_left = left_sidebar - 120 - left_box_top_height - left_box_bottom_height - top_left_height;
+      middle_right = sidebar - 140 - box_top_height - box_bottom_height - top_right_height;
+      middle_left = left_sidebar - 140 - left_box_top_height - left_box_bottom_height - top_left_height;
 
       min_diff_r = 0;
       min_diff_l = 0;
@@ -150,7 +151,6 @@ define([], function() {
       if (left_sidebar > height) {
         height = left_sidebar;
       }
-
 
       return {
         y: y,
