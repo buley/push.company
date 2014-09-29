@@ -111,11 +111,17 @@ define([], function() {
         width = 0 + total_width - right_width - left_width;
       }
 
+      if (bottom_left_height < min_bottom_left) {
+        bottom_left_height = 0 + min_bottom_left;
+      }
+      left_sidebar += bottom_left_height + 20;
+
+      if (bottom_right_height < min_bottom_right) {
+        bottom_right_height = 0 + min_bottom_right;
+      }
+      sidebar += bottom_right_height + 20;
 
       /* Top */
-
-      min_diff_r = 0;
-      min_diff_l = 0;
 
       if (top_right_height < min_top_right) {
         top_right_height = 0 + min_top_right;
@@ -130,8 +136,8 @@ define([], function() {
 
       /* Middle */
 
-      middle_right = sidebar - 100 - box_top_height - box_bottom_height - top_right_height;
-      middle_left = left_sidebar - 100 - left_box_top_height - left_box_bottom_height - top_left_height;
+      middle_right = sidebar - 120 - box_top_height - box_bottom_height - top_right_height - bottom_right_height;
+      middle_left = left_sidebar - 120 - left_box_top_height - left_box_bottom_height - top_left_height - bottom_left_height;
 
       min_diff_r = 0;
       min_diff_l = 0;
@@ -152,18 +158,8 @@ define([], function() {
       /* Bottom */
 
       bottom_left_top = left_box_top + 20 + left_box_top_height + 20 + middle_left + 20 + left_box_bottom_height + 40;
+      bottom_right_top = box_top + 20 + box_top_height + 20 + middle_right + 20 + box_bottom_height + 40;
 
-      //(left_box_bottom_height + left_box_top + left_box_top_height + (left_sidebar - 100 - left_box_top_height - left_box_bottom_height - top_left_height) + 40 + (left_box_top_height > 0 ? padding.bottom : 0) + (left_box_top_height > 0 ? padding.top : 0)) + padding.bottom;
-
-      if (bottom_left_height < min_bottom_left) {
-        bottom_left_height = 0 + min_bottom_left;
-      }
-
-      bottom_right_top = (box_bottom_height + box_top + box_top_height + (sidebar - 100 - box_top_height - box_bottom_height - top_left_height) + 40 + (box_top_height > 0 ? padding.bottom : 0) + (box_top_height > 0 ? padding.top : 0)) + padding.bottom;
-
-      if (bottom_right_height < min_bottom_right) {
-        bottom_right_height = 0 + min_bottom_right;
-      }
 
 
       if (sidebar > height) {
