@@ -120,8 +120,11 @@ define([], function() {
       top_right_height += min_diff_r;
       top_left_height += min_diff_l;
 
-      left_box_top = box_top + top_left_height;
-      box_top += top_right_height;
+      //left_box_top = box_top + top_left_height;
+      //box_top += top_right_height;
+
+      sidebar += top_right_height;
+      left_sidebar += top_left_height;
 
       /* Middle */
 
@@ -165,8 +168,8 @@ define([], function() {
       if (sidebar > height) {
         height = sidebar;
       }
-      if ((left_sidebar + top_left_height + bottom_left_height) > height) {
-        height = left_sidebar + top_left_height + bottom_left_height;
+      if (left_sidebar > height) {
+        height = left_sidebar;
       }
 
       return {
