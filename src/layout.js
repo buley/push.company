@@ -72,7 +72,6 @@ define([], function() {
           total_width_padding_bottom = total_width - bottom_width,
           bottom_width_base = Math.floor(total_width_padding_bottom/2),
           top_width_base = Math.floor(total_width_padding/2),
-          content_top = (header_height + padding.bottom + padding.top + (top_height > 0 ? padding.top + top_height + padding.bottom : 0 ) ),
           box_top = (header_height + padding.top + (top_height > 0 ? padding.top + top_height + padding.bottom : 0 ) ),
           left_box_top,
           sidebar = padding.top + box_top_height + padding.bottom + padding.top + box_bottom_height + padding.bottom,
