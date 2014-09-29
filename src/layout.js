@@ -131,9 +131,6 @@ define([], function() {
         top_left_height = 0 + min_top_left;
       }
 
-      left_box_top += top_left_height;
-      box_top += top_right_height;
-
       /* Middle */
 
       middle_right = sidebar - 100 - box_top_height - box_bottom_height - top_right_height - bottom_right_height;
