@@ -16,7 +16,8 @@ define(['q', 'react', 'underscore', 'src/layout'], function(Q, React, _, layout)
           }, React.DOM.section({
             id: "content",
             style: {
-              "max-width": current.width + "px"
+              "max-width": current.width + "px",
+              "min-height": current.height + "px"
             }
           } ) );
         }
