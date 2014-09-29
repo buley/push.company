@@ -25,7 +25,9 @@ define(['q', 'react', 'underscore', 'src/layout'], function(Q, React, _, layout)
                 React.DOM.div({id: "content-header-tools", style: {float: "right"}},
                 React.DOM.div({id: "content-header-tools-map", style: {float: "right"}}, React.DOM.img({src:"/img/tab_white_map@2x.png"})),
                 React.DOM.div({id: "content-header-tools-print", style: {float: "right"}}, React.DOM.img({src:"/img/tab_white_printer@2x.png"})),
-                React.DOM.div({id: "content-header-tools-respond", style: {float: "right"}}, React.DOM.img({src:"/img/tab_white_share@2x.png"}))
+                React.DOM.div({id: "content-header-tools-respond", style: {float: "right"}},
+                React.DOM.span({}, "27 responses"),
+                React.DOM.img({src:"/img/tab_white_share@2x.png"}))
               )
             ),
             React.DOM.div({id: "content-header-title"}, React.DOM.h1({}, "Biltong tail spare ribs turkey prosciutto hamburger pig sausage")),
