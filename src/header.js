@@ -19,10 +19,8 @@ define(['q', 'react', 'underscore', 'tween', 'src/layout'], function(Q, React, _
       },
       isBig = true,
       startLogoShrink = function() {
-
         anim = true;
         animate();
-
         var tween = new Tween.Tween( logoBig )
           .to( logoSmall )
           .easing( Tween.Easing.Elastic.InOut )
@@ -48,13 +46,10 @@ define(['q', 'react', 'underscore', 'tween', 'src/layout'], function(Q, React, _
             deferred.notify(context);
           })
           .start();
-
       },
       startLogoGrow = function() {
-
         anim = true;
         animate();
-
         var tween = new Tween.Tween( logoSmall )
           .to( logoBig )
           .easing( Tween.Easing.Elastic.InOut )
@@ -80,7 +75,6 @@ define(['q', 'react', 'underscore', 'tween', 'src/layout'], function(Q, React, _
             deferred.notify(context);
           })
           .start();
-
       },
       checkLogo = function(y, pt) {
         if (y >= pt && isBig) {
