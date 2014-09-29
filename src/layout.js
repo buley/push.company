@@ -125,6 +125,9 @@ define([], function() {
       middle_right = sidebar - 120 - box_top_height - box_bottom_height;
       middle_left = left_sidebar - 120 - left_box_top_height - left_box_bottom_height;
 
+      min_diff_r = 0;
+      min_diff_l = 0;
+      
       if (middle_right < min_middle) {
         min_diff_r = min_middle - middle_right;
       }
