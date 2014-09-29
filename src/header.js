@@ -6,8 +6,8 @@ define(['q', 'react', 'underscore', 'tween', 'src/layout'], function(Q, React, _
       first = true,
       instance,
       logo = {
-        width: 220,
-        height: 68
+        width: 212,
+        height: 58
       },
       logoBig = {
         width: 212,
