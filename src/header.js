@@ -127,7 +127,7 @@ define(['q', 'react', 'underscore', 'tween', 'src/layout'], function(Q, React, _
               height: logo.height,
               width: logo.width
             }
-          }, !!this.props.header && !!this.props.header.logo && !!this.props.header.logo.text ? this.props.header.logo.text : ""), React.DOM.div({
+          }, !!this.props.header && !!this.props.header.logo && !!this.props.header.logo.text ? this.props.header.logo.text : ""), React.DOM.span({id:"header-navigation-button"},React.DOM.img({src:"/img/tab_white_navigation@2x.png"})), React.DOM.div({
             id: "header-menu-button",
             onClick: function(e) {
 
