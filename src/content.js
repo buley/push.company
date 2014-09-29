@@ -37,7 +37,7 @@ define(['q', 'react', 'underscore', 'src/layout'], function(Q, React, _, layout)
                     }
                   }),
                   React.DOM.span({id: "content-body-image-caption"}, "Turducken strip steak drumstick, prosciutto pig beef sausage pork belly boudin jowl."),
-                  React.DOM.span({id: "content-body-image-credit"}, "Copyright (c) 2014 Prosciutto Pig")
+                  React.DOM.span({id: "content-body-image-credit"}, "Copyright (c) 2014 ", React.DOM.a({href:"#"}, "Prosciutto Pig"))
                 )
               ),
               React.DOM.p({}, "Venison pork pork chop frankfurter tongue tail ball tip. Leberkas pancetta hamburger ground round brisket tenderloin."),
