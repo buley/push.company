@@ -112,11 +112,11 @@ define([], function() {
       min_diff_l = 0;
 
       if (top_right_height < min_top_left) {
-        min_diff_r = min_top - top_right_height;
+        min_diff_r = min_top_left - top_right_height;
       }
 
       if (top_left_height < min_top_right) {
-        min_diff_l = min_top - top_left_height;
+        min_diff_l = min_top_right - top_left_height;
       }
 
       top_right_height += min_diff_r;
