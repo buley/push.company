@@ -9,6 +9,7 @@ define(['q', 'react', 'underscore', 'src/layout'], function(Q, React, _, layout)
             id: "middle-right-container",
             style: {
               top: (current.box_top + 60 + current.box_top_height) + "px",
+              right: current.padding.right,
               height: current.middle_right + "px",
               display: current.has_right ? "inline" : "none"
             }

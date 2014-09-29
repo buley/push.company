@@ -109,6 +109,7 @@ define([], function() {
 
       return {
         y: y,
+        padding: padding,
         has_ads: has_ads,
         has_left: has_left,
         has_right: has_right,

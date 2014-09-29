@@ -10,6 +10,7 @@ define(['q', 'react', 'underscore', 'src/layout'], function(Q, React, _, layout)
             style: {
               top: (current.box_top + 60 + current.left_box_top_height) + "px",
               height: current.middle_left + "px",
+              left: current.padding.left,
               display: current.has_left ? "inline" : "none"
             }
           }, React.DOM.section({
