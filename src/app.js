@@ -85,6 +85,7 @@ requirejs(['q', 'react', 'underscore'], function(Q, React, _) {
       'src/left',
       'src/top_left',
       'src/middle_left',
+      'src/bottom_left',
       'src/top_right',
       'src/middle_right'
     ], function() {
