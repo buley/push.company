@@ -8,9 +8,9 @@ define(['q', 'react', 'underscore', 'src/layout'], function(Q, React, _, layout)
           return React.DOM.section({
             id: "middle-right-container",
             style: {
-              top: (current.box_top + 60 + current.box_top_height) + "px",
+              top: (current.box_top + 40 + current.box_top_height) + "px",
               right: current.padding.right,
-              height: current.middle_right + "px",
+              height: (current.middle_right + 40) + "px",
               display: current.has_right ? "inline" : "none"
             }
           }, React.DOM.section({
