@@ -66,7 +66,7 @@ define(['q', 'react', 'underscore', 'tween', 'src/layout'], function(Q, React, _
           })
           .onComplete(function() {
             anim = false;
-            console.log('shrank');
+            console.log('grew');
             logo.width = this.width;
             logo.height = this.height;
             context.header = context.header || {};
