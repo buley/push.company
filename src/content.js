@@ -19,7 +19,7 @@ define(['q', 'react', 'underscore', 'src/layout'], function(Q, React, _, layout)
               "max-width": current.width + "px",
               "min-height": current.height + "px"
             }
-          }, React.DOM.section({ id: "content-header"}
+          }, React.DOM.section({ id: "content-header"},
             React.DOM.div({id: "content-header-title"}),
             React.DOM.div({id: "content-header-description"}),
             React.DOM.div({id: "content-header-pubdate"}),
