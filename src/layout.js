@@ -157,9 +157,7 @@ define([], function() {
       }
 
       bottom_right_height += min_diff_r;
-
       bottom_left_height += min_diff_l;
-
 
       if (sidebar > height) {
         height = sidebar;

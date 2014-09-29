@@ -9,7 +9,7 @@ define(['q', 'react', 'underscore', 'src/layout'], function(Q, React, _, layout)
             id: "left-container",
             style: {
               top: (current.box_top - 20) + "px",
-              height: current.left_sidebar + "px",
+              height: (current.left_sidebar + current.top_left_height + current.bottom_left_height) + "px",
               display: current.has_left ? "inline" : "none"
             }
           }, React.DOM.section({
