@@ -136,6 +136,8 @@ define([], function() {
         bottom_left_height = 0 + min_bottom_left;
       }
 
+      bottom_right_top = (box_bottom_height + box_top + box_top_height + (sidebar - 100 - box_top_height - box_bottom_height - top_left_height) + 40 + (box_top_height > 0 ? padding.bottom : 0) + (box_top_height > 0 ? padding.top : 0)) + padding.bottom;
+
       if (bottom_right_height < min_bottom_right) {
         bottom_right_height = 0 + min_bottom_right;
       }
