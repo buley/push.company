@@ -123,8 +123,8 @@ define([], function() {
       left_box_top = box_top + top_left_height;
       box_top += top_right_height;
 
-      sidebar += top_right_height;
-      left_sidebar += top_left_height;
+      sidebar += min_diff_r;
+      left_sidebar += min_diff_l;
 
       /* Middle */
 
