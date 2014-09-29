@@ -114,12 +114,12 @@ define([], function() {
       if (bottom_left_height < min_bottom_left) {
         bottom_left_height = 0 + min_bottom_left;
       }
-      left_sidebar += bottom_left_height;
+      left_box_top += bottom_left_height;
 
       if (bottom_right_height < min_bottom_right) {
         bottom_right_height = 0 + min_bottom_right;
       }
-      sidebar += bottom_right_height;
+      box_top += bottom_right_height;
 
       /* Top */
 
