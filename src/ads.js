@@ -145,7 +145,7 @@ define(['q', 'react', 'underscore', 'src/layout' ], function(Q, React, _, layout
             id: "ads-box-top-left",
             style: {
               "left": padding.left + "px",
-              "top": current.left_box_top + "px",
+              "top": current.box_top + "px",
               display: current.has_ads && current.has_left ? "inline" : "none"
             }
           }, React.DOM.div({
@@ -155,7 +155,7 @@ define(['q', 'react', 'underscore', 'src/layout' ], function(Q, React, _, layout
             style: {
               display: current.has_ads && current.has_left ? "inline" : "none",
               "left": padding.left + "px",
-              "top": (current.left_box_top + current.left_box_top_height + current.middle_left + 40 + (current.left_box_top_height > 0 ? padding.bottom : 0) + (current.left_box_top_height > 0 ? padding.top : 0)) + "px" //stream TK
+              "top": (current.box_top + current.left_box_top_height + current.middle_left + 40 + (current.left_box_top_height > 0 ? padding.bottom : 0) + (current.left_box_top_height > 0 ? padding.top : 0)) + "px" //stream TK
             }
           }, React.DOM.div({
             id: "ads-box-bottom-ad-left"
