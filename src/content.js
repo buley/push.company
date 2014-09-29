@@ -26,6 +26,12 @@ define(['q', 'react', 'underscore', 'src/layout'], function(Q, React, _, layout)
             React.DOM.div({id: "content-header-byline"}, React.DOM.span({}, "Andouille Meatloaf"), React.DOM.span({}, ", Staff Writer"))
           ),
             React.DOM.section({id: "content-body"},
+              React.DOM.div({},
+                React.DOM.div({id: "content-body-image"},
+                  React.DOM.img({id: "content-body-image-img"}),
+                  React.DOM.div({id: "content-body-image-credit"}, "Turducken strip steak drumstick, prosciutto pig beef sausage pork belly boudin jowl.")
+                )
+              ),
               React.DOM.p({}, "Venison pork pork chop frankfurter tongue tail ball tip. Leberkas pancetta hamburger ground round brisket tenderloin."),
               React.DOM.p({}, "Strip steak pig drumstick bacon. Boudin chicken jowl short loin, filet mignon swine capicola pancetta ham hock."),
               React.DOM.p({}, "Ribeye capicola shankle frankfurter turducken salami strip steak kevin rump venison biltong meatloaf porchetta short loin. Capicola ground round sirloin filet mignon tail shank meatball kielbasa kevin sausage hamburger boudin cow."),
