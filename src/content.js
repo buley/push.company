@@ -38,7 +38,7 @@ define(['q', 'react', 'underscore', 'src/layout'], function(Q, React, _, layout)
               React.DOM.p({}, "Beef ribs filet mignon shank turkey swine, rump chicken turducken landjaeger."),
               React.DOM.p({}, "Leberkas pancetta hamburger ground round brisket tenderloin. Brisket ham hock jowl flank shankle corned beef. Ribeye capicola shankle frankfurter turducken salami strip steak kevin rump venison biltong meatloaf porchetta short loin."),
               React.DOM.p({}, "Capicola ground round sirloin filet mignon tail shank meatball kielbasa kevin sausage hamburger boudin cow. Strip steak pig drumstick bacon. Boudin chicken jowl short loin, filet mignon swine capicola pancetta ham hock."),
-              React.DOM.p({}, "Pork chop sirloin leberkas short loin filet mignon pastrami tail rump beef ham bresaola. T-bone beef ham tail biltong."),
+              React.DOM.p({}, "Pork chop sirloin leberkas short loin filet mignon pastrami tail rump beef ham bresaola. T-bone beef ham tail biltong.")
             )
           ) );
         }
