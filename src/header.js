@@ -10,8 +10,8 @@ define(['q', 'react', 'underscore', 'tween', 'src/layout'], function(Q, React, _
         height: 68
       },
       logoBig = {
-        width: 216,
-        height: 62
+        width: 212,
+        height: 58
       },
       logoSmall = {
         width: 142,
