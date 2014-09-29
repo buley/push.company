@@ -5,6 +5,10 @@ define(['q', 'react', 'underscore', 'tween', 'src/layout'], function(Q, React, _
       context,
       first = true,
       instance,
+      logo = {
+        width: 220,
+        height: 68
+      },
       isBig = true,
       startLogoShrink = function() {
         console.log('startLogoShrink');
@@ -53,9 +57,10 @@ define(['q', 'react', 'underscore', 'tween', 'src/layout'], function(Q, React, _
         },
         render: function() {
           var current = layout.current(),
-              logo = getLogo(current.y, current.box_top),
               y = current.y,
               total = current.total;
+
+          checkLogo(current.y, current.box_top);
 
           return React.DOM.header({
             id: "header-container",
