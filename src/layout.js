@@ -15,7 +15,7 @@ define([], function() {
               width: 142,
               height: 44
             };
-            if (y > 0) {
+            if (y > box_top) {
               return small;
             }
             return large;
