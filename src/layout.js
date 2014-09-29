@@ -163,12 +163,13 @@ define([], function() {
       if (sidebar > height) {
         height = sidebar;
       }
-      console.log('YEAH',left_sidebar, height);
-      console.log('um',left_sidebar + bottom_left_height + top_left_height);
 
       if (left_sidebar > height) {
         height = left_sidebar;
       }
+
+      left_sidebar += bottom_left_height;
+      left_sidebar += top_left_height;
 
       return {
         y: y,
