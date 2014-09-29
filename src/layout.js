@@ -107,14 +107,18 @@ define([], function() {
       /* Top */
 
       if (top_right_height < min_top) {
-        top_right_height = min_top;
+        min_diff_r = min_top - top_right_height;
       }
-      box_top += top_right_height;
 
       if (top_left_height < min_top) {
-        top_left_height = min_top;
+        min_diff_l = min_top - top_left_height;
       }
-      left_box_top += top_left_height;
+
+      middle_right += min_diff_r;
+      sidebar += min_diff_r;
+
+      middle_left += min_diff_l;
+      left_sidebar += min_diff_l;
 
       /* Middle */
 
