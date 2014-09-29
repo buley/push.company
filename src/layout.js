@@ -21,6 +21,8 @@ define([], function() {
           min_diff_l = 0,
           min_top_right = 200,
           min_top_left = 120,
+          min_bottom_left = 220,
+          min_bottom_right = 160,
           min_bottom = 400,
           y = window.scrollY,
           total_width = document.body.offsetWidth || 0,
@@ -146,7 +148,17 @@ define([], function() {
       middle_left += min_diff_l;
       left_sidebar += min_diff_l;
 
-      bottom_left_top = (left_box_bottom_height + left_box_top + left_box_top_height + middle_left + 40 + (left_box_top_height > 0 ? padding.bottom : 0) + (left_box_top_height > 0 ? padding.top : 0));
+      bottom_left_top = (left_box_bottom_height + left_box_top + left_box_top_height + middle_left + 40 + (left_box_top_height > 0 ? padding.bottom : 0) + (left_box_top_height > 0 ? padding.top : 0)) + padding.bottom;
+
+      if (bottom_left_height < min_left_height) {
+        bottom_left_height = min_left_height;
+      }
+
+      left_sidebar += bottom_left_height;
+
+      if (bottom_right_height < min_right_height) {
+        bottom_right_height = min_left_height;
+      }
 
       if (sidebar > height) {
         height = sidebar;
