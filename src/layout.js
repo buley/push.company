@@ -74,7 +74,7 @@ define([], function() {
           bottom_width_base = Math.floor(total_width_padding_bottom/2),
           top_width_base = Math.floor(total_width_padding/2),
           box_top = (header_height + padding.top + (top_height > 0 ? padding.top + top_height + padding.bottom : 0 ) ),
-          left_box_top = box_top,
+          left_box_top = (header_height + padding.top + (top_height > 0 ? padding.top + top_height + padding.bottom : 0 ) ),
           sidebar = padding.top + box_top_height + padding.bottom + padding.top + box_bottom_height + padding.bottom,
           left_sidebar = padding.top + left_box_top_height + padding.bottom + padding.top + left_box_bottom_height + padding.bottom,
           content_top = header_height + (top_height > 0 ? padding.top + top_height + padding.bottom : 0),
@@ -119,7 +119,7 @@ define([], function() {
         top_left_height = min_top_left;
       }
 
-      left_box_top = (header_height + padding.top + (top_height > 0 ? padding.top + top_height + padding.bottom : 0 ) ) + top_left_height;
+      left_box_top = box_top + top_left_height;
       box_top += top_right_height;
 
       /* Middle */
