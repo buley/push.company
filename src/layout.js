@@ -36,7 +36,7 @@ define([], function() {
           header_height = header ? header.offsetHeight : 0,
           footer = document.getElementById("footer-container"),
           footer_height = footer ? footer.offsetHeight : 0,
-          header_ad_el = document.getElementById("ads-banner-top") || {},
+          header_ad_el = document.getElementById("ads-box-header") || {},
           header_ad_height = header_ad_el.offsetHeight ? header_ad_el.offsetHeight : 0,
           header_ad_width = header_ad_el.offsetWidth ? header_ad_el.offsetWidth : 0,
           top_el = document.getElementById("ads-banner-top") || {},
