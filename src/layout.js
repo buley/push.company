@@ -9,6 +9,9 @@ define([], function() {
           },
           middle_left,
           middle_right,
+          min_middle = 200,
+          min_diff_r,
+          min_diff_l,
           y = window.scrollY,
           total_width = document.body.offsetWidth || 0,
           has_ads = true,
@@ -83,6 +86,13 @@ define([], function() {
       middle_right = sidebar - 120 - box_top_height - box_bottom_height;
       middle_left = left_sidebar - 120 - left_box_top_height - left_box_bottom_height;
 
+      if (middle_right < min_middle) {
+        min_diff_r = min_middle - middle_right;
+      }
+      if (middle_left < min_middle) {
+        min_diff_l = min_middle - middle_left;
+      }
+      console.log('mindiff',min_diff_l, min_diff_r);
       return {
         y: y,
         has_ads: has_ads,
