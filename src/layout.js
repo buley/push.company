@@ -186,7 +186,7 @@ define([], function() {
         width: width,
         image_aspect: image_aspect,
         image_width: 0 + width,
-        image_height: Math.floor(image_width/image_aspect),
+        image_height: Math.floor(width/image_aspect),
         bottom_el: bottom_el,
         bottom_height: bottom_height,
         bottom_width: bottom_width,
