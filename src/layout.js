@@ -114,11 +114,9 @@ define([], function() {
         min_diff_l = min_top - top_left_height;
       }
 
-      middle_right += min_diff_r;
-      sidebar += min_diff_r;
+      top_right_height += min_diff_r;
 
-      middle_left += min_diff_l;
-      left_sidebar += min_diff_l;
+      top_left_height += min_diff_l;
 
       /* Middle */
 
