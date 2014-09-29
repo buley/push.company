@@ -242,7 +242,9 @@ define([], function() {
         bottom_right_width: bottom_right_width,
         bottom_left_width: bottom_left_width,
         bottom_left_top: bottom_left_top,
-        bottom_right_top: bottom_right_top
+        bottom_right_top: bottom_right_top,
+        header_ad_height: header_ad_height,
+        header_ad_width: header_ad_width
       };
     }
   }
