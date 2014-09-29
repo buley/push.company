@@ -114,12 +114,12 @@ define([], function() {
       if (bottom_left_height < min_bottom_left) {
         bottom_left_height = 0 + min_bottom_left;
       }
-      left_box_top += bottom_left_height;
+      left_sidebar += bottom_left_height;
 
       if (bottom_right_height < min_bottom_right) {
         bottom_right_height = 0 + min_bottom_right;
       }
-      box_top += bottom_right_height;
+      sidebar += bottom_right_height;
 
       /* Top */
 
@@ -130,6 +130,9 @@ define([], function() {
       if (top_left_height < min_top_left) {
         top_left_height = 0 + min_top_left;
       }
+
+      left_box_top += top_left_height;
+      box_top += top_right_height;
 
       /* Middle */
 
