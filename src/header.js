@@ -163,7 +163,7 @@ define(['q', 'react', 'underscore', 'tween', 'src/layout'], function(Q, React, _
 
             },
             style: {
-              background: (this.props.header && this.props.header.drawer && ( this.props.header.drawer.showing || true === anim) ? "#d0d0d0": "#b2b2b2")
+              background: (this.props.header && this.props.header.drawer && ( this.props.header.drawer.showing) ? "#d0d0d0": "#b2b2b2")
             }
           }, React.DOM.img({
             src: '/img/tab_white_list.png'
