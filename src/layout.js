@@ -18,7 +18,7 @@ define([], function() {
           min_diff_r = 0,
           min_diff_l = 0,
           min_top = 200,
-          min_bottom = 200,
+          min_bottom = 400,
           y = window.scrollY,
           total_width = document.body.offsetWidth || 0,
           has_ads = true,
