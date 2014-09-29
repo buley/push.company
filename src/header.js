@@ -95,12 +95,12 @@ define(['q', 'react', 'underscore', 'tween', 'src/layout'], function(Q, React, _
             style: {
               height: current.fixed_header_height + "px"
             }
-          }), React.DOM.div({
+          })), React.DOM.div({
             id: "header-under",
             style: {
               height: current.header_height + "px"
             }
-          })), React.DOM.div({
+          }), React.DOM.div({
             id: "header-drawer-container",
             style: {
               display: (this.props.header && this.props.header.drawer && ( this.props.header.drawer.showing || true === anim)) ? "block" : "none",
