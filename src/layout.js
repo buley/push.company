@@ -17,7 +17,8 @@ define([], function() {
           min_middle = 420,
           min_diff_r = 0,
           min_diff_l = 0,
-          min_top = 200,
+          min_top_right = 200,
+          min_top_left = 120,
           min_bottom = 400,
           y = window.scrollY,
           total_width = document.body.offsetWidth || 0,
@@ -110,12 +111,12 @@ define([], function() {
       min_diff_r = 0;
       min_diff_l = 0;
 
-      if (top_right_height < min_top) {
-        min_diff_r = min_top - top_right_height;
+      if (top_right_height < min_top_right) {
+        min_diff_r = min_top_right - top_right_height;
       }
 
-      if (top_left_height < min_top) {
-        min_diff_l = min_top - top_left_height;
+      if (top_left_height < min_top_left) {
+        min_diff_l = min_top_left - top_left_height;
       }
 
       top_right_height += min_diff_r;
