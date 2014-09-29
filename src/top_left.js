@@ -9,12 +9,13 @@ define(['q', 'react', 'underscore', 'src/layout'], function(Q, React, _, layout)
             id: "top-left-container",
             style: {
               top: (current.content_top) + "px",
-              height: current.top_left_height,
+              "max-height": current.top_left_height,
               left: current.padding.left,
               display: current.has_left ? "inline" : "none"
             }
           }, React.DOM.section({
-            id: "top-left"
+            id: "top-left",
+            min-height: current.top_left_height + "px"
           } ) );
         }
       });
