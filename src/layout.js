@@ -164,10 +164,10 @@ define([], function() {
         height = sidebar;
       }
       console.log('YEAH',left_sidebar, height);
-      console.log('um',left_sidebar, bottom_left_height, top_left_height);
-      
+      console.log('um',left_sidebar + bottom_left_height + top_left_height);
+
       if (left_sidebar > height) {
-        height = left_sidebar;
+        height = left_sidebar + bottom_left_height + top_left_height;
       }
 
       return {
