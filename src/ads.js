@@ -145,7 +145,7 @@ define(['q', 'react', 'underscore', 'src/layout' ], function(Q, React, _, layout
             id: "ads-box-top-left",
             style: {
               "left": padding.left + "px",
-              "top": current.box_top + "px",
+              "top": current.left_box_top + "px",
               display: current.has_ads && current.has_left ? "inline" : "none"
             }
           }, React.DOM.div({
