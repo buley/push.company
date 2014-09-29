@@ -7,6 +7,8 @@ define([], function() {
             left: 20,
             right: 20
           },
+          middle_left,
+          middle_right,
           y = window.scrollY,
           total_width = document.body.offsetWidth || 0,
           has_ads = true,
@@ -78,7 +80,9 @@ define([], function() {
         width = total_width - right_width - left_width;
       }
 
-      console.log('middle',sidebar - box_top_height - box_bottom_height);
+      middle_right = sidebar - box_top_height - box_bottom_height;
+      middle_left = left_sidebar - left_box_top_height - left_box_bottom_height;
+
       return {
         y: y,
         has_ads: has_ads,
@@ -123,7 +127,9 @@ define([], function() {
         right_height: right_height,
         left_width: left_width,
         right_width: right_width,
-        left_height: left_height
+        left_height: left_height,
+        middle_left: middle_left,
+        middle_right: middle_right
       };
     }
   }
