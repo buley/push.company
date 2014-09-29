@@ -9,7 +9,8 @@ define([], function() {
           },
           middle_left,
           middle_right,
-          min_middle = 200,
+          min_width = 960,
+          min_middle = 420,
           min_diff_r = 0,
           min_diff_l = 0,
           y = window.scrollY,
@@ -77,7 +78,7 @@ define([], function() {
         y = 0;
       }
 
-      width = 960;
+      width = min_width;
 
       if ((width + right_width + left_width) > total_width) {
         width = total_width - right_width - left_width;
