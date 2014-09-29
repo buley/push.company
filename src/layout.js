@@ -162,8 +162,8 @@ define([], function() {
       if (sidebar > height) {
         height = sidebar;
       }
-      if (left_sidebar > height) {
-        height = left_sidebar;
+      if ((left_sidebar + bottom_left_height) > height) {
+        height = left_sidebar + bottom_left_height;
       }
 
       return {
