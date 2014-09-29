@@ -23,7 +23,7 @@ define(['q', 'react', 'underscore', 'src/layout'], function(Q, React, _, layout)
             React.DOM.div({id: "content-header-pubdate"},
               React.DOM.span({}, "August 20, 2014"),
                 React.DOM.div({id: "content-header-tools", style: {float: "right"}},
-                React.DOM.div({id: "content-header-tools-print", style: {float: "right"}}, React.DOM.img({src:"/img/tab_white_printer@2x.png"}))
+                React.DOM.div({id: "content-header-tools-print", style: {float: "right"}}, React.DOM.img({src:"/img/tab_white_printer@2x.png"})),
                 React.DOM.div({id: "content-header-tools-map", style: {float: "right"}}, React.DOM.img({src:"/img/tab_white_map@2x.png"}))
               )
             ),
