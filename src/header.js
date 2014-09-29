@@ -53,7 +53,7 @@ define(['q', 'react', 'underscore', 'tween', 'src/layout'], function(Q, React, _
         var tween = new Tween.Tween( logoSmall )
           .to( logoBig )
           .easing( Tween.Easing.Elastic.InOut )
-          .onUpdate(function() {
+          .onUpdate(_.throttle(function() {
               context.header = context.header || {};
               logo.width = this.width;
               logo.height = this.height;
@@ -62,7 +62,7 @@ define(['q', 'react', 'underscore', 'tween', 'src/layout'], function(Q, React, _
                 width: Math.round(this.width)
               });
               deferred.notify(context);
-          })
+          },100))
           .onComplete(function() {
             anim = false;
             logo.width = this.width;
