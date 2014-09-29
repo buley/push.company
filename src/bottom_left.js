@@ -16,7 +16,7 @@ define(['q', 'react', 'underscore', 'src/layout'], function(Q, React, _, layout)
           }, React.DOM.section({
             id: "bottom-left",
             style: {
-              "min-height": current.bottom_left_height + "px"
+              "min-height": current.bottom_left_top + "px"
             }
           } ) );
         }

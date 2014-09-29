@@ -13,6 +13,8 @@ define([], function() {
           bottom_left,
           top_right,
           bottom_right,
+          bottom_left_top,
+          bottom_right_top,
           min_width = 960,
           min_middle = 420,
           min_diff_r = 0,
@@ -144,6 +146,9 @@ define([], function() {
       middle_left += min_diff_l;
       left_sidebar += min_diff_l;
 
+
+      bottom_left_top = (current.left_box_bottom_height + current.left_box_top + current.left_box_top_height + current.middle_left + 40 + (current.left_box_top_height > 0 ? padding.bottom : 0) + (current.left_box_top_height > 0 ? padding.top : 0)) + "px";
+
       if (sidebar > height) {
         height = sidebar;
       }
@@ -208,7 +213,8 @@ define([], function() {
         bottom_right_height: bottom_right_height,
         bottom_left_height: bottom_left_height,
         bottom_right_width: bottom_right_width,
-        bottom_left_width: bottom_left_width
+        bottom_left_width: bottom_left_width,
+        bottom_left_top: bottom_left_top
       };
     }
   }
