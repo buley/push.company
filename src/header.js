@@ -131,7 +131,8 @@ define(['q', 'react', 'underscore', 'tween', 'src/layout'], function(Q, React, _
           React.DOM.div({ id:"header-navigation-button", onClick: function(e) {
             console.log("LOCATE");
           }, style: {
-              right: (70 + current.header_ad_width) + "px"
+              right: (70 + current.header_ad_width) + "px",
+              top: "5px"
             }}, React.DOM.img({src:"/img/tab_white_location@2x.png"})
           ),
           React.DOM.div({
