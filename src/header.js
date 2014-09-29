@@ -51,7 +51,7 @@ define(['q', 'react', 'underscore', 'tween', 'src/layout'], function(Q, React, _
       startLogoGrow = function() {
         anim = true;
         animate();
-        var tween = new Tween.Tween( logoSmall )
+        var tx = new Tween.Tween( logoSmall )
           .to( logoBig )
           .easing( Tween.Easing.Elastic.In )
           .onUpdate(function() {
