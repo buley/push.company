@@ -115,13 +115,11 @@ define([], function() {
         bottom_left_height = 0 + min_bottom_left;
       }
       left_sidebar += bottom_left_height;
-      left_box_top += bottom_left_height;
 
       if (bottom_right_height < min_bottom_right) {
         bottom_right_height = 0 + min_bottom_right;
       }
       sidebar += bottom_right_height;
-      box_top += bottom_right_height;
 
       /* Top */
 
@@ -138,8 +136,8 @@ define([], function() {
 
       /* Middle */
 
-      middle_right = sidebar - 100 - box_top_height - box_bottom_height - top_right_height - bottom_right_height;
-      middle_left = left_sidebar - 100 - left_box_top_height - left_box_bottom_height - top_left_height - bottom_left_height;
+      middle_right = sidebar - 80 - box_top_height - box_bottom_height - top_right_height - bottom_right_height;
+      middle_left = left_sidebar - 80 - left_box_top_height - left_box_bottom_height - top_left_height - bottom_left_height;
 
       min_diff_r = 0;
       min_diff_l = 0;
