@@ -28,7 +28,14 @@ define(['q', 'react', 'underscore', 'src/layout'], function(Q, React, _, layout)
             React.DOM.section({id: "content-body"},
               React.DOM.div({},
                 React.DOM.div({id: "content-body-image"},
-                  React.DOM.img({id: "content-body-image-img"}),
+                  React.DOM.img({
+                    id: "content-body-image-img",
+                    src: "placehold.it/" current.image_width + "x" + current.image_height,
+                    style: {
+                      height: current.image_height,
+                      width: current.image_width
+                    }
+                  }),
                   React.DOM.div({id: "content-body-image-credit"}, "Turducken strip steak drumstick, prosciutto pig beef sausage pork belly boudin jowl.")
                 )
               ),
