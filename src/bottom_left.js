@@ -8,7 +8,7 @@ define(['q', 'react', 'underscore', 'src/layout'], function(Q, React, _, layout)
           return React.DOM.section({
             id: "bottom-left-container",
             style: {
-              top: (current.left_box_top + current.left_box_top_height + current.middle_left + 40 + current_left_box_bottom_height + 40) + "px",
+              top: (current.left_box_top + current.left_box_top_height + current.middle_left + 40 + current.left_box_bottom_height + 40) + "px",
               height: (current.bottom_left_height + 40) + "px",
               left: current.padding.left,
               display: current.has_left ? "inline" : "none"
