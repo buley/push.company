@@ -24,8 +24,8 @@ define(['q', 'react', 'underscore', 'src/layout'], function(Q, React, _, layout)
             React.DOM.div({id: "content-header-description"}),
             React.DOM.div({id: "content-header-pubdate"}),
             React.DOM.div({id: "content-header-byline"})
-          )
-        })
+          ) ) );
+        }
       });
 
   module.resolve(component);
